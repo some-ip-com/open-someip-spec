@@ -1,0 +1,88 @@
+{
+    "config": {
+        "fontsize": 10,
+        "vspace": 35,
+        "hspace": 600,
+        "vflip": 1,
+        "hflip": 1,
+        "compact": 1,
+        "fontfamily": "Arial",
+        "strokewidth": 0.8,
+        "grid_draw": false,
+        "types": {
+            "gray": {
+                "color": "#D9D9D9",
+                "label": "some/ip_header"
+            },
+            "red": {
+                "color": "#EDCDCB",
+                "label": "some/ip_sd_header"
+            },
+            "green": {
+                "color": "#EBF1DE",
+                "label": "some/ip_sd_entries"
+            },
+            "blue": {
+                "color": "#C8D6E6",
+                "label": "some/ip_sd_options"
+            }
+        }
+    },
+    "payload": [
+        {
+            "name": "Type",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 1st options",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 2nd options",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "# of opt 1",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "# of opt 2",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "Service ID",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Instance ID",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Reserved (0x00)",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "TTL",
+            "bits": 24,
+            "type": "green"
+        },
+        {
+            "name": "Reserved (0x0000)",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Eventgroup ID",
+            "bits": 16,
+            "type": "green"
+        }
+    ]
+}

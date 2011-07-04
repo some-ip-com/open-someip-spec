@@ -1,0 +1,141 @@
+/* Base box for each need */
+.need_container {
+    border-top: thin solid #333!important;
+}
+
+.need {
+    background-color:white!important;
+    border: none!important;
+    padding: 0!important;
+}
+
+/* Title bar: Header row with two-column layout */
+
+/* div.need .need-title { */
+.needs_type_heading {
+        display: block!important;
+        height: 0px!important;
+        margin: 0px!important;
+    }
+
+/* Right side of header (status, safety, etc.) */
+
+.needs-head-right {
+    text-align: right;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Metadata section */
+
+.need-meta {
+    background-color: red!important;
+    display: none!important;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Satisfies/Satisfied by links should wrap nicely */
+
+.need-meta .needs_satisfies,
+
+.need-meta .needs_satisfied_by {
+    display: block;
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+/* Main content of the requirement */
+
+.need-content {
+    padding: 16px;
+    background-color: #fff;
+    font-size: 0.95rem;
+    color: #111;
+    line-height: 1.6;
+}
+
+/* Links */
+
+.need a {
+    color: #2a7f8e;
+    text-decoration: none;
+    border-bottom: 1px dotted #2a7f8e;
+}
+
+.need a:hover {
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+svg {
+    max-width: 100%;
+    max-height: 6.0in;
+    align-items: flex-start;
+}
+
+table.docutils > thead {
+    background: #D9D9D9;
+    color: #333;
+}
+
+.shadow { 
+    cursor:crosshair; 
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888; 
+}
+
+/***********************************************************************************/
+/* *{font-family:'Roboto';} */
+ 
+/* .need_container {
+    border-top: thin solid #333!important;
+}
+
+.need {
+    background-color: white!important;
+    border: none!important;
+    padding: 0!important;
+}
+
+.meta {
+    background-color: red!important;
+    display: none!important;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+svg {
+    max-width: 100%;
+    max-height: 8.5in;
+}
+
+table.docutils > thead {
+    background: #D9D9D9;
+    color: #333;
+}
+
+.needs_type_heading {
+    display: block!important;
+    height: 0px!important;
+    margin: 0px!important;
+}
+
+.shadow { 
+    cursor:crosshair; 
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888; 
+} */
+
+.body {
+  text-align: left; }
+  .body pre, .body h1, .body h2, .body h3, .body h4, .body h5, .body h6 {
+    text-align: left; }

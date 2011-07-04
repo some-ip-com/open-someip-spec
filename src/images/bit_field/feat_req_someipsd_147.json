@@ -1,0 +1,136 @@
+{
+    "config": {
+        "fontsize": 10,
+        "vspace": 35,
+        "hspace": 600,
+        "vflip": 1,
+        "hflip": 1,
+        "compact": 1,
+        "strokewidth": 0.8,
+        "fontfamily": "Arial",
+        "grid_draw": false,
+        "types": {
+            "gray": {
+                "color": "#D9D9D9",
+                "label": "some/ip_header"
+            },
+            "red": {
+                "color": "#EDCDCB",
+                "label": "some/ip_sd_header"
+            },
+            "green": {
+                "color": "#EBF1DE",
+                "label": "some/ip_sd_entries"
+            },
+            "blue": {
+                "color": "#C8D6E6",
+                "label": "some/ip_sd_options"
+            }
+        }
+    },
+    "payload": [
+        {
+            "name": "Length (=0x0011)",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Type (=0x01)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved (=0x00)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "[5]",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "a",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "b",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "c",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "=",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "x",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "[8]",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "d",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "e",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "f",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "=",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "1",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "2",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "3",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "[4]",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "[0]",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "label_lines": "Covered by Length\n (incl. Reserved)",
+            "font_size": 8,
+            "start_line": 1,
+            "end_line": 4,
+            "layout": "right",
+            "reserved": true
+        }
+    ]
+}

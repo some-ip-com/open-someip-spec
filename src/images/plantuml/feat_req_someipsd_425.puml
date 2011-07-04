@@ -1,0 +1,12 @@
+@startuml
+hide footbox
+activate Client
+activate Server
+Client -> Server: SOME/IP-SD: SubscribeEventgroup()
+Server -> Client: SOME/IP-SD: SubscribeEventgroupAck()
+
+Server -> Client: SOME/IP: Event()
+Server -> Client: SOME/IP: Event()
+Server -> Client: SOME/IP: Event()
+Server -> Client: SOME/IP: Event()
+@enduml

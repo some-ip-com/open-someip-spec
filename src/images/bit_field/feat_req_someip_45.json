@@ -1,0 +1,83 @@
+{
+    "config": {
+        "fontsize": 10,
+        "vspace": 35,
+        "hspace": 600,
+        "vflip": 1,
+        "hflip": 1,
+        "compact": 1,
+        "fontfamily": "Arial",
+        "strokewidth": 0.8,
+        "grid_draw": false,
+        "types": {
+            "gray": {
+                "color": "#D9D9D9",
+                "label": "some/ip_header"
+            },
+            "red": {
+                "color": "#EDCDCB",
+                "label": "some/ip_sd_header"
+            },
+            "green": {
+                "color": "#EBF1DE",
+                "label": "some/ip_sd_entries"
+            },
+            "blue": {
+                "color": "#C8D6E6",
+                "label": "some/ip_sd_options"
+            }
+        }
+    },
+    "payload": [
+        {
+            "name": "Message ID (Service ID / Method ID) [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Length [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Request ID (Client ID / Session ID) [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Protocol Version [8 bit]",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Interface Version [8 bit]",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Message Type [8 bit]",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Return Code [8 bit]",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "array": 64,
+            "name": "Payload [variable size]",
+            "type": "gray",
+            "gap_fill": "#D9D9D9",
+            "hide_lines": true
+        },
+        {
+            "label_lines": "Covered by\nLength",
+            "font_size": 8,
+            "start_line": 2,
+            "end_line": 5,
+            "layout": "right",
+            "angle": -90
+        }
+    ]
+}

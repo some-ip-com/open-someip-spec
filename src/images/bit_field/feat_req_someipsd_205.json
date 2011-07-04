@@ -1,0 +1,140 @@
+{
+    "config": {
+        "fontsize": 10,
+        "vspace": 40,
+        "hspace": 600,
+        "vflip": 1,
+        "hflip": 1,
+        "compact": 1,
+        "fontfamily": "Arial",
+        "strokewidth": 0.8,
+        "grid_draw": false,
+        "types": {
+            "gray": {
+                "color": "#D9D9D9",
+                "label": "some/ip_header"
+            },
+            "red": {
+                "color": "#EDCDCB",
+                "label": "some/ip_sd_header"
+            },
+            "green": {
+                "color": "#EBF1DE",
+                "label": "some/ip_sd_entries"
+            },
+            "blue": {
+                "color": "#C8D6E6",
+                "label": "some/ip_sd_options"
+            }
+        }
+    },
+    "payload": [
+        {
+            "name": "Message ID (Service ID / Method ID) [32 bit] (= 0xFFFF 8100)",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Length [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Request ID (Client ID / Session ID) [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Protocol Version [8 bit] \n=0x01",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Interface Version [8 bit] \n=0x01",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Message Type [8 bit] \n=0x02",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Return Code [8 bit] \n=0x00",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Flags [8 bit]",
+            "bits": 8,
+            "type": "red"
+        },
+        {
+            "name": "Reserved [24 bit]",
+            "bits": 24,
+            "type": "red"
+        },
+        {
+            "name": "Length of Entries Array [32 bit]",
+            "bits": 32,
+            "type": "green"
+        },
+        {
+            "array": 64,
+            "name": "Entries Array",
+            "type": "green",
+            "hide_lines": true
+        },
+        {
+            "name": "Length of Options Array [32 bit]",
+            "bits": 32,
+            "type": "blue"
+        },
+        {
+            "array": 64,
+            "name": "Options Array",
+            "type": "blue",
+            "hide_lines": true
+        },
+        {
+            "label_lines": "SOME/IP",
+            "font_size": 8,
+            "start_line": 0,
+            "end_line": 3,
+            "layout": "left",
+            "angle": -90
+        },
+        {
+            "label_lines": "SOME/IP-SD",
+            "font_size": 8,
+            "start_line": 4,
+            "end_line": 10,
+            "layout": "left",
+            "angle": -90
+        },
+        {
+            "label_lines": "Covered by \nLength",
+            "font_size": 8,
+            "start_line": 6,
+            "end_line": 7,
+            "layout": "right",
+            "angle": -90
+        },
+        {
+            "label_lines": "Covered by \nLength",
+            "font_size": 8,
+            "start_line": 9,
+            "end_line": 10,
+            "layout": "right",
+            "angle": -90
+        },
+        {
+            "label_lines": "Covered by \nLength",
+            "font_size": 8,
+            "start_line": 2,
+            "end_line": 10,
+            "layout": "right",
+            "angle": -90
+        }
+    ]
+}

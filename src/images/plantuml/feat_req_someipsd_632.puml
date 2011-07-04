@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+
+participant Server
+participant Client
+
+Client -> Server: SubscribeEventgroup()
+activate Client
+activate Server
+Server -> Server: updateRegistration()
+activate Server
+deactivate Server
+Server -> Client: SubscribeEventgroupAck() + Events()
+deactivate Server
+Client -> Client: linkDown()
+activate Client
+deactivate Client
+Client -> Client: linkUp()
+activate Client
+deactivate Client
+Client -> Server: SubscribeEventgroup()
+activate Server
+Server -> Server: updateRegistration()
+activate Server
+deactivate Server
+Server -> Client: SubscribeEventgroupAck() + Events()
+deactivate Server
+deactivate Client
+@enduml

@@ -1,0 +1,279 @@
+{
+    "config": {
+        "fontsize": 10,
+        "vspace": 40,
+        "hspace": 800,
+        "vflip": 1,
+        "hflip": 1,
+        "compact": 1,
+        "strokewidth": 0.8,
+        "fontfamily": "Arial",
+        "grid_draw": false,
+        "types": {
+            "gray": {
+                "color": "#D9D9D9",
+                "label": "some/ip_header"
+            },
+            "red": {
+                "color": "#EDCDCB",
+                "label": "some/ip_sd_header"
+            },
+            "green": {
+                "color": "#EBF1DE",
+                "label": "some/ip_sd_entries"
+            },
+            "blue": {
+                "color": "#C8D6E6",
+                "label": "some/ip_sd_options"
+            }
+        }
+    },
+    "payload": [
+        {
+            "name": "Message ID (Service ID / Method ID) [32 bit] (= 0xFFFF 8100)",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Length [32 bit] = 0x0000 005C (92)",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Request ID (Client ID / Session ID) [32 bit]",
+            "bits": 32,
+            "type": "gray"
+        },
+        {
+            "name": "Protocol Version [8 bit] =0x01",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Interface Version [8 bit] =0x01",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Message Type [8 bit] =0x02",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Return Code[8 bit] =0x00",
+            "bits": 8,
+            "type": "gray"
+        },
+        {
+            "name": "Flags [8 bit] =0x80",
+            "bits": 8,
+            "type": "red"
+        },
+        {
+            "name": "Reserved[24 bit =0x000]",
+            "bits": 24,
+            "type": "red"
+        },
+        {
+            "name": "Length of Entries Array in Bytes [32 bit] =0x0000 0020 (32)",
+            "bits": 32,
+            "type": "green"
+        },
+        {
+            "name": "Type =0x00 (Find)",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 1st options =0",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 2nd options =0",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "# of opt1 \n=0 (none)",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "# of opt2 \n=0 (none)",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "Service ID =0x1001",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Instance ID =0xFFFF (all)",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Major Version =0xff (any)",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "TTL =3600 (search is valid for 1h)",
+            "bits": 24,
+            "type": "green"
+        },
+        {
+            "name": "Minor Version =0xFFFF FFFF(any)",
+            "bits": 32,
+            "type": "green"
+        },
+        {
+            "name": "Type =0x01 (Offer)",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 1st options \n =0",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "Index 2nd options \n =0",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "# of opt1 \n=2",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "# of opt2 \n=0(none)",
+            "bits": 4,
+            "type": "green"
+        },
+        {
+            "name": "Service ID =0xFFFE",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Instance ID =0x0001",
+            "bits": 16,
+            "type": "green"
+        },
+        {
+            "name": "Major Version =0x01",
+            "bits": 8,
+            "type": "green"
+        },
+        {
+            "name": "TTL =300 (offer is valid for 300 seconds)",
+            "bits": 24,
+            "type": "green"
+        },
+        {
+            "name": "Minor Version =0x00000032",
+            "bits": 32,
+            "type": "green"
+        },
+        {
+            "name": "Length of Options Array in Bytes =0x0000 0028 (40)",
+            "bits": 32,
+            "type": "blue"
+        },
+        {
+            "name": "Length =0x0009",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Type =0x04 (IPv4 Endpoint)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved =0x00",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "IPv4-Address = 192.168.0.1",
+            "bits": 32,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved =0x00",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "L4-Proto =0x06 (TCP)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Port Number =0x1A91 (Port 6801)",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Length =0x0025",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Type =0x01 (Config)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved =0x00",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "array": 96,
+            "name": "[0x16]otherserv=internaldiag[0]",
+            "gap_fill": "#C8D6E6",
+            "type": "blue",
+            "hide_lines": true
+        },
+        {
+            "label_lines": "SOME/IP",
+            "font_size": 8,
+            "start_line": 0,
+            "end_line": 3,
+            "layout": "right",
+            "angle": -90
+        },
+        {
+            "label_lines": "SOME/IP SD",
+            "font_size": 8,
+            "start_line": 4,
+            "end_line": 21,
+            "layout": "right",
+            "angle": -90
+        },
+        {
+            "arrow_jump": 11,
+            "start_line": 10,
+            "jump_to_first": 13,
+            "layout": "left",
+            "jump_to_second": 15,
+            "end_bit": 0,
+            "stroke_width": 1
+        },
+        {
+            "arrow_jump": 11,
+            "start_line": 10,
+            "jump_to_first": 13,
+            "layout": "left",
+            "jump_to_second": 18,
+            "end_bit": 0,
+            "stroke_width": 1
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+@startuml
+!pragma teoz true
+hide footbox
+
+participant Server
+participant Client
+
+Server -> Client ++: PublishEventgroup()
+activate Server
+deactivate Server
+Client -> Server: SubscribeEventgroup()
+activate Server
+Server -> Server: updateRegistration()
+activate Server
+deactivate Server
+Server -> Client: SubscribeEventgroupAck() + Events()
+deactivate Server
+deactivate Client
+
+Server -> Server++: linkDown()
+activate Server
+deactivate Server
+Server -> Server: linkUp()
+activate Server
+deactivate Server
+Server -> Client: SubscribeEventgroupAck() + Events()
+activate Client
+Client -> Server: SubscribeEventgroup()
+deactivate Client
+
+Server -> Server: updateRegistration()
+activate Server
+deactivate Server
+Server -> Client: SubscribeEventgroupAck() + Events()
+activate Client
+deactivate Client
+deactivate Server
+
+
+@enduml
