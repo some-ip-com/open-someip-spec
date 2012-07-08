@@ -688,6 +688,7 @@ Two types of Entries exist: Type 1 Entries for Services and Type 2 Entries for E
     :collapse: True
   
 A Type 1 Entry shall be 16 Bytes of size and include the following fields in this order as shown in Figure :need:`feat_req_someipsd_208`:
+
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_49
@@ -1241,6 +1242,17 @@ For a character sequence without an '=' that key shall be interpreted as present
 For a character sequence ending on an '=' that key shall be interpreted as present with empty value.
     
 .. feat_req:: 🎯
+    :id: feat_req_someipsd_684
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Multiple entries with the same key in a single Configuration Option shall be supported.
+    
+.. feat_req:: 🎯
     :id: feat_req_someipsd_218
     :reqtype: Requirement
     :security: NO
@@ -1421,6 +1433,66 @@ Figure: SOME/IP-SD Load Balancing Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_148.json
 
+    
+.. heading:: Protection Option (informational)
+    :id: feat_req_someipsd_576
+    :layout: focus
+    :style: clean
+
+Protection Option (informational)
+--------------------------------- 
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_577
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Protection Option shall use the Type 0x03.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_578
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Protection Option shall carry an Alive-Counter and a CRC, which can be used to protect the whole message including the SOME/IP header.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_579
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+The format of the Protection Option shall be as follows:
+
+* Length [uint16]: Shall be set to 0x0009.
+* Type [uint8]: Shall be set to 0x03.
+* Reserved [uint8]: Shall be set to 0x00.
+* Alive-Counter [uint32]: Shall be set to the value of the alive counter. If no alive counter exists, the value of the Request-ID shall be used in this field.
+* CRC [uint32]: Shall contain the value of the CRC polynom used for protection of this message. The CRC polynom shall be specified by the system department.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_580
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If more than one Protection Option is contained in the SOME/IP message, they shall only cover the potion of the message in front of them. In addition, the use of multiple Protection Options shall trigger a configurable development error.
     
 .. heading:: IPv4 Endpoint Option
     :id: feat_req_someipsd_126
@@ -1670,7 +1742,7 @@ The Format of the IPv6 Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv4-Address [uint128]: Shall transport the IP-Address as 16 Bytes.
+* IPv6-Address [uint128]: Shall transport the IP-Address as 16 Bytes.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_169
@@ -2289,6 +2361,17 @@ Offer Service Entries shall set the entry fields in the following way:
 .. rst-class:: compact
   
 * TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_681
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Offer Service Entries shall always reference an IPv4 and/or IPv6 Endpoint Option.
     
 .. heading:: Stop Offer Service Entry
     :id: feat_req_someipsd_225
@@ -2974,6 +3057,17 @@ Publish Eventgroup Entries shall set the entry fields in the following way:
   
 * TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
     
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_683
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Publish Eventgroup Entries shall reference an IPv4 and/or IPv6 Endpoint Option if the Events of the Eventgroup are served via multicast or broadcast.
+    
 .. heading:: Stop Publish Eventgroup Entry
     :id: feat_req_someipsd_232
     :layout: focus
@@ -3137,6 +3231,17 @@ Subscribe Eventgroup Entries shall set the entry fields in the following way:
 .. rst-class:: compact
   
 * TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_682
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Subscribe Eventgroup Entries shall reference an IPv4 and/or IPv6 Endpoint Option.
     
 .. heading:: Stop Subscribe Eventgroup Entry
     :id: feat_req_someipsd_233
@@ -3603,28 +3708,6 @@ The Service Discovery shall delay multicast/broadcast answers to Find Service En
 The REQUEST_RESPONSE_DELAY shall not apply if unicast messages are answered with unicast messages.
     
 .. feat_req:: 🎯
-    :id: feat_req_someipsd_86
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The delay shall only apply to Find Service and Find Eventgroup Messages with Instance ID set ANY (0xFFFF).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_202
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Find Service and Find Eventgroup Messages with Instance ID other than 0xFFFF, shall answer without delay.
-    
-.. feat_req:: 🎯
     :id: feat_req_someipsd_84
     :reqtype: Requirement
     :security: NO
@@ -3757,10 +3840,9 @@ Besides SOME/IP other communication protocols are used within the vehicle; e.g. 
 .. rst-class:: compact
   
 For Non-SOME/IP protocols a special Service-ID shall be used and further informational shall be added using the configuration option:
-
 * Service-ID shall be set to 0xFFFE (reserved)
 * Instance-ID shall be used as described for SOME/IP services and eventgroups.
-* The Configuration Option shall be added and shall contain at least a entry with key "otherserv" and a configurable non-empty value.
+* The Configuration Option shall be added and shall contain at least a entry with key "otherserv" and a configurable non-empty value that is determined by the system department.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_502
@@ -3986,7 +4068,6 @@ If the server loses its link on the ethernet link, it SHALL delete all the regis
     :collapse: True
   
 If the Ethernet link of the server comes up again, it shall trigger a SOME/IP-SD PublishEventgroup message.
-
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_633
