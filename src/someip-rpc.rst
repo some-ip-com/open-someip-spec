@@ -51,7 +51,7 @@ The basic motivation to specify “yet another RPC-Mechanism” instead of using
 
 * Fulfills the hard requirements regarding resource consumption in an embedded world
 * Is compatible through as many use-cases and communication partners as possible
-* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard.
+* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard. 
 * Provides the features required by automotive use-cases
 * Is scalable from tiny to large platforms
 * Can be implemented on different operating system (i.e. AUTOSAR, GENIVI, and OSEK) and even embedded devices without operating system
@@ -89,11 +89,11 @@ Definition of terms
 * Field – a representation of a remote property, which has up to one getter, up to one setter, and up to one notifier.
 * Getter – a Request/Response call that allows read access to a field.
 
-  * Rationale: The getter needs to return a value; thus, it needs to be a request/response call. 
+  * The getter needs to return a value; thus, it needs to be a request/response call.
 
 * Setter – a Request/Response call that allows write access to a field.
 
-  * Rationale: The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
+  * The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
 
 * Notifier – sends out events with a new value on change of the value of the field
 * Service – a logical combination of zero or more methods, zero or more events, and zero or more fields (empty service is allowed)
@@ -394,7 +394,7 @@ Header
     :status: valid
     :collapse: True
   
-For interoperability reasons the header layout shall be identical for all scales of the SOME/IP and is shown in the Figure :need:`feat_req_someip_45`. The fields are presented in transmission order; i.e. the fields on the top left are transmitted first. In the following sections the different header fields and their usage is being described.
+For interoperability reasons the header layout shall be identical for all scales of the SOME/IP and is shown in the Figure :need:`feat_req_someip_45` . The fields are presented in transmission order; i.e. the fields on the top left are transmitted first. In the following sections the different header fields and their usage is being described.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_45
@@ -1330,7 +1330,7 @@ The Interface Definition may define the length of the length field. Length of 0,
     :status: valid
     :collapse: True
   
-The layout of dynamic arrays is shown in Figure :need:`feat_req_someip_256` and Figure :need:`feat_req_someip_258`.
+The layout of dynamic arrays is shown in Figure :need:`feat_req_someip_256` and :need:`feat_req_someip_258`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_256
@@ -1446,7 +1446,7 @@ The default serialization layout of unions in SOME/IP is as follows:
     :status: valid
     :collapse: True
   
-The order of the length and type field may be adjusted by the interface specification. If this is not specified, the default layout as in :need:`feat_req_someip_264` shall be used.
+The order of the length and type field may be adjusted by the interface specification. If this is not specified the default layout as in :need:`feat_req_someip_264` shall be used.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_563
@@ -2204,7 +2204,7 @@ Transporting Application Error Codes and Exceptions
     :status: valid
     :collapse: True
   
-For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see :need:`feat_req_someip_94`). For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
+For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see (ffeat_req_someip_369)). For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_368
@@ -3131,4 +3131,132 @@ Currently not supported are the following changes:
 .. rst-class:: compact
   
 * Replace supertype by subtype (as in object oriented programming languages)
+    
+.. heading:: Transporting CAN and FlexRay Frames
+    :id: feat_req_someip_500
+    :layout: focus
+    :style: clean
+
+.. rst-class:: break_before
+
+Transporting CAN and FlexRay Frames
+################################### 
+
+.. feat_req:: 🎯
+    :id: feat_req_someip_501
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+SOME/IP should not be used to simply transport CAN or FlexRay frames. However, the Message ID space needs to be coordinated between both use cases.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_502
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The full SOME/IP Header shall be used for transporting CAN/FlexRay.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_504
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Message ID and Length are used to construct the needed internal PDUs but does not look at other fields. Therefore, one has to encode the CAN ID (11 or 29 bits) or the FlexRay ID (6+6+11 bits) into the Message ID field. The ID shall be aligned to the least significant bit of the Message ID and the unused bits shall be set to 0. An 11 bit CAN identifier would be therefore transported in the bit position 21 to 31.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_505
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Especially with the use of 29 Bit CAN-IDs or FlexRay-IDs a lot of the Message ID space is used. In this case it is recommended to bind SOME/IP and CAN/FlexRay transports to different transport protocol ports, so that different ID spaces for the Message IDs exist.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_506
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Keep in mind that when transporting a CAN frame of 8 Byte over Ethernet an overhead of up to 100 Bytes might be needed in the near future (using IPv6 and/or security mechanisms). So it is recommended to use larger RPC calls as shown in the first part of the document instead of small CAN like communication.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_567
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Client ID and Session ID shall be set to 0x0000.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_606
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Message Type, and Return Code shall be set to 0x00.
+
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_568
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Protocol Version shall be set according to :need:`feat_req_someip_90`.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_569
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Interface Version shall be set according to interface specifications.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_620
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Service ID and Message ID may be used (example):
+
+* Service ID shall be set to a value defined by the system department, e.g. 0x1234
+* Message ID is split into 5 Bits specifying the CAN bus, and 11 Bits for the CAN-ID.
+
+This is just an example and the actual layout shall be specified by the System Department.
     

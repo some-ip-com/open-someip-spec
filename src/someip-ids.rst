@@ -65,6 +65,31 @@ Reserved and special Service-IDs:
         - SOME/IP and SOME/IP-SD special service (e.g.Magic Cookie,SOME/IP-SD, ...).
 
 .. feat_req:: ⓘ 
+    :id: feat_req_someipids_529
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Reserved and special Instance-IDs:
+    
+
+
+    .. list-table::
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
+
+      * - Instance ID 
+        - Description
+      * - 0x0000 
+        - Reserved
+      * - 0xFFFF 
+        - All Instances
+
+.. feat_req:: ⓘ 
     :id: feat_req_someipids_636
     :reqtype: Information
     :security: NO
@@ -144,3 +169,34 @@ Method-IDs and Event-IDs of Service 0xFFFF:
         - SOME/IP Magic Cookie Messages
       * - 0x8100 
         - SOME/IP-SD messages (events)
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipids_664
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Besides "otherserv" many other names can be used in the configuration option. The following list gives an overview of the reserved names:
+    
+
+
+    .. list-table::
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
+
+      * - Name 
+        - Description
+      * - diagaddr 
+        - Used to transport the diagnostics address.
+      * - hostname 
+        - Used to name a host or ECU.
+      * - instancename 
+        - Used to name an instance of a service.
+      * - servicename 
+        - Used to name a service.
+      * - otherserv 
+        - Used for non-SOME/IP services.
