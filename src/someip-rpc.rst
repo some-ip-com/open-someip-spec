@@ -86,7 +86,7 @@ Definition of terms
 
 .. rst-class:: compact
   
-* Method – a method, procedure, function, or subroutine that can be called/invoked.
+* Method – a method, procedure, function, or subroutine that is called/invoked.
 * Parameters – input, output, or input/output arguments of a method or an event.
 
   * Input/output arguments are arguments shared for input and output.
@@ -100,7 +100,7 @@ Definition of terms
 * Field – a representation of a remote property, which has up to one getter, up to one setter, and up to one notifier.
 
   * The field shall contain at least a getter, a setter, or a notifier.
-  * A field does represent a status and thus has an valid value at all times on which getter, setter, and notifier can act upon.
+  * A field does represent a status and thus has an valid value at all times on which getter, setter, and notifier act upon.
 
 * Notification Event – an event message the notifier of an field sends. The message of such a notifier cannot be distinguished from the event message; therefore, when referring to the message of an event, this shall also be true for the messages of notifiers of fields.
 * Getter – a Request/Response call that allows read access to a field.
@@ -115,7 +115,7 @@ Definition of terms
 * Service Instance – software implementation of the service interface, which can exist more than once in the vehicle and more than once on an ECU
 * Server – The ECU offering a service instance shall be called server in the context of this service instance.
 * Client – The ECU using the service instance of a server shall be called client in the context of this service instance.
-* Union or Variant – a data structure that can dynamically assume different data types.
+* Union or Variant – a data structure that dynamically assumes different data types.
     
 .. heading:: Definition of Identifiers
     :id: feat_req_someip_534
@@ -235,7 +235,7 @@ This means that two different camera services shall have two different Service-I
     :status: valid
     :collapse: True
   
-Methods and events shall be identified inside a service using a 16bit Method-ID, which may be also called Event-ID for events and notifications.
+Methods and events shall be identified inside a service using a 16bit Method-ID, which is also called Event-ID for events and notifications.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_626
@@ -319,7 +319,7 @@ Transport Protocol
     :status: valid
     :collapse: True
   
-SOME/IP may be transported using UDP or TCP. For dynamic ports the ECU private port range is 49152-65535 until further notice. When used in a vehicle the OEM will specify the ports used in the interface specification.
+SOME/IP shall be transported using UDP and/or TCP based on the configuration. For dynamic ports the ECU private port range is 49152-65535 until further notice. When used in a vehicle the OEM will specify the ports used in the interface specification.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_659
@@ -408,7 +408,7 @@ Message Length Limitations
     :status: valid
     :collapse: True
   
-In combination with regular Ethernet, IPv4 and UDP can transport packets with up to 1472 Bytes of data without fragmentation, while IPv6 uses additional 20 Bytes. Especially for small systems fragmentation shall be avoided, so the SOME/IP header and payload should be of limited length. The possible usage of security protocols further limits the maximal size of SOME/IP messages.
+In combination with regular Ethernet, IPv4 and UDP can transport packets with up to 1472 Bytes of data without fragmentation, while IPv6 uses additional 20 Bytes. Especially for small systems fragmentation shall be avoided, so the SOME/IP header and payload shall be of limited length. The possible usage of security protocols further limits the maximal size of SOME/IP messages.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_36
@@ -419,7 +419,7 @@ In combination with regular Ethernet, IPv4 and UDP can transport packets with up
     :status: valid
     :collapse: True
   
-When using UDP as transport protocol SOME/IP messages may use up to 1416 Bytes for the SOME/IP header and payload, so that 1400 Bytes are available for the payload.
+When using UDP as transport protocol SOME/IP messages shall use up to 1416 Bytes for the SOME/IP header and payload, so that 1400 Bytes are available for the payload.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_38
@@ -449,7 +449,7 @@ Endianness
     :status: valid
     :collapse: True
   
-All RPC-Headers shall be encoded in network byte order (big endian) [RFC 791]. The byte order of the parameters inside the payload shall be defined by the interface definition (i.e. FIBEX) and should be in network byte order when possible and if no other byte order is specified.
+All RPC-Headers shall be encoded in network byte order (big endian) [RFC 791]. The byte order of the parameters inside the payload shall be defined by the interface definition (i.e. FIBEX) and shall be in network byte order when possible and if no other byte order is specified.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_675
@@ -590,8 +590,8 @@ Structure of the Message ID
   
 In order to structure the different methods, events, and fields, they are clustered into services. Services have a set of methods, events, and fields as well as a Service ID, which is only used for this service. The events and notification events may in addition be assigned into a number eventgroups, which simplify the registration of events and notifies.
 
-An event may be part of zero to many eventgroup and an eventgroup can contain zero to many events.
-A field may be part of zero to many eventgroup and an eventgroup can contain zero to many fields.
+An event shall be part of zero to many eventgroups and an eventgroup shall contain zero to many events.
+A field shall be part of zero to many eventgroups and an eventgroup can contain zero to many fields.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_670
@@ -726,6 +726,31 @@ The Request ID is constructed of the Client ID and Session ID:
 
     
 .. feat_req:: 🎯
+    :id: feat_req_someip_699
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Client ID is the unique identifier for the calling client inside the ECU.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_701
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Client ID shall also support being unique in the overall vehicle by having a configurable prefix or fixed value (e.g. the most significant byte of Client ID being the diagnostics address or a configured Client ID for a given application/SW-C).
+
+.. bitfield_directive:: images/bit_field/feat_req_someip_701.json
+
+    
+.. feat_req:: 🎯
     :id: feat_req_someip_88
     :reqtype: Requirement
     :security: TBD
@@ -734,7 +759,18 @@ The Request ID is constructed of the Client ID and Session ID:
     :status: valid
     :collapse: True
   
-The Client ID is the unique identifier for the calling client inside the ECU. The Session ID is a unique identifier chosen by the client for each call. If session handling is not used, the Session ID shall be set to 0x0000.
+The Session ID is a unique identifier chosen by the client for each call.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_700
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If session handling is not used, the Session ID shall be set to 0x0000.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_649
@@ -745,29 +781,7 @@ The Client ID is the unique identifier for the calling client inside the ECU. Th
     :status: valid
     :collapse: True
   
-If session handling is used the Session ID shall start with 0x0001 else it can be set to 0x0000.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_667
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-For events and notification events no session handling shall be used; thus, the Client ID should be set to 0x0000.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_669
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-For fire&forget methods, events and notification events the Session ID should start with 1 and be incremented for every message sent.
+If session handling is used, the Session ID shall start with 0x0001.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_677
@@ -779,6 +793,28 @@ For fire&forget methods, events and notification events the Session ID should st
     :collapse: True
   
 When the Session ID reaches 0xFFFF, it shall start with 0x0001 again.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_669
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Request/Response methods shall use session handling.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_667
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Events, notification events, and Fire&Forget methods shall use session handling if required.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_668
@@ -810,13 +846,13 @@ Protocol Version [8 Bit]
   
 Protocol Version is an 8 Bit field containing the SOME/IP protocol version, which currently shall be set to 0x01.
     
-.. heading:: Interface Major Version [8 Bit]
+.. heading:: Interface Version [8 Bit]
     :id: feat_req_someip_91
     :layout: focus
     :style: clean
 
-Interface Major Version [8 Bit]
-=============================== 
+Interface Version [8 Bit]
+========================= 
 
 .. feat_req:: 🎯
     :id: feat_req_someip_92
@@ -827,7 +863,7 @@ Interface Major Version [8 Bit]
     :status: valid
     :collapse: True
   
-Interface Major Version is an 8 Bit field that contains the Major Version of the Service Interface.
+Interface Version is an 8 Bit field that contains the Major Version of the Service Interface.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_93
@@ -857,7 +893,7 @@ Message Type [8 Bit]
     :status: valid
     :collapse: True
   
-The Message Type field is used to differentiate different types of messages and may contain the following values:
+The Message Type field is used to differentiate different types of messages and shall contain one of the following values:
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_684
@@ -931,7 +967,7 @@ Regular request (message type 0x00) will be answered by a response (message type
     :status: valid
     :collapse: True
   
-For all messages an optional acknowledgment (ACK) exists. These can be used in cases where the transport protocol (i.e. UDP) does not acknowledge a received message. ACKs are only transported when the interface specification requires it. Only the usage of the REQUEST_ACK is currently specified in this document. All other ACKs are currently informational and do not need to be implemented.
+For all messages an optional acknowledgment (ACK) exists. These are defined for transport protocols (i.e. UDP) that do not acknowledge a received message. ACKs are only transported when the interface specification requires it. Only the usage of the REQUEST_ACK is currently specified in this document. All other ACKs are currently informational and do not need to be implemented.
     
 .. heading:: Return Code [8 Bit]
     :id: feat_req_someip_143
@@ -1015,7 +1051,9 @@ In the payload field the parameters are carried. The serialization of the parame
     :status: valid
     :collapse: True
   
-The size of the SOME/IP payload field depends on the transport protocol used. With UDP the SOME/IP payload can be between 0 and 1400 Bytes. The limitation to 1400 Bytes is needed in order to allow for future changes to protocol stack (e.g. changing to IPv6 or adding security means). Since TCP supports segmentation of payloads, larger sizes are automatically supported.
+The size of the SOME/IP payload field depends on the transport protocol used. With UDP the SOME/IP payload shall be between 0 and 1400 Bytes.
+
+The limitation to 1400 Bytes is needed in order to allow for future changes to protocol stack (e.g. changing to IPv6 or adding security means). Since TCP supports segmentation of payloads, larger sizes are automatically supported.
     
 .. heading:: Serialization of Parameters and Data Structures
     :id: feat_req_someip_167
@@ -1045,7 +1083,9 @@ The serialization is based on the parameter list defined by the interface specif
     :status: valid
     :collapse: True
   
-The interface specification defines the exact position of all parameters in the PDU and has to consider the memory alignment. The serialization shall not try to automatically align parameters but shall be aligned as specified in the interface specification. SOME/IP payload should be placed in memory so that the SOME/IP payload is suitable aligned. For infotainment ECUs an alignment of 8 Bytes (i.e. 64 bits) should be achieved, for all ECU at least an alignment of 4 Bytes shall be achieved.
+The interface specification defines the exact position of all parameters in the PDU and has to consider the memory alignment. The serialization shall not try to automatically align parameters but shall be aligned as specified in the interface specification.
+
+The SOME/IP payload should be placed in memory so that the SOME/IP payload is suitable aligned. For infotainment ECUs an alignment of 8 Bytes (i.e. 64 bits) should be achieved, for all ECU at least an alignment of 4 Bytes shall be achieved.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_170
@@ -1156,7 +1196,7 @@ The Byte Order is specified for each parameter by the interface definition.
     :status: valid
     :collapse: True
   
-In addition uint64 and sint64 types may be supported.
+In addition, uint64 and sint64 types shall be supported at least on infotainment ECUs.
     
 .. heading:: Structured Datatypes (structs)
     :id: feat_req_someip_229
@@ -1208,7 +1248,7 @@ If a SOME/IP generator or similar encounters an interface specification that lea
     :status: valid
     :collapse: True
   
-Warning about unaligned structs or similar shall not be done in the implementation but only in the toolchain used to generate the implementation.
+Warning about unaligned structs or similar shall not be done in the implementation but only in the tool chain used to generate the implementation.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_672
@@ -1219,7 +1259,7 @@ Warning about unaligned structs or similar shall not be done in the implementati
     :status: valid
     :collapse: True
   
-Messages of legacy busses like CAN and FlexRay may never be aligned. Warnings can be turned off or be ignored in such cases.
+Messages of legacy busses like CAN and FlexRay are usually not aligned. Warnings can be turned off or be ignored in such cases.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_575
@@ -1375,7 +1415,7 @@ For UTF-16LE and UTF-16BE strings having a odd length the last byte shall be ign
     :status: valid
     :collapse: True
   
-All strings must always start with a Byte Order Mark (BOM). The BOM must be included in fixed-length-strings as well as dynamic-length strings.
+All strings shall always start with a Byte Order Mark (BOM). The BOM shall be included in fixed-length-strings as well as dynamic-length strings.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_666
@@ -1449,7 +1489,10 @@ Strings with dynamic length start with a length field. The length is measured in
     :status: valid
     :collapse: True
   
-The length of the length field may be 8, 16 or 32 Bit. Fixed length strings may be seen as having a 0 Bit length field.
+Dynamic length strings shall have a length field of 8, 16, 32 Bit. This length is defined by the Interface Specification.
+
+Note:
+Fixed length strings may be seen as having a 0 Bit length field.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_581
@@ -1512,7 +1555,10 @@ Arrays (fixed length)
     :status: valid
     :collapse: True
   
-The length of fixed length arrays is defined by the interface definition. They can be seen as repeated elements. Fixed length arrays are easier for use in very small devices.
+The length of fixed length arrays is defined by the interface definition.
+
+Note:
+They can be seen as repeated elements. Fixed length arrays are easier for use in very small devices.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_694
@@ -1638,7 +1684,7 @@ The layout of arrays with dynamic length basically is based on the layout of fix
     :status: valid
     :collapse: True
   
-The Interface Definition may define the length of the length field. Length of 0, 8, 16, and 32bit are allowed.
+The Interface Definition shall define the length of the length field. Length of 0, 8, 16, and 32bit are allowed.
 
 If the length of the length field is set to 0 Bits, the number of elements in the array has to be fixed; thus, being an array with fixed length. 
     
@@ -1734,7 +1780,7 @@ In multidimensional arrays multiple length fields are needed.
     :status: valid
     :collapse: True
   
-The interface definition should define the maximal length of each dimension in order to allow for static buffer size allocation.
+If static buffer size allocation is required, the interface definition shall define the maximal length of each dimension.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_696
@@ -1857,7 +1903,9 @@ Union / Variant
     :status: valid
     :collapse: True
   
-A union (also called variant) is a parameter that can contain different types of elements. For example, if one defines a union of type uint8 and type uint16, the union may carry an element of uint8 or uint16. It is clear that that when using different types of elements the alignment of subsequent parameters may be distorted. To resolve this, padding might be needed.
+A union (also called variant) is a parameter that can contain different types of elements. For example, if one defines a union of type uint8 and type uint16, the union shall carry an element of uint8 or uint16.
+
+It is clear that that when using different types of elements with different length the alignment of subsequent parameters is possibly distorted. To resolve this, padding might be needed.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_264
@@ -1882,7 +1930,7 @@ The default serialization layout of unions in SOME/IP is as follows:
     :status: valid
     :collapse: True
   
-The order of the length and type field may be adjusted by the interface specification. If this is not specified the default layout as in :need:`feat_req_someip_264` shall be used.
+The order of the length and type field is adjustable by the interface specification. If this is not specified the default layout as in :need:`feat_req_someip_264` shall be used.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_563
@@ -1959,7 +2007,7 @@ The length field defines the size of the element and padding in bytes and does n
     :status: valid
     :collapse: True
   
-The length of the type field may be defined by the Interface Specification and may be 32, 16, or 8 bits.
+The length of the type field may be defined by the Interface Specification and shall be 32, 16, or 8 bits.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_565
@@ -1981,7 +2029,7 @@ If the Interface Specification does not specify the length of the type field of 
     :status: valid
     :collapse: True
   
-The type field describes the type of the element. Possible values of the type field are defined by the interface specification for each union separately. The types are encoded as in the interface specification in ascending order starting with 1. The 0 is reserved for the NULL type – i.e. an empty union. The Interface Definition may allow or disallow the usage of NULL for a Union/Variant.
+The type field describes the type of the element. Possible values of the type field are defined by the interface specification for each union separately. The types are encoded as in the interface specification in ascending order starting with 1. The 0 is reserved for the NULL type – i.e. an empty union. The Interface Definition shall allow or disallow the usage of NULL for a Union/Variant.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_274
@@ -1992,7 +2040,7 @@ The type field describes the type of the element. Possible values of the type fi
     :status: valid
     :collapse: True
   
-The element is serialized depending on the type in the type field. In conjunction with the length field padding can be added behind the element. The deserializer shall skip bytes according to the length field. The value of the length field for each type shall be defined by the interface specification.
+The element is serialized depending on the type in the type field. This also defines the length of the data. All bytes behind the data that are covered by the length, are padding. The deserializer shall skip such bytes according to the length field. The value of the length field for each type shall be defined by the interface specification.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_275
@@ -2126,6 +2174,17 @@ In order to transport SOME/IP messages of IP different transport protocols may b
 If a server runs different instances of the same service, messages belonging to different service instances shall be mapped to the service instance by the transport protocol port on the server side.
     
 .. feat_req:: 🎯
+    :id: feat_req_someip_702
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+All Transport Protocol Bindings shall support transporting more than one SOME/IP message in a Transport Layer PDU (i.e. UDP packet or TCP segment).
+    
+.. feat_req:: 🎯
     :id: feat_req_someip_664
     :reqtype: Requirement
     :security: TBD
@@ -2134,7 +2193,7 @@ If a server runs different instances of the same service, messages belonging to 
     :status: valid
     :collapse: True
   
-The receiving SOME/IP implementation must be able to receive unaligned SOME/IP messages transported by UDP or TCP.
+The receiving SOME/IP implementation shall be capable of receiving unaligned SOME/IP messages transported by UDP or TCP.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_663
@@ -2175,7 +2234,7 @@ The UDP binding of SOME/IP is straight forward by transporting SOME/IP messages 
     :status: valid
     :collapse: True
   
-The header format allows transporting more than one SOME/IP message in a single UDP packet. The SOME/IP implementation can easily identify the end of a SOME/IP message by means of the SOME/IP length field. Based on the UDP lengths field SOME/IP can determine if there are additional SOME/IP messages in the UDP packet.
+The header format allows transporting more than one SOME/IP message in a single UDP packet. The SOME/IP implementation shall identify the end of a SOME/IP message by means of the SOME/IP length field. Based on the UDP length field, SOME/IP shall determine if there are additional SOME/IP messages in the UDP packet.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_584
@@ -2251,7 +2310,7 @@ In order to lower latency and reaction time, Nagle’s algorithm shall be turned
     :status: valid
     :collapse: True
   
-When the TCP connection is lost, outstanding requests should be handled as timeouts. Since TCP handles reliability, additional means of reliability are not needed. Error handling is discussed in detail in :need:`feat_req_someip_364`.
+When the TCP connection is lost, outstanding requests shall be handled as timeouts. Since TCP handles reliability, additional means of reliability are not needed. Error handling is discussed in detail in :need:`feat_req_someip_364`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_644
@@ -2437,7 +2496,7 @@ The layout of the Magic Cookie Message is based on SOME/IP. The fields are set a
     :status: valid
     :collapse: True
   
-The layout of the Magic Cookie Messages is shown in Figure :need:`feat_req_someip_589`.
+The layout of the Magic Cookie Messages is shown in Figure :need:`feat_req_someip_589`
     
 .. feat_req:: 🎯
     :id: feat_req_someip_589
@@ -2470,7 +2529,7 @@ Multiple Service-Instances
     :status: valid
     :collapse: True
   
-Service-Instances of the same Service are identified through different Instance IDs. Multiple Service-Instances may reside on different ECUs and also multiple Service-Instances of one or more Services may reside on one single ECU.
+Service-Instances of the same Service are identified through different Instance IDs. It shall be supported that multiple Service-Instances reside on different ECUs as well as multiple Service-Instances of one or more Services reside on one single ECU.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_445
@@ -2481,7 +2540,7 @@ Service-Instances of the same Service are identified through different Instance 
     :status: valid
     :collapse: True
   
-While different Services can share the same port number of the transport layer protocol used, multiple Service-Instances of the same service on one single ECU shall listen on different ports per Service-Instance.
+While different Services shall be able to share the same port number of the transport layer protocol used, multiple Service-Instances of the same service on one single ECU shall listen on different ports per Service-Instance.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_637
@@ -2656,46 +2715,13 @@ Strategy for sending notifications
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
 For different use cases different strategies for sending notifications are possible and shall be defined in the service interface. The following examples are common:
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_357
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
 
-.. rst-class:: compact
-  
 * Cyclic update – send an updated value in a fixed interval (e.g. every 300 ms)
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_358
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Update on change – send an update as soon as a “value” changes (e.g. door open)
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_359
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Epsilon change – only send an update when the difference to the last value is greater than a certain epsilon. This concept may be adaptive, i.e. the prediction is based on a history; thus, only when the difference between prediction and current value is greater than epsilon an update is transmitted.
     
 .. heading:: Publish/Subscribe Handling
@@ -2816,7 +2842,9 @@ Transporting Application Error Codes and Exceptions
     :status: valid
     :collapse: True
   
-For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see Section 2.3.7). For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
+For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see Section 2.3.7).
+
+For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_368
@@ -2860,6 +2888,17 @@ The system shall not return an error message for events/notifications.
 The system shall not return an error message for fire&forget methods.
     
 .. feat_req:: 🎯
+    :id: feat_req_someip_706
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The system shall not return an error message for events/notifications and fire&forget methods if the Message Type is set incorrectly to Request or Response.
+    
+.. feat_req:: 🎯
     :id: feat_req_someip_655
     :reqtype: Requirement
     :security: TBD
@@ -2868,7 +2907,18 @@ The system shall not return an error message for fire&forget methods.
     :status: valid
     :collapse: True
   
-For request/response methods the error message shall copy over the fields of the SOME/IP header (i.e. Message ID, Request ID, Protocol Version, and Interface Version) but not the payload. In addition Message Type and Return Code have to be set to the appropriate values.
+For request/response methods the error message shall copy over the fields of the SOME/IP header (i.e. Message ID, Request ID, and Interface Version) but not the payload. In addition Message Type and Return Code have to be set to the appropriate values.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_703
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The SOME/IP implementation shall not use an unknown protocol version but write a supported protocol version in the header.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_371
@@ -2942,6 +2992,17 @@ The following Return Codes are currently defined and shall be implemented as des
     :collapse: True
   
 Generation and handling of return codes shall be configurable.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_704
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Implementations shall not answer with errors to SOME/IP message already carrying an error (i.e. return code 0x01 - 0x1f).
     
 .. heading:: Error Message Format
     :id: feat_req_someip_421
@@ -3752,7 +3813,7 @@ Transporting CAN and FlexRay Frames
     :status: valid
     :collapse: True
   
-SOME/IP should not be used to simply transport CAN or FlexRay frames. However, the Message ID space needs to be coordinated between both use cases.
+SOME/IP allows to tunnel of CAN and FlexRay frames as well. However, the Message ID space needs to be coordinated between both use cases.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_502
@@ -3763,7 +3824,7 @@ SOME/IP should not be used to simply transport CAN or FlexRay frames. However, t
     :status: valid
     :collapse: True
   
-The full SOME/IP Header shall be used for transporting CAN/FlexRay.
+The full SOME/IP Header shall be used for transporting/tunneling CAN/FlexRay.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_504
@@ -3864,7 +3925,7 @@ Interface Version shall be set according to interface specifications.
 
 .. rst-class:: compact
   
-If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Message ID may be used (example):
+If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Message ID is recommended (example):
 
 * Service ID shall be set to a value defined by the system department, e.g. 0x1234
 * Event ID is split into 4 Bits specifying the CAN bus, and 11 Bits for the CAN-ID.

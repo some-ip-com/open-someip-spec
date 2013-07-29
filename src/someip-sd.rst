@@ -204,7 +204,7 @@ Publishing an eventgroup shall mean to offer an eventgroup of a service instance
     :status: valid
     :collapse: True
   
-Subscribing an eventgroup shall mean to require an evengroup of a service instance using a SOME/IP-SD message.
+Subscribing an eventgroup shall mean to require an eventgroup of a service instance using a SOME/IP-SD message.
     
 .. heading:: SOME/IP-SD ECU-internal Interface
     :id: feat_req_someipsd_13
@@ -236,7 +236,7 @@ Service status shall be defined as up or down as well as required and released:
 
 .. rst-class:: compact
   
-* A service status of up shall mean that a service instance is available; thus, it can be accessed using the communication method specified and is able to fulfil its specified function.
+* A service status of up shall mean that a service instance is available; thus, it is accessible using the communication method specified and is able to fulfill its specified function.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_353
@@ -647,7 +647,7 @@ The Reboot Flag of the SOME/IP-SD Header shall be set to one for all messages af
     :status: valid
     :collapse: True
   
-The information for the reboot flag and the Session ID shall be kept for multicast and unicast separately.
+The information for the reboot flag and the Session ID shall be kept for multicast and unicast separately as well as for every sender-receiver-relation (i.e. source address and destination address).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_863
@@ -658,7 +658,7 @@ The information for the reboot flag and the Session ID shall be kept for multica
     :status: valid
     :collapse: True
   
-SOME/IP-SD implementations shall be able to reliably detect the reboots of their peer based on the information stated in :need:`feat_req_someipsd_765`.
+SOME/IP-SD implementations shall reliably detect the reboots of their peer based on the information stated in :need:`feat_req_someipsd_765`.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_764
@@ -668,14 +668,17 @@ SOME/IP-SD implementations shall be able to reliably detect the reboots of their
     :satisfies: 
     :status: valid
     :collapse: True
-  
-The detection of a reboot may be done as follows (with new the values of the current packet from the communication partner and old the last value received before):
 
-if old.reboot==0 and new.reboot==1 then Reboot detected
-if old.reboot==1 and new.reboot==1 and old.session_id>=new.session_id then Reboot detected
+.. rst-class:: compact
+  
+The detection of a reboot shall be done as follows (with new the values of the current packet from the communication partner and old the last value received before):
+
+* if old.reboot==0 and new.reboot==1 then Reboot detected
+* if old.reboot==1 and new.reboot==1 and old.session_id>=new.session_id then Reboot detected
 
 The following is not enough since we do not have reliable communication:
-if new.reboot==1 and old.session_id>=new.session_id then Reboot detected
+
+* if new.reboot==1 and old.session_id>=new.session_id then Reboot detected
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_871
@@ -1146,7 +1149,7 @@ Options Format
     :status: valid
     :collapse: True
   
-Options are used to transport additional information to the entries. This can be for instance the information how a service instance is reachable (IP-Address, Transport Protocol, Port Number).
+Options are used to transport additional information to the entries. This includes for instance the information how a service instance is reachable (IP-Address, Transport Protocol, Port Number).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_122
@@ -1213,7 +1216,7 @@ Configuration Option
     :status: valid
     :collapse: True
   
-The configuration option may be used to transport arbitrary configuration strings. This allows to encode additional information like the name of a service or its configuration.
+The configuration option shall be used to transport arbitrary configuration strings. This allows to encode additional information like the name of a service or its configuration.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_152
@@ -1466,7 +1469,7 @@ Load Balancing Option (informational)
     :status: valid
     :collapse: True
   
-This option may be used to prioritize different instances of a service, so that a client can choose the service instance based on these settings. This option will be attached to Offer Service entries.
+This option shall be used to prioritize different instances of a service, so that a client chooses the service instance based on these settings. This option will be attached to Offer Service entries.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_146
@@ -1488,7 +1491,7 @@ The Load Balancing Option shall use the Type 0x02.
     :status: valid
     :collapse: True
   
-The Load Balancing Option shall carry a Priority and Weight like the DNS-SRV records, which can be used to load balancing different service instances.
+The Load Balancing Option shall carry a Priority and Weight like the DNS-SRV records, which shall be used to load balancing different service instances.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_770
@@ -1619,7 +1622,7 @@ Protection Option (informational)
     :status: valid
     :collapse: True
   
-This option may be used to protect SD messages against changes of the transmission or lower layer protocols.
+This option shall be used to protect SD messages against changes of the transmission or lower layer protocols.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_577
@@ -1641,7 +1644,7 @@ The Protection option shall use the Type 0x03.
     :status: valid
     :collapse: True
   
-The Protection option shall carry an Alive-Counter, ID, and a CRC, which can be used to protect the whole message including the SOME/IP header.
+The Protection option shall carry an Alive-Counter, ID, and a CRC to protect the whole message including the SOME/IP header.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_579
@@ -1661,7 +1664,7 @@ The format of the Protection Option shall be as follows:
 * Reserved [uint8]: Shall be set to 0x00.
 * ID [uint32]: The ID for the CRC.
 * Alive-Counter [uint32]: Shall be set to the value of the alive counter. If no alive counter exists, the value of the Request-ID shall be used in this field.
-* CRC [uint32]: Shall contain the value of the CRC of this message. The CRC polynom shall be specified by the system department.
+* CRC [uint32]: Shall contain the value of the CRC of this message. The CRC polynomial shall be specified by the system department.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_580
@@ -1693,7 +1696,7 @@ IPv4 Endpoint Option
   
 The IPv4 Endpoint Option shall be used by a SOME/IP-SD instance to signal the relevant endpoint(s). Endpoints include the local IP address, the transport layer protocol (e.g. UDP or TCP), and the port number of the sender.
 
-These ports may be used for the events and notification events as well. When using UDP the server uses the announced port as source port and with TCP the client needs to open a connection to this port before subscription, so that the server can use this TCP connection.
+These ports shall be used for the events and notification events as well. When using UDP the server uses the announced port as source port. With TCP the client needs to open a connection to this port before subscription, because this is the TCP connection the server uses for sending events and notification events.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_127
@@ -1853,7 +1856,7 @@ Figure: SOME/IP-SD IPv4 Endpoint Option
     :status: valid
     :collapse: True
   
-The server shall use the IPv4 Endpoint Option with Offer Service entries to signal the endpoints it serves the service on. That is upto one UDP endpoint and upto one TCP endpoint.
+The server shall use the IPv4 Endpoint Option with Offer Service entries to signal the endpoints it serves the service on. That is up to one UDP endpoint and up to one TCP endpoint.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_850
@@ -1896,7 +1899,7 @@ IPv6 Endpoint Option
   
 The IPv6 Endpoint Option shall be used by a SOME/IP-SD instance to signal the relevant endpoint(s). Endpoints include the local IP address, the transport layer protocol (e.g. UDP or TCP), and the port number of the sender.
 
-These ports may be used for the events and notification events as well. When using UDP the server uses the announced port as source port and with TCP the client needs to open a connection to this port before subscription, so that the server can use this TCP connection.
+These ports shall be used for the events and notification events as well. When using UDP the server uses the announced port as source port. With TCP the client needs to open a connection to this port before subscription, because this is the TCP connection the server uses for sending events and notification events.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_140
@@ -2056,7 +2059,7 @@ Figure: SOME/IP-SD IPv6 Endpoint Option
     :status: valid
     :collapse: True
   
-The server shall use the IPv6 Endpoint Option with Offer Service entries to signal the endpoints the services is available on. That is upto one UDP endpoint and upto one TCP endpoint.
+The server shall use the IPv6 Endpoint Option with Offer Service entries to signal the endpoints the services is available on. That is up to one UDP endpoint and up to one TCP endpoint.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_852
@@ -2586,6 +2589,17 @@ For empty runs the Index (i.e. Index First Option Run and/or Index Second Option
   
 Implementations shall accept and process incoming SD messages with option run length set to zero and option index not set to zero.
     
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_900
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Implementations shall minimize the size of the SD messages by not duplicating Options without need.
+    
 .. heading:: Example
     :id: feat_req_someipsd_212
     :layout: focus
@@ -2698,7 +2712,7 @@ Find Service Entry
     :status: valid
     :collapse: True
   
-The Find Service entry type shall be used for finding service instances and shall only be sent if the current state of a service is unknow (no current Service Offer was received and is still valid).
+The Find Service entry type shall be used for finding service instances and shall only be sent if the current state of a service is unknown (no current Service Offer was received and is still valid).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_239
@@ -3662,7 +3676,7 @@ Publish Eventgroup Entry (Informational)
     :status: valid
     :collapse: True
   
-The Publish Eventgroup entry type shall be used to offer an eventgroup to other communication partners. This entry type can be considered comparable to the Offer Service entry type.
+The Publish Eventgroup entry type shall be used to offer an eventgroup to other communication partners. This entry type is considered comparable to the Offer Service entry type.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_308
@@ -3876,7 +3890,7 @@ Subscribe Eventgroup Entry
     :status: valid
     :collapse: True
   
-The Subscribe Eventgroup entry type shall be used to subscribe to an eventgroup. This can be considered comparable to the Request Service entry type.
+The Subscribe Eventgroup entry type shall be used to subscribe to an eventgroup. This is considered comparable to the Request Service entry type.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_322
@@ -4580,7 +4594,7 @@ This applies to FindService entries.
     :status: valid
     :collapse: True
   
-The REQUEST_REPONSE_DELAY shall also apply to unicast messages triggered by multicast messages (e.g. Subscribe Eventgroup after Offer Service).
+The REQUEST_RESPONSE_DELAY shall also apply to unicast messages triggered by multicast messages (e.g. Subscribe Eventgroup after Offer Service).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_624
@@ -4635,7 +4649,7 @@ For basic implementations all Find Service entries (no matter of the state of th
     :status: valid
     :collapse: True
   
-As optimization the following behavior shall be activatable:
+For optimization purpose the following behavior shall be supported as option:
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_89
@@ -4709,7 +4723,7 @@ When a server sends out a Stop Offer Service entry all subscriptions for this se
     :status: valid
     :collapse: True
   
-When a server sends out a Stop Offer Service entry all subscriptions for this service instance shall be deleted on the client side.
+When a client receives a Stop Offer Service entry, all subscriptions for this service instance shall be deleted on the client side.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_834
@@ -4720,7 +4734,7 @@ When a server sends out a Stop Offer Service entry all subscriptions for this se
     :status: valid
     :collapse: True
   
-When a client receives a Stop Offer Service entry, the client shall not send out Find Service entries but wait for Offer Service entry or change of status (application, network management, ethernet link, or similar).
+When a client receives a Stop Offer Service entry, the client shall not send out Find Service entries but wait for Offer Service entry or change of status (application, network management, Ethernet link, or similar).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_822
@@ -4894,7 +4908,7 @@ Publish/Subscribe with SOME/IP and SOME/IP-SD
     :status: valid
     :collapse: True
   
-In contrast to the SOME/IP request/response mechanism there may be cases where a client requires a set of parameters from a server, but does not want to request that information each time it is required. These are called notifications and concern events and fields.
+In contrast to the SOME/IP request/response mechanism there are cases in which a client requires a set of parameters from a server, but does not want to request that information each time it is required. These are called notifications and concern events and fields.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_422
@@ -4905,7 +4919,7 @@ In contrast to the SOME/IP request/response mechanism there may be cases where a
     :status: valid
     :collapse: True
   
-Clients may register using the SOME/IP-SD at run-time with a server in order to receive notifications.
+All clients needing events and/or notification events shall register using the SOME/IP-SD at run-time with a server.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_425
@@ -4930,7 +4944,7 @@ Figure: Notification interaction (extremely simplified)
     :status: valid
     :collapse: True
   
-With the SOME/IP-SD entry Offer Service the server offers to push notifications to clients; thus, it may substitute the Publish Eventgroup as trigger for Subscriptions.
+With the SOME/IP-SD entry Offer Service the server offers to push notifications to clients; thus, it shall be used as trigger for Subscriptions (like the Publish Eventgroup).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_429
@@ -4965,7 +4979,7 @@ Each client in SD based notification implements the specific service-interfaces 
   
 Each client shall respond to a SOME/IP-SD Offer Service entry from the server with a SOME/IP-SD Subscribe Eventgroup entry as long as the client is still interested in receiving the notifications/events of this eventgroup.
 
-If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages reboot flag, the client may choose to only answer Offer Service messages after the server reboots. The client make sure that this works reliable even when the SOME/IP-SD messages of the server are lost.
+If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages reboot flag, the client shall only answer Offer Service messages after the server reboots, if configured to do so. The client shall make sure that this works reliable even when the SOME/IP-SD messages of the server are lost.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_632
@@ -5001,7 +5015,7 @@ The server sending Publish Eventgroup entries or Offer Service entries as implic
     :status: valid
     :collapse: True
   
-A client can deregister from a server by sending a SOME/IP-SD Subscribe Eventgroup message with TTL=0 (Stop Offer Service).
+A client shall deregister from a server by sending a SOME/IP-SD Subscribe Eventgroup message with TTL=0 (Stop Subscribe Eventgroup).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_634
@@ -5026,7 +5040,9 @@ Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring 
     :status: valid
     :collapse: True
   
-The SOME/IP-SD on the server shall delete the subscription, if a relevant SOME/IP error is received after sending the push-message.
+The SOME/IP-SD on the server shall delete the subscription, if a relevant SOME/IP error is received after sending a event or notification event.
+
+The error includes but is not limited to not being able to reach the communication partner and errors of the TCP connection.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_437
@@ -5155,7 +5171,7 @@ If the initial value is of concern - i.e. for fields - the server shall immediat
 This means:
 
 * It is not allowed to send initial values of events upon subscriptions (pure event and not field).
-* The event messages of field notifiers must be sent on subscriptions (field and not pure event).
+* The event messages of field notifiers shall be sent on subscriptions (field and not pure event).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_625
@@ -5222,7 +5238,7 @@ Figure: Publish/Subscribe State Diagram (overall behavior).
     :status: valid
     :collapse: True
   
-The registration of a client to receive notifications from a server may be implicit. Meaning the mechanism is pre-configured.
+An implicit registration of a client to receive notifications from a server shall be supported. Meaning the mechanism is pre-configured.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_445
@@ -5333,7 +5349,7 @@ Offer Service entries shall reference up to 1 UDP Endpoint Option and up to 1 TC
     :status: valid
     :collapse: True
   
-The referenced Endpoint Options of the Offer Service entries denote the IP Address and Port Numbers the service instance can be reached at the server.
+The referenced Endpoint Options of the Offer Service entries denote the IP Address and Port Numbers the service instance is reachable at the server.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_781
@@ -5517,7 +5533,7 @@ The client shall open the Endpoint specified in the Multicast Option referenced 
     :status: valid
     :collapse: True
   
-If the server has to send multicast events very shortly (< 5 ms) after sending the Subscribe Eventgroup Ack entry, the server shall try to delay these events, so that the client is not missing it. If this event was sent as initial event anyhow, the server may send this event using unicast as well.
+If the server has to send multicast events very shortly (configurable time < 5 ms) after sending the Subscribe Eventgroup Ack entry, the server shall try to delay these events, so that the client is not missing it. If this event was sent as multicast anyhow, the server shall send this event using unicast as well.
     
 .. heading:: Example
     :id: feat_req_someipsd_794
@@ -5600,7 +5616,7 @@ In this section the mandatory feature set of the Service Discovery and the relev
     :status: valid
     :collapse: True
   
-The following information can be also seen as check list(s) for compliance. If a feature is not implemented, the implementation is consider not to comply to SOME/IP-SDs basic feature set.
+The following information is defined as compliance check list(s). If a feature is not implemented, the implementation is consider not to comply to SOME/IP-SDs basic feature set.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_808
@@ -5685,12 +5701,12 @@ The following option types shall be implemented, if non-SOME/IP services or addi
   
 The following behaviors/reactions shall be implemented on the Server side:
 
-* The Server shall be able to offer services including the Initial Wait Phase, the Repetition Phase, and the Main Phase depending on the configuration.
+* The Server shall offer services including the Initial Wait Phase, the Repetition Phase, and the Main Phase depending on the configuration.
 * The Server shall offer services using Multicast (Repetition Phase and Main Phase).
 * The Server does not need to answer a Find Service in the Repetition Phase.
 * The Server shall answer a Find Service in the Main Phase with an Offer Service using Unicast (no optimization based on unicast flag).
 * The Server shall send a Stop Offer Service when shutting down.
-* The Server shall be able to receive a Subscribe Eventgroup as well as a Stop Subscribe Eventgroup and react according to this specification.
+* The Server shall receive a Subscribe Eventgroup as well as a Stop Subscribe Eventgroup and react according to this specification.
 * The Server shall send a Subscribe Eventgroup Ack and Subscribe Eventgroup Nack using unicast.
 * The Server shall support controlling the sending (i.e. fan out) of SOME/IP event messages based on the subscriptions of SOME/IP-SD. This might include sending events based on Multicast.
 * The Server shall support the triggering of initial SOME/IP event messages.
@@ -5726,8 +5742,8 @@ The following behaviors/reactions shall be implemented on the Client side:
   
 The following behavior and configuration constraints shall be supported by the Client:
 
-* The Client shall be able to handle Eventgroups if only the TTL of the SD Timings is specified. This means that of all the timings for the Initial Wait Phase, the Repetition Phase, and the Main Phase only TTL is configured. This means the client shall only react on the Offer Service by the Server.
-* The Client shall be able to answer to an Offer Service with a Subscribe Eventgroup even without configuration of the Request-Response-Delay, meaning it should not wait but answer instantaneously.
+* The Client shall even handle Eventgroups if only the TTL of the SD Timings is specified. This means that of all the timings for the Initial Wait Phase, the Repetition Phase, and the Main Phase only TTL is configured. This means the client shall only react on the Offer Service by the Server.
+* The Client shall answer to an Offer Service with a Subscribe Eventgroup even without configuration of the Request-Response-Delay, meaning it does not wait but answer instantaneously.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_813
@@ -5769,6 +5785,73 @@ The Client and Server shall implement the "Endpoint Handling for Service and Eve
 * Understanding and acting according to the Endpoint and Multicast Options transported as described above.
 * Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these Endpoint and Multicast Options.
     
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_946
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Allowed SOME/IP-SD Option types in relation to Entry types.
+    
+
+
+    .. list-table::
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
+      
+      * -
+        - Endpoint Option
+        - Multicast Option
+        - Configuration Option
+        - Load Balancing Option
+        - Protection Option
+      * - **FindService** 
+        - 0 
+        - 0 
+        - 0-1 
+        - 0-1 
+        - 0-1
+      * - **OfferService** 
+        - 1-2 
+        - 0 
+        - 0-1 
+        - 0-1 
+        - 0-1
+      * - **StopOfferService** 
+        - 1-2 
+        - 0 
+        - 0-1 
+        - 0-1
+        - 0-1
+      * - **SubscribeEventgroup** 
+        - 1-2 
+        - 0 
+        - 0-1 
+        - 0-1
+        - 0-1
+      * - **StopSubscribeEventgroup** 
+        - 1-2 
+        - 0 
+        - 0-1 
+        - 0-1
+        - 0-1
+      * - **SubscribeEventgroupAck**
+        - 0 
+        - 0-1 
+        - 0-1 
+        - 0-1
+        - 0-1
+      * - **SubscribeEventgroupNack**
+        - 0 
+        - 0 
+        - 0-1 
+        - 0-1
+        - 0-1
+
 .. heading:: SOME/IP-SD Mechanisms and Errors
     :id: feat_req_someipsd_837
     :layout: focus
@@ -5786,7 +5869,7 @@ SOME/IP-SD Mechanisms and Errors
     :status: valid
     :collapse: True
   
-In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) is discussed. This may also be understood as rationale for the mechanisms used and the configuration possible.
+In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) is discussed. This is also understood as rationale for the mechanisms used and the configuration possible.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_842
@@ -5801,9 +5884,9 @@ In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) i
   
 Soft State Protocol:
 
-SOME/IP-SD was designed as soft state protocol, that means that entries come with a lifetime and need to be refreshed to stay valid (this can be turned off by setting the TTL to the maximum value).
+SOME/IP-SD was designed as soft state protocol, that means that entries come with a lifetime and need to be refreshed to stay valid (setting the TTL to the maximum value shall turn this off).
 
-Using cyclic Offer Service entries and the TTL as aging mechanism SOME/IP-SD can cope with many different cases of errors. Some examples:
+Using cyclic Offer Service entries and the TTL as aging mechanism SOME/IP-SD shall cope with many different cases of errors. Some examples:
 
 * If a client or server leaves without sending a Stop entry or this Stop entry got lost, the system will fix itself after the TTL expiration.
 * If an Offer Service entry does not arrive because the packet got lost, the system will tolerate this based on the value of the TTL.
@@ -5835,7 +5918,7 @@ The Initial Wait Phase was introduced for two reasons: deskewing events of start
   
 Repetition Phase:
 
-The Repetition Phase was introduced to allow for fast synchronization of clients and servers. If the clients startup later, it will find the server very fast. And if the server starts up later, the client can be found very fast. The Repetition Phase increases the time between two messages exponentially to avoid that overload situations keep the system from synchronization.
+The Repetition Phase was introduced to allow for fast synchronization of clients and servers. If the clients startup later, it will find the server very fast. And if the server starts up later, the client is found very fast. The Repetition Phase increases the time between two messages exponentially to avoid that overload situations keep the system from synchronization.
 
 An example configuration could be REPETITIONS_BASE_DELAY=30ms and REPETITIONS_MAX=3.
     
@@ -5863,5 +5946,5 @@ In the Main Phase the SD tries to stabilize the state and thus decreases the rat
   
 Request-Response-Delay:
 
-SOME/IP-SD can be configured to delay the answer to entries in multicast messages by the Request-Response-Delay (in FIBEX called Query-Response-Delay). This is useful in large systems with many ECUs. When sending a SD message with many entries in it, a lot of answers from different ECUs may arrive and put a large stress on the ECU receiving all these answers.
+SOME/IP-SD shall allow to be configured to delay the answer to entries in multicast messages by the Request-Response-Delay (in FIBEX called Query-Response-Delay). This is useful in large systems with many ECUs. When sending a SD message with many entries in it, a lot of answers from different ECUs arrive at the same time and put a large stress on the ECU receiving all these answers.
     

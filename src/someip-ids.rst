@@ -183,7 +183,7 @@ Method-IDs and Event-IDs of Service 0xFFFF.
     :status: valid
     :collapse: True
   
-Besides "otherserv" many other names can be used in the configuration option. The following list gives an overview of the reserved names:
+Besides "otherserv" other names are supported by the configuration option. The following list gives an overview of the reserved names:
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipids_875

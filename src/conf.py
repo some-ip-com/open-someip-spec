@@ -21,7 +21,7 @@ extensions = [
 project = "Open SOME/IP Specification"
 copyright = "SOME/IP"
 author = "SOME/IP authors"
-version = "13-06"
+version = "13-07"
 
 needs_id_regex = "^[A-Za-z0-9_]"
 needs_title_from_content = False
