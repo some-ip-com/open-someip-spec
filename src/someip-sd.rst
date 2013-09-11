@@ -581,7 +581,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Header Format
+SOME/IP-SD Header Format
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_205.json
 
@@ -959,7 +959,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Service Entry Type
+SOME/IP-SD Service Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_208.json
 
@@ -1127,7 +1127,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Eventgroup Entry Type
+SOME/IP-SD Eventgroup Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_209.json
 
@@ -1433,7 +1433,7 @@ Figure :need:`feat_req_someipsd_144` shows the format of the Configuration Optio
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Configuration Option
+SOME/IP-SD Configuration Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_144.json
 
@@ -1447,7 +1447,7 @@ Figure: SOME/IP-SD Configuration Option
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Configuration Option Example
+SOME/IP-SD Configuration Option Example
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_147.json
 
@@ -1600,7 +1600,7 @@ Figure :need:`feat_req_someipsd_148` shows the format of the Load Balancing Opti
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Load Balancing Option
+SOME/IP-SD Load Balancing Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_148.json
 
@@ -1664,7 +1664,7 @@ The format of the Protection Option shall be as follows:
 * Reserved [uint8]: Shall be set to 0x00.
 * ID [uint32]: The ID for the CRC.
 * Alive-Counter [uint32]: Shall be set to the value of the alive counter. If no alive counter exists, the value of the Request-ID shall be used in this field.
-* CRC [uint32]: Shall contain the value of the CRC of this message. The CRC polynomial shall be specified by the system department.
+* CRC [uint32]: Shall contain the value of the CRC of this message. The CRC polynomial shall be specified by the OEM.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_580
@@ -1842,7 +1842,7 @@ Figure :need:`feat_req_someipsd_141` shows the format of the IPv4 Endpoint Optio
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD IPv4 Endpoint Option
+SOME/IP-SD IPv4 Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_141.json
 
@@ -2045,7 +2045,7 @@ Figure :need:`feat_req_someipsd_142` shows the format of the IPv6 Endpoint Optio
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD IPv6 Endpoint Option
+SOME/IP-SD IPv6 Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_142.json
 
@@ -2257,7 +2257,7 @@ Figure :need:`feat_req_someipsd_734` shows the format of the IPv4 Multicast Opti
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD IPv4 Multicast Option
+SOME/IP-SD IPv4 Multicast Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_734.json
 
@@ -2291,6 +2291,17 @@ IPv6 Multicast Option
     :collapse: True
   
 The IPv6 Multicast Option is used by the server to announce the IPv6 multicast address, the layer 4 protocol, and the port number the multicast events and multicast notifications events are sent to. For the transport layer protocol (ISO/OSI layer 4) currently only UDP is supported.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1083
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 Multicast Option and not the IPv6 Endpoint Option shall be referenced by SubscribeEventgroupAck messages.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_737
@@ -2436,7 +2447,7 @@ Figure :need:`feat_req_someipsd_748` shows the format of the IPv6 Multicast Opti
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD IPv6 Multicast Option
+SOME/IP-SD IPv6 Multicast Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_748.json
 
@@ -2451,6 +2462,413 @@ Figure: SOME/IP-SD IPv6 Multicast Option
     :collapse: True
   
 The server shall reference the IPv6 Multicast Option, which encodes the IPv6 Multicast Address and Port Number the server will send multicast events and notification events to.
+    
+.. heading:: IPv4 SD Endpoint Option
+    :id: feat_req_someipsd_1080
+    :layout: focus
+    :style: clean
+
+IPv4 SD Endpoint Option
+----------------------- 
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1081
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address and Port) of the senders SD implementation.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1082
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option may be included in any SD message up to 1 time.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1114
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option shall be not referenced by any SD Entry.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1084
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If the IPv4 SD Endpoint Option is included in the SD message, the receiving SD implementation shall use the content of this option instead of the Source IP Address and Source Port.
+
+This is important for answering the received SD message (e.g. Offer after Find or Subscribe after Offer or Subscribe Ack after Subscribe) as well as the reboot detection (channel based on SD Endpoint Option and not out addresses).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1085
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option shall use the Type 0x24.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1086
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option shall specify the IPv4-Address, the transport layer protocol (ISO/OSI layer 4) used, and its Port Number.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1087
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Format of the IPv4 SD Endpoint Option shall be as follows:
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1088
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Length [uint16]: Shall be set to 0x0015.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1089
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Type [uint8]: Shall be set to 0x24.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1090
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Reserved [uint8]: Shall be set to 0x00.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1091
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* IPv4-Address [uint32]: Shall transport the multicast IP-Address as four Bytes.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1092
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Reserved [uint8]: Shall be set to 0x00.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1093
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1094
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1095
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Figure :need:`feat_req_someipsd_1096` shows the format of the IPv4 SD Endpoint Option.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1096
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+SOME/IP-SD IPv4 SD Endpoint Option
+
+.. bitfield_directive:: images/bit_field/feat_req_someipsd_1096.json
+
+    
+.. heading:: IPv6 SD Endpoint Option
+    :id: feat_req_someipsd_1097
+    :layout: focus
+    :style: clean
+
+IPv6 SD Endpoint Option
+----------------------- 
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1098
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address and Port) of the senders SD implementation.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1099
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option may be included in any SD message up to 1 time.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1113
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option shall be not referenced by any SD Entry.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1100
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If the IPv6 SD Endpoint Option is included in the SD message, the receiving SD implementation shall use the content of this option instead of the Source IP Address and Source Port for answering this SD messages.
+
+
+This is important for answering the received SD messages (e.g. Offer after Find or Subscribe after Offer or Subscribe Ack after Subscribe) as well as the reboot detection (channel based on SD Endpoint Option and not out addresses).
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1101
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option shall use the Type 0x24.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1102
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option shall specify the IPv4-Address, the transport layer protocol (ISO/OSI layer 4) used, and its Port Number.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1103
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The Format of the IPv6 SD Endpoint Option shall be as follows:
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1104
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Length [uint16]: Shall be set to 0x0015.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1105
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Type [uint8]: Shall be set to 0x24.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1106
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Reserved [uint8]: Shall be set to 0x00.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1107
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* IPv6-Address [uint128]: Shall transport the multicast IP-Address as 16 Bytes.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1108
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Reserved [uint8]: Shall be set to 0x00.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1109
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1110
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1111
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Figure :need:`feat_req_someipsd_1112` shows the format of the IPv6 SD Endpoint Option.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1112
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+SOME/IP-SD IPv6 SD Endpoint Option
+
+.. bitfield_directive:: images/bit_field/feat_req_someipsd_1112.json
+
     
 .. heading:: Referencing Options from Entries
     :id: feat_req_someipsd_335
@@ -2628,7 +3046,7 @@ Figure :need:`feat_req_someipsd_213` shows an example SOME/IP-SD PDU.
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Example PDU
+SOME/IP-SD Example PDU
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_213.json
 
@@ -2867,20 +3285,11 @@ Stop Find Service entries shall be used in communication with optional Service D
     :satisfies: 
     :status: valid
     :collapse: True
-  
-Stop Find Service entries shall set the entry fields exactly like the Find Service entry they are stopping, except:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_251
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
 
 .. rst-class:: compact
   
+Stop Find Service entries shall set the entry fields exactly like the Find Service entry they are stopping, except:
+
 * TTL shall be set to 0x000000.
     
 .. heading:: Offer Service Entry
@@ -3300,6 +3709,7 @@ The Stop Request Service entry type shall be used to stop requests.
     :collapse: True
   
 Stop Offer Request entries shall set the entry fields exactly like the Request Service entry they are stopping, except:
+
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_282
@@ -3408,10 +3818,8 @@ Request Service Negative Acknowledgment entries shall set the entry fields in th
     :satisfies: 
     :status: valid
     :collapse: True
-
-.. rst-class:: compact
   
-* Type shall be set to 0x03 (RequestServiceAck).
+Requirement
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_598
@@ -4060,6 +4468,7 @@ The Stop Subscribe Eventgroup entry type shall be used to stop subscribing to ev
     :collapse: True
   
 Stop Subscribe Eventgroup entries shall set the entry fields exactly like the Subscribe Eventgroup entry they are stopping, except:
+
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_334
@@ -4511,17 +4920,6 @@ In the Main Phase Offer Messages and Publish Messages shall be sent cyclically i
 After a message for a specific Service Instance the Service Discovery waits for 1*CYCLIC_OFFER_DELAY before sending the next message for this Service Instance.
     
 .. feat_req:: 🎯
-    :id: feat_req_someipsd_631
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-For Requests/Subscriptions the same cyclic behavior in Main Phase as for the Offers shall be implemented with the parameter CYCLIC_REQUEST_DELAY instead of CYCLIC_OFFER_DELAY.
-    
-.. feat_req:: 🎯
     :id: feat_req_someipsd_866
     :reqtype: Requirement
     :security: NO
@@ -4531,6 +4929,17 @@ For Requests/Subscriptions the same cyclic behavior in Main Phase as for the Off
     :collapse: True
   
 For Find entries (Find Service and Find Eventgroup) no cyclic messages are allowed in Main Phase.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_631
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Requests/Subscriptions entries shall not be triggered cyclically but shall be triggered by Offer entries, which may be sent cyclically.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_77
@@ -4660,7 +5069,7 @@ For optimization purpose the following behavior shall be supported as option:
     :status: valid
     :collapse: True
   
-Find messages received with the Unicast Flag set to 1, shall be answered with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY (for requests/subscribes this is 1/2 CYCLIC_REQUEST_DELAY) ago.
+Find messages received with the Unicast Flag set to 1, shall be answered with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_90
@@ -4671,7 +5080,7 @@ Find messages received with the Unicast Flag set to 1, shall be answered with a 
     :status: valid
     :collapse: True
   
-Find messages received with the Unicast Flag set to 1, shall be answered with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago (for requests/subscribes this is 1/2 CYCLIC_REQUEST_DELAY or longer).
+Find messages received with the Unicast Flag set to 1, shall be answered with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_91
@@ -4786,7 +5195,7 @@ In this section the state machines of the client and server are shown.
     :status: valid
     :collapse: True
   
-Figure: SOME/IP Service State Machine Server
+SOME/IP Service State Machine Server
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_629.py
 
@@ -4800,7 +5209,7 @@ Figure: SOME/IP Service State Machine Server
     :status: valid
     :collapse: True
   
-Figure: SOME/IP Service State Machine Client
+SOME/IP Service State Machine Client
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
 
@@ -4839,7 +5248,7 @@ For Non-SOME/IP protocols a special Service-ID shall be used and further informa
 
 * Service-ID shall be set to 0xFFFE (reserved)
 * Instance-ID shall be used as described for SOME/IP services and eventgroups.
-* The Configuration Option shall be added and shall contain at least a entry with key "otherserv" and a configurable non-empty value that is determined by the system department.
+* The Configuration Option shall be added and shall contain at least a entry with key "otherserv" and a configurable non-empty value that is determined by the OEM.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_502
@@ -4886,7 +5295,7 @@ Example for an invalid otherserv-string: "otherserv=".
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD example PDU for Non-SOME/IP-SD
+SOME/IP-SD Example PDU for Non-SOME/IP-SD
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
 
@@ -4930,7 +5339,7 @@ All clients needing events and/or notification events shall register using the S
     :status: valid
     :collapse: True
   
-Figure: Notification interaction (extremely simplified)
+Notification interaction
 
 .. plantuml:: images/plantuml/feat_req_someipsd_425.puml
 
@@ -4990,7 +5399,7 @@ If the client is able to reliably detect the reboot of the server using the SOME
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe with link loss at client (figure ignoring timings)
+Publish/Subscribe with link loss at client (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_632.puml
 
@@ -5026,7 +5435,7 @@ A client shall deregister from a server by sending a SOME/IP-SD Subscribe Eventg
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
+Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_634.puml
 
@@ -5075,7 +5484,7 @@ If the Ethernet link status of the server becomes up again, it shall trigger a S
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe with link loss at server (figure ignoring timings)
+Publish/Subscribe with link loss at server (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_633.puml
 
@@ -5155,7 +5564,7 @@ The client shall wait for the Subscribe Eventgroup Ack entry acknowledging an Su
     :status: valid
     :collapse: True
   
-If the initial value is of concern - i.e. for fields - the server shall immediately send the first notification/event; i.e. event. The client shall repeat the Subscribe Eventgroup entry, if it did not receive the notification/event in a configurable timeout.
+If the initial value is of concern - i.e. for fields - the server shall immediately send the first notification/event; i.e. event on a new subscription. The client shall repeat the Subscribe Eventgroup entry, if it did not receive the notification/event in a configurable timeout.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_833
@@ -5172,6 +5581,8 @@ This means:
 
 * It is not allowed to send initial values of events upon subscriptions (pure event and not field).
 * The event messages of field notifiers shall be sent on subscriptions (field and not pure event).
+* If a subscription was already valid and is just updated by a Subscribe Eventgroup entry, no initial events shall be sent.
+* Receiving Stop Subscribe / Subscribe combinations trigger initial events of field notifiers.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_625
@@ -5182,7 +5593,7 @@ This means:
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe State Diagram (server behavior for unicast eventgroups).
+Publish/Subscribe State Diagram (server behavior for unicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_625.py
 
@@ -5196,7 +5607,7 @@ Figure: Publish/Subscribe State Diagram (server behavior for unicast eventgroups
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe State Diagram (server behavior for multicast eventgroups).
+Publish/Subscribe State Diagram (server behavior for multicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_626.py
 
@@ -5210,7 +5621,7 @@ Figure: Publish/Subscribe State Diagram (server behavior for multicast eventgrou
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups).
+Publish/Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_823.py
 
@@ -5224,7 +5635,7 @@ Figure: Publish/Subscribe State Diagram (server behavior for adaptive unicast/mu
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe State Diagram (overall behavior).
+Publish/Subscribe State Diagram (overall behavior).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_442.py
 
@@ -5583,7 +5994,7 @@ Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver
     :status: valid
     :collapse: True
   
-Figure: Publish/Subscribe Example for Endpoint Options and the usage of ports.
+Publish/Subscribe Example for Endpoint Options and the usage of ports.
 
 .. plantuml:: images/plantuml/feat_req_someipsd_795.puml
 
@@ -5616,7 +6027,7 @@ In this section the mandatory feature set of the Service Discovery and the relev
     :status: valid
     :collapse: True
   
-The following information is defined as compliance check list(s). If a feature is not implemented, the implementation is consider not to comply to SOME/IP-SDs basic feature set.
+The following information is defined as compliance check list(s). If a feature is not implemented, the implementation is considered not to comply to SOME/IP-SDs basic feature set.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_808
@@ -5655,6 +6066,7 @@ The following option types shall be implemented, when IPv4 is required:
 * IPv4 Endpoint Option
 * IPv4 Multicast Option
 * Configuration Option
+* IPv4 SD Endpoint Option (receiving at least)
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_810
@@ -5672,6 +6084,7 @@ The following option types shall be implemented, if IPv6 is required:
 * IPv6 Endpoint Option
 * IPv6 Multicast Option
 * Configuration Option
+* IPv6 SD Endpoint Option (receiving at least)
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_857
@@ -5763,6 +6176,7 @@ The Client and Server shall implement the Reboot Detection as specified in this 
 * Understanding Session ID and Reboot Flag according to this specification.
 * Keeping a Multicast Session ID counter per ECU that exchanges Multicast SD messages with this ECU.
 * Detecting reboot based on this specification and reaction accordingly.
+* Correctly interpreting the IPv4 and IPv6 SD Endpoint Options in regard to Reboot Detection.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_814
@@ -5784,6 +6198,7 @@ The Client and Server shall implement the "Endpoint Handling for Service and Eve
 * Adding 1 Multicast Option UDP to Subscribe Eventgroup Ack if multicast events are required.
 * Understanding and acting according to the Endpoint and Multicast Options transported as described above.
 * Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these Endpoint and Multicast Options.
+* Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address and Port number in the outer layers.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_946
