@@ -62,7 +62,7 @@ The basic motivation to specify “yet another RPC-Mechanism” instead of using
 
 * Fulfills the hard requirements regarding resource consumption in an embedded world.
 * Is compatible through as many use-cases and communication partners as possible.
-* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard.
+* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard. 
 * Provides the features required by automotive use-cases.
 * Is scalable from tiny to large platforms.
 * Can be implemented on different operating system (i.e. AUTOSAR, GENIVI, and OSEK) and even embedded devices without operating system.
@@ -89,7 +89,7 @@ Definition of terms
 * Method – a method, procedure, function, or subroutine that is called/invoked.
 * Parameters – input, output, or input/output arguments of a method or an event.
 
-  * Input/output arguments are arguments shared for input and output.
+ * Input/output arguments are arguments shared for input and output.
 
 * Remote Procedure Call (RPC) – a method call from one ECU to another that is transmitted using messages.
 * Request – a message of the client to the server invoking a method.
@@ -99,14 +99,14 @@ Definition of terms
 * Event – a "Fire&Forget callback" that is only invoked on changes or cyclic and is sent from Server to Client.
 * Field – a representation of a remote property, which has up to one getter, up to one setter, and up to one notifier.
 
-  * The field shall contain at least a getter, a setter, or a notifier.
-  * A field does represent a status and thus has an valid value at all times on which getter, setter, and notifier act upon.
+ * The field shall contain at least a getter, a setter, or a notifier.
+ * A field does represent a status and thus has an valid value at all times on which getter, setter, and notifier act upon.
 
 * Notification Event – an event message the notifier of an field sends. The message of such a notifier cannot be distinguished from the event message; therefore, when referring to the message of an event, this shall also be true for the messages of notifiers of fields.
 * Getter – a Request/Response call that allows read access to a field.
 * Setter – a Request/Response call that allows write access to a field.
 
-  * The getter needs to return a value; thus, it needs to be a request/response call. The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
+ * The getter needs to return a value; thus, it needs to be a request/response call. The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
 
 * Notifier – sends out event message with a new value on change of the value of the field
 * Service – a logical combination of zero or more methods, zero or more events, and zero or more fields (empty service is allowed, e.g. for announcing non-SOME/IP services in SOME/IP-SD).
@@ -341,7 +341,7 @@ The IP addresses and port numbers an ECU shall use, shall be taken from the Inte
     :status: valid
     :collapse: True
   
-The client shall take the IP address and port number the server announces using SOME/IP-SD (see :need:`feat_req_someipsd_752`).
+The client shall take the IP address and port number the server announces using SOME/IP-SD (see (feat_req_someipsd_752)).
     
 .. feat_req:: 🎯
     :id: feat_req_someip_658
@@ -490,7 +490,7 @@ For interoperability reasons the header layout shall be identical for all implem
     :status: valid
     :collapse: True
   
-Figure: SOME/IP Header
+SOME/IP Header
 
 .. bitfield_directive:: images/bit_field/feat_req_someip_45.json
 
@@ -590,7 +590,7 @@ Structure of the Message ID
   
 In order to structure the different methods, events, and fields, they are clustered into services. Services have a set of methods, events, and fields as well as a Service ID, which is only used for this service. The events and notification events may in addition be assigned into a number eventgroups, which simplify the registration of events and notifies.
 
-An event shall be part of zero to many eventgroups and an eventgroup shall contain zero to many events.
+An event shall be part of zero to many eventgroups and an eventgroup shall  contain zero to many events.
 A field shall be part of zero to many eventgroups and an eventgroup can contain zero to many fields.
     
 .. feat_req:: ⓘ 
@@ -794,9 +794,9 @@ If session handling is used, the Session ID shall start with 0x0001.
   
 When the Session ID reaches 0xFFFF, it shall start with 0x0001 again.
     
-.. feat_req:: ⓘ 
+.. feat_req:: 🎯
     :id: feat_req_someip_669
-    :reqtype: Information
+    :reqtype: Requirement
     :security: TBD
     :safety: TBD
     :satisfies: 
@@ -814,7 +814,9 @@ Request/Response methods shall use session handling.
     :status: valid
     :collapse: True
   
-Events, notification events, and Fire&Forget methods shall use session handling if required.
+Events, notification events, and Fire&Forget methods shall use session handling if required by the application.
+
+This could be for example because of functional safety reasons.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_668
@@ -1292,7 +1294,7 @@ The SOME/IP implementation shall not automatically insert dummy/padding elements
     :status: valid
     :collapse: True
   
-Figure: Serialization of Structs
+Serialization of Structs
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_231.py
 
@@ -1491,8 +1493,7 @@ Strings with dynamic length start with a length field. The length is measured in
   
 Dynamic length strings shall have a length field of 8, 16, 32 Bit. This length is defined by the Interface Specification.
 
-Note:
-Fixed length strings may be seen as having a 0 Bit length field.
+Note: Fixed length strings may be seen as having a 0 Bit length field.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_581
@@ -1557,8 +1558,7 @@ Arrays (fixed length)
   
 The length of fixed length arrays is defined by the interface definition.
 
-Note:
-They can be seen as repeated elements. Fixed length arrays are easier for use in very small devices.
+Note: They can be seen as repeated elements. Fixed length arrays are easier for use in very small devices.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_694
@@ -1599,7 +1599,7 @@ The one-dimensional arrays with fixed length n carry exactly n elements of the s
     :status: valid
     :collapse: True
   
-Figure: One-dimensional array (fixed length)
+One-dimensional array (fixed length)
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_244.py
 
@@ -1621,7 +1621,7 @@ Multidimensional
     :status: valid
     :collapse: True
   
-The serialization of multidimensional arrays follows the in-memory layout of multidimensional arrays in the C++ programming language (row-major order) and is shown in Figure :need:`feat_req_someip_247`.
+The serialization of multidimensional arrays follows the in-memory layout of multidimensional arrays in the C++ programming language (row-major order) and is shown in :need:`feat_req_someip_247`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_247
@@ -1632,7 +1632,7 @@ The serialization of multidimensional arrays follows the in-memory layout of mul
     :status: valid
     :collapse: True
   
-Figure: Multidimensional array (fixed length)
+Multidimensional array (fixed length)
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_247.py
 
@@ -1708,7 +1708,7 @@ The layout of dynamic arrays is shown in Figure :need:`feat_req_someip_256` and 
     :status: valid
     :collapse: True
   
-Figure: One-dimensional array (dynamic length)
+One-dimensional array (dynamic length)
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_256.py
 
@@ -1755,7 +1755,7 @@ In the case of dynamical length elements the number of elements cannot be calcul
     :status: valid
     :collapse: True
   
-Figure: Multidimensional array (dynamic length)
+Multidimensional array (dynamic length)
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_258.py
 
@@ -2417,7 +2417,7 @@ Allowing resync to TCP stream using Magic Cookies
     :status: valid
     :collapse: True
   
-In order to allow resynchronization to SOME/IP over TCP in testing and integration scenarios the SOME/IP Magic Cookie Message (Figure :need:`feat_req_someip_589`) shall be used between SOME/IP messages over TCP. 
+In order to allow resynchronization to SOME/IP over TCP in testing and integration scenarios the SOME/IP Magic Cookie Message (Figure :need:`feat_req_someip_589` shall be used between SOME/IP messages over TCP. 
     
 .. feat_req:: 🎯
     :id: feat_req_someip_591
@@ -2484,7 +2484,7 @@ The layout of the Magic Cookie Message is based on SOME/IP. The fields are set a
 * Session ID = 0xBEEF
 * Protocol Version as specified above (:need:`feat_req_someip_90`)
 * Interface Version = 0x01
-* Message Type = 0x01 (for Client to Server Communication) or 0x02 (for Server to Client Communication)
+* Message Type = 0x01 (for Client to Server Communication) or  0x02 (for Server to Client Communication)
 * Return Code = 0x00
     
 .. feat_req:: 🎯
@@ -2496,7 +2496,7 @@ The layout of the Magic Cookie Message is based on SOME/IP. The fields are set a
     :status: valid
     :collapse: True
   
-The layout of the Magic Cookie Messages is shown in Figure :need:`feat_req_someip_589`
+The layout of the Magic Cookie Messages is shown in Figure :need:`feat_req_someip_589`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_589
@@ -2507,7 +2507,7 @@ The layout of the Magic Cookie Messages is shown in Figure :need:`feat_req_somei
     :status: valid
     :collapse: True
   
-Figure: SOME/IP Magic Cookie Message for SOME/IP
+SOME/IP Magic Cookie Message for SOME/IP
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_589.py
 
@@ -2658,13 +2658,13 @@ Requests without response message are called Fire&Forget. The implementation is 
   
 Fire&Forget messages shall not return an error. Error handling and return codes shall be implemented by the application when needed.
     
-.. heading:: Notification
+.. heading:: Notification Events
     :id: feat_req_someip_351
     :layout: focus
     :style: clean
 
-Notification
-************ 
+Notification Events
+******************* 
 
 .. feat_req:: ⓘ 
     :id: feat_req_someip_352
@@ -3138,7 +3138,7 @@ For “maybe” reliability, only a single timeout is needed, when using request
     :status: valid
     :collapse: True
   
-Figure: State Machines for Reliability "Maybe"
+State Machines for Reliability "Maybe"
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_437.py
 
@@ -3204,7 +3204,7 @@ The number of retries, the timeout values, and the timeout behavior (constant or
     :status: valid
     :collapse: True
   
-Figure: State Machines for Reliability "At least once" (idempotent operations)
+State Machines for Reliability "At least once" (idempotent operations)
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_443.py
 
@@ -3927,8 +3927,6 @@ Interface Version shall be set according to interface specifications.
   
 If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Message ID is recommended (example):
 
-* Service ID shall be set to a value defined by the system department, e.g. 0x1234
+* Service ID shall be set to a value defined by the OEM, e.g. 0x1234
 * Event ID is split into 4 Bits specifying the CAN bus, and 11 Bits for the CAN-ID.
-
-This is just an example and the actual layout shall be specified by the System Department.
     
