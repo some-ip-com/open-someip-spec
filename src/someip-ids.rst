@@ -45,7 +45,7 @@ In this chapter an overview of reserved and special identifiers are shown.
     :status: valid
     :collapse: True
   
-Reserved and special Service-IDs.
+Reserved and special Service IDs.
     
 
 
@@ -77,7 +77,7 @@ Reserved and special Service-IDs.
     :status: valid
     :collapse: True
   
-Reserved and special Instance-IDs.
+Reserved and special Instance IDs.
     
 
 
@@ -94,35 +94,6 @@ Reserved and special Instance-IDs.
         - All Instances
 
 .. feat_req:: ⓘ 
-    :id: feat_req_someipids_636
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Reserved and special Method-IDs/Event-IDs.
-    
-
-
-    .. list-table::
-      :align: left
-      :header-rows: 1
-      :class: ssp-tinier
-
-      * - Method ID/Event ID 
-        - Description
-      * - 0x0000 
-        - Reserved
-      * - 0x7FFF 
-        - Reserved
-      * - 0x8000 
-        - Reserved
-      * - 0xFFFF 
-        - Reserved
-
-.. feat_req:: ⓘ 
     :id: feat_req_someipids_555
     :reqtype: Information
     :security: NO
@@ -131,7 +102,7 @@ Reserved and special Method-IDs/Event-IDs.
     :status: valid
     :collapse: True
   
-Reserved and special Eventgroup-IDs.
+Reserved and special Eventgroup IDs.
     
 
 
@@ -146,33 +117,6 @@ Reserved and special Eventgroup-IDs.
         - Reserved
       * - 0xFFFF 
         - All Eventgroups
-
-.. feat_req:: ⓘ 
-    :id: feat_req_someipids_530
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Method-IDs and Event-IDs of Service 0xFFFF.
-    
-
-
-    .. list-table::
-      :align: left
-      :header-rows: 1
-      :class: ssp-tinier
-
-      * - Method ID / Event ID 
-        - Description
-      * - 0x0000 
-        - SOME/IP Magic Cookie Messages
-      * - 0x8000 
-        - SOME/IP Magic Cookie Messages
-      * - 0x8100 
-        - SOME/IP-SD messages (events)
 
 .. feat_req:: ⓘ 
     :id: feat_req_someipids_664

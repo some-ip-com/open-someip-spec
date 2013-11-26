@@ -105,7 +105,7 @@ In order to support a Service with more than one version the following is requir
 
 .. rst-class:: compact
   
-* All SOME/IP-SD entries shall use the same Service-IDs and Instance-IDs but different Major-Version.
+* All SOME/IP-SD entries shall use the same Service IDs and Instance IDs but different Major Versions.
     
 .. feat_req:: 🎯
     :id: feat_req_someipcompat_801
@@ -118,5 +118,5 @@ In order to support a Service with more than one version the following is requir
 
 .. rst-class:: compact
   
-* The server has to demultiplex messages based on the socket it arrives, the Message-ID, and the Major-Version.
+* The server has to demultiplex messages based on the socket it arrives, the Message ID, and the Major Version.
     

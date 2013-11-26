@@ -427,7 +427,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall use the Service-ID (16 Bits) of 0xFFFF.
+* Service Discovery messages shall use the Service ID (16 Bits) of 0xFFFF.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_29
@@ -440,7 +440,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall use the Method-ID (16 Bits) of 0x8100.
+* Service Discovery messages shall use the Method ID (16 Bits) of 0x8100.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_207
@@ -466,7 +466,33 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Client-ID (16 Bits) and handle it based on SOME/IP rules.
+* Service Discovery messages shall have a Client ID (16 Bits) and handle it based on SOME/IP rules.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1138
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* The Client ID shall be set to 0, since there exists only a single SOME/IP-SD instance.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1139
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* If a Client ID Prefix is configured, it shall also apply to SOME/IP-SD.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_32
@@ -479,7 +505,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Session-ID (16 Bits) and handle it based on SOME/IP requirements.
+* Service Discovery messages shall have a Session ID (16 Bits) and handle it based on the SOME/IP requirements.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_33
@@ -492,7 +518,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* The Session-ID (SOME/IP header) shall be incremented for every SOME/IP-SD message sent.
+* The Session ID (SOME/IP header) shall be incremented for every SOME/IP-SD message sent.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_774
@@ -505,7 +531,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* The Session-ID (SOME/IP header) shall start with 1 and be 1 even after wrapping.
+* The Session ID (SOME/IP header) shall start with 1 and be 1 even after wrapping.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_775
@@ -518,7 +544,20 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* The Session-ID (SOME/IP header) shall not be set to 0.
+* The Session ID (SOME/IP header) shall not be set to 0.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1148
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* SOME/IP-SD Session ID handling is done per "communication relation", i.e. broadcast as well as unicast per peer (see :need:`feat_req_someipsd_41`).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_34
@@ -531,7 +570,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Protocol-Version (8 Bits) of 0x01.
+* Service Discovery messages shall have a Protocol Version (8 Bits) of 0x01.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_30
@@ -544,7 +583,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Interface-Version (8 Bits) of 0x01.
+* Service Discovery messages shall have a Interface Version (8 Bits) of 0x01.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_36
@@ -581,7 +620,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
     :status: valid
     :collapse: True
   
-SOME/IP-SD Header Format
+Figure: SOME/IP-SD Header Format
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_205.json
 
@@ -636,7 +675,7 @@ The first flag of the SOME/IP-SD Flags field (highest order bit) shall be called
     :status: valid
     :collapse: True
   
-The Reboot Flag of the SOME/IP-SD Header shall be set to one for all messages after reboot until the Session-ID in the SOME/IP-Header wraps around and thus starts with 1 again. After this wrap around the Reboot Flag is set to 0.
+The Reboot Flag of the SOME/IP-SD Header shall be set to one for all messages after reboot until the Session ID in the SOME/IP-Header wraps around and thus starts with 1 again. After this wrap around the Reboot Flag is set to 0.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_765
@@ -648,6 +687,8 @@ The Reboot Flag of the SOME/IP-SD Header shall be set to one for all messages af
     :collapse: True
   
 The information for the reboot flag and the Session ID shall be kept for multicast and unicast separately as well as for every sender-receiver-relation (i.e. source address and destination address).
+
+Note: This means you have to store a counter for Multicast sending and one counter per Unicast peer as well as two counters (1x Multicast, 1x Unicast) per SOME/IP-SD peer for receiving.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_863
@@ -722,7 +763,7 @@ The second flag of the SOME/IP-SD Flags (second highest order bit) shall be call
     :status: valid
     :collapse: True
   
-The Unicast Flag of the SOME/IP-SD Header shall be set to Unicast (that means 1) for all SD Messages since this means that receiving using unicast is supported.
+The Unicast Flag of the SOME/IP-SD Header shall be always set to Unicast (that means 1) for all SD Messages since this means that receiving using unicast is supported.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_42
@@ -831,7 +872,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
 
 .. rst-class:: compact
   
-* Type Field [uint8]: encodes FindService (0x00), OfferService (0x01), RequestService (0x02), and RequestServiceAck (0x03).
+* Type Field [uint8]: encodes FindService (0x00) and OfferService (0x01).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_50
@@ -844,7 +885,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
 
 .. rst-class:: compact
   
-* Index First Option Run [uint8]: Index of the option in the option array.
+* Index First Option Run [uint8]: Index of this runs first option in the option array.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_51
@@ -857,7 +898,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
 
 .. rst-class:: compact
   
-* Index Second Option Run [uint8]: Index of the option in the option array.
+* Index Second Option Run [uint8]: Index of this runs first option in the option array.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_52
@@ -896,7 +937,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
 
 .. rst-class:: compact
   
-* Service-ID [uint16]: Describes the Service-ID of the Service or Service-Instance concerned by the SD message.
+* Service ID [uint16]: Describes the Service ID of the Service or Service-Instance this entry is concerned with.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_55
@@ -909,7 +950,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
 
 .. rst-class:: compact
   
-* Instance ID [uint16]: Describes the Service-Instance-ID of the Service Instance concerned by the SD message or is set to 0xFFFF if all service instances of a service are meant.
+* Instance ID [uint16]: Describes the Service Instance ID of the Service Instance this entry is concerned with or is set to 0xFFFF if all service instances of a service are meant.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_56
@@ -959,7 +1000,7 @@ A Service Entry Type shall be 16 Bytes of size and include the following fields 
     :status: valid
     :collapse: True
   
-SOME/IP-SD Service Entry Type
+Figure: SOME/IP-SD Service Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_208.json
 
@@ -986,7 +1027,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
 
 .. rst-class:: compact
   
-* Type Field [uint8]: encodes FindEventgroup (0x04), Publish (0x05), Subscribe (0x06), and SubscribeAck (0x07).
+* Type Field [uint8]: encodes Subscribe (0x06) and SubscribeAck (0x07).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_111
@@ -999,7 +1040,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
 
 .. rst-class:: compact
   
-* Index First Option Run [uint8]: Index of the option in the option array.
+* Index First Option Run [uint8]: Index of this runs first option in the option array.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_112
@@ -1012,7 +1053,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
 
 .. rst-class:: compact
   
-* Index Second Option Run [uint8]: Index of the option in the option array.
+* Index Second Option Run [uint8]: Index of this runs first option in the option array.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_113
@@ -1051,7 +1092,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
 
 .. rst-class:: compact
   
-* Service-ID [uint16]: Describes the Service-ID of the Service or Service-Instance the Eventgroup of concern is part of.
+* Service ID [uint16]: Describes the Service ID of the Service or Service-Instance this entry is concerned with.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_116
@@ -1064,7 +1105,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
 
 .. rst-class:: compact
   
-* Instance ID [uint16]: Describes the Service-Instance-ID of the Service Instance the Eventgroup of concern is part of or is set to 0xFFFF if all service instances of a service are meant.
+* Instance ID [uint16]: Describes the Service Instance ID of the Service Instance this entry is concerned with or is set to 0xFFFF if all service instances of a service are meant.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_117
@@ -1127,7 +1168,7 @@ An Eventgroup Entry shall be 16 Bytes of size and include the following fields i
     :status: valid
     :collapse: True
   
-SOME/IP-SD Eventgroup Entry Type
+Figure: SOME/IP-SD Eventgroup Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_209.json
 
@@ -1433,7 +1474,7 @@ Figure :need:`feat_req_someipsd_144` shows the format of the Configuration Optio
     :status: valid
     :collapse: True
   
-SOME/IP-SD Configuration Option
+Figure: SOME/IP-SD Configuration Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_144.json
 
@@ -1447,7 +1488,7 @@ SOME/IP-SD Configuration Option
     :status: valid
     :collapse: True
   
-SOME/IP-SD Configuration Option Example
+Figure: SOME/IP-SD Configuration Option Example
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_147.json
 
@@ -1600,7 +1641,7 @@ Figure :need:`feat_req_someipsd_148` shows the format of the Load Balancing Opti
     :status: valid
     :collapse: True
   
-SOME/IP-SD Load Balancing Option
+Figure: SOME/IP-SD Load Balancing Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_148.json
 
@@ -1662,8 +1703,7 @@ The format of the Protection Option shall be as follows:
 * Length [uint16]: Shall be set to 0x0009.
 * Type [uint8]: Shall be set to 0x03.
 * Reserved [uint8]: Shall be set to 0x00.
-* ID [uint32]: The ID for the CRC.
-* Alive-Counter [uint32]: Shall be set to the value of the alive counter. If no alive counter exists, the value of the Request-ID shall be used in this field.
+* Alive-Counter [uint32]: Shall be set to the value of the alive counter. If no alive counter exists, the value of the Request ID shall be used in this field.
 * CRC [uint32]: Shall contain the value of the CRC of this message. The CRC polynomial shall be specified by the OEM.
     
 .. feat_req:: ⓘ 
@@ -1842,7 +1882,7 @@ Figure :need:`feat_req_someipsd_141` shows the format of the IPv4 Endpoint Optio
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv4 Endpoint Option
+Figure: SOME/IP-SD IPv4 Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_141.json
 
@@ -2045,7 +2085,7 @@ Figure :need:`feat_req_someipsd_142` shows the format of the IPv6 Endpoint Optio
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv6 Endpoint Option
+Figure: SOME/IP-SD IPv6 Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_142.json
 
@@ -2111,7 +2151,7 @@ The IPv4 Multicast Option is used by the server to announce the IPv4 multicast a
     :status: valid
     :collapse: True
   
-The IPv4 Multicast Option and not the IPv4 Endpoint Option shall be referenced by SubscribeEventgroupAck messages.
+The IPv4 Multicast Option and not the IPv4 Endpoint Option shall be referenced by Subscribe Eventgroup Ack entries.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_723
@@ -2257,7 +2297,7 @@ Figure :need:`feat_req_someipsd_734` shows the format of the IPv4 Multicast Opti
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv4 Multicast Option
+Figure: SOME/IP-SD IPv4 Multicast Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_734.json
 
@@ -2301,7 +2341,7 @@ The IPv6 Multicast Option is used by the server to announce the IPv6 multicast a
     :status: valid
     :collapse: True
   
-The IPv6 Multicast Option and not the IPv6 Endpoint Option shall be referenced by SubscribeEventgroupAck messages.
+The IPv6 Multicast Option and not the IPv6 Endpoint Option shall be referenced by Subscribe Eventgroup Ack messages.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_737
@@ -2333,98 +2373,17 @@ The IPv6 Multicast Option shall specify the IPv6-Address, the transport layer pr
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
 The Format of the IPv6 Multicast Option shall be as follows:
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_740
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
 
-.. rst-class:: compact
-  
 * Length [uint16]: Shall be set to 0x0015.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_741
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Type [uint8]: Shall be set to 0x16.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_742
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Reserved [uint8]: Shall be set to 0x00.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_743
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * IPv6-Address [uint128]: Shall transport the multicast IP-Address as 16 Bytes.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_744
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Reserved [uint8]: Shall be set to 0x00.
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_745
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_746
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
     
 .. feat_req:: ⓘ 
@@ -2447,7 +2406,7 @@ Figure :need:`feat_req_someipsd_748` shows the format of the IPv6 Multicast Opti
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv6 Multicast Option
+Figure: SOME/IP-SD IPv6 Multicast Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_748.json
 
@@ -2491,7 +2450,40 @@ The IPv4 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address a
     :status: valid
     :collapse: True
   
-The IPv4 SD Endpoint Option may be included in any SD message up to 1 time.
+The IPv4 SD Endpoint Option shall be included in any SD Options Array up to 1 time.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1156
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option shall only be included if the SOME/IP-SD message is transported over IPv4.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1151
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv4 SD Endpoint Option shall be the first option in the options array, if existing.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1152
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If more than one IPv4 SD Endpoint Option is received, only the first one shall be processed and all further IPv4 SD Endpoint Options shall be ignored.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1114
@@ -2600,7 +2592,7 @@ The Format of the IPv4 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv4-Address [uint32]: Shall transport the multicast IP-Address as four Bytes.
+* IPv4-Address [uint32]: Shall transport the unicast IP-Address of SOME/IP-SD as four Bytes.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1092
@@ -2626,7 +2618,7 @@ The Format of the IPv4 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
+* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol of SOME/IP-SD (currently: 0x11 UDP).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1094
@@ -2639,7 +2631,7 @@ The Format of the IPv4 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
+* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the transport layer port of SOME/IP-SD (currently: 30490).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1095
@@ -2661,7 +2653,7 @@ Figure :need:`feat_req_someipsd_1096` shows the format of the IPv4 SD Endpoint O
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv4 SD Endpoint Option
+Figure: SOME/IP-SD IPv4 SD Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_1096.json
 
@@ -2694,7 +2686,40 @@ The IPv6 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address a
     :status: valid
     :collapse: True
   
-The IPv6 SD Endpoint Option may be included in any SD message up to 1 time.
+The IPv6 SD Endpoint Option shall be included in any SD message up to 1 time.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1155
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option shall only be included if the SOME/IP-SD message is transported over IPv6.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1153
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IPv6 SD Endpoint Option shall be the first option in the options array, if existing.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1154
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If more than one IPv6 SD Endpoint Option is received, only the first one shall be processed and all further IPv6 SD Endpoint Options shall be ignored.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1113
@@ -2753,6 +2778,7 @@ The IPv6 SD Endpoint Option shall specify the IPv4-Address, the transport layer 
     :collapse: True
   
 The Format of the IPv6 SD Endpoint Option shall be as follows:
+
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1104
@@ -2804,7 +2830,7 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv6-Address [uint128]: Shall transport the multicast IP-Address as 16 Bytes.
+* IPv6-Address [uint128]: Shall transport the unicast IP-Address of SOME/IP-SD as 16 Bytes.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1108
@@ -2830,7 +2856,7 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
+* Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol of SOME/IP-SD (currently: 0x11 UDP).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1110
@@ -2843,7 +2869,7 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
+* Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the transport layer port of SOME/IP-SD (currently: 30490).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1111
@@ -2865,7 +2891,7 @@ Figure :need:`feat_req_someipsd_1112` shows the format of the IPv6 SD Endpoint O
     :status: valid
     :collapse: True
   
-SOME/IP-SD IPv6 SD Endpoint Option
+Figure: SOME/IP-SD IPv6 SD Endpoint Option
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_1112.json
 
@@ -2961,7 +2987,7 @@ Two different option runs exist: First Option Run and Second Option Run.
     :status: valid
     :collapse: True
   
-Rationale for the support of two option runs: Two different types of options are expected: options common between multiple SOME/IP-SD entries and options different for each SOME/IP-SD entry. Supporting to different options runs is the most efficient way to support these two types of options, while keeping the wire format highly efficient.
+Rationale for the support of two option runs: Two different types of options are expected: options common between multiple SOME/IP-SD entries and options different for each SOME/IP-SD entry. Supporting two different options runs is the most efficient way to support these two types of options, while keeping the wire format highly efficient.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_342
@@ -3018,6 +3044,93 @@ Implementations shall accept and process incoming SD messages with option run le
   
 Implementations shall minimize the size of the SD messages by not duplicating Options without need.
     
+.. heading:: Handling missing, redundant, and conflicting Options
+    :id: feat_req_someipsd_1140
+    :layout: focus
+    :style: clean
+
+Handling missing, redundant, and conflicting Options
+---------------------------------------------------- 
+
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1142
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If an entry references an unknown option, this option shall be ignored.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1141
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If an entry references an redundant option (option that is not needed by this specific entry), this option shall be ignored.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1143
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Example: A Service needs only a TCP Endpoint but Endpoint Options for UDP and TCP are referenced by the Offer Service entry. UDP endpoint shall be ignored.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1144
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If an entry references two or more options that are in conflict, this entry shall be ignored or answered negatively.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1145
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Example: An Offer Service entry referencing two Endpoint Options stating two different UDP Ports shall be ignored.
+
+Example: An Subscribe Eventgroup entry referencing two Endpoint Options stating two different UDP Ports shall be answered with a Subscribe Eventgroup Nack.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1146
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+When two different Configuration Options are referenced by an entry, the configuration sets shall be merged.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1147
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If the two Configuration Options have conflicting items (same name), all items shall be handled. There shall be no attempt been made to merge duplicate items.
+    
 .. heading:: Example
     :id: feat_req_someipsd_212
     :layout: focus
@@ -3046,7 +3159,7 @@ Figure :need:`feat_req_someipsd_213` shows an example SOME/IP-SD PDU.
     :status: valid
     :collapse: True
   
-SOME/IP-SD Example PDU
+Figure: SOME/IP-SD Example PDU
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_213.json
 
@@ -3080,6 +3193,7 @@ Using the previously specified header format, different entries and messages con
     :collapse: True
   
 For all entries the following shall be true:
+
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_241
@@ -3246,51 +3360,6 @@ Find Service entries shall set the entry fields in the following way:
 .. rst-class:: compact
   
 * TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
-    
-.. heading:: Stop Find Service Entry (Informational)
-    :id: feat_req_someipsd_223
-    :layout: focus
-    :style: clean
-
-Stop Find Service Entry (Informational)
---------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_248
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Stop Find Service entry type shall be used to stop finding service instances.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_249
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Stop Find Service entries shall be used in communication with optional Service Directories (future use case).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_250
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-Stop Find Service entries shall set the entry fields exactly like the Find Service entry they are stopping, except:
-
-* TTL shall be set to 0x000000.
     
 .. heading:: Offer Service Entry
     :id: feat_req_someipsd_221
@@ -3535,318 +3604,6 @@ Stop Offer Service entries shall set the entry fields exactly like the Offer Ser
   
 * TTL shall be set to 0x000000.
     
-.. heading:: Request Service Entry (Informational)
-    :id: feat_req_someipsd_222
-    :layout: focus
-    :style: clean
-
-Request Service Entry (Informational)
-------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_268
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Request Service entry type shall be used to indicate that a service instance is required.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_269
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-An ECU shall consider a Request Service entry as reason to start the specified service instance if configured to do so.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_271
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Request Service entries shall set the entry fields in the following way:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_272
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Type shall be set to 0x02 (RequestService).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_273
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Service ID shall be set to the Service ID of the service instance requested.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_274
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Instance ID shall be set to the Instance ID of the service instance requested.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_275
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Major Version shall be set to 0xFF (any major version).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_276
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Minor Version shall be set to 0xFFFF FFFF (any major version).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_277
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to the lifetime of the request. After this lifetime the service request shall be considered non-existing. This may lead to an ECU shutting down a service previously requested.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_278
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* If set to 0xFFFFFF, the Request Service entry shall be considered valid until the next reboot.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_279
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
-    
-.. heading:: Stop Request Service Entry (Informational)
-    :id: feat_req_someipsd_226
-    :layout: focus
-    :style: clean
-
-Stop Request Service Entry (Informational)
------------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_280
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Stop Request Service entry type shall be used to stop requests.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_281
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Stop Offer Request entries shall set the entry fields exactly like the Request Service entry they are stopping, except:
-
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_282
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to 0x000000.
-    
-.. heading:: Request Service Acknowledgment (RequestServiceAck) Entry (Informational)
-    :id: feat_req_someipsd_581
-    :layout: focus
-    :style: clean
-
-Request Service Acknowledgment (RequestServiceAck) Entry (Informational)
------------------------------------------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_582
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Request Service Acknowledgment entry type shall be used to indicate that Request Service entry was accepted.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_584
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Request Service Acknowledgment entries shall set the entry fields in the following way:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_585
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Type shall be set to 0x03 (RequestServiceAck).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_586
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Service ID, Instance ID, Major Version, Minor Version and TTL shall be the same value as in the request that is being answered.
-    
-.. heading:: Request Service Negative Acknowledgment (RequestServiceNack) Entry (Informational)
-    :id: feat_req_someipsd_593
-    :layout: focus
-    :style: clean
-
-Request Service Negative Acknowledgment (RequestServiceNack) Entry (Informational)
----------------------------------------------------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_594
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Request Service Negative Acknowledgment entry type shall be used to indicate that Request Service Entry was NOT accepted.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_596
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Request Service Negative Acknowledgment entries shall set the entry fields in the following way:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_597
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Requirement
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_598
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Service ID, Instance ID, Major Version and Minor Version shall be the same value as in the request that is being answered.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_611
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* The TTL shall be set to 0x000000.
-    
 .. heading:: Eventgroup Entry
     :id: feat_req_someipsd_227
     :layout: focus
@@ -3865,421 +3622,6 @@ Eventgroup Entry
     :collapse: True
   
 Entries concerned with services follow the Eventgroup Entry Type Format as specified in :need:`feat_req_someipsd_109`.
-    
-.. heading:: Find Eventgroup Entries (Informational)
-    :id: feat_req_someipsd_228
-    :layout: focus
-    :style: clean
-
-Find Eventgroup Entries (Informational)
---------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_283
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Find Eventgroup entry type shall be used for finding eventgroups.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_294
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Find Eventgroup entries shall set the entry fields in the following way:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_295
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Type shall be set to 0x04 (FindEventgroup).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_296
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Service ID shall be set to the Service ID of the service that includes the eventgroup that shall be found.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_297
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Instance ID shall set to 0xFFFF, if eventgroups of all service instances shall be returned. It shall be set to the Instance ID of a specific service instance, if just the eventgroup of a single service instance shall be returned.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_715
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Major Version shall be set to 0xFF, that means that eventgroups of services instances with any version shall be returned. If set to value different than 0xFF, only eventgroups of service instances with this specific major version shall be returned only.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_690
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Eventgroup ID shall set to the ID of the eventgroup that is being looked for. Setting the Eventgroup ID to 0xFFFF (all eventgroups) is currently not recommended but when receiving an Eventgroup ID of all, the ECU shall answer for all Eventgroups.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_298
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Major Version shall be set to 0xFF, that means that eventgroups of services with any version shall be returned. If set to value different than 0xFF, eventgroups of services with this specific major version shall be returned only.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_300
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to the lifetime of the Find Eventgroup entry. After this lifetime the Find Eventgroup entry shall be considered not existing.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_301
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* If TTL is set to 0xFFFFFF, the Find Eventgroup entry shall be considered valid until the next reboot.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_302
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
-    
-.. heading:: Stop Find Eventgroup Entry (Informational)
-    :id: feat_req_someipsd_231
-    :layout: focus
-    :style: clean
-
-Stop Find Eventgroup Entry (Informational)
------------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_303
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Stop Find Eventgroup entry type shall be used to stop finding eventgroups.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_304
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Stop Find Eventgroup entries shall be used in communication with optional Service Directories (future use case).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_305
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Stop Find Eventgroup entries shall set the entry fields exactly like the Find Eventgroup entry they are stopping, except:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_306
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to 0x000000.
-    
-.. heading:: Publish Eventgroup Entry (Informational)
-    :id: feat_req_someipsd_229
-    :layout: focus
-    :style: clean
-
-Publish Eventgroup Entry (Informational)
----------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_307
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Publish Eventgroup entry type shall be used to offer an eventgroup to other communication partners. This entry type is considered comparable to the Offer Service entry type.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_308
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Publish Eventgroup entries shall set the entry fields in the following way:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_309
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Type shall be set to 0x05 (PublishEventgroup).
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_310
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Service ID shall be set to the Service ID of the service instance that includes the eventgroup published.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_311
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Instance ID shall be set to the Instance ID of the service instance that includes the eventgroup published.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_716
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Major Version shall be set to the Major Version of the service instance of the eventgroup offered.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_717
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Eventgroup ID shall be set to the ID of the eventgroup.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_312
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* Major Version shall be set to the Major Version of the service instance that includes the eventgroup published.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_314
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to the lifetime of the eventgroup. After this lifetime the eventgroup shall be considered as not published.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_317
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* The TTL of an eventgroup shall not be longer than the lifetime of the service instance it is part.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_315
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* If set to 0xFFFFFF, the Publish Eventgroup entry shall be considered valid until the next reboot.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_316
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_683
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Publish Eventgroup entries shall reference an IPv4 and/or IPv6 Endpoint Option if the Events of the Eventgroup are served via multicast or broadcast.
-    
-.. heading:: Stop Publish Eventgroup Entry (Informational)
-    :id: feat_req_someipsd_232
-    :layout: focus
-    :style: clean
-
-Stop Publish Eventgroup Entry (Informational)
---------------------------------------------- 
-
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_318
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-The Stop Publish Eventgroup entry type shall be used to stop publishing eventgroups.
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_319
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Stop Publish Eventgroup entries shall set the entry fields exactly like the Publish Eventgroup entry they are stopping, except:
-    
-.. feat_req:: 🎯
-    :id: feat_req_someipsd_320
-    :reqtype: Requirement
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
-* TTL shall be set to 0x000000.
     
 .. heading:: Subscribe Eventgroup Entry
     :id: feat_req_someipsd_230
@@ -4570,6 +3912,24 @@ Subscribe Eventgroup Negative Acknowledgement (Subscribe Eventgroup Nack) Entry
 The Subscribe Eventgroup Negative Acknowledgment entry type shall be used to indicate that Subscribe Eventgroup entry was NOT accepted.
     
 .. feat_req:: 🎯
+    :id: feat_req_someipsd_1137
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+Reasons to not accept an Subscribe Eventgroup include (but are not limited to):
+
+* Combination of Service ID, Instance ID, Eventgroup ID, and Major Version is unknown
+* Required TCP-connection was not opened by client
+* Problems with the references options occurred
+* Resource problems at the Server
+    
+.. feat_req:: 🎯
     :id: feat_req_someipsd_619
     :reqtype: Requirement
     :security: NO
@@ -4628,7 +3988,9 @@ Subscribe Eventgroup Negative Acknowledgment entries shall set the entry fields 
     :status: valid
     :collapse: True
   
-When the client receives a SubscribeEventgroupNack as answer on a SubscribeEventgroup for which a TCP connection is required, the client shall check the TCP connection and shall restart the TCP connection if needed.
+When the client receives a Subscribe Eventgroup Nack as answer on a Subscribe Eventgroup for which a TCP connection is required, the client shall check the TCP connection and shall restart the TCP connection if needed.
+
+Note: Checking the TCP connection may involve a TCP Keep Alive or a SOME/IP Magic Cookie Message.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_870
@@ -4803,7 +4165,7 @@ The Service Discovery shall use the same random value for multiple entries of di
     :status: valid
     :collapse: True
   
-The Service Discovery shall also pack entries together, when no random delay is involved. For example shall all SubscribeEventgroup entries of a message be answered together in one message.
+The Service Discovery shall also pack entries together, when no random delay is involved. For example shall all Subscribe Eventgroup entries of a message be answered together in one message.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_66
@@ -4904,7 +4266,7 @@ After entering the Main Phase 1*CYCLIC_OFFER_DELAY is waited before sending the 
     :status: valid
     :collapse: True
   
-In the Main Phase Offer Messages and Publish Messages shall be sent cyclically if a CYCLIC_OFFER_DELAY is configured.
+In the Main Phase Offer Messages shall be sent cyclically if a CYCLIC_OFFER_DELAY is configured.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_81
@@ -4939,7 +4301,7 @@ For Find entries (Find Service and Find Eventgroup) no cyclic messages are allow
     :status: valid
     :collapse: True
   
-Requests/Subscriptions entries shall not be triggered cyclically but shall be triggered by Offer entries, which may be sent cyclically.
+Requests/Subscriptions entries shall not be triggered cyclically but shall be triggered by Offer entries, which are sent cyclically.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_77
@@ -4957,19 +4319,19 @@ Example:
 Initial Wait Phase:
 
 * Wait for random_delay in Range(INITIAL_DELAY_MIN, _MAX)
-* Send message
+* Send message (Find Service and Offer Service entries)
 
 Repetition Phase (REPETITIONS_BASE_DELAY=100ms, REPETITIONS_MAX=2):
 
 * Wait 2^0*100ms
-* Send message
+* Send message (Find Service and Offer Service entries)
 * Wait 2^1*100ms
-* Send message
+* Send message (Find Service and Offer Service entries)
 * Wait 2^2*100ms
 
 Main Phase (as long message is active and CYCLIC_OFFER_DELAY is defined):
 
-* Send message
+* Send message (Offer Service entries)
 * Wait CYCLIC_OFFER_DELAY
     
 .. heading:: Server Answer Behavior
@@ -4991,7 +4353,7 @@ Server Answer Behavior
   
 The Service Discovery shall delay answers to entries that were transported in a multicast/broadcast SOME/IP-SD message using the configuration item REQUEST_RESPONSE_DELAY.
 
-This applies to FindService entries.
+This applies to Find Service entries.
 
     
 .. feat_req:: 🎯
@@ -5058,7 +4420,7 @@ For basic implementations all Find Service entries (no matter of the state of th
     :status: valid
     :collapse: True
   
-For optimization purpose the following behavior shall be supported as option:
+For optimization purpose the following behaviors shall optionally be supported:
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_89
@@ -5068,8 +4430,10 @@ For optimization purpose the following behavior shall be supported as option:
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
-Find messages received with the Unicast Flag set to 1, shall be answered with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
+* Find messages received with the Unicast Flag set to 1 in main phase, shall be answered with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_90
@@ -5079,8 +4443,10 @@ Find messages received with the Unicast Flag set to 1, shall be answered with a 
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
-Find messages received with the Unicast Flag set to 1, shall be answered with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
+* Find messages received with the Unicast Flag set to 1 in main phase, shall be answered with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_91
@@ -5090,8 +4456,10 @@ Find messages received with the Unicast Flag set to 1, shall be answered with a 
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
-Find messages received with Unicast Flag set to 0 (multicast), shall be answered with a multicast response.
+* Find messages received with Unicast Flag set to 0 (multicast), shall be answered with a multicast response. (Note: this was only needed in earlier migration scenarios and will go away in the future).
     
 .. heading:: Shutdown Behavior
     :id: feat_req_someipsd_819
@@ -5214,6 +4582,57 @@ SOME/IP Service State Machine Client
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
 
     
+.. heading:: Error Handling
+    :id: feat_req_someipsd_1162
+    :layout: focus
+    :style: clean
+
+Error Handling
+============== 
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1164
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+Figure :need:`feat_req_someipsd_1163` shows an simplified for the error handling of incoming SOME/IP-SD messages.
+
+The following steps are taken:
+
+* Check that at least enough bytes for an empty SOME/IP-SD message are present.
+* For each entry that can be parsed:
+* Check if the Service ID is known
+* Check if the Instance ID of this Service ID is known
+* Check if the Major Version of this Service Instance is known
+* Check if the Eventgroup ID of the Service Instance with Major Version is known (only applicable for eventgroup entries)
+* Check if the referenced Options exist in the options array and are syntactically ok
+* Check if the TCP connection is already present (only applicable, if TCP is configured for Eventgroup and Subscribe Eventgroup entry was received)
+* Check if enough resources are left (e.g. Socket Connections)
+* If any of these check fails, you need to:
+* Answer with an Subscribe Eventgroup NACK, if the original entry was an Subscribe Eventgroup entry :need:`feat_req_someipsd_1137`.
+* Ignore, if the original entry was not a Subscribe Eventgroup entry
+
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1163
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Figure: SOME/IP-SD Error Handling
+
+.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_1163.py
+
+    
 .. heading:: Announcing non-SOME/IP protocols with SOME/IP-SD
     :id: feat_req_someipsd_498
     :layout: focus
@@ -5244,10 +4663,10 @@ Besides SOME/IP other communication protocols are used within the vehicle; e.g. 
 
 .. rst-class:: compact
   
-For Non-SOME/IP protocols a special Service-ID shall be used and further information shall be added using the configuration option:
+For Non-SOME/IP protocols a special Service ID shall be used and further information shall be added using the configuration option:
 
-* Service-ID shall be set to 0xFFFE (reserved)
-* Instance-ID shall be used as described for SOME/IP services and eventgroups.
+* Service ID shall be set to 0xFFFE (reserved)
+* Instance ID shall be used as described for SOME/IP services and eventgroups.
 * The Configuration Option shall be added and shall contain at least a entry with key "otherserv" and a configurable non-empty value that is determined by the OEM.
     
 .. feat_req:: 🎯
@@ -5295,7 +4714,7 @@ Example for an invalid otherserv-string: "otherserv=".
     :status: valid
     :collapse: True
   
-SOME/IP-SD Example PDU for Non-SOME/IP-SD
+Figure: SOME/IP-SD Example PDU for Non-SOME/IP-SD
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
 
@@ -5339,7 +4758,7 @@ All clients needing events and/or notification events shall register using the S
     :status: valid
     :collapse: True
   
-Notification interaction
+Figure: Notification interaction (extremely simplified)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_425.puml
 
@@ -5353,7 +4772,7 @@ Notification interaction
     :status: valid
     :collapse: True
   
-With the SOME/IP-SD entry Offer Service the server offers to push notifications to clients; thus, it shall be used as trigger for Subscriptions (like the Publish Eventgroup).
+With the SOME/IP-SD entry Offer Service the server offers to push notifications to clients; thus, it shall be used as trigger for Subscriptions.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_429
@@ -5388,7 +4807,20 @@ Each client in SD based notification implements the specific service-interfaces 
   
 Each client shall respond to a SOME/IP-SD Offer Service entry from the server with a SOME/IP-SD Subscribe Eventgroup entry as long as the client is still interested in receiving the notifications/events of this eventgroup.
 
-If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages reboot flag, the client shall only answer Offer Service messages after the server reboots, if configured to do so. The client shall make sure that this works reliable even when the SOME/IP-SD messages of the server are lost.
+If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages reboot flag, the client shall only answer Offer Service messages after the server reboots, if configured to do so (TTL set to maximum value). The client shall make sure that this works reliable even when the SOME/IP-SD messages of the server are lost.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1168
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If the client subscribes to two or more eventgroups including one or more identical events or fields, the server shall not send duplicated events or notification events for the field. This does mean regular events and not initial events.
+
+See :need:`feat_req_someipsd_1166` and :need:`feat_req_someipsd_1167`.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_632
@@ -5413,7 +4845,7 @@ Publish/Subscribe with link loss at client (figure ignoring timings)
     :status: valid
     :collapse: True
   
-The server sending Publish Eventgroup entries or Offer Service entries as implicit Publishes has to keep state of Subscribe Eventgroup messages for this eventgroup instance in order to know if notifications/events have to be sent.
+The server sending Offer Service entries as implicit Publishes has to keep state of Subscribe Eventgroup messages for this eventgroup instance in order to know if notifications/events have to be sent.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_433
@@ -5531,7 +4963,7 @@ A link-up event on the clients Ethernet link shall start the Initial Wait Phase 
     :status: valid
     :collapse: True
   
-The client shall open an TCP connection to the server before sending the Subscribe Eventgroup entry, if reliable events and notification events exist in the interface definition (e.g. FIBEX or ARXML).
+The client shall open a TCP connection to the server before sending the Subscribe Eventgroup entry, if reliable events and notification events exist in the interface definition (e.g. FIBEX or ARXML).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_441
@@ -5554,6 +4986,8 @@ After a client has sent a Subscribe Eventgroup entry the server shall send a Sub
     :collapse: True
   
 The client shall wait for the Subscribe Eventgroup Ack entry acknowledging an Subscribe Eventgroup entry. If this Subscribe Eventgroup Ack entry does not arrive before the next Subscribe Eventgroup entry is sent, the client shall do the following: send a Stop Subscribe Eventgroup entry and a Subscribe Eventgroup entry in the SOME/IP-SD message the Subscribe Eventgroup entry would have been sent with.
+
+Note: This behavior exists to cope with short durations of communication loss. The receiver of a Stop Subscribe Eventgroup and Subscribe Eventgroup combination would sent out Initial Events to lower the effects of the loss of messages.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_691
@@ -5581,8 +5015,32 @@ This means:
 
 * It is not allowed to send initial values of events upon subscriptions (pure event and not field).
 * The event messages of field notifiers shall be sent on subscriptions (field and not pure event).
-* If a subscription was already valid and is just updated by a Subscribe Eventgroup entry, no initial events shall be sent.
+* If a subscription was already valid and is updated by a Subscribe Eventgroup entry, no initial events shall be sent.
 * Receiving Stop Subscribe / Subscribe combinations trigger initial events of field notifiers.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1167
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If a client subscribes to different eventgroups of the same Service Instance that all include the same field in different SOME/IP-SD messages, the Server shall send out the initial events for this field for every subscription separately.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1166
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If a client subscribes to different eventgroups of the same Service Instance that all include the same field in the same SOME/IP-SD message, the Server may choose to not send out the initial event for this field more than once.
+
+Note: This means the Server can optimize by sending the initial events only once, if supported by its architecture.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_625
@@ -5689,7 +5147,7 @@ The following entries shall be transported by unicast only:
     :status: valid
     :collapse: True
   
-When sending a Subscribe Eventgroup entry as reaction of receiving a Publish Eventgroup entry or an Offer Service entry, the timer controlling cyclic Subscribe Eventgroups entries shall be reset.
+When sending a Subscribe Eventgroup entry as reaction of receiving an Offer Service entry, the timer controlling cyclic Subscribe Eventgroups entries shall be reset.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_829
@@ -5974,12 +5432,12 @@ Figure :need:`feat_req_someipsd_795` shows an example with the different Endpoin
 
 Then the following operations happen:
 
-* The Clients calls FunctionA() on the Server
+* The Clients calls a method on the Server
 * Request is sent from CU to SU and Response from SU to CU
 * For TCP this would be: Request dyn to ST and Response from ST to CT
-* The Server sends an Unicast UDP Event: SU to CU
-* The Server sends an Unicast TCP Event: ST to CT
-* The Server sends an Multicast UDP Event: SU to MU
+* The Server sends a Unicast UDP Event: SU to CU
+* The Server sends a Unicast TCP Event: ST to CT
+* The Server sends a Multicast UDP Event: SU to MU
 
 Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver side, i.e. the client, and TCP cannot be used for Multicast communication.
 
@@ -5994,10 +5452,43 @@ Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver
     :status: valid
     :collapse: True
   
-Publish/Subscribe Example for Endpoint Options and the usage of ports.
+Figure: Publish/Subscribe Example for Endpoint Options and the usage of ports.
 
 .. plantuml:: images/plantuml/feat_req_someipsd_795.puml
 
+    
+.. heading:: Security Considerations
+    :id: feat_req_someipsd_1134
+    :layout: focus
+    :style: clean
+
+Security Considerations
+======================= 
+
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1135
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+A SOME/IP-SD implementation shall always check that the IP Addresses received in Endpoint options and SD Endpoint options are topological correct (reference IP Addresses in the IP subnet for which SOME/IP-SD is used) and shall ignore IP Addresses that are not topological correct as well as the entries referencing those options.
+
+Note: This means that only Clients and Servers in the same subset are accessible.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1136
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+An example for checking the IP Addresses (Endpoint-IP) for topological correctness is:
+SOME/IP-SD-IP-Address AND Netmask = Endpoint-IP AND Netmask.
     
 .. heading:: Mandatory Feature Set and Basic Behavior
     :id: feat_req_someipsd_806
@@ -6117,7 +5608,7 @@ The following behaviors/reactions shall be implemented on the Server side:
 * The Server shall offer services including the Initial Wait Phase, the Repetition Phase, and the Main Phase depending on the configuration.
 * The Server shall offer services using Multicast (Repetition Phase and Main Phase).
 * The Server does not need to answer a Find Service in the Repetition Phase.
-* The Server shall answer a Find Service in the Main Phase with an Offer Service using Unicast (no optimization based on unicast flag).
+* The Server shall answer a Find Service in the Main Phase with an Offer Service using Unicast (no optimization based on unicast flag as in :need:`feat_req_someipsd_826`).
 * The Server shall send a Stop Offer Service when shutting down.
 * The Server shall receive a Subscribe Eventgroup as well as a Stop Subscribe Eventgroup and react according to this specification.
 * The Server shall send a Subscribe Eventgroup Ack and Subscribe Eventgroup Nack using unicast.
@@ -6137,9 +5628,9 @@ The following behaviors/reactions shall be implemented on the Server side:
   
 The following behaviors/reactions shall be implemented on the Client side:
 
-* The Client shall find services using a Find Service entry and Multicast.
+* The Client shall find services using a Find Service entry and Multicast only in the repetition phase.
 * The Client shall stop finding a service if the regular Offer Service arrives.
-* The Client shall react to the Servers Offer Service with an unicast SD message including all Subscribe Eventgroups of the services offered in the message of the Server.
+* The Client shall react to the Servers Offer Service with an unicast SD message that includes all Subscribe Eventgroups of the services offered in the message of the Server that the client currently wants to subscribe to.
 * The Client shall interpret and react to the Subscribe Eventgroup Ack and Subscribe Eventgroup Nack as specified in this document.
     
 .. feat_req:: 🎯
@@ -6173,8 +5664,10 @@ The Client and Server shall implement the Reboot Detection as specified in this 
 
 * Setting Session ID and Reboot Flag according to this specification.
 * Keeping a Session ID counter only used for sending Multicast SD messages.
+* Keeping Session ID counters for every Unicast relation for sending Unicast SD messages.
 * Understanding Session ID and Reboot Flag according to this specification.
 * Keeping a Multicast Session ID counter per ECU that exchanges Multicast SD messages with this ECU.
+* Keeping a Unicast Session ID counter per ECU that exchanges Unicast SD messages with this ECU.
 * Detecting reboot based on this specification and reaction accordingly.
 * Correctly interpreting the IPv4 and IPv6 SD Endpoint Options in regard to Reboot Detection.
     
@@ -6198,6 +5691,21 @@ The Client and Server shall implement the "Endpoint Handling for Service and Eve
 * Adding 1 Multicast Option UDP to Subscribe Eventgroup Ack if multicast events are required.
 * Understanding and acting according to the Endpoint and Multicast Options transported as described above.
 * Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these Endpoint and Multicast Options.
+* Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address and Port number in the outer layers.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1157
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+The Client and Server shall implement the "SD Endpoint option":
+
 * Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address and Port number in the outer layers.
     
 .. feat_req:: ⓘ 
