@@ -127,6 +127,7 @@ Authors of the original contributions:
 * Dr. Lars Völker, BMW
 * Benjamin Krebs, BMW
 * Max Turner (Max Kicherer), BMW
+* Karl Budweiser, BMW
 
 Authors of the current specification and conversion:
 

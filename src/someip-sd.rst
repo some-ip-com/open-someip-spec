@@ -3014,6 +3014,101 @@ Figure: SOME/IP-SD IPv6 SD Endpoint Option Type
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_1112.json
 
     
+.. heading:: MAC-Groupcast Endpoint Option
+    :id: feat_req_someipsd_1248
+    :layout: focus
+    :style: clean
+
+MAC-Groupcast Endpoint Option
+----------------------------- 
+
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1249
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The MAC-Groupcast Endpoint Option is used to announce the MAC-groupcast address layer 2 groupcast traffic is
+sent to, the data link layer protocol and a protocol-specific identifier.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1250
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+As the MAC-Groupcast Endpoint Option announces non-SOME/IP service instances, it shall only be used together with a Configuration Option containing an otherserv-string.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1251
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The MAC-Groupcast Endpoint Option shall use the Type 0x15.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1252
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The MAC-Groupcast Endpoint Option shall specify the MAC-groupcast address, the data link layer protocol (L2-Proto) used and a variable length protocol-specific identifier (ProtoSpecific) related to the used link layer protocol.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1253
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+The Format of the MAC-Groupcast Endpoint Option shall be as follows:
+
+* Length [uint16]: Dynamic, depending on the content of the ProtoSpecific field which in turn depends on the L2-Proto field.
+
+ * Example: For IEEE1722 the ProtoSpecific field contains the 6+2 Byte long Stream-ID, so the Length is to be set to 0x11.
+
+* Type [uint8]: Shall be set to 0x15.
+* Reserved [uint8]: Shall be set to 0x00 on transmission.
+* GroupMAC-Address [uint48]: Shall transport the 6 byte MAC-Groupcast Address.
+* Data Link Protocol (L2-Proto) [uint16]: Shall be set to the data link layer protocol (ISO/OSI layer 2) based on the IANA/IETF Ethertypes.
+
+ * Example: For IEEE1722 0x22F0 shall be used.
+
+* Protocol-specific identifier (ProtoSpecific): Dynamic length, related to the data link layer protocol.
+
+ * Example: For IEEE1722 ProtoSpecific shall be set to the Stream-ID [uint64] of the announced IEEE1722 stream.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1262
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Figure: Format of the MAC-Groupcast Endpoint Option
+
+.. bitfield_directive:: images/bit_field/feat_req_someipsd_1262.json
+
+    
 .. heading:: Referencing Options from Entries
     :id: feat_req_someipsd_335
     :layout: focus

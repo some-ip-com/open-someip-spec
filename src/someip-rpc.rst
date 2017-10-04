@@ -169,7 +169,7 @@ The Service ID of 0xFFFE shall be used to encode non-SOME/IP services.
     :status: valid
     :collapse: True
   
-The Service ID of 0x0000 and 0xFFFF shall be reserved for special cases. A reference table is found at the end of this document in :need:`feat_req_someipids_505`.
+The Service-ID of 0x0000 and 0xFFFF shall be reserved for special cases. A reference table is found at the end of this document in :need:`feat_req_someipids_505`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_541
@@ -180,7 +180,7 @@ The Service ID of 0x0000 and 0xFFFF shall be reserved for special cases. A refer
     :status: valid
     :collapse: True
   
-Different services within the same vehicle shall have different Service-IDs.
+Different services within the same vehicle shall have different Service IDs.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_542
@@ -4281,7 +4281,7 @@ Interface Version shall be set according to interface specifications.
   
 If SOME/IP is used for transporting CAN messages with 11 bits of CAN-ID, the following layout of the Message ID is recommended (example):
 
-* Service ID shall be set to a value defined by theOEM, e.g. 0x1234
+* Service ID shall be set to a value defined by the OEM, e.g. 0x1234
 * Event ID is split into 4 bits specifying the CAN bus, and 11 bits for the CAN-ID.
 
 This is just an example and the actual layout shall be specified by the System Department.
