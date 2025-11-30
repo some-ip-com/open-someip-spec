@@ -35,7 +35,7 @@
             "type": "gray"
         },
         {
-            "name": "Length [32 bit] =64",
+            "name": "Length [32 bit] =76",
             "bits": 32,
             "type": "gray"
         },
@@ -135,7 +135,7 @@
             "type": "green"
         },
         {
-            "name": "Index 1st options \n=0",
+            "name": "Index 1st options \n=1",
             "bits": 8,
             "type": "green"
         },
@@ -170,7 +170,7 @@
             "type": "green"
         },
         {
-            "name": "TTL =300 (offer is valid for 300 seconds)",
+            "name": "TTL =3 (offer is valid for 3 seconds)",
             "bits": 24,
             "type": "green"
         },
@@ -180,7 +180,7 @@
             "type": "green"
         },
         {
-            "name": "Length of Options Array in Bytes =12",
+            "name": "Length of Options Array in Bytes =24",
             "bits": 32,
             "type": "blue"
         },
@@ -190,7 +190,7 @@
             "type": "blue"
         },
         {
-            "name": "Type =0x04 (IPv4 Endpoint)",
+            "name": "Type =0x24 (IPv4 SD Endp.)",
             "bits": 8,
             "type": "blue"
         },
@@ -206,6 +206,41 @@
         },
         {
             "name": "Reserved (=0x00)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "L4-Proto =0x11 (UDP)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Port number =30490",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Length (=0x0009)",
+            "bits": 16,
+            "type": "blue"
+        },
+        {
+            "name": "Type =0x04 (IPv4 Endpoint)",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved =0x00",
+            "bits": 8,
+            "type": "blue"
+        },
+        {
+            "name": "IPv4-Address = 192.168.0.1",
+            "bits": 32,
+            "type": "blue"
+        },
+        {
+            "name": "Reserved =0x00",
             "bits": 8,
             "type": "blue"
         },
@@ -231,7 +266,7 @@
             "label_lines": "SOME/IP-SD",
             "font_size": 8,
             "start_line": 4,
-            "end_line": 17,
+            "end_line": 20,
             "layout": "right",
             "angle": -90
         },
@@ -240,7 +275,7 @@
             "start_line": 10,
             "jump_to_first": 13,
             "layout": "left",
-            "jump_to_second": 15,
+            "jump_to_second": 18,
             "end_bit": 0,
             "stroke_width": 1
         }

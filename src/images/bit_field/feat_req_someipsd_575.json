@@ -170,7 +170,7 @@
             "type": "green"
         },
         {
-            "name": "TTL =300 (offer is valid for 300 seconds)",
+            "name": "TTL =3 (offer is valid for 3 seconds)",
             "bits": 24,
             "type": "green"
         },

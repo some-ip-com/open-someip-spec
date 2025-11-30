@@ -37,6 +37,17 @@ Introduction
 This document specifies the Scalable service-Oriented middlewarE over IP (SOME/IP) – an automotive/embedded RPC mechanism and the underlying serialization / wire format.
     
 .. feat_req:: ⓘ 
+    :id: feat_req_someip_697
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The only valid abbreviation is SOME/IP. Other abbreviations (e.g. Some/IP) are wrong and shall not be used.
+    
+.. feat_req:: ⓘ 
     :id: feat_req_someip_4
     :reqtype: Information
     :security: TBD
@@ -49,12 +60,12 @@ This document specifies the Scalable service-Oriented middlewarE over IP (SOME/I
   
 The basic motivation to specify “yet another RPC-Mechanism” instead of using an existing infrastructure/technology is the goal to have a technology that:
 
-* Fulfills the hard requirements regarding resource consumption in an embedded world
-* Is compatible through as many use-cases and communication partners as possible
-* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard. 
-* Provides the features required by automotive use-cases
-* Is scalable from tiny to large platforms
-* Can be implemented on different operating system (i.e. AUTOSAR, GENIVI, and OSEK) and even embedded devices without operating system
+* Fulfills the hard requirements regarding resource consumption in an embedded world.
+* Is compatible through as many use-cases and communication partners as possible.
+* Is compatible with AUTOSAR at least on the wire-format level; i.e. can communicate with PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard.
+* Provides the features required by automotive use-cases.
+* Is scalable from tiny to large platforms.
+* Can be implemented on different operating system (i.e. AUTOSAR, GENIVI, and OSEK) and even embedded devices without operating system.
     
 .. heading:: Definition of terms
     :id: feat_req_someip_14
@@ -75,34 +86,36 @@ Definition of terms
 
 .. rst-class:: compact
   
-* Method – a method, procedure, function, or subroutine that can be called/invoked
-* Parameters – input, output, or input/output arguments of a method
+* Method – a method, procedure, function, or subroutine that can be called/invoked.
+* Parameters – input, output, or input/output arguments of a method or an event.
 
-  * Input/output arguments are arguments shared for input and output
+  * Input/output arguments are arguments shared for input and output.
 
-* Remote Procedure Call (RPC) – a method call from one ECU to another that is transmitted using messages
-* Request – a message of the client to the server invoking a method
-* Response – a message of the server to the client transporting results of a method invocation
-* Request/Response communication – a RPC that consists of request and response
-* Fire&Forget communication – a RPC call that consists only of a request message
-* Event – a Fire&Forget callback that is only invoked on changes or cyclic and is sent from Server to Client
+* Remote Procedure Call (RPC) – a method call from one ECU to another that is transmitted using messages.
+* Request – a message of the client to the server invoking a method.
+* Response – a message of the server to the client transporting results of a method invocation.
+* Request/Response communication – a RPC that consists of request and response.
+* Fire&Forget communication – a RPC call that consists only of a request message.
+* Event – a "Fire&Forget callback" that is only invoked on changes or cyclic and is sent from Server to Client.
 * Field – a representation of a remote property, which has up to one getter, up to one setter, and up to one notifier.
+
+  * The field shall contain at least a getter, a setter, or a notifier.
+  * A field does represent a status and thus has an valid value at all times on which getter, setter, and notifier can act upon.
+
+* Notification Event – an event message the notifier of an field sends. The message of such a notifier cannot be distinguished from the event message; therefore, when referring to the message of an event, this shall also be true for the messages of notifiers of fields.
 * Getter – a Request/Response call that allows read access to a field.
-
-  * The getter needs to return a value; thus, it needs to be a request/response call.
-
 * Setter – a Request/Response call that allows write access to a field.
 
-  * The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
+  * The getter needs to return a value; thus, it needs to be a request/response call. The setter is a request/response call as well in order for the client to know whether the setter-operation succeeded.
 
-* Notifier – sends out events with a new value on change of the value of the field
-* Service – a logical combination of zero or more methods, zero or more events, and zero or more fields (empty service is allowed)
-* Eventgroup – a logical grouping of events and notification events inside a service in order to allow subscription
+* Notifier – sends out event message with a new value on change of the value of the field
+* Service – a logical combination of zero or more methods, zero or more events, and zero or more fields (empty service is allowed, e.g. for announcing non-SOME/IP services in SOME/IP-SD).
+* Eventgroup – a logical grouping of events and notification events of fields inside a service in order to allow subscription
 * Service Interface – the formal specification of the service including its methods, events, and fields
-* Service Instance – software implementation of the software interface, which can exist more than once in the vehicle and more than once on an ECU
+* Service Instance – software implementation of the service interface, which can exist more than once in the vehicle and more than once on an ECU
 * Server – The ECU offering a service instance shall be called server in the context of this service instance.
 * Client – The ECU using the service instance of a server shall be called client in the context of this service instance.
-* Union or Variant – a data structure that can dynamically assume different data types
+* Union or Variant – a data structure that can dynamically assume different data types.
     
 .. heading:: Definition of Identifiers
     :id: feat_req_someip_534
@@ -198,7 +211,7 @@ Service-Instance-IDs shall be of type 16 bit length unsigned integer (uint16).
     :status: valid
     :collapse: True
   
-The Service-Instance-IDs of 0x0000 and 0xFFFF shall not be used for a service, since 0x0000 is used to describe no service instance and 0xFFFF is used to describe all service instances.
+The Service-Instance-IDs of 0x0000 and 0xFFFF shall not be used for a service, since 0x0000 is reserved and 0xFFFF is used to describe all service instances.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_544
@@ -210,6 +223,8 @@ The Service-Instance-IDs of 0x0000 and 0xFFFF shall not be used for a service, s
     :collapse: True
   
 Different service instances within the same vehicle shall have different Service-Instance-IDs.
+
+This means that two different camera services shall have two different Service-Instance-IDs SI-ID-1 and SI-ID-2. For all vehicles of a vehicle project SI-ID-1 shall be the same. The same is true for SI-ID-2. If considering another vehicle project, different IDs may be used but it makes sense to use the same IDs among different vehicle projects for ease in testing and integration.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_625
@@ -231,7 +246,7 @@ Methods and events shall be identified inside a service using a 16bit Method-ID,
     :status: valid
     :collapse: True
   
-Methods shall use Method-IDs with the highest bit set to 0, while the Method-IDs highest bit shall be set to 1 for events and notifications. This requirement may be overruled by the system department at anytime.
+Methods shall use Method-IDs with the highest bit set to 0, while the Method-IDs highest bit shall be set to 1 for events and notifications of fields.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_545
@@ -242,7 +257,7 @@ Methods shall use Method-IDs with the highest bit set to 0, while the Method-IDs
     :status: valid
     :collapse: True
   
-An event group shall be identified using the Eventgroup-ID.
+An eventgroup shall be identified using the Eventgroup-ID.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_546
@@ -264,7 +279,7 @@ Eventgroup-IDs shall be of 16 bit length unsigned integer (uint16).
     :status: valid
     :collapse: True
   
-Different event groups within the same vehicle shall have different Eventgroup-IDs.
+Different eventgroups of a service shall have different Eventgroup-IDs.
     
 .. heading:: Specification of the SOME/IP on-wire format
     :id: feat_req_someip_29
@@ -304,7 +319,66 @@ Transport Protocol
     :status: valid
     :collapse: True
   
-SOME/IP may be transported using UDP or TCP. The port numbers for SOME/IP have to be defined locally from the private port range 49152-65535 until further notice. When used in a vehicle the OEM will specify the ports used in the interface specification.
+SOME/IP may be transported using UDP or TCP. For dynamic ports the ECU private port range is 49152-65535 until further notice. When used in a vehicle the OEM will specify the ports used in the interface specification.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_659
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The IP addresses and port numbers an ECU shall use, shall be taken from the Interface Specification, i.e. FIBEX or ARXML.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_660
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The client shall take the IP address and port number the server announces using SOME/IP-SD (see :need:`feat_req_someipsd_752`).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_658
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+SOME/IP-SD currently uses port 30490 but this shall be overwritten if another port number is specified in the Interface Specification.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_676
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The port 30490 (UDP and TCP as well) shall be only used for SOME/IP-SD and not used for applications communicating over SOME/IP.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_661
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+If an ECU needs to dynamically use a port number, it shall follow the rules of IETF and IANA for that:
+
+* Ephemeral ports from range 49152-65535
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_33
@@ -315,7 +389,7 @@ SOME/IP may be transported using UDP or TCP. The port numbers for SOME/IP have t
     :status: valid
     :collapse: True
   
-It is recommended to use UDP for as many messages as possible and see TCP as fall-back for message requiring larger size. UDP allows the application to better control the timeouts and behavior when errors occurring.
+It is recommended to use UDP for as many messages as possible and see TCP as fall-back for message requiring larger size. UDP allows the application to better control of timings and behavior when errors occur.
     
 .. heading:: Message Length Limitations
     :id: feat_req_someip_34
@@ -377,6 +451,17 @@ Endianness
   
 All RPC-Headers shall be encoded in network byte order (big endian) [RFC 791]. The byte order of the parameters inside the payload shall be defined by the interface definition (i.e. FIBEX) and should be in network byte order when possible and if no other byte order is specified.
     
+.. feat_req:: 🎯
+    :id: feat_req_someip_675
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+This means that Length and Type fields shall be always in network byte order.
+    
 .. heading:: Header
     :id: feat_req_someip_43
     :layout: focus
@@ -394,7 +479,7 @@ Header
     :status: valid
     :collapse: True
   
-For interoperability reasons the header layout shall be identical for all scales of the SOME/IP and is shown in the Figure :need:`feat_req_someip_45` . The fields are presented in transmission order; i.e. the fields on the top left are transmitted first. In the following sections the different header fields and their usage is being described.
+For interoperability reasons the header layout shall be identical for all implementations of SOME/IP and is shown in the Figure :need:`feat_req_someip_45`. The fields are presented in transmission order; i.e. the fields on the top left are transmitted first. In the following sections the different header fields and their usage is being described.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_45
@@ -429,13 +514,13 @@ IP-Address / port numbers
   
 The Layout in Figure :need:`feat_req_someip_45` shows the basic header layout over IP and the transport protocol used. 
     
-.. heading:: Mapping of IP Addresses and Ports
+.. heading:: Mapping of IP Addresses and Ports in Response and Error Messages
     :id: feat_req_someip_48
     :layout: focus
     :style: clean
 
-Mapping of IP Addresses and Ports
---------------------------------- 
+Mapping of IP Addresses and Ports in Response and Error Messages
+---------------------------------------------------------------- 
 
 .. feat_req:: 🎯
     :id: feat_req_someip_49
@@ -473,7 +558,7 @@ Message ID [32 Bit]
     :status: valid
     :collapse: True
   
-The Message ID is a 32 Bit identifier that is used to dispatch the RPC call to a method of an application and to identify a notification. The Message ID has to uniquely identify a method.
+The Message ID is a 32 Bit identifier that is used to dispatch the RPC call to a method of an application and to identify an event. The Message ID has to uniquely identify a method or event of a service.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_57
@@ -503,7 +588,21 @@ Structure of the Message ID
     :status: valid
     :collapse: True
   
-In order to structure the different methods and events, they are clustered into services. Services have a set of methods and events as well as a Service ID, which is only used for this service. The events may in addition be clustered into event groups, which simplify the registration of events.
+In order to structure the different methods, events, and fields, they are clustered into services. Services have a set of methods, events, and fields as well as a Service ID, which is only used for this service. The events and notification events may in addition be assigned into a number eventgroups, which simplify the registration of events and notifies.
+
+An event may be part of zero to many eventgroup and an eventgroup can contain zero to many events.
+A field may be part of zero to many eventgroup and an eventgroup can contain zero to many fields.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_670
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Currently empty eventgroups are not used and events as well as fields are mapped to at least one eventgroup.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_60
@@ -539,7 +638,7 @@ With 16 Bit Service-ID and a 16 Bit Method-ID starting with a 0-Bit, this allows
     :status: valid
     :collapse: True
   
-Since events (see Notification or Publish/Subscribe) are transported using RPC, the ID space for the events is further structured:
+Since events and notifications (see Notification or Publish/Subscribe) are transported using RPC, the ID space for the events is further structured:
 
 .. bitfield_directive:: images/bit_field/feat_req_someip_67.json
 
@@ -572,7 +671,7 @@ Length [32 Bit]
     :status: valid
     :collapse: True
   
-Length is a field of 32 Bits containing the length in Byte of the payload beginning with the Request ID/Client ID. The Length does not cover the portion of the header including the Message ID and the Length field.
+Length is a field of 32 Bits containing the length in Byte of the payload beginning with the Request ID/Client ID until the end of the SOME/IP-message.
     
 .. heading:: Request ID [32 Bit]
     :id: feat_req_someip_78
@@ -591,7 +690,7 @@ Request ID [32 Bit]
     :status: valid
     :collapse: True
   
-The Request ID allows a client to differentiate multiple calls to the same method. Therefore, the Request ID has to be unique for a single client and server combination only. When generating a response message, the server has copy the Request ID from the request to the response message. This allows the client to map a response to the issued request even with more than one request outstanding.
+The Request ID allows a client to differentiate multiple calls to the same method. Therefore, the Request ID has to be unique for a single client and server combination only. When generating a response message, the server has to copy the Request ID from the request to the response message. This allows the client to map a response to the issued request even with more than one request outstanding.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_80
@@ -636,6 +735,61 @@ The Request ID is constructed of the Client ID and Session ID:
     :collapse: True
   
 The Client ID is the unique identifier for the calling client inside the ECU. The Session ID is a unique identifier chosen by the client for each call. If session handling is not used, the Session ID shall be set to 0x0000.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_649
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If session handling is used the Session ID shall start with 0x0001 else it can be set to 0x0000.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_667
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+For events and notification events no session handling shall be used; thus, the Client ID should be set to 0x0000.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_669
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+For fire&forget methods, events and notification events the Session ID should start with 1 and be incremented for every message sent.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_677
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+When the Session ID reaches 0xFFFF, it shall start with 0x0001 again.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_668
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The handling of the Request ID in SOME/IP-SD messages is discussed later in this specification.
     
 .. heading:: Protocol Version [8 Bit]
     :id: feat_req_someip_89
@@ -705,6 +859,17 @@ Message Type [8 Bit]
   
 The Message Type field is used to differentiate different types of messages and may contain the following values:
     
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_684
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+List of supported Message Types.
+    
 
 
     .. list-table::
@@ -766,7 +931,7 @@ Regular request (message type 0x00) will be answered by a response (message type
     :status: valid
     :collapse: True
   
-For all messages an optional acknowledgment (ACK) exists. These can be used in cases that the transport protocol (i.e. UDP) does not acknowledge a received message. ACKs are only transported when the interface specification requires it. Only the usage of the REQUEST_ACK is currently specified in this document. All other ACKs are currently informational and do not need to be implemented.
+For all messages an optional acknowledgment (ACK) exists. These can be used in cases where the transport protocol (i.e. UDP) does not acknowledge a received message. ACKs are only transported when the interface specification requires it. Only the usage of the REQUEST_ACK is currently specified in this document. All other ACKs are currently informational and do not need to be implemented.
     
 .. heading:: Return Code [8 Bit]
     :id: feat_req_someip_143
@@ -791,6 +956,17 @@ The Return Codes are specified in detail in :need:`feat_req_someip_371`.
 
 Messages of Type REQUEST, REQUEST_NO_RETURN, and Notification have to set the Return Code to 0x00 (E_OK). The allowed Return Codes for specific message types are:
     
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_683
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+List of allowed Return Codes.
+    
 
 
     .. list-table::
@@ -808,7 +984,7 @@ Messages of Type REQUEST, REQUEST_NO_RETURN, and Notification have to set the Re
         - N/A set to 0x00 (E_OK)
       * - RESPONSE
         - See Return Codes in [:need:`feat_req_someip_371`]
-      * - ERROR
+      * - EXCEPTION
         - See Return Codes in [:need:`feat_req_someip_371`]. Shall not be 0x00 (E_OK).
 
 .. heading:: Payload [variable size]
@@ -839,7 +1015,7 @@ In the payload field the parameters are carried. The serialization of the parame
     :status: valid
     :collapse: True
   
-The size of the payload field depends on the transport protocol used. With UDP the payload can be between 0 and 1400 Bytes. The limitation to 1400 Bytes is needed in order to allow for future changes to protocol stack (e.g. changing to IPv6 or adding security means). Since TCP supports segmentation of payloads, larger sizes are automatically supported.
+The size of the SOME/IP payload field depends on the transport protocol used. With UDP the SOME/IP payload can be between 0 and 1400 Bytes. The limitation to 1400 Bytes is needed in order to allow for future changes to protocol stack (e.g. changing to IPv6 or adding security means). Since TCP supports segmentation of payloads, larger sizes are automatically supported.
     
 .. heading:: Serialization of Parameters and Data Structures
     :id: feat_req_someip_167
@@ -900,6 +1076,17 @@ Basic Datatypes
     :collapse: True
   
 The following basic datatypes shall be supported:
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_682
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+List of supported basic datatypes.
     
 
 
@@ -969,7 +1156,7 @@ The Byte Order is specified for each parameter by the interface definition.
     :status: valid
     :collapse: True
   
-For infotainment applications uint64 and sint64 types shall be supported additionally.
+In addition uint64 and sint64 types may be supported.
     
 .. heading:: Structured Datatypes (structs)
     :id: feat_req_someip_229
@@ -990,6 +1177,17 @@ Structured Datatypes (structs)
   
 The serialization of a struct shall be close to the in-memory layout. This means, only the parameters shall be serialized sequentially into the buffer. Especially for structs it is important to consider the correct memory alignment. Insert reserved/padding elements in the interface definition if needed for alignment, since the SOME/IP implementation shall not automatically add such padding.
     
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_652
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+So if for example a struct includes an uint8 and an uint32, they are just written sequentially into the buffer. This means that there is no padding between the uint8 and the first byte of the uint32; therefore, the uint32 might not be aligned.
+    
 .. feat_req:: 🎯
     :id: feat_req_someip_577
     :reqtype: Requirement
@@ -999,7 +1197,29 @@ The serialization of a struct shall be close to the in-memory layout. This means
     :status: valid
     :collapse: True
   
-If a SOME/IP implementation encounters an interface specification that leads to an PDU not correctly aligned (e.g. because of an unaligned struct), a SOME/IP implementation shall warn about a misaligned struct but shall not fail in generating the code.
+If a SOME/IP generator or similar encounters an interface specification that leads to an PDU not correctly aligned (e.g. because of an unaligned struct), the SOME/IP generator shall warn about a misaligned struct but shall not fail in generating the code.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_671
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Warning about unaligned structs or similar shall not be done in the implementation but only in the toolchain used to generate the implementation.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_672
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Messages of legacy busses like CAN and FlexRay may never be aligned. Warnings can be turned off or be ignored in such cases.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_575
@@ -1068,7 +1288,7 @@ If the length of the length field is not specified, a length of 0 has to be assu
     :status: valid
     :collapse: True
   
-The length field of the struct describes the number of bytes of the struct. If the length is greater than the length of the struct as specified in the Interface Definition only the bytes specified in the Interface Specification shall interpreted and the other bytes shall be skipped based on the length field.
+The length field of the struct describes the number of bytes of the struct. If the length is greater than the length of the struct as specified in the Interface Definition only the bytes specified in the Interface Specification shall be interpreted and the other bytes shall be skipped based on the length field.
 
 This allows for extensible structs which allow better migration of interfaces.
     
@@ -1089,7 +1309,7 @@ Strings (fixed length)
     :status: valid
     :collapse: True
   
-Strings are encoded using Unicode and are terminated with a “\0”-character. The length of the string (this includes the “\0”) in Bytes has to be specified in the interface definition. Fill unused space using “\0”.
+Strings are encoded using Unicode and are terminated with a “\0”-character despite having a fixed length. The length of the string (this includes the “\0”) in Bytes has to be specified in the interface definition. Fill unused space using “\0”.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_234
@@ -1101,6 +1321,83 @@ Strings are encoded using Unicode and are terminated with a “\0”-character. 
     :collapse: True
   
 Different Unicode encoding shall be supported including UTF-8, UTF-16BE, and UTF-16LE. Since these encoding have a dynamic length of bytes per character, the maximum length in bytes is up to three times the length of characters in UTF-8 plus 1 Byte for the termination with a “\0” or two times the length of the characters in UTF-16 plus 2 Bytes for a “\0”.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_687
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+:need:`feat_req_someip_234` states that an UTF-8 character can be up to 6 bytes and an UTF-16 character can be up to 4 bytes.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_639
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+UTF-16LE and UTF-16BE strings shall be zero terminated with a "\0" character. This means they shall end with (at least) two 0x00 Bytes.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_640
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+UTF-16LE and UTF-16BE strings shall have an even length.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_641
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+For UTF-16LE and UTF-16BE strings having a odd length the last byte shall be ignored. The two bytes before shall be 0x00 bytes (termination).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_662
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+All strings must always start with a Byte Order Mark (BOM). The BOM must be included in fixed-length-strings as well as dynamic-length strings.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_666
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The receiving SOME/IP implementation shall check the BOM against the Interface Specification and might need to handle this as an error based on this specification.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_665
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The BOM may be added by the application or the SOME/IP implementation.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_235
@@ -1130,7 +1427,18 @@ Strings (dynamic length)
     :status: valid
     :collapse: True
   
-Strings with dynamic length start with a length field. The length is measured in Bytes and is followed by the “\0”-terminated string data. The interface definition shall also define the maximum number of bytes the string (including termination with “\0”) can occupy.
+Strings with dynamic length start with a length field. The length is measured in Bytes and is followed by the “\0”-terminated string data. The interface definition shall also define the maximum number of bytes of the string (including termination with “\0”).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_642
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+:need:`feat_req_someip_639`, :need:`feat_req_someip_640`, and :need:`feat_req_someip_641` shall also be valid for strings with dynamic length.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_582
@@ -1185,7 +1493,7 @@ Supported encodings are defined as in :need:`feat_req_someip_232`.
     :status: valid
     :collapse: True
   
-If the interface definition hints the alignment of the next data element the string shall be extended with “\0” characters to meet the alignment.
+If the interface definition states the alignment of the next data element the string shall be extended with “\0” characters to meet the alignment.
     
 .. heading:: Arrays (fixed length)
     :id: feat_req_someip_240
@@ -1204,7 +1512,18 @@ Arrays (fixed length)
     :status: valid
     :collapse: True
   
-The length of fixed length arrays is defined by the interface definition. They can be seen as repeated elements. In :need:`feat_req_someip_253` dynamic length arrays are shown, which can be also used. 
+The length of fixed length arrays is defined by the interface definition. They can be seen as repeated elements. Fixed length arrays are easier for use in very small devices.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_694
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+In :need:`feat_req_someip_253` dynamic length arrays are shown, which can be also used. However, dynamic length arrays might need more resources on the ECU using them.
     
 .. heading:: One-dimensional
     :id: feat_req_someip_242
@@ -1272,13 +1591,13 @@ Figure: Multidimensional array (fixed length)
 .. drawsvg_directive:: images/drawsvg/feat_req_someip_247.py
 
     
-.. heading:: Optional Fields
+.. heading:: Optional Parameters / Optional Elements
     :id: feat_req_someip_251
     :layout: focus
     :style: clean
 
-Optional Fields
-=============== 
+Optional Parameters / Optional Elements
+======================================= 
 
 .. feat_req:: ⓘ 
     :id: feat_req_someip_252
@@ -1289,7 +1608,7 @@ Optional Fields
     :status: valid
     :collapse: True
   
-Optional Fields shall be encoded as array with 0 to 1 elements. For the serialization of arrays with dynamic length see :need:`feat_req_someip_253`.
+Optional Elements shall be encoded as array with 0 to 1 elements. For the serialization of arrays with dynamic length see :need:`feat_req_someip_253`.
     
 .. heading:: Dynamic Length Arrays
     :id: feat_req_someip_253
@@ -1319,7 +1638,9 @@ The layout of arrays with dynamic length basically is based on the layout of fix
     :status: valid
     :collapse: True
   
-The Interface Definition may define the length of the length field. Length of 0, 8, 16, and 32bit are allowed. If the length is set to 0 Bits, the number of elements in the array has to be fixed; thus, being an array with fixed length. 
+The Interface Definition may define the length of the length field. Length of 0, 8, 16, and 32bit are allowed.
+
+If the length of the length field is set to 0 Bits, the number of elements in the array has to be fixed; thus, being an array with fixed length. 
     
 .. feat_req:: 🎯
     :id: feat_req_someip_255
@@ -1330,7 +1651,7 @@ The Interface Definition may define the length of the length field. Length of 0,
     :status: valid
     :collapse: True
   
-The layout of dynamic arrays is shown in Figure :need:`feat_req_someip_256` and :need:`feat_req_someip_258`.
+The layout of dynamic arrays is shown in Figure :need:`feat_req_someip_256` and Figure :need:`feat_req_someip_258`.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_256
@@ -1355,7 +1676,29 @@ Figure: One-dimensional array (dynamic length)
     :status: valid
     :collapse: True
   
-In the one-dimensional array one length field is used, which carries the number of bytes used for the array. The number of elements can be easily calculated by dividing by the size of an element.
+In the one-dimensional array one length field is used, which carries the number of bytes used for the array.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_674
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The number of static length elements can be easily calculated by dividing by the size of an element.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_673
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+In the case of dynamical length elements the number of elements cannot be calculated but the elements must be parsed sequentially.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_258
@@ -1394,6 +1737,17 @@ In multidimensional arrays multiple length fields are needed.
 The interface definition should define the maximal length of each dimension in order to allow for static buffer size allocation.
     
 .. feat_req:: ⓘ 
+    :id: feat_req_someip_696
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+:need:`feat_req_someip_260` even supports that different length columns and different length rows in the same dimension. See k_1 and k_2 in Figure :need:`feat_req_someip_258`.
+    
+.. feat_req:: ⓘ 
     :id: feat_req_someip_261
     :reqtype: Information
     :security: TBD
@@ -1402,7 +1756,89 @@ The interface definition should define the maximal length of each dimension in o
     :status: valid
     :collapse: True
   
-When measuring the length in Bytes, complex multi-dimensional arrays can be skipped over in deserialization.
+Rationale: When measuring the length in Bytes, complex multi-dimensional arrays can be skipped over in deserialization.
+    
+.. heading:: Enumeration
+    :id: feat_req_someip_650
+    :layout: focus
+    :style: clean
+
+Enumeration
+=========== 
+
+.. feat_req:: 🎯
+    :id: feat_req_someip_651
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The interface definition might specify an enumeration based on unsigned integer datatypes (uint8, uint16, uint32, uint64).
+    
+.. heading:: Bitfield
+    :id: feat_req_someip_688
+    :layout: focus
+    :style: clean
+
+Bitfield
+======== 
+
+.. feat_req:: 🎯
+    :id: feat_req_someip_689
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Bitfields shall be transported as basic datatypes uint8/uint16/uint32.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_690
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The interface definition shall be able to define the name of each bit.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_691
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The interface definition shall be able to define the names of the values a bit can be set to.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_692
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Each SOME/IP implementation may choose to de/serialize a bitfield or hand up the uint8/uint16/uint32 to the application.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_693
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+A SOME/IP implementation may allow turning the de/serialization of a bitfield on or off.
     
 .. heading:: Union / Variant
     :id: feat_req_someip_262
@@ -1468,7 +1904,7 @@ The length of the length field shall be defined by the Interface Specification a
     :status: valid
     :collapse: True
   
-An length field of 0 Bit means that no length field will be written to the PDU.
+An length of the length field of 0 Bit means that no length field will be written to the PDU.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_572
@@ -1479,7 +1915,7 @@ An length field of 0 Bit means that no length field will be written to the PDU.
     :status: valid
     :collapse: True
   
-If the length field is 0 Bit, all types in the union shall be of the same length.
+If the length of the length field is 0 Bit, all types in the union shall be of the same length.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_583
@@ -1512,7 +1948,7 @@ If the Interface Specification does not specify the length of the length field f
     :status: valid
     :collapse: True
   
-The length field defines the size element and padding in bytes and does not include the size of the length field and type field.
+The length field defines the size of the element and padding in bytes and does not include the size of the length field and type field.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_564
@@ -1523,7 +1959,7 @@ The length field defines the size element and padding in bytes and does not incl
     :status: valid
     :collapse: True
   
-The length of the type field shall be defined by the Interface Specification and shall be 32, 16, or 8 bits.
+The length of the type field may be defined by the Interface Specification and may be 32, 16, or 8 bits.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_565
@@ -1545,7 +1981,7 @@ If the Interface Specification does not specify the length of the type field of 
     :status: valid
     :collapse: True
   
-The type field describes the type of the element. Possible values of the type field are defined by the interface specification for each union separately. The types are encoded as in the interface specification in ascending order starting with 1. The 0 is reserved for the NULL type – i.e. an empty union. The usage of NULL shall be allowed by the Interface Definition.
+The type field describes the type of the element. Possible values of the type field are defined by the interface specification for each union separately. The types are encoded as in the interface specification in ascending order starting with 1. The 0 is reserved for the NULL type – i.e. an empty union. The Interface Definition may allow or disallow the usage of NULL for a Union/Variant.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_274
@@ -1586,7 +2022,7 @@ Example:  Union of uint8/uint16 both padded to 32 bit
     :status: valid
     :collapse: True
   
-In this example a length of the length field is specified as 32 Bits. The union shall support a uint8 and a uint16 as elements. Both are padded to the 32 bit boundary (length=4).
+In this example a length of the length field is specified as 32 Bits. The union shall support a uint8 and a uint16 as elements. Both are padded to the 32 bit boundary (length=4 Bytes).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_278
@@ -1678,6 +2114,39 @@ Transport Protocol Bindings
   
 In order to transport SOME/IP messages of IP different transport protocols may be used. SOME/IP currently supports UDP and TCP. Their bindings are explained in the following sections, while Section :need:`feat_req_someip_450` discusses which transport protocol to choose.
     
+.. feat_req:: 🎯
+    :id: feat_req_someip_648
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If a server runs different instances of the same service, messages belonging to different service instances shall be mapped to the service instance by the transport protocol port on the server side.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_664
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The receiving SOME/IP implementation must be able to receive unaligned SOME/IP messages transported by UDP or TCP.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_663
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Rationale for :need:`feat_req_someip_664`: When transporting multiple SOME/IP payloads in UDP or TCP the alignment of the payloads can be only guaranteed, if the length of every payloads is a multiple of the alignment size (e.g. 32 bits).
+    
 .. heading:: UDP Binding
     :id: feat_req_someip_317
     :layout: focus
@@ -1749,7 +2218,7 @@ TCP Binding
     :status: valid
     :collapse: True
   
-The TCP binding of SOME/IP is heavily based on the UDP binding. In contrast to the UDP binding, the TCP binding allows much bigger SOME/IP messages and the transport of SOME/IP messages after each other (pipelining).
+The TCP binding of SOME/IP is heavily based on the UDP binding. In contrast to the UDP binding, the TCP binding allows much bigger SOME/IP messages and uses the robustness features of TCP (coping with loss, reorder, duplication, etc.).
     
 .. feat_req:: 🎯
     :id: feat_req_someip_585
@@ -1784,6 +2253,94 @@ In order to lower latency and reaction time, Nagle’s algorithm shall be turned
   
 When the TCP connection is lost, outstanding requests should be handled as timeouts. Since TCP handles reliability, additional means of reliability are not needed. Error handling is discussed in detail in :need:`feat_req_someip_364`.
     
+.. feat_req:: 🎯
+    :id: feat_req_someip_644
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The client and server shall use a single TCP connection for all methods, events, and notifications of a service instance. When having more than one instance of a service a TCP connection per services instance is needed.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_645
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The TCP connection shall be used for as many services as possible to minimize the number of TCP connections between the client and the server (basically only one connection per TCP port of server).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_646
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The TCP connection shall be opened by the client, when the first method call shall be transport or the client wants to receive the first notifications.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_647
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The client is responsible for reestablishing the TCP connection whenever it fails.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_678
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The TCP connection shall be closed by the client, when the TCP connection is not required anymore.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_679
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The TCP connection shall be closed by the client, when all Services using the TCP connections are not available anymore (stopped or timed out).
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_680
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The server shall not stop the TCP connection when stopping all services the TCP connection was used for but give the client enough time to process the control data to shutdown the TCP connection itself.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_681
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Rational for :need:`feat_req_someip_680`: When the server closes the TCP connection before the client recognized that the TCP is not needed anymore, the client will try to reestablish the TCP connection.
+    
 .. heading:: Allowing resync to TCP stream using Magic Cookies
     :id: feat_req_someip_619
     :layout: focus
@@ -1812,7 +2369,7 @@ In order to allow resynchronization to SOME/IP over TCP in testing and integrati
     :status: valid
     :collapse: True
   
-Before the first SOME/IP message transported in a TCP segment the SOME/IP Magic Cookie Message shall be included.
+Each TCP segment shall start with a SOME/IP Magic Cookie Message.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_592
@@ -1866,7 +2423,7 @@ The layout of the Magic Cookie Message is based on SOME/IP. The fields are set a
 * Length = 0x0000 0008
 * Client ID = 0xDEAD
 * Session ID = 0xBEEF
-* Protocol Version as specified above
+* Protocol Version as specified above (:need:`feat_req_someip_90`)
 * Interface Version = 0x01
 * Message Type = 0x01 (for Client to Server Communication) or 0x02 (for Server to Client Communication)
 * Return Code = 0x00
@@ -1905,6 +2462,17 @@ Multiple Service-Instances
 ========================== 
 
 .. feat_req:: 🎯
+    :id: feat_req_someip_636
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Service-Instances of the same Service are identified through different Instance IDs. Multiple Service-Instances may reside on different ECUs and also multiple Service-Instances of one or more Services may reside on one single ECU.
+    
+.. feat_req:: 🎯
     :id: feat_req_someip_445
     :reqtype: Requirement
     :security: TBD
@@ -1913,7 +2481,18 @@ Multiple Service-Instances
     :status: valid
     :collapse: True
   
-While different services can share the same port number, multiple Service Instances on a single ECU shall listen on different ports per instance. Instances on different ECUs are identified through different Instance IDs. Those are used for Service Discovery but are not contained in the SOME/IP header.
+While different Services can share the same port number of the transport layer protocol used, multiple Service-Instances of the same service on one single ECU shall listen on different ports per Service-Instance.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_637
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Rational for :need:`feat_req_someip_445`: While Instance IDs are used for Service Discovery, they are not contained in the SOME/IP header.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_446
@@ -1943,7 +2522,7 @@ Request/Response Communication
     :status: valid
     :collapse: True
   
-One of the most common communication patterns is the request/response pattern. One party (in the following called the client) sends a request message, which is answered by another party (the server).
+One of the most common communication patterns is the request/response pattern. One communication partner (in the following called the client) sends a request message, which is answered by another communication partner (the server).
     
 .. feat_req:: 🎯
     :id: feat_req_someip_329
@@ -1956,11 +2535,11 @@ One of the most common communication patterns is the request/response pattern. O
 
 .. rst-class:: compact
   
-In the SOME/IP header the request message the client has to do the following:
+For the SOME/IP request message the client has to do the following for payload and header:
 
 * Construct the payload
 * Set the Message ID based on the method the client wants to call
-* Set the Length field to 8 bytes (for the second part of the SOME/IP header) + length of the serialized payload
+* Set the Length field to 8 bytes (for the part of the SOME/IP header after length field) + length of the serialized payload
 * Optionally set the Request ID to a unique number (shall be unique for client only)
 * Set the Protocol Version according :need:`feat_req_someip_89`.
 * Set the Interface Version according to the interface definition
@@ -2018,7 +2597,7 @@ Requests without response message are called Fire&Forget. The implementation is 
     :status: valid
     :collapse: True
   
-Fire&Forget messages do no return an error. Error handling and return codes shall be implemented by the application when needed.
+Fire&Forget messages shall not return an error. Error handling and return codes shall be implemented by the application when needed.
     
 .. heading:: Notification
     :id: feat_req_someip_351
@@ -2037,7 +2616,7 @@ Notification
     :status: valid
     :collapse: True
   
-Notifications describe a general Publish/Subscribe-Concept. Usually the server publishes a service to which a client subscribes. On certain events the server will send the client a notification, which could be for instance an updated value or an event that occurred.
+Notifications describe a general Publish/Subscribe-Concept. Usually the server publishes a service to which a client subscribes. On certain events the server will send the client a event, which could be for example an updated value or an event that occurred.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_353
@@ -2059,7 +2638,7 @@ SOME/IP is used only for transporting the updated value and not for the publishi
     :status: valid
     :collapse: True
   
-When more than one subscribed client on the same ECU exists, the system should handle the replication of notifications in order to save transmissions on the communication medium. This is especially important, when notifications are transported using multicast messages.
+When more than one subscribed client on the same ECU exists, the system shall handle the replication of notifications in order to save transmissions on the communication medium. This is especially important, when notifications are transported using multicast messages.
     
 .. heading:: Strategy for sending notifications
     :id: feat_req_someip_355
@@ -2077,13 +2656,46 @@ Strategy for sending notifications
     :satisfies: 
     :status: valid
     :collapse: True
+  
+For different use cases different strategies for sending notifications are possible and shall be defined in the service interface. The following examples are common:
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_357
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
 
 .. rst-class:: compact
   
-For different use cases different strategies for sending notifications are possible and shall defined in the service interface. The following examples are common:
+* Cyclic update – send an updated value in a fixed interval (e.g. every 300 ms)
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_358
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
 
-* Cyclic update – send an updated value in a fixed interval (e.g. every 10 ms)
+.. rst-class:: compact
+  
 * Update on change – send an update as soon as a “value” changes (e.g. door open)
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someip_359
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
 * Epsilon change – only send an update when the difference to the last value is greater than a certain epsilon. This concept may be adaptive, i.e. the prediction is based on a history; thus, only when the difference between prediction and current value is greater than epsilon an update is transmitted.
     
 .. heading:: Publish/Subscribe Handling
@@ -2133,7 +2745,7 @@ A field shall be a combination of an optional getter, an optional setter, and an
     :status: valid
     :collapse: True
   
-A field shall have at least 1 getter or 1 setter or 1 notification event.
+A field without a setter and without a getter and without a notifier shall not exist.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_633
@@ -2166,7 +2778,7 @@ The setter of a field shall be a request/response call that has the desired valu
     :status: valid
     :collapse: True
   
-The notifier shall be an event that transports the value of a field on change and follows the rules for events.
+The notifier shall send an event message that transports the value of a field on change and follows the rules for events.
     
 .. heading:: Error Handling
     :id: feat_req_someip_364
@@ -2204,7 +2816,7 @@ Transporting Application Error Codes and Exceptions
     :status: valid
     :collapse: True
   
-For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see (ffeat_req_someip_369)). For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
+For the error handling two different mechanisms are supported. All messages have a return code field to carry the return code. However, only responses (Message Types 0x80 and 0x81) use this field to carry a return code to the request (Message Type 0x00) they answer. All other messages set this field to 0x00 (see Section 2.3.7). For more detailed errors the layout of the Error Message (Message Type 0x81) can carry specific fields for error handling, e.g. an Exception String. Error Messages are sent instead of Response Messages.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_368
@@ -2235,6 +2847,28 @@ Return Code
     :collapse: True
   
 The system shall not return an error message for events/notifications.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_654
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+The system shall not return an error message for fire&forget methods.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_655
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+For request/response methods the error message shall copy over the fields of the SOME/IP header (i.e. Message ID, Request ID, Protocol Version, and Interface Version) but not the payload. In addition Message Type and Return Code have to be set to the appropriate values.
     
 .. feat_req:: 🎯
     :id: feat_req_someip_371
@@ -2286,7 +2920,7 @@ The following Return Codes are currently defined and shall be implemented as des
         - Interface version mismatch
       * - 0x09
         - E_MALFORMED_MESSAGE
-        - Deserialization error (e.g. length or type incorrect).
+        - Deserialization error, so that payload cannot be deserialized.
       * - | 0x0a
           | -
           | 0x1f
@@ -2392,46 +3026,13 @@ Communication Errors and Handling of Communication Errors
     :satisfies: 
     :status: valid
     :collapse: True
+
+.. rst-class:: compact
   
 When considering the transport of RPC messages different reliability semantics exist:
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_431
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
 
-.. rst-class:: compact
-  
 * Maybe – the message might reach the communication partner
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_432
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * At least once – the message reaches the communication partner at least once
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someip_433
-    :reqtype: Information
-    :security: TBD
-    :safety: TBD
-    :satisfies: 
-    :status: valid
-    :collapse: True
-
-.. rst-class:: compact
-  
 * Exactly once – the message reaches the communication partner exactly once
     
 .. feat_req:: ⓘ 
@@ -2465,7 +3066,7 @@ While different implementations may implement different approaches, SOME/IP curr
     :status: valid
     :collapse: True
   
-For “maybe” reliability, only a single timeout is needed, when using request/response communication in combination of UDP as transport protocol. Figure :need:`feat_req_someip_437` shows the state machines for “maybe” reliability. The client’s SOME/IP implementation has to wait for the response for a specified timeout. If the timeout occurs SOME/IP shall signal E_TIMEOUT to the client.
+For “maybe” reliability, only a single timeout is needed, when using request/response communication in combination of UDP as transport protocol. Figure :need:`feat_req_someip_437` shows the state machines for “maybe” reliability. The client’s SOME/IP implementation has to wait for the response for a specified timeout. If the timeout occurs SOME/IP shall signal E_TIMEOUT to the client application.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_437
@@ -2574,7 +3175,7 @@ Choosing the transport protocol
     :status: valid
     :collapse: True
   
-SOME/IP directly support the two most used transport protocols of the Internet: User Datagram Protocol (UDP) and Transmission Control Protocol (TCP). While UDP is a very lean transport protocol supporting only the most important features (multiplexing and error detecting using a checksum), TCP adds additional features for achieving a reliable communication. TCP can not only handle bit errors but also segmentation, loss, duplication, reordering, and network congestion; thus, TCP is the more powerful transport protocol.
+SOME/IP directly supports the two most used transport protocols of the Internet: User Datagram Protocol (UDP) and Transmission Control Protocol (TCP). While UDP is a very lean transport protocol supporting only the most important features (multiplexing and error detecting using a checksum), TCP adds additional features for achieving a reliable communication. TCP can not only handle bit errors but also segmentation, loss, duplication, reordering, and network congestion; thus, TCP is the more powerful transport protocol.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_452
@@ -2635,7 +3236,7 @@ Guideline:
 
 .. rst-class:: compact
   
-* Try using external transport (Network File System, APIX link, 1722, …) when more suited for the use case. Just transport file handle or similar. This gives the designer more freedom (caching etc.).
+* Try using external transport or transfer mechanisms (Network File System, APIX link, 1722, …) when more suited for the use case. Just transport file handle or similar. This gives the designer more freedom (caching etc.).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_457
@@ -2755,7 +3356,7 @@ With larger sets of data structures additional problems have to be resolved. Sin
 
 .. rst-class:: compact
   
-* Add an offset field to every message. The ID of an array element will be calculated by adding the offset to its position in the array. Keep in mind that the offset needs to be carefully been chosen. If for example every message can contain up to ten data structures (0-9), the offset could be chosen as 0, 10, 20, 30, and so on.
+* Add an offset field to every message. The ID of an array element will be calculated by adding the offset to its position in the array. Keep in mind that the offset needs to be carefully chosen. If for example every message can contain up to ten data structures (0-9), the offset could be chosen as 0, 10, 20, 30, and so on.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_471
@@ -2789,7 +3390,7 @@ Compatibility rules for Interface Design (informational)
     :status: valid
     :collapse: True
   
-As for all serialization formats migration towards a newer service interface is somewhat limited. Using a set of compatibility rules, SOME/IP allows for evolution of service interfaces. One can do the following additions and enhancements in a non-breaking way:
+As for all serialization formats migration towards a newer service interface is limited. Using a set of compatibility rules, SOME/IP allows for evolution of service interfaces. One can do the following additions and enhancements in a non-breaking way:
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_474
@@ -2893,7 +3494,7 @@ As for all serialization formats migration towards a newer service interface is 
 
 .. rst-class:: compact
   
-* If exception is unknown, “unknown exception” needs to thrown. The exception description string however can be copied over.
+* If exception is unknown, “unknown exception” needs to be thrown. The exception description string however can be used.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_482
@@ -2969,7 +3570,7 @@ As for all serialization formats migration towards a newer service interface is 
     :status: valid
     :collapse: True
   
-Not of all these changes can be introduced at the client or server side first. In some cases only the client or server can be changed first. For example, when sending an additional parameter with a newer implementation, the older implementation can only skip this parameter.
+Not all of these changes can be introduced at the client or server side first. In some cases only the client or server can be changed first. For example, when sending an additional parameter with a newer implementation, the older implementation can only skip this parameter.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_488
@@ -3017,7 +3618,7 @@ Some changes in the interface specification can be implemented in a non-breaking
 
 .. rst-class:: compact
   
-* Need to add default value first at receiver first and parameters need to be at end of list
+* Need to add default value at receiver first and parameters need to be at end of list
     
 .. feat_req:: ⓘ 
     :id: feat_req_someip_492
@@ -3130,7 +3731,7 @@ Currently not supported are the following changes:
 
 .. rst-class:: compact
   
-* Replace supertype by subtype (as in object oriented programming languages)
+* Replace supertype by subtype (as in object oriented programming languages with inheritance)
     
 .. heading:: Transporting CAN and FlexRay Frames
     :id: feat_req_someip_500
@@ -3173,7 +3774,7 @@ The full SOME/IP Header shall be used for transporting CAN/FlexRay.
     :status: valid
     :collapse: True
   
-The Message ID and Length are used to construct the needed internal PDUs but does not look at other fields. Therefore, one has to encode the CAN ID (11 or 29 bits) or the FlexRay ID (6+6+11 bits) into the Message ID field. The ID shall be aligned to the least significant bit of the Message ID and the unused bits shall be set to 0. An 11 bit CAN identifier would be therefore transported in the bit position 21 to 31.
+The Message ID and Length are used to construct the needed internal PDUs but does not look at other fields. Therefore, the CAN ID (11 or 29 bits) and/or the FlexRay ID (6+6+11 bits) have to be encoded into the Message ID field. The CAN ID shall be aligned to the least significant bit of the Message ID. An 11 bit CAN identifier would be therefore transported in the bit position 21 to 31. Refer also to :need:`feat_req_someip_620`
     
 .. feat_req:: 🎯
     :id: feat_req_someip_505
@@ -3217,8 +3818,18 @@ Client ID and Session ID shall be set to 0x0000.
     :status: valid
     :collapse: True
   
-Message Type, and Return Code shall be set to 0x00.
-
+Depending on the direction, the Message Type shall be set to 0x02 (service provider sends) or 0x00 (service provider receives). The Return Code shall be always set to 0x00.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someip_638
+    :reqtype: Requirement
+    :security: TBD
+    :safety: TBD
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+At least for 11 Bit CAN-IDs the layout of the Message ID shall be followed :need:`feat_req_someip_60` and :need:`feat_req_someip_67`. This means that the 16th bit from the left shall be set to 0 or 1 according to the Message ID (0x00 or 0x02).
     
 .. feat_req:: 🎯
     :id: feat_req_someip_568
@@ -3253,10 +3864,10 @@ Interface Version shall be set according to interface specifications.
 
 .. rst-class:: compact
   
-If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Service ID and Message ID may be used (example):
+If SOME/IP is used for transporting CAN messages with 11 Bits of CAN-ID, the following layout of the Message ID may be used (example):
 
 * Service ID shall be set to a value defined by the system department, e.g. 0x1234
-* Message ID is split into 5 Bits specifying the CAN bus, and 11 Bits for the CAN-ID.
+* Event ID is split into 4 Bits specifying the CAN bus, and 11 Bits for the CAN-ID.
 
 This is just an example and the actual layout shall be specified by the System Department.
     
