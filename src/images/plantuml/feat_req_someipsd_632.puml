@@ -1,29 +1,46 @@
 @startuml
 hide footbox
-
-participant Server
-participant Client
-
+Server -> Client ++: OfferService()
+note left
+    No registrations
+end note
+activate Server
+deactivate Server
 Client -> Server: SubscribeEventgroup()
-activate Client
+deactivate Client
+
 activate Server
 Server -> Server: updateRegistration()
 activate Server
 deactivate Server
-Server -> Client: SubscribeEventgroupAck() + Events()
+Server -> Client ++: SubscribeEventgroupAck()
+deactivate Client
+Server -> Client ++: Events()
 deactivate Server
-Client -> Client: linkDown()
+Client -> Client ++: linkDown()
+
+Client -> Client: deleteEntries()
 activate Client
 deactivate Client
-Client -> Client: linkUp()
-activate Client
 deactivate Client
-Client -> Server: SubscribeEventgroup()
+Client -> Client ++--: linkUp()
+deactivate Client
+Server -> Client ++: OfferService()
+activate Server
+deactivate Server
+Client -> Server: SubscribeEventgroup()[Session ID=1, Reboot=1]
+note left
+    Client Reboot 
+    Detected!
+end note
+deactivate Client
 activate Server
 Server -> Server: updateRegistration()
 activate Server
 deactivate Server
-Server -> Client: SubscribeEventgroupAck() + Events()
+Server -> Client ++: SubscribeEventgroupAck()
+deactivate Client
+Server -> Client ++: Events()
 deactivate Server
 deactivate Client
 @enduml

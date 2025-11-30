@@ -1,0 +1,58 @@
+@startuml
+!pragma teoz true
+scale 400 width
+scale 400 height
+hide footbox
+
+participant Server_SOMEIP_SD
+participant Server_SOMEIP
+participant Server_TCPIP
+
+participant Client_TCPIP
+participant Client_SOMEIP
+participant Client_SOMEIP_SD
+
+activate Server_SOMEIP_SD
+activate Client_SOMEIP_SD
+Server_SOMEIP_SD -> Client_SOMEIP_SD : OfferService(Endpoint UDP: SU, Endpoint TCP: ST) [30490-->30490]
+deactivate Server_SOMEIP_SD
+deactivate Client_SOMEIP_SD
+
+activate Server_TCPIP
+activate Client_TCPIP
+note right of Client_SOMEIP_SD
+  Open TCP connection
+  before SubscribeEventgroup
+  (if reliable events exist).
+  Dynamical port is called CT.
+end note
+Client_TCPIP -> Server_TCPIP : TCP.SYN() [CT-->ST]
+Server_TCPIP -> Client_TCPIP : TCP.SYN/ACK() [ST-->CT]
+Client_TCPIP -> Server_TCPIP : TCP.ACK() [CT-->ST]
+deactivate Server_TCPIP
+deactivate Client_TCPIP
+
+
+activate Server_SOMEIP_SD
+activate Client_SOMEIP_SD
+note right of Client_SOMEIP_SD
+  Client subscribes.
+end note
+Client_SOMEIP_SD -> Server_SOMEIP_SD : SubscribeEventgroup(Endpoint UDP: CU, Endpoint TCP: CT) [30490-->30490]
+Server_SOMEIP_SD -> Client_SOMEIP_SD : SubscribeEventgroupAck(Multicast UDP: MU) [30490-->30490]()
+deactivate Server_SOMEIP_SD
+deactivate Client_SOMEIP_SD
+
+activate Server_SOMEIP
+activate Client_SOMEIP
+Server_SOMEIP -> Client_SOMEIP : UDP Initial Events [SU-->CU]
+Server_SOMEIP -> Client_SOMEIP : TCP Initial Events [ST-->CT]
+Client_SOMEIP -> Server_SOMEIP : Request [CU-->SU]
+Server_SOMEIP --> Client_SOMEIP : Response [SU-->CU]
+Server_SOMEIP -> Client_SOMEIP : UDP Event [SU-->CU]
+Server_SOMEIP -> Client_SOMEIP : TCP Event [ST-->CT]
+Server_SOMEIP -> Client_SOMEIP : Multicast Event [SU-->MU]
+deactivate Server_SOMEIP
+deactivate Client_SOMEIP
+
+@enduml

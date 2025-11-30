@@ -45,7 +45,7 @@ In this chapter an overview of reserved and special identifiers are shown.
     :status: valid
     :collapse: True
   
-Reserved and special Service-IDs:
+Reserved and special Service-IDs.
     
 
 
@@ -59,6 +59,10 @@ Reserved and special Service-IDs:
         - Description
       * - 0x0000 
         - Reserved
+      * - 0x0101 
+        - Enhanced Testability Service (see OPEN Alliance, TC8)
+      * - 0x433F 
+        - Reserved for ISO17215 based cameras.
       * - 0xFFFE 
         - Reserved for announcing non-SOME/IP service instances.
       * - 0xFFFF 
@@ -73,7 +77,7 @@ Reserved and special Service-IDs:
     :status: valid
     :collapse: True
   
-Reserved and special Instance-IDs:
+Reserved and special Instance-IDs.
     
 
 
@@ -98,7 +102,7 @@ Reserved and special Instance-IDs:
     :status: valid
     :collapse: True
   
-Reserved and special Method-IDs/Event-IDs:
+Reserved and special Method-IDs/Event-IDs.
     
 
 
@@ -127,7 +131,7 @@ Reserved and special Method-IDs/Event-IDs:
     :status: valid
     :collapse: True
   
-Reserved and special Eventgroup-IDs:
+Reserved and special Eventgroup-IDs.
     
 
 
@@ -152,7 +156,7 @@ Reserved and special Eventgroup-IDs:
     :status: valid
     :collapse: True
   
-Method-IDs and Event-IDs of Service 0xFFFF:
+Method-IDs and Event-IDs of Service 0xFFFF.
     
 
 
@@ -181,6 +185,17 @@ Method-IDs and Event-IDs of Service 0xFFFF:
   
 Besides "otherserv" many other names can be used in the configuration option. The following list gives an overview of the reserved names:
     
+.. feat_req:: ⓘ 
+    :id: feat_req_someipids_875
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Other reserved names.
+    
 
 
     .. list-table::
@@ -190,8 +205,6 @@ Besides "otherserv" many other names can be used in the configuration option. Th
 
       * - Name 
         - Description
-      * - diagaddr 
-        - Used to transport the diagnostics address.
       * - hostname 
         - Used to name a host or ECU.
       * - instancename 

@@ -5,36 +5,40 @@ hide footbox
 participant Server
 participant Client
 
-Server -> Client ++: PublishEventgroup()
 activate Server
+Server -> Client ++: OfferService()
 deactivate Server
-Client -> Server: SubscribeEventgroup()
-activate Server
-Server -> Server: updateRegistration()
-activate Server
-deactivate Server
-Server -> Client: SubscribeEventgroupAck() + Events()
-deactivate Server
+note left
+    No registration
+end note
+Client -> Server ++: SubscribeEventgroup()
 deactivate Client
-
-Server -> Server++: linkDown()
-activate Server
+Server -> Server ++: updateRegistration()
 deactivate Server
-Server -> Server: linkUp()
-activate Server
-deactivate Server
-Server -> Client: SubscribeEventgroupAck() + Events()
-activate Client
-Client -> Server: SubscribeEventgroup()
+Server -> Client ++: SubscribeEventgroupAck()
 deactivate Client
-
-Server -> Server: updateRegistration()
-activate Server
+Server -> Client ++: Events()
+deactivate Client
+Server -> Server ++: linkDown()
+Server -> Server ++: deleteRegistrations()
 deactivate Server
-Server -> Client: SubscribeEventgroupAck() + Events()
-activate Client
+deactivate Server
+Server -> Server ++: linkUp()
+deactivate Server
+Server -> Client ++: OfferService() [Session ID=1, Reboot=1]
+Client -> Server ++: SubscribeEventgroup()
+note right
+    Reboot 
+    detected!
+end note
 deactivate Client
 deactivate Server
 
+Server -> Server ++: updateRegistration()
+deactivate Server
+Server -> Client ++: SubscribeEventgroupAck()
+deactivate Client
+Server -> Client ++: Events()
+deactivate Client
 
 @enduml
