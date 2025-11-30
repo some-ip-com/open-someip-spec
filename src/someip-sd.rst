@@ -127,7 +127,7 @@ Releasing a service instance shall mean to send a SOME/IP-SD message to the ECU 
     :status: valid
     :collapse: True
   
-The configuration and required data of a service instance the local ECU offers, shall be called Server-Service-Instance-Entry at the ECU offering this service (Server).
+The configuration and required data of a service instance the local ECU offers, shall be called Server Service Instance Entry at the ECU offering this service (Server).
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_8
@@ -378,6 +378,17 @@ The Service Discovery shall be informed of link-up and link-down events of logic
   
 For ECUs with included Ethernet Switch, the link-up and link-down shall be based solely on external interfaces. If at least one external interface has a link, this shall be considered as link-up. If exactly all external links do not have a link, this is considered as link-down.
     
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1221
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+If an Ethernet port cannot be used after link up due to Security functions (e.g. 802.1X) or similar, this port shall not be considered as linked-up until communication is possible.
+    
 .. heading:: SOME/IP-SD Message Format
     :id: feat_req_someipsd_24
     :layout: focus
@@ -438,7 +449,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall use the Service ID (16 Bits) of 0xFFFF.
+* Service Discovery messages shall use the Service ID (16 bits) of 0xFFFF.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_29
@@ -451,7 +462,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall use the Method ID (16 Bits) of 0x8100.
+* Service Discovery messages shall use the Method ID (16 bits) of 0x8100.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_207
@@ -477,7 +488,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Client ID (16 Bits) and handle it based on SOME/IP rules.
+* Service Discovery messages shall have a Client ID (16 bits) and handle it based on SOME/IP rules.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1138
@@ -516,7 +527,7 @@ Service Discovery Messages shall start with a SOME/IP header as depicted Figure 
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Session ID (16 Bits) and handle it based on the SOME/IP requirements.
+* Service Discovery messages shall have a Session ID (16 bits) and handle it based on the SOME/IP requirements.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_33
@@ -583,7 +594,7 @@ Note: This means that the first SD message sent out to the multicast address has
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have a Protocol Version (8 Bits) of 0x01.
+* Service Discovery messages shall have a Protocol Version (8 bits) of 0x01.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_30
@@ -596,7 +607,7 @@ Note: This means that the first SD message sent out to the multicast address has
 
 .. rst-class:: compact
   
-* Service Discovery messages shall have an Interface Version (8 Bits) of 0x01.
+* Service Discovery messages shall have an Interface Version (8 bits) of 0x01.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_36
@@ -666,7 +677,7 @@ After the SOME/IP header the SOME/IP-SD Header shall follow as depicted in Figur
     :status: valid
     :collapse: True
   
-The SOME/IP-SD Header shall start out with an 8 Bit field called Flags.
+The SOME/IP-SD Header shall start out with an 8 bit field called Flags.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_40
@@ -918,7 +929,7 @@ Two types of entries exist: A Service Entry Type for Services and an Eventgroup 
     :status: valid
     :collapse: True
   
-A Service Entry Type shall be 16 Bytes of size and include the following fields in this order as shown in Figure :need:`feat_req_someipsd_208`:
+A Service Entry Type shall be 16 bytes of size and include the following fields in this order as shown in Figure :need:`feat_req_someipsd_208`:
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_49
@@ -1073,7 +1084,7 @@ Figure: SOME/IP-SD Service Entry Type
     :status: valid
     :collapse: True
   
-An Eventgroup Entry shall be 16 Bytes of size and include the following fields in this order as shown in Figure :need:`feat_req_someipsd_209`:
+An Eventgroup Entry shall be 16 bytes of size and include the following fields in this order as shown in Figure :need:`feat_req_someipsd_209`:
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_110
@@ -1312,7 +1323,7 @@ In order to identify the option type every option shall start with:
 
 .. rst-class:: compact
   
-* Length [uint16]: Specifies the length of the option in Bytes.
+* Length [uint16]: Specifies the length of the option in bytes.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_124
@@ -1848,7 +1859,7 @@ The Format of the IPv4 Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv4-Address [uint32]: Shall transport the IP-Address as four Bytes.
+* IPv4-Address [uint32]: Shall transport the IP-Address as four bytes.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_135
@@ -2051,7 +2062,7 @@ The Format of the IPv6 Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv6-Address [uint128]: Shall transport the IP-Address as 16 Bytes.
+* IPv6-Address [uint128]: Shall transport the IP-Address as 16 bytes.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_169
@@ -2263,7 +2274,7 @@ The Format of the IPv4 Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv4-Address [uint32]: Shall transport the multicast IP-Address as four Bytes.
+* IPv4-Address [uint32]: Shall transport the multicast IP-Address as four bytes.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_730
@@ -2453,7 +2464,7 @@ The Format of the IPv6 Multicast Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv6-Address [uint128]: Shall transport the multicast IP-Address as 16 Bytes.
+* IPv6-Address [uint128]: Shall transport the multicast IP-Address as 16 bytes.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_744
@@ -2700,7 +2711,7 @@ The Format of the IPv4 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv4-Address [uint32]: Shall transport the unicast IP-Address of SOME/IP-SD as four Bytes.
+* IPv4-Address [uint32]: Shall transport the unicast IP-Address of SOME/IP-SD as four bytes.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_1092
@@ -2937,7 +2948,7 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 
 .. rst-class:: compact
   
-* IPv6-Address [uint128]: Shall transport the unicast IP-Address of SOME/IP-SD as 16 Bytes.
+* IPv6-Address [uint128]: Shall transport the unicast IP-Address of SOME/IP-SD as 16 bytes.
     
 .. feat_req:: ⓘ 
     :id: feat_req_someipsd_1108
@@ -2998,7 +3009,7 @@ Figure :need:`feat_req_someipsd_1112` shows the format of the IPv6 SD Endpoint O
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD IPv6 SD Endpoint Option
+Figure: SOME/IP-SD IPv6 SD Endpoint Option Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_1112.json
 
@@ -3213,7 +3224,6 @@ If an entry references two or more options that are in conflict, this entry shal
     :collapse: True
   
 Example: An Offer Service entry referencing two Endpoint Options stating two different UDP Ports shall be ignored.
-
 Example: A Subscribe Eventgroup entry referencing two Endpoint Options stating two different UDP Ports shall be answered with a Subscribe Eventgroup Nack.
     
 .. feat_req:: 🎯
@@ -3350,7 +3360,7 @@ Find Service Entry
     :status: valid
     :collapse: True
   
-The Find Service entry type shall be used for finding service instances and shall only be sent if the current state of a service is unknown (no current Service Offer was received and is still valid).
+The Find Service entry type shall be used for finding service instances and shall only be sent, if the current state of a service is unknown (no current Service Offer was received and is still valid).
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_239
@@ -3400,7 +3410,20 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* Instance ID shall be set to 0xFFFF, if all service instances shall be returned. It shall be set to the Instance ID of a specific service instance, if just a single service instance shall be returned.
+* Instance ID shall be set to 0xFFFF (=ANY), if all service instances shall be returned. It shall be set to the Instance ID of a specific service instance, if just a single service instance shall be returned.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1223
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* If an ECU uses Instance ID 0xFFFF (=ANY) for a Find Entry to find previously unknown number of Service Instances, it has to make sure that it sends out at least one Find entry, since it cannot determine based on the number of Offer Entries that it has already received all Offer Entries relevant.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_244
@@ -3413,7 +3436,7 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* Major Version shall be set to 0xFF; this means that services with any version shall be returned. If set to value different than 0xFF, services with this specific major version shall be returned only.
+* Major Version shall be set to the Major Version of the Service Interface to be found. The Major Version shall be set to 0xFF (=ANY), if Services of all Major Versions are to be found.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_245
@@ -3426,11 +3449,50 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* Minor Version shall be set to 0xFFFF FFFF; this means that services with any version shall be returned. If set to a value different to 0xFFFF FFFF, services with this specific minor version shall be returned only.
+* Minor Version shall be set to 0xFFFF FFFF (=ANY); this means that services with any version shall be returned.
     
 .. feat_req:: 🎯
+    :id: feat_req_someipsd_1218
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* If only a Service with a specific minor version needs to be found, the Minor Version shall be set to this specific value.
+    
+.. feat_req:: ⓘ 
+    :id: feat_req_someipsd_1224
+    :reqtype: Information
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* Setting the Minor Version to 0xFFFF FFFF (=ANY) is the common behavior for Find Service entries.
+    
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_1222
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+* For regular SOME/IP-SD (i.e. without central registry or similar) any Find Service entry will be answered instantaneously. So all TTL values > 0 are equivalent.
+    
+.. feat_req:: ⓘ 
     :id: feat_req_someipsd_246
-    :reqtype: Requirement
+    :reqtype: Information
     :security: NO
     :safety: QM
     :satisfies: 
@@ -3439,11 +3501,11 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* TTL shall be set to the lifetime of the Find Service entry. After this lifetime the Find Service entry shall be considered not existing.
+* TTL shall be set to the lifetime of the Find Service entry. After this lifetime the Find Service entry shall be considered not existing. (Service Registry only).
     
-.. feat_req:: 🎯
+.. feat_req:: ⓘ 
     :id: feat_req_someipsd_264
-    :reqtype: Requirement
+    :reqtype: Information
     :security: NO
     :safety: QM
     :satisfies: 
@@ -3452,11 +3514,11 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* If set to 0xFFFFFF, the Find Service entry shall be considered valid until the next reboot.
+* If set to 0xFFFFFF, the Find Service entry shall be considered valid until the next reboot. (Service registry only).
     
-.. feat_req:: 🎯
+.. feat_req:: ⓘ 
     :id: feat_req_someipsd_265
-    :reqtype: Requirement
+    :reqtype: Information
     :security: NO
     :safety: QM
     :satisfies: 
@@ -3465,7 +3527,7 @@ Find Service entries shall set the entry fields in the following way:
 
 .. rst-class:: compact
   
-* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
+* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry. (Service registry only).
     
 .. heading:: Offer Service Entry
     :id: feat_req_someipsd_221
@@ -3621,7 +3683,7 @@ Offer Service entries shall always reference at least an IPv4 or IPv6 Endpoint O
     :status: valid
     :collapse: True
   
-For each Transport Layer Protocol needed for the service (i.e. UDP and/or TCP) an IPv4 Endpoint option shall be added if IPv4 is supported.
+For each Transport Layer Protocol needed for the service (i.e. UDP and/or TCP) an IPv4 Endpoint option shall be added, if IPv4 is supported.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_757
@@ -3632,7 +3694,7 @@ For each Transport Layer Protocol needed for the service (i.e. UDP and/or TCP) a
     :status: valid
     :collapse: True
   
-For each Transport Layer Protocol needed for the service (i.e. UDP and/or TCP) an IPv6 Endpoint option shall be added if IPv6 is supported.
+For each Transport Layer Protocol needed for the service (i.e. UDP and/or TCP) an IPv6 Endpoint option shall be added, if IPv6 is supported.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_858
@@ -4161,7 +4223,6 @@ Note: Checking the TCP connection may involve a TCP Keep Alive or a SOME/IP Magi
 Rationale for :need:`feat_req_someipsd_869`:
 
 The server might have lost the TCP connection and the client has not.
-
 Checking the TCP connection might include the following:
 
 * Checking whether data is received for e.g. other Eventgroups.
@@ -4718,7 +4779,7 @@ In this section the state machines of the client and server are shown.
     :status: valid
     :collapse: True
   
-SOME/IP Service State Machine Server
+Figure: SOME/IP Service State Machine Server
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_629.py
 
@@ -4732,7 +4793,7 @@ SOME/IP Service State Machine Server
     :status: valid
     :collapse: True
   
-SOME/IP Service State Machine Client
+Figure: SOME/IP Service State Machine Client
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
 
@@ -4746,6 +4807,17 @@ Error Handling
 ============== 
 
 .. feat_req:: 🎯
+    :id: feat_req_someipsd_1220
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+Error checking of SOME/IP-SD messages shall first check the SOME/IP header as outlined earlier :need:`feat_req_someip_717`. SOME/IP-SD messages are treated as events in this regard.
+    
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1164
     :reqtype: Requirement
     :security: NO
@@ -4756,21 +4828,21 @@ Error Handling
 
 .. rst-class:: compact
   
-Figure :need:`feat_req_someipsd_1163` shows a simplified for the error handling of incoming SOME/IP-SD messages.
+Figure :need:`feat_req_someipsd_1163` shows a simplified illustration of the error handling of incoming SOME/IP-SD messages.
 
 The following steps are taken:
 
 * Check that at least enough bytes for an empty SOME/IP-SD message are present
 * Check that enough bytes are present for the entries and options array
 * For each entry that can be parsed:
-* Check if the Service ID is known
-* Check if the Instance ID of this Service ID is known
-* Check if the Major Version of this Service Instance is known
-* Check if the Eventgroup ID of the Service Instance with Major Version is known (only applicable for eventgroup entries)
+* Check if the Service ID of the entry is known
+* Check if the Instance ID of this entry is known for this Service
+* Check if the Major Version of this entry is known for this Service
+* Check if the Eventgroup ID of the entry is known for this Service (only applicable for eventgroup entries)
 * Check if the referenced Options exist in the options array and are syntactically ok
 * Check if the TCP connection is already present (only applicable, if TCP is configured for Eventgroup and Subscribe Eventgroup entry was received)
 * Check if enough resources are left (e.g. Socket Connections)
-* If any of these check fails, you need to:
+* If any of these checks fail, you need to:
 * Answer with a Subscribe Eventgroup NACK, if the original entry was a Subscribe Eventgroup entry :need:`feat_req_someipsd_1137`.
 * Ignore, if the original entry was not a Subscribe Eventgroup entry
 
@@ -4823,7 +4895,7 @@ For Non-SOME/IP protocols a special Service ID shall be used and further informa
 
 * Service ID shall be set to 0xFFFE (reserved)
 * Instance ID shall be used as described for SOME/IP services and eventgroups.
-* The Configuration Option shall be added and shall contain at least an entry with key "otherserv" and a configurable non-empty value that is determined by the OEM.
+* The Configuration Option shall be added and shall contain at least an entry with key "otherserv" and a configurable non-empty value.
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_502
@@ -4859,6 +4931,7 @@ For Find Service/Offer Service/Request Service entries the otherserv-string shal
 Example for valid otherserv-string: "otherserv=internaldiag".
 
 Example for an invalid otherserv-string: "otherserv".
+
 Example for an invalid otherserv-string: "otherserv=".
     
 .. feat_req:: 🎯
@@ -4870,7 +4943,7 @@ Example for an invalid otherserv-string: "otherserv=".
     :status: valid
     :collapse: True
   
-Figure: SOME/IP-SD Example PDU for Non-SOME/IP-SD
+Figure: SOME/IP-SD example PDU for Non-SOME/IP-SD
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
 
@@ -5027,7 +5100,7 @@ See :need:`feat_req_someipsd_1166` and :need:`feat_req_someipsd_1167`.
     :status: valid
     :collapse: True
   
-Publish/Subscribe with link loss at client (figure ignoring timings)
+Figure: Publish/Subscribe with link loss at client (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_632.puml
 
@@ -5063,7 +5136,7 @@ A client shall deregister from a server by sending a SOME/IP-SD Subscribe Eventg
     :status: valid
     :collapse: True
   
-Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
+Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_634.puml
 
@@ -5112,7 +5185,7 @@ If the Ethernet link status of the server becomes up again, it shall trigger a S
     :status: valid
     :collapse: True
   
-Publish/Subscribe with link loss at server (figure ignoring timings)
+Figure: Publish/Subscribe with link loss at server (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_633.puml
 
@@ -5311,7 +5384,7 @@ Note: This means the Server can optimize by sending the initial events only once
     :status: valid
     :collapse: True
   
-Publish/Subscribe State Diagram (server behavior for unicast eventgroups).
+Figure: Publish/Subscribe State Diagram (server behavior for unicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_625.py
 
@@ -5325,7 +5398,7 @@ Publish/Subscribe State Diagram (server behavior for unicast eventgroups).
     :status: valid
     :collapse: True
   
-Publish/Subscribe State Diagram (server behavior for multicast eventgroups).
+Figure: Publish/Subscribe State Diagram (server behavior for multicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_626.py
 
@@ -5339,7 +5412,7 @@ Publish/Subscribe State Diagram (server behavior for multicast eventgroups).
     :status: valid
     :collapse: True
   
-Publish/Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups).
+Figure: Publish/Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_823.py
 
@@ -5353,7 +5426,7 @@ Publish/Subscribe State Diagram (server behavior for adaptive unicast/multicast 
     :status: valid
     :collapse: True
   
-Publish/Subscribe State Diagram (overall behavior).
+Figure: Publish/Subscribe State Diagram (overall behavior).
 
 .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_442.py
 
@@ -5957,9 +6030,9 @@ The Client and Server shall implement the "Endpoint Handling for Service and Eve
 
 * Adding 1 Endpoint Option UDP to an Offer Services if UDP is needed.
 * Adding 1 Endpoint Option TCP to an Offer Service if TCP is needed.
-* Adding 1 Endpoint Option UDP to Subscribe Eventgroup if events over UDP are required.
-* Adding 1 Endpoint Option TCP to Subscribe Eventgroup if events over TCP are required.
-* Adding 1 Multicast Option UDP to Subscribe Eventgroup Ack if multicast events are required.
+* Adding 1 Endpoint Option UDP to Subscribe Eventgroup, if events over UDP are required.
+* Adding 1 Endpoint Option TCP to Subscribe Eventgroup, if events over TCP are required.
+* Adding 1 Multicast Option UDP to Subscribe Eventgroup Ack, if multicast events are required.
 * Understanding and acting according to the Endpoint and Multicast Options transported as described above.
 * Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these Endpoint and Multicast Options.
 * Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address and Port number in the outer layers.
@@ -6019,7 +6092,7 @@ Allowed SOME/IP-SD Option types in relation to Entry types.
         - 0-1 
         - 0-1
       * - **StopSubscribeEventgroup** 
-        - 1-2 
+        - 0-2 
         - 0 
         - 0-1 
         - 0-1

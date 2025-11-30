@@ -2,398 +2,371 @@
 import drawsvg as draw
 
 def build_drawing():
-    d = draw.Drawing(513, 1132, origin=(-392, -567), viewBox='-392 -567 513 1132')
-    d.append(draw.Rectangle(-392, -567, 513, 1132, fill='white', stroke='none'))
+    d = draw.Drawing(553, 1243, origin=(-373, -538), viewBox='-373 -538 553 1243')
+    d.append(draw.Rectangle(-373, -538, 553, 1243, fill='white', stroke='none'))
 
-    _path = draw.Path('M -306.85 -251.26 L -306.85 -231.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 -231.26 L -311.85 -241.26 L -301.85 -241.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _diamond = draw.Lines(-306.85, -231.26, -246.85, -201.26, -306.85, -171.26, -366.85, -201.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_1')
+    _diamond = draw.Lines(-136.85, -531.26, -76.85, -491.26, -136.85, -451.26, -196.85, -491.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_1')
     d.append(_diamond)
-    # Multiline label for diamond_label_1
-    _diamond_label = draw.Text(["Service ID", "ok?"], 8.00, -308.64, -204.83, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_1', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Received\nMessage Type =\nRequest?', 8.00, -138.65, -492.92, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_1', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _text = draw.Text("yes", 8.00, -292.85, 232.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
+    _rect = draw.Rectangle(-46.85, -451.26, 220.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_2', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Send message (Message Type: Response)', 8.00, 63.15, -431.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_2', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
 
-    _path = draw.Path('M -96.85 288.74 L -56.85 288.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -56.85 288.74 L -66.85 293.74 L -66.85 283.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
+    _path = draw.Path('M -136.85 -451.26 L -136.85 -431.26 L -46.85 -431.26', stroke='#000000', stroke_width=2.00, fill='none')
     d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -46.85 -431.26 L -55.51 -426.26 L -55.51 -436.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
 
-    _text = draw.Text("no", 8.00, -242.85, 72.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
+    _text = draw.Text('yes', 8.00, -122.85, -447.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
     d.append(_text)
 
-    _diamond = draw.Lines(-306.85, 418.74, -246.85, 458.74, -306.85, 498.74, -366.85, 458.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_2')
+    _text = draw.Text('no', 8.00, -72.85, -507.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _rect = draw.Rectangle(-366.85, -391.26, 140.00, 60.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_3', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Receive SOME/IP\nMessage and check\ndepending on socket\nreceived on', 8.00, -296.85, -361.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_3', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
+
+    _diamond = draw.Lines(-296.85, -311.26, -236.85, -271.26, -296.85, -231.26, -356.85, -271.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_4')
     d.append(_diamond)
-    # Multiline label for diamond_label_2
-    _diamond_label = draw.Text("Payload parseable?", 8.00, -308.65, 460.58, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_2', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Length field < 8\nor received msg does\nnot fit length', 8.00, -298.65, -272.92, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_4', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -306.85 328.74 L -306.85 418.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 418.74 L -311.85 408.74 L -301.85 408.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -246.85 -111.26 L -206.85 -111.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 -111.26 L -216.85 -106.26 L -216.85 -116.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _text = draw.Text("yes", 8.00, -242.85, 272.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _path = draw.Path('M -306.85 228.74 L -306.85 238.74 L -306.85 248.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 248.74 L -311.85 238.74 L -301.85 238.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _text = draw.Text("yes", 8.00, -292.85, 492.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=30.0000, data_box_h=20.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _path = draw.Path('M -246.85 188.74 L -206.85 188.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 188.74 L -216.85 193.74 L -216.85 183.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-206.85, 438.74, 210.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_3', rx=21.25, ry=21.25)
+    _rect = draw.Rectangle(-196.85, -291.26, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_5', rx=21.00, ry=21.00)
     d.append(_rect)
-    # Multiline label for rect_label_3
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = as received", "Return Code = E_MALFORMED_MESSAGE"], 8.00, -101.85, 456.24, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_3', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    _rect_label = draw.Text('Ignore SOME/IP Message', 8.00, -126.85, -271.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_5', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
     d.append(_rect_label)
 
-    _text = draw.Text("no", 8.00, -242.85, 172.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _text = draw.Text("no", 8.00, -242.85, -217.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _text = draw.Text("yes", 8.00, -142.85, 332.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _rect = draw.Rectangle(-206.85, -31.26, 220.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_4', rx=21.25, ry=21.25)
-    d.append(_rect)
-    # Multiline label for rect_label_4
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = as received", "Return Code = E_UNKNOWN_METHOD"], 8.00, -96.85, -13.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_4', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _text = draw.Text("yes", 8.00, -292.85, -67.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _text = draw.Text("yes", 8.00, -272.85, 372.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _rect = draw.Rectangle(-56.85, 268.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_5', rx=21.00, ry=21.00)
-    d.append(_rect)
-    # Multiline label for rect_label_5
-    _rect_label = draw.Text("Ignore SOME/IP Message", 8.00, 13.15, 292.24, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_5', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _text = draw.Text("yes", 8.00, -292.85, -247.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _diamond = draw.Lines(-306.85, 248.74, -246.85, 288.74, -306.85, 328.74, -366.85, 288.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_6')
+    _diamond = draw.Lines(-296.85, -211.26, -236.85, -171.26, -296.85, -131.26, -356.85, -171.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_6')
     d.append(_diamond)
-    # Multiline label for diamond_label_6
-    _diamond_label = draw.Text(["Message Type =", "Response or Error?"], 8.00, -308.65, 285.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_6', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Protocol Version\nsupported?', 8.00, -298.65, -172.92, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_6', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _diamond = draw.Lines(-306.85, -331.26, -246.85, -291.26, -306.85, -251.26, -366.85, -291.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_7')
+    _rect = draw.Rectangle(-196.85, -191.26, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_7', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Ignore SOME/IP Message', 8.00, -126.85, -171.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_7', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
+
+    _diamond = draw.Lines(-296.85, -111.26, -236.85, -81.26, -296.85, -51.26, -356.85, -81.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_8')
     d.append(_diamond)
-    # Multiline label for diamond_label_7
-    _diamond_label = draw.Text(["Protocol Version", "supported?"], 8.00, -308.65, -294.92, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_7', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Service ID\nok?', 8.00, -298.64, -82.83, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_8', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _text = draw.Text("no", 8.00, -242.85, 462.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
+    _rect = draw.Rectangle(-176.85, -101.26, 180.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_9', rx=20.00, ry=20.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Optional Answer_behavior (see above)\nProtocol Version = as received\nReturn Code = E_UNKNOWN_SERVICE', 8.00, -86.85, -76.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_9', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
 
-    _text = draw.Text("no", 8.00, -242.85, -107.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
+    _rect = draw.Rectangle(-196.85, -11.26, 200.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_10', rx=21.25, ry=21.25)
+    d.append(_rect)
+    _rect_label = draw.Text('Answer_behavior (see above)\nProtocol Version = as received\nReturn Code = E_WRONG_INTERFACE_VERSION', 8.00, -96.85, 13.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_10', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
 
-    _text = draw.Text("no", 8.00, -292.85, -357.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=29.4100, data_box_h=24.7498, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _text = draw.Text("no", 8.00, -82.85, 372.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _diamond = draw.Lines(-306.85, 148.74, -246.85, 188.74, -306.85, 228.74, -366.85, 188.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_8')
+    _diamond = draw.Lines(-296.85, -31.26, -236.85, 8.74, -296.85, 48.74, -356.85, 8.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_11')
     d.append(_diamond)
-    # Multiline label for diamond_label_8
-    _diamond_label = draw.Text(["Message Type", "as configured?"], 8.00, -308.65, 185.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_8', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Interface\nVersion ok?', 8.00, -298.65, 7.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_11', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _diamond = draw.Lines(-306.85, -151.26, -246.85, -111.26, -306.85, -71.26, -366.85, -111.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_9')
+    _rect = draw.Rectangle(-196.85, 88.74, 190.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_12', rx=21.25, ry=21.25)
+    d.append(_rect)
+    _rect_label = draw.Text('Optional Answer_behavior (see above)\nProtocol Version = as received\nReturn Code = E_UNKNOWN_METHOD', 8.00, -101.85, 113.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_12', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
+
+    _diamond = draw.Lines(-296.85, 68.74, -236.85, 108.74, -296.85, 148.74, -356.85, 108.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_13')
     d.append(_diamond)
-    # Multiline label for diamond_label_9
-    _diamond_label = draw.Text(["Interface", "Version ok?"], 8.00, -308.65, -114.92, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_9', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Method ID ok?', 8.00, -298.65, 107.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_13', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -246.85 88.74 L -226.85 88.74 L -206.85 88.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 88.74 L -216.85 93.74 L -216.85 83.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-206.85, -131.26, 200.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_10', rx=21.25, ry=21.25)
-    d.append(_rect)
-    # Multiline label for rect_label_10
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = 0x01 (or other supported Version)", "Return Code = E_WRONG_PROTOCOL_VERSION"], 8.00, -106.85, -119.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_10', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _text = draw.Text("no", 8.00, -82.85, 272.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _path = draw.Path('M -306.85 -171.26 L -306.85 -151.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 -151.26 L -311.85 -161.26 L -301.85 -161.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _text = draw.Text("yes", 8.00, -292.85, 32.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _path = draw.Path('M -156.85 328.74 L -156.85 348.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -156.85 348.74 L -161.85 338.74 L -151.85 338.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _diamond = draw.Lines(-306.85, -51.26, -246.85, -11.26, -306.85, 28.74, -366.85, -11.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_11')
+    _diamond = draw.Lines(-296.85, 168.74, -236.85, 208.74, -296.85, 248.74, -356.85, 208.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_14')
     d.append(_diamond)
-    # Multiline label for diamond_label_11
-    _diamond_label = draw.Text("Method ID ok?", 8.00, -308.65, -9.42, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_11', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Message Type\nsupported?', 8.00, -298.65, 207.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_14', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -306.85 -71.26 L -306.85 -51.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 -51.26 L -311.85 -61.26 L -301.85 -61.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
+    _rect = draw.Rectangle(-196.85, 188.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_15', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Ignore SOME/IP Message', 8.00, -126.85, 208.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_15', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
 
-    _text = draw.Text("no", 8.00, -242.85, -27.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _diamond = draw.Lines(-156.85, 248.74, -96.85, 288.74, -156.85, 328.74, -216.85, 288.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_12')
+    _diamond = draw.Lines(-296.85, 268.74, -236.85, 308.74, -296.85, 348.74, -356.85, 308.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_16')
     d.append(_diamond)
-    # Multiline label for diamond_label_12
-    _diamond_label = draw.Text(["Client ID", "& Session ID", "known?"], 8.00, -158.65, 279.58, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_12', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Message Type\nas configured?', 8.00, -298.65, 307.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_16', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -96.85 388.74 L -56.85 388.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -56.85 388.74 L -66.85 393.74 L -66.85 383.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -306.85 128.74 L -306.85 148.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 148.74 L -311.85 138.74 L -301.85 138.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _text = draw.Text("yes", 8.00, -292.85, 132.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _rect = draw.Rectangle(-56.85, 368.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_13', rx=21.00, ry=21.00)
+    _rect = draw.Rectangle(-196.85, 288.74, 190.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_17', rx=21.25, ry=21.25)
     d.append(_rect)
-    # Multiline label for rect_label_13
-    _rect_label = draw.Text(["SOME/IP", "Error Processing"], 8.00, 13.15, 386.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_13', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    _rect_label = draw.Text('Answer_behavior (see above)\nProtocol Version = as received\nReturn Code = E_WRONG_MESSAGE_TYPE', 8.00, -101.85, 313.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_17', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
     d.append(_rect_label)
 
-    _path = draw.Path('M -216.85 388.74 L -306.85 388.74 L -306.85 418.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 418.74 L -311.85 408.74 L -301.85 408.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -306.85 498.74 L -306.85 518.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 518.74 L -311.85 508.74 L -301.85 508.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -246.85 458.74 L -206.85 458.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 458.74 L -216.85 463.74 L -216.85 453.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -306.85 28.74 L -306.85 48.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 48.74 L -311.85 38.74 L -301.85 38.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -246.85 -201.26 L -206.85 -201.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 -201.26 L -216.85 -196.26 L -216.85 -206.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -246.85 288.74 L -216.85 288.74', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -216.85 288.74 L -226.85 293.74 L -226.85 283.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _text = draw.Text("yes", 8.00, -292.85, -167.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _rect = draw.Rectangle(-206.85, -311.26, 220.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_14', rx=20.00, ry=20.00)
-    d.append(_rect)
-    # Multiline label for rect_label_14
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = 0x01 (or other supported Version)", "Return Code = E_WRONG_PROTOCOL_VERSION"], 8.00, -96.85, -293.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_14', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _rect = draw.Rectangle(-204.02, 165.20, 210.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_15', rx=21.25, ry=21.25)
-    d.append(_rect)
-    # Multiline label for rect_label_15
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = as received", "Return Code = E_WRONG_MESSAGE_TYPE"], 8.00, -99.02, 182.70, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_15', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _diamond = draw.Lines(-306.85, 48.74, -246.85, 88.74, -306.85, 128.74, -366.85, 88.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_16')
+    _diamond = draw.Lines(-296.85, 368.74, -236.85, 408.74, -296.85, 448.74, -356.85, 408.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_18')
     d.append(_diamond)
-    # Multiline label for diamond_label_16
-    _diamond_label = draw.Text(["Message Type", "supported?"], 8.00, -308.65, 85.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_16', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Message Type =\nResponse or Error?', 8.00, -298.65, 407.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_18', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -245.08 -291.26 L -205.08 -291.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -205.08 -291.26 L -215.08 -286.26 L -215.08 -296.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-206.85, 68.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_17', rx=21.00, ry=21.00)
-    d.append(_rect)
-    # Multiline label for rect_label_17
-    _rect_label = draw.Text("Ignore SOME/IP Message", 8.00, -136.85, 92.24, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_17', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _rect = draw.Rectangle(-376.85, 518.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_18', rx=21.00, ry=21.00)
-    d.append(_rect)
-    # Multiline label for rect_label_18
-    _rect_label = draw.Text(["SOME/IP Message", "Processing"], 8.00, -306.85, 536.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_18', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _path = draw.Path('M -246.85 -11.26 L -206.85 -11.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 -11.26 L -216.85 -6.26 L -216.85 -16.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-206.85, -221.26, 230.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_19', rx=19.13, ry=19.13)
-    d.append(_rect)
-    # Multiline label for rect_label_19
-    _rect_label = draw.Text(["Answer_behavior", "Protocol Version = as received", "Return Code = E_UNKNOWN_SERVICE"], 8.00, -91.85, -203.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_19', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _text = draw.Text("no", 8.00, -302.85, 332.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=59.0000, data_box_h=44.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _diamond = draw.Lines(-156.85, 348.74, -96.85, 388.74, -156.85, 428.74, -216.85, 388.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_20')
+    _diamond = draw.Lines(-146.85, 368.74, -86.85, 408.74, -146.85, 448.74, -206.85, 408.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_19')
     d.append(_diamond)
-    # Multiline label for diamond_label_20
-    _diamond_label = draw.Text(["Return Code", "= 0 ?"], 8.00, -158.65, 385.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_20', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Client ID\n& Session ID\nknown?', 8.00, -148.65, 407.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_19', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -86.85 -521.26 L -56.85 -521.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -56.85 -521.26 L -66.85 -516.26 L -66.85 -526.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-66.85, -481.26, 180.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_21', rx=17.18, ry=17.18)
+    _rect = draw.Rectangle(-46.85, 388.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_20', rx=21.00, ry=21.00)
     d.append(_rect)
-    # Multiline label for rect_label_21
-    _rect_label = draw.Text("Send message (Message Type: Response)", 8.00, 23.15, -457.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_21', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    _rect_label = draw.Text('Ignore SOME/IP Message', 8.00, 23.15, 408.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_20', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
     d.append(_rect_label)
 
-    _rect = draw.Rectangle(-386.85, -481.26, 170.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_22', rx=14.00, ry=14.00)
-    d.append(_rect)
-    # Multiline label for rect_label_22
-    _rect_label = draw.Text(["Receive SOME/IP  Message and check", "depending on socket received on"], 8.00, -301.85, -463.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_22', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _text = draw.Text("no", 8.00, -82.85, -537.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=30.0000, data_box_h=20.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _path = draw.Path('M -146.85 -481.26 L -146.85 -461.26 L -66.85 -461.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -66.85 -461.26 L -76.85 -456.26 L -76.85 -466.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -256.85 -521.26 L -206.85 -521.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -206.85 -521.26 L -216.85 -516.26 L -216.85 -526.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-366.85, -541.26, 110.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_23', rx=20.00, ry=20.00)
-    d.append(_rect)
-    # Multiline label for rect_label_23
-    _rect_label = draw.Text("Answer_behavior", 8.00, -311.85, -517.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_23', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
-    d.append(_rect_label)
-
-    _diamond = draw.Lines(-146.85, -561.26, -86.85, -521.26, -146.85, -481.26, -206.85, -521.26, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_24')
+    _diamond = draw.Lines(-146.85, 468.74, -86.85, 508.74, -146.85, 548.74, -206.85, 508.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_21')
     d.append(_diamond)
-    # Multiline label for diamond_label_24
-    _diamond_label = draw.Text(["Received", "Message Type =", "Request?"], 8.00, -148.65, -530.42, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_24', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Return Code\n= 0 ?', 8.00, -148.65, 507.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_21', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _rect = draw.Rectangle(-56.85, -541.26, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_25', rx=21.00, ry=21.00)
+    _rect = draw.Rectangle(-46.85, 488.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_22', rx=21.00, ry=21.00)
     d.append(_rect)
-    # Multiline label for rect_label_25
-    _rect_label = draw.Text("Ignore SOME/IP Message", 8.00, 13.15, -517.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_25', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    _rect_label = draw.Text('SOME/IP Service-specific\nError Processing', 8.00, 23.15, 508.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_22', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
     d.append(_rect_label)
 
-    _text = draw.Text("yes", 8.00, -138.72, -476.67, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=30.0000, data_box_h=20.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
-    d.append(_text)
-
-    _diamond = draw.Lines(-307.13, -410.08, -252.13, -385.08, -307.13, -360.08, -362.13, -385.08, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_26')
+    _diamond = draw.Lines(-296.85, 558.74, -236.85, 598.74, -296.85, 638.74, -356.85, 598.74, close=True, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='diamond_label_23')
     d.append(_diamond)
-    # Multiline label for diamond_label_26
-    _diamond_label = draw.Text("Length field < 8", 8.00, -308.91, -383.11, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='diamond_label_26', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
+    _diamond_label = draw.Text('Payload parseable?', 8.00, -298.65, 597.08, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='diamond_label_23', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='diamond')
     d.append(_diamond_label)
 
-    _path = draw.Path('M -307.39 -438.95 L -306.85 -411.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 -411.26 L -312.04 -421.16 L -302.04 -421.35 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _path = draw.Path('M -306.80 -358.71 L -306.85 -331.26', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -306.85 -331.26 L -311.83 -341.27 L -301.83 -341.25 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
-    d.append(_path)
-
-    _rect = draw.Rectangle(-216.85, -401.26, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_27', rx=21.00, ry=21.00)
+    _rect = draw.Rectangle(-196.85, 578.74, 190.00, 50.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_24', rx=21.25, ry=21.25)
     d.append(_rect)
-    # Multiline label for rect_label_27
-    _rect_label = draw.Text("Ignore SOME/IP Message", 8.00, -146.85, -377.76, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='alphabetic', line_height=1.375000, xml__space='preserve', data_shape_label='true', data_label_id='rect_label_27', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    _rect_label = draw.Text('Answer_behavior (see above)\nProtocol Version = as received\nReturn Code = E_MALFORMED_MESSAGE', 8.00, -101.85, 603.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_24', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
     d.append(_rect_label)
 
-    _path = draw.Path('M -251.34 -384.67 L -216.53 -383.49', stroke='#000000', stroke_width=2.00, fill='none', data_arrow_start=False, data_arrow_end=True, data_arrow_head_length=10.00, data_arrow_head_width=10.00)
-    # Arrowheads: start=false, end=true, length=10.00, width=10.00
-    _arrow_head = draw.Path('M -216.53 -383.49 L -226.69 -378.84 L -226.35 -388.83 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
-    d.append(_arrow_head)
+    _rect = draw.Rectangle(-366.85, 658.74, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_25', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('SOME/IP Message\nProcessing', 8.00, -296.85, 678.74, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_25', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
+
+    _path = draw.Path('M -236.85 -271.26 L -196.85 -271.26', stroke='#000000', stroke_width=2.00, fill='none')
     d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 -271.26 L -205.51 -266.26 L -205.51 -276.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
 
-    _text = draw.Text("yes", 8.00, -242.85, -397.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=30.0000, data_box_h=20.0000, data_text_h='left', data_text_v='top', data_text_dir='ltr')
+    _text = draw.Text('yes', 8.00, -232.85, -287.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
     d.append(_text)
 
-    _text = draw.Text("no", 8.00, -239.75, -307.11, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', line_height=1.125000, xml__space='preserve', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000, data_box_w=29.4100, data_box_h=24.7498, data_text_h='left', data_text_v='top', data_text_dir='ltr')
+    _path = draw.Path('M -236.85 -171.26 L -196.85 -171.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 -171.26 L -205.51 -166.26 L -205.51 -176.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -232.85, -187.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
     d.append(_text)
+
+    _text = draw.Text('no', 8.00, -232.85, -97.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -236.85 8.74 L -196.85 8.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 8.74 L -205.51 13.74 L -205.51 3.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -232.85, 12.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('no', 8.00, -232.85, 92.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -236.85 108.74 L -196.85 108.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 108.74 L -205.51 113.74 L -205.51 103.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -236.85 208.74 L -216.85 208.74 L -196.85 208.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 208.74 L -205.51 213.74 L -205.51 203.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -236.85 308.74 L -196.85 308.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 308.74 L -205.51 313.74 L -205.51 303.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -232.85, 292.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -222.85, 392.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -236.85 408.74 L -206.85 408.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -206.85 408.74 L -215.51 413.74 L -215.51 403.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -86.85 408.74 L -46.85 408.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -46.85 408.74 L -55.51 413.74 L -55.51 403.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -72.85, 392.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('no', 8.00, -72.85, 492.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -86.85 508.74 L -46.85 508.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -46.85 508.74 L -55.51 513.74 L -55.51 503.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -232.85, 582.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -236.85 598.74 L -196.85 598.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 598.74 L -205.51 603.74 L -205.51 593.74 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 -331.26 L -296.85 -311.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 -311.26 L -301.85 -319.92 L -291.85 -319.92 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 -231.26 L -296.85 -211.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 -211.26 L -301.85 -219.92 L -291.85 -219.92 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 -131.26 L -296.85 -111.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 -111.26 L -301.85 -119.92 L -291.85 -119.92 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -236.85 -81.26 L -176.85 -81.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -176.85 -81.26 L -185.51 -76.26 L -185.51 -86.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -232.85, 192.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _path = draw.Path('M -296.85 -51.26 L -296.85 -31.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 -31.26 L -301.85 -39.92 L -291.85 -39.92 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 48.74 L -296.85 68.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 68.74 L -301.85 60.08 L -291.85 60.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 148.74 L -296.85 168.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 168.74 L -301.85 160.08 L -291.85 160.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 248.74 L -296.85 268.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 268.74 L -301.85 260.08 L -291.85 260.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 348.74 L -296.85 358.74 L -296.85 368.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 368.74 L -301.85 360.08 L -291.85 360.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -146.85 448.74 L -146.85 468.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -146.85 468.74 L -151.85 460.08 L -141.85 460.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 448.74 L -296.85 558.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 558.74 L -301.85 550.08 L -291.85 550.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -206.85 508.74 L -296.85 508.74 L -296.85 558.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 558.74 L -301.85 550.08 L -291.85 550.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -296.85 638.74 L -296.85 658.74', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -296.85 658.74 L -301.85 650.08 L -291.85 650.08 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _text = draw.Text('no', 8.00, -282.85, -227.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, -127.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, -47.26, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, 52.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, 152.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, 252.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, 352.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('no', 8.00, -292.85, 452.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -132.85, 452.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -262.85, 492.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _text = draw.Text('yes', 8.00, -282.85, 632.74, fill='#000000', font_family='Arial', text_anchor='start', dominant_baseline='text-before-edge', alignment_baseline='text-before-edge', data_doc_margin=4.0000, data_font_px=8.0000, data_scale=1.000000)
+    d.append(_text)
+
+    _rect = draw.Rectangle(-356.85, -511.26, 110.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_26', rx=20.00, ry=20.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Answer_behavior', 8.00, -301.85, -491.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_26', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
+
+    _path = draw.Path('M -76.85 -491.26 L -46.85 -491.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -46.85 -491.26 L -55.51 -486.26 L -55.51 -496.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _path = draw.Path('M -246.85 -491.26 L -196.85 -491.26', stroke='#000000', stroke_width=2.00, fill='none')
+    d.append(_path)
+    # Arrowheads: start=false, end=true
+    _arrow_head = draw.Path('M -196.85 -491.26 L -205.51 -486.26 L -205.51 -496.26 Z', fill='#000000', stroke='#000000', stroke_width=2.00)
+    d.append(_arrow_head)
+
+    _rect = draw.Rectangle(-46.85, -511.26, 140.00, 40.00, fill='#ffffff', fill_opacity=1.00, stroke='#000000', stroke_width=2.00, data_label_id='rect_label_27', rx=21.00, ry=21.00)
+    d.append(_rect)
+    _rect_label = draw.Text('Ignore SOME/IP Message', 8.00, 23.15, -491.26, fill='#000000', font_family='Arial', text_anchor='middle', dominant_baseline='middle', data_shape_label='true', data_label_id='rect_label_27', data_label_h='center', data_label_v='middle', data_font_px=8.0000, data_label_kind='rect', data_rect_label='true')
+    d.append(_rect_label)
 
     return d
 

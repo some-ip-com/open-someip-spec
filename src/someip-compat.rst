@@ -56,6 +56,19 @@ This section shows requirements for compatibility, so that vehicles can be furth
 FindService entries shall always set the Minor Version to ANY (0xffff ffff), so that changing the Minor Version of a Service does not require changes on the peer.
     
 .. feat_req:: 🎯
+    :id: feat_req_someipcompat_1216
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+  
+ECUs shall subscribe to Eventgroups independently of the Minor Version of the Service.
+
+Note: Changes that only affect the Minor Version changes are compatible changes.
+    
+.. feat_req:: 🎯
     :id: feat_req_someipcompat_1198
     :reqtype: Requirement
     :security: NO
