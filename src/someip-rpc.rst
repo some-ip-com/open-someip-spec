@@ -17,6 +17,7 @@
 
 .. heading:: Introduction
    :id: feat_req_someip_2
+   :hide: True
 
    : layout : focus
    : style : clean
