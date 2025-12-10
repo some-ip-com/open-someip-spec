@@ -78,7 +78,6 @@ jobs:
         ./tools/setup.sh
         source .venv/bin/activate
         cd tools
-        make pdf
         make html
     - name: Archive sphinx public folder
       uses: actions/upload-artifact@v4
