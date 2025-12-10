@@ -100,7 +100,7 @@ needs_extra_links = [
     }
 ]
 
-#needs_css = 'blank.css'
+needs_css = 'blank.css'
 
 html_static_path = ['_static']
 html_css_files = [
