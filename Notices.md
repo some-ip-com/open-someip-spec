@@ -33,4 +33,4 @@ Derivative specifications must reference the official source and version as: “
 
 ## Code of Conduct
 
-Contact for Code of Conduct issues or inquires: Dr. Lars Völker <lars.voelker@technica-engineering.de> 
+Contact for Code of Conduct issues or inquires: Dr. Lars Völker <lars.voelker@technica-engineering.de>

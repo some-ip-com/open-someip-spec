@@ -83,16 +83,16 @@ table.docutils > thead {
     color: #333;
 }
 
-.shadow { 
-    cursor:crosshair; 
+.shadow {
+    cursor:crosshair;
     -moz-box-shadow: -5px -5px 5px #888;
     -webkit-box-shadow: -5px -5px 5px #888;
-    box-shadow: -5px -5px 5px #888; 
+    box-shadow: -5px -5px 5px #888;
 }
 
 /***********************************************************************************/
 /* *{font-family:'Roboto';} */
- 
+
 /* .need_container {
     border-top: thin solid #333!important;
 }
@@ -128,11 +128,11 @@ table.docutils > thead {
     margin: 0px!important;
 }
 
-.shadow { 
-    cursor:crosshair; 
+.shadow {
+    cursor:crosshair;
     -moz-box-shadow: -5px -5px 5px #888;
     -webkit-box-shadow: -5px -5px 5px #888;
-    box-shadow: -5px -5px 5px #888; 
+    box-shadow: -5px -5px 5px #888;
 } */
 
 .body {
