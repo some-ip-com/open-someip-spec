@@ -11,7 +11,7 @@ html:
 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-pdf: 
+pdf:
 	@$(SPHINXBUILD) -M simplepdf "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 	@echo "Build finished. The PDF is in $(BUILDDIR)/simplepdf."
 

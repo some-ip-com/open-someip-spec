@@ -78,12 +78,13 @@ jobs:
         ./tools/setup.sh
         source .venv/bin/activate
         make html
+        make pdf
     - name: Archive sphinx public folder
       uses: actions/upload-artifact@v4
       with:
         name: sphinx-public
         path: |
-          ./_build/
+          ./src/_build/
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
 
