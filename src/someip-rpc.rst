@@ -14,12 +14,10 @@
 .. SOME/IP Protocol Specification
 .. ##############################
 
-
 .. heading:: Introduction
    :id: feat_req_someip_2
    :h: 1
-
-   : post_template : heading_post_template
+   :post_template: heading_post_template
 
 .. feat_req:: ⓘ
    :id: feat_req_someip_3
