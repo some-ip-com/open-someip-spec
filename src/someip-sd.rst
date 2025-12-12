@@ -72,9 +72,9 @@ General
    Terms and Definitions
 
    .. list-table::
-     :align: left
-     :header-rows: 1
-     :class: ssp-tinier
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
 
       *  -  Term
          -  Definition
@@ -3924,9 +3924,9 @@ The Client and Server shall implement the explicit requesting of Initial Events.
    Allowed SOME/IP-SD Option types in relation to Entry types.
 
    .. list-table::
-     :align: left
-     :header-rows: 1
-     :class: ssp-tinier
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
 
       *  -
          -  Endpoint Option
