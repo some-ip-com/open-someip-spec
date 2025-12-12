@@ -145,7 +145,7 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       .. rst-class:: compact
 
       * The client shall find the service instances once per supported major version or shall use the
-      major version as 0xFF (all versions).
+        major version as 0xFF (all versions).
 
    .. feat_req::
       :id: feat_req_someipcompat_804

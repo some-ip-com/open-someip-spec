@@ -15,20 +15,23 @@
 .. ##############################
 
 .. heading:: Introduction
-   :id: feat_req_someip_2
-   :h: 1
-   :post_template: heading_post_template
+    :id: feat_req_someip_2
+    :layout: focus
+    :style: clean
+
+Introduction
+############
 
 .. feat_req:: ⓘ
-   :id: feat_req_someip_3
-   :reqtype: Information
-   :security: TBD
-   :safety: TBD
-   :satisfies:
-   :status: valid
-   :collapse: True
+    :id: feat_req_someip_3
+    :reqtype: Information
+    :security: TBD
+    :safety: TBD
+    :satisfies:
+    :status: valid
+    :collapse: True
 
-   This document specifies the Scalable service-Oriented MiddlewarE over IP (SOME/IP) – an automotive/embedded RPC mechanism and the underlying serialization / on-wire format.
+This document specifies the Scalable service-Oriented MiddlewarE over IP (SOME/IP) – an automotive/embedded RPC mechanism and the underlying serialization / on-wire format.
 
 .. feat_req:: ⓘ
     :id: feat_req_someip_697
