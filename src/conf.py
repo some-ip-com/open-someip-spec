@@ -25,6 +25,12 @@ version = "25-12"
 
 needs_id_regex = "^[A-Za-z0-9_]"
 needs_title_from_content = False
+#We do not want to use the title for the needs:
+needs_title_optional = True
+
+#The rendering of refernces to needs shall only show the need_id:
+needs_role_need_template = "{id}"
+
 needs_types = [
     {
         "directive": "requirement",
@@ -88,6 +94,7 @@ needs_import_keys = {"key": "needs_test.json"}
 
 needs_json_remove_defaults = True
 
+
 needs_extra_options = [
     {
         "name": "reqtype",
@@ -141,6 +148,8 @@ needs_extra_links = [
     }
 ]
 
+# We could the settings manually in the files, but here it is global set for all.
+# We do want to seperate the authoring from the rendering.
 needs_global_options = {
    "hide": {
       "predicates": [
@@ -153,8 +162,6 @@ needs_global_options = {
       ]
    },
 }
-
-needs_title_optional = True
 
 needs_css = 'blank.css'
 
