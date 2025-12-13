@@ -21,11 +21,7 @@
 
 .. heading:: General
    :id: feat_req_someipsd_182
-   :layout: focus
-   :style: clean
-
-General
-*******
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_183
