@@ -131,8 +131,6 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      .. rst-class:: compact
-
       * The server shall offer the service instance of this service once per major version.
 
    .. feat_req::
@@ -141,8 +139,6 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :security: NO
       :safety: QM
       :status: valid
-
-      .. rst-class:: compact
 
       * The client shall find the service instances once per supported major version or shall use the
         major version as 0xFF (all versions).
@@ -154,8 +150,6 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      .. rst-class:: compact
-
       * The client shall subscribe to events of the service version it needs.
 
    .. feat_req::
@@ -165,8 +159,6 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      .. rst-class:: compact
-
       * All SOME/IP-SD entries shall use the same Service IDs and Instance IDs but different Major Versions.
 
    .. feat_req::
@@ -175,7 +167,5 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :security: NO
       :safety: QM
       :status: valid
-
-      .. rst-class:: compact
 
       * The server shall demultiplex messages based on the socket it arrives, the Message ID, and the Major Version.

@@ -45,8 +45,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    The basic motivation to specify “yet another RPC-Mechanism” instead of using an existing
    infrastructure/technology is the goal to have a technology that:
 
@@ -69,8 +67,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    *  Method – a method, procedure, function, or subroutine that is called/invoked.
    *  Parameters – input, output, or input/output arguments of a method or an event.
@@ -336,8 +332,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    If an ECU needs to dynamically use a port number, it shall follow the rules of IETF and IANA for that:
 
    *  Ephemeral ports from range 49152-65535 (or what is defined for ECU)
@@ -491,8 +485,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    For the response and error message the IP addresses and port number of the transport protocol
    shall match the request message. This means:
@@ -2117,8 +2109,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    The UDP Binding shall support dynamic switching of eventgroups between unicast and
    multicast based on the number of subscriptions and the configuration parameter Multicast-Threshold:
 
@@ -2313,8 +2303,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    The layout of the Magic Cookie Message is based on SOME/IP. The fields are set as follows:
 
    *  Service ID = 0xFFFF
@@ -2440,8 +2428,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    For the SOME/IP request message the client has to do the following for payload and header:
 
    *  Construct the payload
@@ -2461,8 +2447,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    The server builds its header based on the header of the client and does in addition:
 
    *  Construct the payload
@@ -2480,8 +2464,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    Requests without response message are called Fire&Forget. The implementation is basically
    the same as for Request/Response with the following differences:
@@ -2574,8 +2556,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    When designing a service with selective event sending, make sure that this works even if
    the feature is not supported by the sender.
 
@@ -2600,8 +2580,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    For different use cases different strategies for sending notifications are possible and
    shall be defined in the service interface. The following examples are common:
@@ -2932,8 +2910,6 @@
    :safety: TBD
    :status: valid
 
-   .. rst-class:: compact
-
    The recommended layout for the exception message is the following:
 
    *  Union of specific exceptions. At least a generic exception without fields needs to exist.
@@ -2970,8 +2946,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    Important things that are reflected in this flow chart:
 
@@ -3023,8 +2997,6 @@
    :security: TBD
    :safety: TBD
    :status: valid
-
-   .. rst-class:: compact
 
    When considering the transport of RPC messages different reliability semantics exist:
 

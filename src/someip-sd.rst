@@ -110,8 +110,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    Service status shall be defined as up or down as well as required and released:
 
    *  A service status of up shall mean that a service instance is available; thus,
@@ -239,8 +237,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    SOME/IP-SD Messages shall start with a SOME/IP header as depicted Figure :need:`feat_req_someipsd_205`:
 
    *  SOME/IP-SD messages shall use the Service ID (16 bits) of 0xFFFF.
@@ -350,8 +346,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The detection of a reboot shall be done as follows (with new the values of the current packet
    from the communication partner and old the last value received before):
@@ -526,8 +520,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    A Service Entry Type shall be 16 bytes of size and include the following fields in this order as
    shown in Figure :need:`feat_req_someipsd_208`:
 
@@ -561,8 +553,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    An Eventgroup Entry shall be 16 bytes of size and include the following fields in this order as
    shown in Figure :need:`feat_req_someipsd_209`:
@@ -619,8 +609,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    In order to identify the option type every option shall start with:
 
    *  Length [uint16]: Specifies the length of the option in bytes.
@@ -655,8 +643,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The format of the Configuration Option shall be as follows:
 
@@ -864,8 +850,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The Format of the Load Balancing Option shall be as follows:
 
    *  Length [uint16]: Shall be set to 0x0005.
@@ -940,8 +924,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The Format of the IPv4 Endpoint Option shall be as follows:
 
@@ -1050,8 +1032,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The Format of the IPv6 Endpoint Option shall be as follows:
 
@@ -1165,8 +1145,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The Format of the IPv4 Endpoint Option shall be as follows:
 
    *  Length [uint16]: Shall be set to 0x0009.
@@ -1259,8 +1237,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The Format of the IPv6 Multicast Option shall be as follows:
 
@@ -1405,8 +1381,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The Format of the IPv4 SD Endpoint Option shall be as follows:
 
    *  Length [uint16]: Shall be set to 0x0009.
@@ -1540,8 +1514,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The Format of the IPv6 SD Endpoint Option shall be as follows:
 
    *  Length [uint16]: Shall be set to 0x0015.
@@ -1626,8 +1598,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The Format of the MAC-Groupcast Endpoint Option shall be as follows:
 
    *  Length [uint16]: Dynamic, depending on the content of the ProtoSpecific field which in turn
@@ -1670,8 +1640,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Using the following fields of the entries, options are referenced by the entries:
 
@@ -1869,8 +1837,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    For all entries the following shall be true:
 
    *  Index First Option Run, Index Second Option Run, Number of Options 1,
@@ -1910,8 +1876,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    FindService entries shall set the entry fields in the following way:
 
@@ -1954,8 +1918,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    OfferService entries shall set the entry fields in the following way:
 
@@ -2049,8 +2011,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    StopOfferService entries shall set the entry fields exactly like the OfferService entry they
    are stopping, except:
 
@@ -2089,8 +2049,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    SubscribeEventgroup entries shall set the entry fields in the following way:
 
@@ -2141,8 +2099,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    StopSubscribeEventgroup entries shall set the entry fields exactly like the SubscribeEventgroup
    entry they are stopping, except:
 
@@ -2177,8 +2133,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    SubscribeEventgroupAck entries shall set the entry fields in the following way:
 
@@ -2217,8 +2171,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    Reasons to not accept a SubscribeEventgroup include (but are not limited to):
 
    *  Combination of Service ID, Instance ID, Eventgroup ID, and Major Version is unknown
@@ -2233,8 +2185,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    SubscribeEventgroupNack entries shall set the entry fields in the following way:
 
@@ -2263,8 +2213,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    Rationale for :need:`feat_req_someipsd_869`:
 
    The server might have lost the TCP connection and the client has not.
@@ -2289,8 +2237,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    For each Service Instance or Eventgroup the SOME/IP-SD shall have at least these three phases in
    regard to sending entries:
@@ -2452,8 +2398,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    After entering the Main Phase 1*CYCLIC_OFFER_DELAY is waited before sending the first message.
 
 .. feat_req::
@@ -2472,8 +2416,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    After a message for a specific service instance the SOME/IP-SD waits for 1*CYCLIC_OFFER_DELAY
    before sending the next message for this service instance.
@@ -2503,8 +2445,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Example:
 
@@ -2608,8 +2548,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
       to with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
 
@@ -2620,8 +2558,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
       to with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
 
@@ -2631,8 +2567,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    *  FindService messages received with Unicast Flag set to 0 (multicast), shall be responded to
       with a multicast response.
@@ -2772,8 +2706,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    Figure :need:`feat_req_someipsd_1163` shows a simplified illustration of the error handling of
    received SOME/IP-SD messages.
 
@@ -2805,8 +2737,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    A valid IP address in this context has the following characteristics:
 
    *  Its value is in a configured range or the local subnet to which SOME/IP sends messages
@@ -2832,8 +2762,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Check the referenced Options of each received entry:
 
@@ -2891,8 +2819,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    For Non-SOME/IP protocols a special Service ID shall be used and further information shall be
    added using the configuration option:
 
@@ -2945,8 +2871,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Example for valid otherserv-string: "otherserv=internaldiag".
 
@@ -3075,8 +2999,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Reasons for the client to explicitly request Initial Events include but are not limited to:
 
@@ -3271,8 +3193,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The client shall wait for the SubscribeEventgroupAck entry acknowledging a SubscribeEventgroup
    entry. If this SubscribeEventgroupAck entry does not arrive before the next SubscribeEventgroup
    entry is sent, the client shall do the following:
@@ -3346,8 +3266,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    This means:
 
@@ -3462,8 +3380,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The following entries shall be transported by unicast only:
 
@@ -3701,8 +3617,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    Figure :need:`feat_req_someipsd_795` shows an example with the different Endpoint and a Multicast Option:
 
    *  The server offers the Service Instance on server UDP-Endpoint SU and server TCP-Endpoint ST
@@ -3814,8 +3728,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The following entry types shall be implemented:
 
    *  FindService
@@ -3833,8 +3745,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The following option types shall be implemented, when IPv4 is required:
 
    *  IPv4 Endpoint Option
@@ -3848,8 +3758,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The following option types shall be implemented, if IPv6 is required:
 
@@ -3865,8 +3773,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The following option types shall be implemented, if non-SOME/IP services or additional
    configuration parameters are required:
 
@@ -3878,8 +3784,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The following behaviors/reactions shall be implemented on the server side:
 
@@ -3904,8 +3808,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The following behaviors/reactions shall be implemented on the Client side:
 
    *  The Client shall find services using a FindService entry and Multicast only in the repetition phase.
@@ -3923,8 +3825,6 @@ General
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    The following behavior and configuration constraints shall be supported by the client:
 
    *  The client shall even handle eventgroups if only the TTL of the SD Timings is specified.
@@ -3940,8 +3840,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The Client and Server shall implement the Reboot Detection as specified in this document and
    react accordingly. This includes but is not limited to:
@@ -3961,8 +3859,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    The Client and Server shall implement the "Endpoint Handling for Service and Events". This
    includes but is not limited to:
@@ -4072,8 +3968,6 @@ General
    :security: NO
    :safety: QM
    :status: valid
-
-   .. rst-class:: compact
 
    Soft State Protocol
    SOME/IP-SD was designed as soft state protocol, that means that entries come with a lifetime and

@@ -76,8 +76,6 @@
    :safety: QM
    :status: valid
 
-   .. rst-class:: compact
-
    SOME/IP-TP segments shall have a TP header right after the SOME/IP header
    (i.e. before the SOME/IP payload) with the following structure (bits from highest to lowest),
    as also shown in figure :need:`feat_req_someiptp_832`:
