@@ -2016,7 +2016,8 @@ General
    :safety: QM
    :status: valid
 
-In the case of UDP, the endpoint option is used for the source address and the source port of the events and notification events.
+   In the case of UDP, the endpoint option is used for the source address and the source port of
+   the events and notification events.
 
 .. feat_req::
    :id: feat_req_someipsd_762
@@ -2025,15 +2026,12 @@ In the case of UDP, the endpoint option is used for the source address and the s
    :safety: QM
    :status: valid
 
-In the case of TCP, the endpoint option contains the IP address and port the client needs to open a TCP connection to in order to receive events using TCP.
+   In the case of TCP, the endpoint option contains the IP address and port the client needs to
+   open a TCP connection to in order to receive events using TCP.
 
 .. heading:: StopOfferService Entry
    :id: feat_req_someipsd_225
-   :layout: focus
-   :style: clean
-
-StopOfferService Entry
-----------------------
+   :h: 4
 
 .. feat_req::
    :id: feat_req_someipsd_261
@@ -2042,7 +2040,7 @@ StopOfferService Entry
    :safety: QM
    :status: valid
 
-The StopOfferService entry type shall be used to stop offering service instances.
+   The StopOfferService entry type shall be used to stop offering service instances.
 
 .. feat_req::
    :id: feat_req_someipsd_262
@@ -2051,19 +2049,16 @@ The StopOfferService entry type shall be used to stop offering service instances
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-StopOfferService entries shall set the entry fields exactly like the OfferService entry they are stopping, except:
+   StopOfferService entries shall set the entry fields exactly like the OfferService entry they
+   are stopping, except:
 
-* TTL shall be set to 0x000000.
+   * TTL shall be set to 0x000000.
 
 .. heading:: Eventgroup Entries
    :id: feat_req_someipsd_227
-   :layout: focus
-   :style: clean
-
-Eventgroup Entries
-==================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_237
@@ -2072,15 +2067,12 @@ Eventgroup Entries
    :safety: QM
    :status: valid
 
-Entries concerned with services follow the Eventgroup Entry Type Format as specified in :need:`feat_req_someipsd_109`.
+   Entries concerned with services follow the Eventgroup Entry Type Format as specified in
+   :need:`feat_req_someipsd_109`.
 
 .. heading:: SubscribeEventgroup Entry
    :id: feat_req_someipsd_230
-   :layout: focus
-   :style: clean
-
-SubscribeEventgroup Entry
--------------------------
+   :h: 4
 
 .. feat_req::
    :id: feat_req_someipsd_321
@@ -2089,7 +2081,7 @@ SubscribeEventgroup Entry
    :safety: QM
    :status: valid
 
-The SubscribeEventgroup entry type shall be used to subscribe to an eventgroup.
+   The SubscribeEventgroup entry type shall be used to subscribe to an eventgroup.
 
 .. feat_req::
    :id: feat_req_someipsd_322
@@ -2098,22 +2090,26 @@ The SubscribeEventgroup entry type shall be used to subscribe to an eventgroup.
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-SubscribeEventgroup entries shall set the entry fields in the following way:
+   SubscribeEventgroup entries shall set the entry fields in the following way:
 
-* Type shall be set to 0x06 (SubscribeEventgroup).
-* Service ID shall be set to the Service ID of the service instance that includes the eventgroup subscribed to.
-* Instance ID shall be set to the Instance ID of the service instance that includes the eventgroup subscribed to.
-* Major Version shall be set to the Major Version of the service instance of the eventgroup subscribed to.
-* Eventgroup ID shall be set to the Eventgroup ID of the eventgroup subscribed to.
-* Reserved shall be set to 0x00 until further notice.
-* Initial Data Requested Flag shall be set to 1, if the client sends the first subscribe in sequence to trigger the sending of initial events. Set to 0, if not required otherwise (see :need:`feat_req_someipsd_1191` and following requirements).
-* Reserved2 shall be set to three 0 bits.
-* Counter shall be used to differentiate between parallel subscribes to the same eventgroup of the same service (only difference in endpoint). If not used, set to 0x0.
-* TTL shall be set to the lifetime of the eventgroup. After this lifetime the eventgroup shall considered not been subscribed to.
-* If set to 0xFFFFFF, the SubscribeEventgroup entry shall be considered valid until the next reboot.
-* TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
+   *  Type shall be set to 0x06 (SubscribeEventgroup).
+   *  Service ID shall be set to the Service ID of the service instance that includes the eventgroup subscribed to.
+   *  Instance ID shall be set to the Instance ID of the service instance that includes the eventgroup subscribed to.
+   *  Major Version shall be set to the Major Version of the service instance of the eventgroup subscribed to.
+   *  Eventgroup ID shall be set to the Eventgroup ID of the eventgroup subscribed to.
+   *  Reserved shall be set to 0x00 until further notice.
+   *  Initial Data Requested Flag shall be set to 1, if the client sends the first subscribe in
+      sequence to trigger the sending of initial events. Set to 0, if not required otherwise
+      (see :need:`feat_req_someipsd_1191` and following requirements).
+   *  Reserved2 shall be set to three 0 bits.
+   *  Counter shall be used to differentiate between parallel subscribes to the same eventgroup of
+      the same service (only difference in endpoint). If not used, set to 0x0.
+   *  TTL shall be set to the lifetime of the eventgroup. After this lifetime the eventgroup shall
+      considered not been subscribed to.
+   *  If set to 0xFFFFFF, the SubscribeEventgroup entry shall be considered valid until the next reboot.
+   *  TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
 
 .. feat_req::
    :id: feat_req_someipsd_682
@@ -2122,15 +2118,12 @@ SubscribeEventgroup entries shall set the entry fields in the following way:
    :safety: QM
    :status: valid
 
-SubscribeEventgroup entries shall reference one or two IPv4 and/or one or two IPv6 Endpoint Options (one for UDP, one for TCP).
+   SubscribeEventgroup entries shall reference one or two IPv4 and/or one or two IPv6 Endpoint
+   Options (one for UDP, one for TCP).
 
 .. heading:: StopSubscribeEventgroup Entry
    :id: feat_req_someipsd_233
-   :layout: focus
-   :style: clean
-
-StopSubscribeEventgroup Entry
------------------------------
+   :: 4
 
 .. feat_req::
    :id: feat_req_someipsd_332
@@ -2139,7 +2132,7 @@ StopSubscribeEventgroup Entry
    :safety: QM
    :status: valid
 
-The StopSubscribeEventgroup entry type shall be used to stop subscribing to eventgroups.
+   The StopSubscribeEventgroup entry type shall be used to stop subscribing to eventgroups.
 
 .. feat_req::
    :id: feat_req_someipsd_333
@@ -2148,11 +2141,12 @@ The StopSubscribeEventgroup entry type shall be used to stop subscribing to even
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-StopSubscribeEventgroup entries shall set the entry fields exactly like the SubscribeEventgroup entry they are stopping, except:
+   StopSubscribeEventgroup entries shall set the entry fields exactly like the SubscribeEventgroup
+   entry they are stopping, except:
 
-* TTL shall be set to 0x000000.
+   * TTL shall be set to 0x000000.
 
 .. feat_req::
    :id: feat_req_someipsd_1177
@@ -2161,15 +2155,12 @@ StopSubscribeEventgroup entries shall set the entry fields exactly like the Subs
    :safety: QM
    :status: valid
 
-A StopSubscribeEventgroup Entry shall reference the same options the SubscribeEventgroup Entry referenced. This includes but is not limited to Endpoint and Configuration options.
+   A StopSubscribeEventgroup Entry shall reference the same options the SubscribeEventgroup Entry
+   referenced. This includes but is not limited to Endpoint and Configuration options.
 
 .. heading:: Subscribe Eventgroup Acknowledgement (SubscribeEventgroupAck) Entry
    :id: feat_req_someipsd_612
-   :layout: focus
-   :style: clean
-
-Subscribe Eventgroup Acknowledgement (SubscribeEventgroupAck) Entry
--------------------------------------------------------------------
+   :h: 4
 
 .. feat_req::
    :id: feat_req_someipsd_613
@@ -2178,7 +2169,7 @@ Subscribe Eventgroup Acknowledgement (SubscribeEventgroupAck) Entry
    :safety: QM
    :status: valid
 
-The SubscribeEventgroupAck entry type shall be used to indicate that SubscribeEventgroup entry was accepted.
+   The SubscribeEventgroupAck entry type shall be used to indicate that SubscribeEventgroup entry was accepted.
 
 .. feat_req::
    :id: feat_req_someipsd_614
@@ -2187,12 +2178,13 @@ The SubscribeEventgroupAck entry type shall be used to indicate that SubscribeEv
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-SubscribeEventgroupAck entries shall set the entry fields in the following way:
+   SubscribeEventgroupAck entries shall set the entry fields in the following way:
 
-* Type shall be set to 0x07 (SubscribeEventgroupAck).
-* Service ID, Instance ID, Major Version, Eventgroup ID, TTL, Reserved, Initial Data Requested Flag, Reserved2 and Counter shall be the same values as in the SubscribeEventgroup that is being responded to.
+   *  Type shall be set to 0x07 (SubscribeEventgroupAck).
+   *  Service ID, Instance ID, Major Version, Eventgroup ID, TTL, Reserved, Initial Data Requested Flag,
+      Reserved2 and Counter shall be the same values as in the SubscribeEventgroup that is being responded to.
 
 .. feat_req::
    :id: feat_req_someipsd_763
@@ -2201,15 +2193,13 @@ SubscribeEventgroupAck entries shall set the entry fields in the following way:
    :safety: QM
    :status: valid
 
-SubscribeEventgroupAck entries referencing events and notification events that are transported via multicast shall reference an IPv4 Multicast Option and/or and IPv6 Multicast Option. The Multicast Options state to which Multicast address and port the events and notification events will be sent to.
+   SubscribeEventgroupAck entries referencing events and notification events that are transported
+   via multicast shall reference an IPv4 Multicast Option and/or and IPv6 Multicast Option.
+   The Multicast Options state to which Multicast address and port the events and notification events will be sent to.
 
 .. heading:: Subscribe Eventgroup Negative Acknowledgement (SubscribeEventgroupNack) Entry
    :id: feat_req_someipsd_617
-   :layout: focus
-   :style: clean
-
-Subscribe Eventgroup Negative Acknowledgement (SubscribeEventgroupNack) Entry
------------------------------------------------------------------------------
+   :h: 4
 
 .. feat_req::
    :id: feat_req_someipsd_618
@@ -2218,7 +2208,7 @@ Subscribe Eventgroup Negative Acknowledgement (SubscribeEventgroupNack) Entry
    :safety: QM
    :status: valid
 
-The SubscribeEventgroupNack entry type shall be used to indicate that SubscribeEventgroup entry was NOT accepted.
+   The SubscribeEventgroupNack entry type shall be used to indicate that SubscribeEventgroup entry was NOT accepted.
 
 .. feat_req::
    :id: feat_req_someipsd_1137
@@ -2227,15 +2217,15 @@ The SubscribeEventgroupNack entry type shall be used to indicate that SubscribeE
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Reasons to not accept a SubscribeEventgroup include (but are not limited to):
+   Reasons to not accept a SubscribeEventgroup include (but are not limited to):
 
-* Combination of Service ID, Instance ID, Eventgroup ID, and Major Version is unknown
-* Required TCP-connection was not opened by client
-* Problems with the referenced options occurred
-* Resource problems at the server
-* Subscription was denied by Security or ACL
+   *  Combination of Service ID, Instance ID, Eventgroup ID, and Major Version is unknown
+   *  Required TCP-connection was not opened by client
+   *  Problems with the referenced options occurred
+   *  Resource problems at the server
+   *  Subscription was denied by Security or ACL
 
 .. feat_req::
    :id: feat_req_someipsd_619
@@ -2244,13 +2234,14 @@ Reasons to not accept a SubscribeEventgroup include (but are not limited to):
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-SubscribeEventgroupNack entries shall set the entry fields in the following way:
+   SubscribeEventgroupNack entries shall set the entry fields in the following way:
 
-* Type shall be set to 0x07 (SubscribeEventgroupAck).
-* Service ID, Instance ID, Major Version, Eventgroup ID, Counter and Reserved shall be the same values as in the SubscribeEventgroup that is being responded to.
-* The TTL shall be set to 0x000000.
+   *  Type shall be set to 0x07 (SubscribeEventgroupAck).
+   *  Service ID, Instance ID, Major Version, Eventgroup ID, Counter and Reserved shall be the same
+      values as in the SubscribeEventgroup that is being responded to.
+   *  The TTL shall be set to 0x000000.
 
 .. feat_req::
    :id: feat_req_someipsd_869
@@ -2259,9 +2250,11 @@ SubscribeEventgroupNack entries shall set the entry fields in the following way:
    :safety: QM
    :status: valid
 
-When the client receives a SubscribeEventgroupNack as response to a SubscribeEventgroup for which a TCP connection is required, the client shall check the TCP connection and shall restart the TCP connection if needed.
+   When the client receives a SubscribeEventgroupNack as response to a SubscribeEventgroup for which
+   a TCP connection is required, the client shall check the TCP connection and shall restart the
+   TCP connection if needed.
 
-Note: Checking the TCP connection may involve a TCP Keep Alive or a SOME/IP Magic Cookie Message.
+   Note: Checking the TCP connection may involve a TCP Keep Alive or a SOME/IP Magic Cookie Message.
 
 .. feat_req::
    :id: feat_req_someipsd_870
@@ -2270,33 +2263,25 @@ Note: Checking the TCP connection may involve a TCP Keep Alive or a SOME/IP Magi
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Rationale for :need:`feat_req_someipsd_869`:
+   Rationale for :need:`feat_req_someipsd_869`:
 
-The server might have lost the TCP connection and the client has not.
+   The server might have lost the TCP connection and the client has not.
 
-Checking the TCP connection might include the following:
+   Checking the TCP connection might include the following:
 
-* Checking whether data is received for e.g. other eventgroups.
-* Sending out a Magic Cookie message and waiting for the TCP ACK.
-* Reestablishing the TCP connection.
+   *  Checking whether data is received for e.g. other eventgroups.
+   *  Sending out a Magic Cookie message and waiting for the TCP ACK.
+   *  Reestablishing the TCP connection.
 
 .. heading:: Service Discovery Communication Behavior
    :id: feat_req_someipsd_25
-   :layout: focus
-   :style: clean
-
-Service Discovery Communication Behavior
-****************************************
+   :h: 2
 
 .. heading:: Startup Behavior
    :id: feat_req_someipsd_59
-   :layout: focus
-   :style: clean
-
-Startup Behavior
-================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_68
@@ -2305,13 +2290,14 @@ Startup Behavior
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-For each Service Instance or Eventgroup the SOME/IP-SD shall have at least these three phases in regard to sending entries:
+   For each Service Instance or Eventgroup the SOME/IP-SD shall have at least these three phases in
+   regard to sending entries:
 
-* Initial Wait Phase
-* Repetition Phase
-* Main Phase
+   *  Initial Wait Phase
+   *  Repetition Phase
+   *  Main Phase
 
 .. feat_req::
    :id: feat_req_someipsd_864
@@ -2320,7 +2306,8 @@ For each Service Instance or Eventgroup the SOME/IP-SD shall have at least these
    :safety: QM
    :status: valid
 
-An actual implemented state machine will need more than just states for these three phases. E.g. local services can be still down and remote services can be already known (no finds needed anymore).
+   An actual implemented state machine will need more than just states for these three phases.
+   E.g. local services can be still down and remote services can be already known (no finds needed anymore).
 
 .. feat_req::
    :id: feat_req_someipsd_72
@@ -2329,7 +2316,9 @@ An actual implemented state machine will need more than just states for these th
    :safety: QM
    :status: valid
 
-As soon as the system has started and the link on one external interface needed for a Service Instance is up (server) or requested (client), the SOME/IP-SD enters the Initial Wait Phase for this service instance.
+   As soon as the system has started and the link on one external interface needed for a Service
+   Instance is up (server) or requested (client), the SOME/IP-SD enters the Initial Wait Phase
+   for this service instance.
 
 .. feat_req::
    :id: feat_req_someipsd_773
@@ -2347,7 +2336,8 @@ As soon as the system has started and the link on one external interface needed 
    :safety: QM
    :status: valid
 
-The SOME/IP-SD implementation shall wait based on the INITIAL_DELAY after entering the Initial Wait Phase and before sending the first messages for the Service Instance.
+   The SOME/IP-SD implementation shall wait based on the INITIAL_DELAY after entering the Initial
+   Wait Phase and before sending the first messages for the Service Instance.
 
 .. feat_req::
    :id: feat_req_someipsd_63
@@ -2356,7 +2346,7 @@ The SOME/IP-SD implementation shall wait based on the INITIAL_DELAY after enteri
    :safety: QM
    :status: valid
 
-INITIAL_DELAY shall be defined as a minimum and a maximum delay.
+   INITIAL_DELAY shall be defined as a minimum and a maximum delay.
 
 .. feat_req::
    :id: feat_req_someipsd_64
@@ -2365,7 +2355,8 @@ INITIAL_DELAY shall be defined as a minimum and a maximum delay.
    :safety: QM
    :status: valid
 
-The wait time shall be determined by choosing a random value between the minimum and maximum of INITIAL_DELAY.
+   The wait time shall be determined by choosing a random value between the minimum and maximum of
+   INITIAL_DELAY.
 
 .. feat_req::
    :id: feat_req_someipsd_65
@@ -2374,7 +2365,8 @@ The wait time shall be determined by choosing a random value between the minimum
    :safety: QM
    :status: valid
 
-The SOME/IP-SD shall use the same random value for multiple entries of different types in order to pack them together for a reduced number of messages.
+   The SOME/IP-SD shall use the same random value for multiple entries of different types in order
+   to pack them together for a reduced number of messages.
 
 .. feat_req::
    :id: feat_req_someipsd_836
@@ -2383,7 +2375,9 @@ The SOME/IP-SD shall use the same random value for multiple entries of different
    :safety: QM
    :status: valid
 
-The SOME/IP-SD shall pack entries together no matter whether any delay is involved or not. For example, all SubscribeEventgroup entries of a message shall be responded combined in single message which carries all SubscribeEventgroupAck or SubscribeEventgroupNack entries, respectively.
+   The SOME/IP-SD shall pack entries together no matter whether any delay is involved or not.
+   For example, all SubscribeEventgroup entries of a message shall be responded combined in single
+   message which carries all SubscribeEventgroupAck or SubscribeEventgroupNack entries, respectively.
 
 .. feat_req::
    :id: feat_req_someipsd_66
@@ -2392,7 +2386,8 @@ The SOME/IP-SD shall pack entries together no matter whether any delay is involv
    :safety: QM
    :status: valid
 
-After sending the first message the Repetition Phase of this Service Instance/these Service Instances is entered.
+   After sending the first message the Repetition Phase of this Service Instance/these Service
+   Instances is entered.
 
 .. feat_req::
    :id: feat_req_someipsd_67
@@ -2401,7 +2396,7 @@ After sending the first message the Repetition Phase of this Service Instance/th
    :safety: QM
    :status: valid
 
-The SOME/IP-SD implementation shall wait in the Repetition Phase based on REPETITIONS_BASE_DELAY.
+   The SOME/IP-SD implementation shall wait in the Repetition Phase based on REPETITIONS_BASE_DELAY.
 
 .. feat_req::
    :id: feat_req_someipsd_76
@@ -2410,7 +2405,7 @@ The SOME/IP-SD implementation shall wait in the Repetition Phase based on REPETI
    :safety: QM
    :status: valid
 
-After each message sent in the Repetition Phase the delay shall be doubled.
+   After each message sent in the Repetition Phase the delay shall be doubled.
 
 .. feat_req::
    :id: feat_req_someipsd_73
@@ -2419,7 +2414,7 @@ After each message sent in the Repetition Phase the delay shall be doubled.
    :safety: QM
    :status: valid
 
-The SOME/IP-SD shall send out only up to REPETITIONS_MAX entries during the Repetition Phase.
+   The SOME/IP-SD shall send out only up to REPETITIONS_MAX entries during the Repetition Phase.
 
 .. feat_req::
    :id: feat_req_someipsd_867
@@ -2428,7 +2423,8 @@ The SOME/IP-SD shall send out only up to REPETITIONS_MAX entries during the Repe
    :safety: QM
    :status: valid
 
-Sending FindService entries shall be stopped after receiving the corresponding OfferService entries by jumping to the Main Phase in which no FindService entries are sent.
+   Sending FindService entries shall be stopped after receiving the corresponding OfferService
+   entries by jumping to the Main Phase in which no FindService entries are sent.
 
 .. feat_req::
    :id: feat_req_someipsd_74
@@ -2437,7 +2433,8 @@ Sending FindService entries shall be stopped after receiving the corresponding O
    :safety: QM
    :status: valid
 
-If REPETITIONS_MAX is set to 0, the Repetition Phase shall be skipped and the Main Phase is entered for the Service Instance after the Initial Wait Phase.
+   If REPETITIONS_MAX is set to 0, the Repetition Phase shall be skipped and the Main Phase is
+   entered for the Service Instance after the Initial Wait Phase.
 
 .. feat_req::
    :id: feat_req_someipsd_75
@@ -2446,7 +2443,7 @@ If REPETITIONS_MAX is set to 0, the Repetition Phase shall be skipped and the Ma
    :safety: QM
    :status: valid
 
-After the Repetition Phase the Main Phase is being entered for a Service Instance.
+   After the Repetition Phase the Main Phase is being entered for a Service Instance.
 
 .. feat_req::
    :id: feat_req_someipsd_80
@@ -2455,9 +2452,9 @@ After the Repetition Phase the Main Phase is being entered for a Service Instanc
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-After entering the Main Phase 1*CYCLIC_OFFER_DELAY is waited before sending the first message.
+   After entering the Main Phase 1*CYCLIC_OFFER_DELAY is waited before sending the first message.
 
 .. feat_req::
    :id: feat_req_someipsd_79
@@ -2466,7 +2463,8 @@ After entering the Main Phase 1*CYCLIC_OFFER_DELAY is waited before sending the 
    :safety: QM
    :status: valid
 
-In the Main Phase OfferService messages shall be sent cyclically if a CYCLIC_OFFER_DELAY is configured, while the service instance is available.
+   In the Main Phase OfferService messages shall be sent cyclically if a CYCLIC_OFFER_DELAY is
+   configured, while the service instance is available.
 
 .. feat_req::
    :id: feat_req_someipsd_81
@@ -2475,9 +2473,10 @@ In the Main Phase OfferService messages shall be sent cyclically if a CYCLIC_OFF
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-After a message for a specific service instance the SOME/IP-SD waits for 1*CYCLIC_OFFER_DELAY before sending the next message for this service instance.
+   After a message for a specific service instance the SOME/IP-SD waits for 1*CYCLIC_OFFER_DELAY
+   before sending the next message for this service instance.
 
 .. feat_req::
    :id: feat_req_someipsd_866
@@ -2486,7 +2485,7 @@ After a message for a specific service instance the SOME/IP-SD waits for 1*CYCLI
    :safety: QM
    :status: valid
 
-For FindService entries no cyclic messages are allowed in Main Phase.
+   For FindService entries no cyclic messages are allowed in Main Phase.
 
 .. feat_req::
    :id: feat_req_someipsd_631
@@ -2495,7 +2494,8 @@ For FindService entries no cyclic messages are allowed in Main Phase.
    :safety: QM
    :status: valid
 
-Requests/Subscriptions entries shall not be triggered cyclically but shall be triggered by OfferService entries, which are sent cyclically.
+   Requests/Subscriptions entries shall not be triggered cyclically but shall be triggered by
+   OfferService entries, which are sent cyclically.
 
 .. feat_req::
    :id: feat_req_someipsd_77
@@ -2504,35 +2504,31 @@ Requests/Subscriptions entries shall not be triggered cyclically but shall be tr
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Example:
+   Example:
 
-Initial Wait Phase:
+   Initial Wait Phase:
 
-* Wait for random_delay in Range(INITIAL_DELAY_MIN, _MAX)
-* Send message (FindService and OfferService entries)
+   *  Wait for random_delay in Range(INITIAL_DELAY_MIN, _MAX)
+   *  Send message (FindService and OfferService entries)
 
-Repetition Phase (REPETITIONS_BASE_DELAY=100ms, REPETITIONS_MAX=2):
+   Repetition Phase (REPETITIONS_BASE_DELAY=100ms, REPETITIONS_MAX=2):
 
-* Wait 2^0*100ms
-* Send message (FindService and OfferService entries)
-* Wait 2^1*100ms
-* Send message (FindService and OfferService entries)
-* Wait 2^2*100ms
+   *  Wait 2^0*100ms
+   *  Send message (FindService and OfferService entries)
+   *  Wait 2^1*100ms
+   *  Send message (FindService and OfferService entries)
+   *  Wait 2^2*100ms
 
-Main Phase (as long message is active and CYCLIC_OFFER_DELAY is defined):
+   Main Phase (as long message is active and CYCLIC_OFFER_DELAY is defined):
 
-* Send message (OfferService entries)
-* Wait CYCLIC_OFFER_DELAY
+   *  Send message (OfferService entries)
+   *  Wait CYCLIC_OFFER_DELAY
 
 .. heading:: Response Behavior
    :id: feat_req_someipsd_61
-   :layout: focus
-   :style: clean
-
-Response Behavior
-=================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_83
@@ -2541,9 +2537,11 @@ Response Behavior
    :safety: QM
    :status: valid
 
-The SOME/IP-SD shall delay responses to entries that were transported in a multicast/broadcast SOME/IP-SD message using the configuration item REQUEST_RESPONSE_DELAY in order to prevent multicast-response bursts.
+   The SOME/IP-SD shall delay responses to entries that were transported in a multicast/broadcast
+   SOME/IP-SD message using the configuration item REQUEST_RESPONSE_DELAY in order to prevent
+   multicast-response bursts.
 
-This applies to responses to FindService entries, i.e. OfferService entries.
+   This applies to responses to FindService entries, i.e. OfferService entries.
 
 .. feat_req::
    :id: feat_req_someipsd_766
@@ -2552,9 +2550,10 @@ This applies to responses to FindService entries, i.e. OfferService entries.
    :safety: QM
    :status: valid
 
-The REQUEST_RESPONSE_DELAY shall also apply to unicast messages triggered by multicast messages in order to prevent multicast-response bursts.
+   The REQUEST_RESPONSE_DELAY shall also apply to unicast messages triggered by multicast messages
+   in order to prevent multicast-response bursts.
 
-This applies to SubscribeEventgroup in response to OfferService, for example.
+   This applies to SubscribeEventgroup in response to OfferService, for example.
 
 .. feat_req::
    :id: feat_req_someipsd_624
@@ -2563,7 +2562,7 @@ This applies to SubscribeEventgroup in response to OfferService, for example.
    :safety: QM
    :status: valid
 
-The REQUEST_RESPONSE_DELAY shall not apply if unicast messages are responded with unicast messages.
+   The REQUEST_RESPONSE_DELAY shall not apply if unicast messages are responded with unicast messages.
 
 .. feat_req::
    :id: feat_req_someipsd_84
@@ -2572,7 +2571,7 @@ The REQUEST_RESPONSE_DELAY shall not apply if unicast messages are responded wit
    :safety: QM
    :status: valid
 
-REQUEST_RESPONSE_DELAY shall be specified by a minimum and a maximum.
+   REQUEST_RESPONSE_DELAY shall be specified by a minimum and a maximum.
 
 .. feat_req::
    :id: feat_req_someipsd_85
@@ -2581,7 +2580,7 @@ REQUEST_RESPONSE_DELAY shall be specified by a minimum and a maximum.
    :safety: QM
    :status: valid
 
-The actual delay shall be randomly chosen between minimum and maximum of REQUEST_RESPONSE_DELAY.
+   The actual delay shall be randomly chosen between minimum and maximum of REQUEST_RESPONSE_DELAY.
 
 .. feat_req::
    :id: feat_req_someipsd_824
@@ -2590,7 +2589,8 @@ The actual delay shall be randomly chosen between minimum and maximum of REQUEST
    :safety: QM
    :status: valid
 
-For basic implementations all FindService entries (no matter of the state of the Unicast Flag) shall be responded with OfferService entries transported using unicast.
+   For basic implementations all FindService entries (no matter of the state of the Unicast Flag)
+   shall be responded with OfferService entries transported using unicast.
 
 .. feat_req::
    :id: feat_req_someipsd_826
@@ -2599,7 +2599,7 @@ For basic implementations all FindService entries (no matter of the state of the
    :safety: QM
    :status: valid
 
-For optimization purpose the following behaviors may optionally be supported:
+   For optimization purpose the following behaviors may optionally be supported:
 
 .. feat_req::
    :id: feat_req_someipsd_89
@@ -2608,9 +2608,10 @@ For optimization purpose the following behaviors may optionally be supported:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-* FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded to with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
+   *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
+      to with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
 
 .. feat_req::
    :id: feat_req_someipsd_90
@@ -2619,9 +2620,10 @@ For optimization purpose the following behaviors may optionally be supported:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-* FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded to with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
+   *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
+      to with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
 
 .. feat_req::
    :id: feat_req_someipsd_91
@@ -2630,19 +2632,16 @@ For optimization purpose the following behaviors may optionally be supported:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-* FindService messages received with Unicast Flag set to 0 (multicast), shall be responded to with a multicast response.
+   *  FindService messages received with Unicast Flag set to 0 (multicast), shall be responded to
+      with a multicast response.
 
-Note: This was only needed in earlier migration scenarios and will go away in the future).
+   Note: This was only needed in earlier migration scenarios and will go away in the future).
 
 .. heading:: Shutdown Behavior
    :id: feat_req_someipsd_819
-   :layout: focus
-   :style: clean
-
-Shutdown Behavior
-=================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_820
@@ -2651,7 +2650,7 @@ Shutdown Behavior
    :safety: QM
    :status: valid
 
-When a server service instance of an ECU is being stopped, a StopOfferService entry shall be sent out.
+   When a server service instance of an ECU is being stopped, a StopOfferService entry shall be sent out.
 
 .. feat_req::
    :id: feat_req_someipsd_830
@@ -2660,7 +2659,8 @@ When a server service instance of an ECU is being stopped, a StopOfferService en
    :safety: QM
    :status: valid
 
-When a server sends out a StopOfferService entry all subscriptions for this service instance shall be deleted on the server side.
+   When a server sends out a StopOfferService entry all subscriptions for this service instance
+   shall be deleted on the server side.
 
 .. feat_req::
    :id: feat_req_someipsd_1297
@@ -2669,7 +2669,8 @@ When a server sends out a StopOfferService entry all subscriptions for this serv
    :safety: QM
    :status: valid
 
-When a server receives a StopSubscribeEventgroup entry by a client, this client shall be deleted from the subscription list of the eventgroup and the server shall free its resources accordingly.
+   When a server receives a StopSubscribeEventgroup entry by a client, this client shall be deleted
+   from the subscription list of the eventgroup and the server shall free its resources accordingly.
 
 .. feat_req::
    :id: feat_req_someipsd_831
@@ -2678,7 +2679,9 @@ When a server receives a StopSubscribeEventgroup entry by a client, this client 
    :safety: QM
    :status: valid
 
-When a client receives a StopOfferService entry, all subscriptions for this service instance shall be deleted on the client side and the client shall free its resources accordingly (i.e. close sockets and reset to default/wildcard).
+   When a client receives a StopOfferService entry, all subscriptions for this service instance
+   shall be deleted on the client side and the client shall free its resources accordingly
+   (i.e. close sockets and reset to default/wildcard).
 
 .. feat_req::
    :id: feat_req_someipsd_834
@@ -2687,7 +2690,9 @@ When a client receives a StopOfferService entry, all subscriptions for this serv
    :safety: QM
    :status: valid
 
-When a client receives a StopOfferService entry, the client shall not send out FindService entries but wait for OfferService entry or change of status (application, network management, Ethernet link, or similar).
+   When a client receives a StopOfferService entry, the client shall not send out FindService
+   entries but wait for OfferService entry or change of status (application, network management,
+   Ethernet link, or similar).
 
 .. feat_req::
    :id: feat_req_someipsd_822
@@ -2696,7 +2701,8 @@ When a client receives a StopOfferService entry, the client shall not send out F
    :safety: QM
    :status: valid
 
-When a client service instance of an ECU is being stopped (i.e. the service instance is released), the SD shall send out StopSubscribeEventgroup entries for all subscribed Eventgroups.
+   When a client service instance of an ECU is being stopped (i.e. the service instance is released),
+   the SD shall send out StopSubscribeEventgroup entries for all subscribed Eventgroups.
 
 .. feat_req::
    :id: feat_req_someipsd_821
@@ -2705,15 +2711,12 @@ When a client service instance of an ECU is being stopped (i.e. the service inst
    :safety: QM
    :status: valid
 
-When the whole ECU is being shut down, StopOfferService entries shall be sent out for all service entries and StopSubscribeEventgroup entries for Eventgroups.
+   When the whole ECU is being shut down, StopOfferService entries shall be sent out for all service
+   entries and StopSubscribeEventgroup entries for Eventgroups.
 
 .. heading:: State Machines
    :id: feat_req_someipsd_627
-   :layout: focus
-   :style: clean
-
-State Machines
-==============
+   :hand: 3
 
 .. feat_req::
    :id: feat_req_someipsd_628
@@ -2722,7 +2725,7 @@ State Machines
    :safety: QM
    :status: valid
 
-In this section the state machines of the client and server are shown.
+   In this section the state machines of the client and server are shown.
 
 .. feat_req::
    :id: feat_req_someipsd_629
@@ -2731,9 +2734,9 @@ In this section the state machines of the client and server are shown.
    :safety: QM
    :status: valid
 
-SOME/IP Services State Machine Server
+   SOME/IP Services State Machine Server
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_629.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_629.py
 
 
 .. feat_req::
@@ -2743,18 +2746,14 @@ SOME/IP Services State Machine Server
    :safety: QM
    :status: valid
 
-SOME/IP Services State Machine Client
+   SOME/IP Services State Machine Client
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
 
 
 .. heading:: Error Handling
    :id: feat_req_someipsd_1162
-   :layout: focus
-   :style: clean
-
-Error Handling
-==============
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_1220
@@ -2763,7 +2762,8 @@ Error Handling
    :safety: QM
    :status: valid
 
-Error checking of SOME/IP-SD messages shall first check the SOME/IP header as outlined earlier :need:`feat_req_someip_717`. SOME/IP-SD messages are treated as events in this regard.
+   Error checking of SOME/IP-SD messages shall first check the SOME/IP header as outlined earlier
+   :need:`feat_req_someip_717`. SOME/IP-SD messages are treated as events in this regard.
 
 .. feat_req::
    :id: feat_req_someipsd_1164
@@ -2772,28 +2772,31 @@ Error checking of SOME/IP-SD messages shall first check the SOME/IP header as ou
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Figure :need:`feat_req_someipsd_1163` shows a simplified illustration of the error handling of received SOME/IP-SD messages.
+   Figure :need:`feat_req_someipsd_1163` shows a simplified illustration of the error handling of
+   received SOME/IP-SD messages.
 
-The following steps shall be taken:
+   The following steps shall be taken:
 
-* Check that at least enough bytes for an empty SOME/IP-SD message are available
-* Check that enough bytes for the entries and options array are available
-* For each entry that can be parsed:
-* Check if the Service ID of this entry is known
-* Check if the Instance ID of this entry is known for this service
-* Check if the Major Version of this entry is known for this service
-* Check if the Eventgroup ID of the entry is known for this service (only applicable for eventgroup entries)
-* Check if the referenced options exist in the options array and if these options are syntactically ok
-* Check if all endpoint options contain a valid IP address (see :need:`feat_req_someipsd_1233`)
-* Check if the TCP connection is already present (only applicable, if TCP is configured for Eventgroup and SubscribeEventgroup entry was received)
-* Check if enough resources are left (e.g. Socket Connections)
+   *  Check that at least enough bytes for an empty SOME/IP-SD message are available
+   *  Check that enough bytes for the entries and options array are available
+   *  For each entry that can be parsed:
+   *  Check if the Service ID of this entry is known
+   *  Check if the Instance ID of this entry is known for this service
+   *  Check if the Major Version of this entry is known for this service
+   *  Check if the Eventgroup ID of the entry is known for this service (only applicable for eventgroup entries)
+   *  Check if the referenced options exist in the options array and if these options are syntactically ok
+   *  Check if all endpoint options contain a valid IP address (see :need:`feat_req_someipsd_1233`)
+   *  Check if the TCP connection is already present (only applicable, if TCP is configured for
+      Eventgroup and SubscribeEventgroup entry was received)
+   *  Check if enough resources are left (e.g. Socket Connections)
 
-If any of these checks fails, the following shall be done:
+   If any of these checks fails, the following shall be done:
 
-* Respond with a SubscribeEventgroupNack, if the original entry was a SubscribeEventgroup entry :need:`feat_req_someipsd_1137`.
-* Ignore, if the original entry was not a SubscribeEventgroup entry
+   *  Respond with a SubscribeEventgroupNack, if the original entry was a SubscribeEventgroup entry
+      :need:`feat_req_someipsd_1137`.
+   *  Ignore, if the original entry was not a SubscribeEventgroup entry
 
 .. feat_req::
    :id: feat_req_someipsd_1233
@@ -2802,14 +2805,14 @@ If any of these checks fails, the following shall be done:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-A valid IP address in this context has the following characteristics:
+   A valid IP address in this context has the following characteristics:
 
-* Its value is in a configured range or the local subnet to which SOME/IP sends messages
-* Is not the receiver's own IP address
-* Is no multicast address
-* Is not 127.0.0.1
+   *  Its value is in a configured range or the local subnet to which SOME/IP sends messages
+   *  Is not the receiver's own IP address
+   *  Is no multicast address
+   *  Is not 127.0.0.1
 
 .. feat_req::
    :id: feat_req_someipsd_1163
@@ -2818,9 +2821,9 @@ A valid IP address in this context has the following characteristics:
    :safety: QM
    :status: valid
 
-Figure: Error handling of received SOME/IP-SD message
+   Figure: Error handling of received SOME/IP-SD message
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_1163.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_1163.py
 
 
 .. feat_req::
@@ -2830,19 +2833,22 @@ Figure: Error handling of received SOME/IP-SD message
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Check the referenced Options of each received entry:
+   Check the referenced Options of each received entry:
 
-* The referenced options exist.
-* The entry references all required options (e.g. a provided eventgroup that uses unicast requires a unicast endpoint option in a received Subscribe Eventgroup entry).
-* The entry only references supported options (e.g. a required eventgroup that does not support multicast data reception does not support multicast endpoint options in a Subscribe Eventgroup ACK entry).
-* There are no conflicts between the options referenced by an entry (i.e. two options of same type with contradicting content).
-* The Type of the referenced Option is known or the discardable flag is set to 1.
-* The Type of the referenced Option is allowed for the entry or discardable flag is set to 1.
-* The Length of the referenced Option is consistent to the Type of the Option.
-* An Endpoint Option has a valid L4-Protocol and port number field.
-* The Option is valid (e.g. a multicast endpoint option shall use a multicast IP address).
+   *  The referenced options exist.
+   *  The entry references all required options (e.g. a provided eventgroup that uses unicast
+      requires a unicast endpoint option in a received Subscribe Eventgroup entry).
+   *  The entry only references supported options (e.g. a required eventgroup that does not support
+      multicast data reception does not support multicast endpoint options in a Subscribe Eventgroup ACK entry).
+   *  There are no conflicts between the options referenced by an entry (i.e. two options of same
+      type with contradicting content).
+   *  The Type of the referenced Option is known or the discardable flag is set to 1.
+   *  The Type of the referenced Option is allowed for the entry or discardable flag is set to 1.
+   *  The Length of the referenced Option is consistent to the Type of the Option.
+   *  An Endpoint Option has a valid L4-Protocol and port number field.
+   *  The Option is valid (e.g. a multicast endpoint option shall use a multicast IP address).
 
 .. feat_req::
    :id: feat_req_someipsd_105
@@ -2851,7 +2857,7 @@ Check the referenced Options of each received entry:
    :safety: QM
    :status: valid
 
-Check if a security association is already established.
+   Check if a security association is already established.
 
 .. feat_req::
    :id: feat_req_someipsd_106
@@ -2860,15 +2866,13 @@ Check if a security association is already established.
    :safety: QM
    :status: valid
 
-If the checks in Figure :need:`feat_req_someipsd_1163` fail for a received Find entry, the entry shall be ignored, except when Endpoint or Multicast Options are referenced, in which case only the Options shall be ignored according to :need:`feat_req_someipsd_878`.
+   If the checks in Figure :need:`feat_req_someipsd_1163` fail for a received Find entry, the entry
+   shall be ignored, except when Endpoint or Multicast Options are referenced, in which case only
+   the Options shall be ignored according to :need:`feat_req_someipsd_878`.
 
 .. heading:: Announcing non-SOME/IP protocols with SOME/IP-SD
    :id: feat_req_someipsd_498
-   :layout: focus
-   :style: clean
-
-Announcing non-SOME/IP protocols with SOME/IP-SD
-************************************************
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_499
@@ -2877,7 +2881,8 @@ Announcing non-SOME/IP protocols with SOME/IP-SD
    :safety: QM
    :status: valid
 
-Besides SOME/IP other communication protocols are used within the vehicle; e.g. for Network Management, Diagnosis, or Flash Updates. Such communication protocols might need to communicate a service instance or have eventgroups as well.
+   Besides SOME/IP other communication protocols are used within the vehicle; e.g. for Network
+   Management, Diagnosis, or Flash Updates. Such communication protocols might need to communicate a service instance or have eventgroups as well.
 
 .. feat_req::
    :id: feat_req_someipsd_500
@@ -2886,13 +2891,15 @@ Besides SOME/IP other communication protocols are used within the vehicle; e.g. 
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-For Non-SOME/IP protocols a special Service ID shall be used and further information shall be added using the configuration option:
+   For Non-SOME/IP protocols a special Service ID shall be used and further information shall be
+   added using the configuration option:
 
-* Service ID shall be set to 0xFFFE (reserved)
-* Instance ID shall be used as described for SOME/IP services and eventgroups.
-* The Configuration Option shall be added and shall contain at least an entry with key "otherserv" and a configurable non-empty value.
+   *  Service ID shall be set to 0xFFFE (reserved)
+   *  Instance ID shall be used as described for SOME/IP services and eventgroups.
+   *  The Configuration Option shall be added and shall contain at least an entry with key "otherserv"
+      and a configurable non-empty value.
 
 .. feat_req::
    :id: feat_req_someipsd_1227
@@ -2901,7 +2908,8 @@ For Non-SOME/IP protocols a special Service ID shall be used and further informa
    :safety: QM
    :status: valid
 
-If multiple Non-SOME/IP services are announced, each shall have its own OfferService Entry, so individual TTLs are possible.
+   If multiple Non-SOME/IP services are announced, each shall have its own OfferService Entry, so
+   individual TTLs are possible.
 
 .. feat_req::
    :id: feat_req_someipsd_1228
@@ -2910,7 +2918,7 @@ If multiple Non-SOME/IP services are announced, each shall have its own OfferSer
    :safety: QM
    :status: valid
 
-Only one single "otherserv" configuration option per OfferService Entry is permitted.
+   Only one single "otherserv" configuration option per OfferService Entry is permitted.
 
 .. feat_req::
    :id: feat_req_someipsd_502
@@ -2919,7 +2927,7 @@ Only one single "otherserv" configuration option per OfferService Entry is permi
    :safety: QM
    :status: valid
 
-SOME/IP services shall not use the otherserv-string in the Configuration Option.
+   SOME/IP services shall not use the otherserv-string in the Configuration Option.
 
 .. feat_req::
    :id: feat_req_someipsd_503
@@ -2928,7 +2936,8 @@ SOME/IP services shall not use the otherserv-string in the Configuration Option.
    :safety: QM
    :status: valid
 
-For FindService/OfferService/RequestService entries the otherserv-string shall be used when announcing non-SOME/IP service instances.
+   For FindService/OfferService/RequestService entries the otherserv-string shall be used when
+   announcing non-SOME/IP service instances.
 
 .. feat_req::
    :id: feat_req_someipsd_501
@@ -2937,12 +2946,12 @@ For FindService/OfferService/RequestService entries the otherserv-string shall b
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Example for valid otherserv-string: "otherserv=internaldiag".
+   Example for valid otherserv-string: "otherserv=internaldiag".
 
-* Example for an invalid otherserv-string: "otherserv".
-* Example for an invalid otherserv-string: "otherserv=".
+   *  Example for an invalid otherserv-string: "otherserv".
+   *  Example for an invalid otherserv-string: "otherserv=".
 
 .. feat_req::
    :id: feat_req_someipsd_575
@@ -2951,18 +2960,14 @@ Example for valid otherserv-string: "otherserv=internaldiag".
    :safety: QM
    :status: valid
 
-Figure: SOME/IP-SD example PDU for Non-SOME/IP-SD
+   Figure: SOME/IP-SD example PDU for Non-SOME/IP-SD
 
-.. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
+   .. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
 
 
 .. heading:: Publish/Subscribe with SOME/IP and SOME/IP-SD
    :id: feat_req_someipsd_137
-   :layout: focus
-   :style: clean
-
-Publish/Subscribe with SOME/IP and SOME/IP-SD
-*********************************************
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_419
@@ -2971,7 +2976,9 @@ Publish/Subscribe with SOME/IP and SOME/IP-SD
    :safety: QM
    :status: valid
 
-In contrast to the SOME/IP request/response mechanism there are cases in which a client requires a set of parameters from a server, but does not want to request that information each time it is required. These are called notifications and concern events and fields.
+   In contrast to the SOME/IP request/response mechanism there are cases in which a client requires
+   a set of parameters from a server, but does not want to request that information each time it is
+   required. These are called notifications and concern events and fields.
 
 .. feat_req::
    :id: feat_req_someipsd_422
@@ -2980,7 +2987,8 @@ In contrast to the SOME/IP request/response mechanism there are cases in which a
    :safety: QM
    :status: valid
 
-All clients needing events and/or notification events shall register using the SOME/IP-SD at run-time with a server.
+   All clients needing events and/or notification events shall register using the SOME/IP-SD at
+   run-time with a server.
 
 .. feat_req::
    :id: feat_req_someipsd_425
@@ -2989,9 +2997,9 @@ All clients needing events and/or notification events shall register using the S
    :safety: QM
    :status: valid
 
-Figure: Notification interaction (extremely simplified)
+   Figure: Notification interaction (extremely simplified)
 
-.. plantuml:: images/plantuml/feat_req_someipsd_425.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_425.puml
 
 
 .. feat_req::
@@ -3001,7 +3009,8 @@ Figure: Notification interaction (extremely simplified)
    :safety: QM
    :status: valid
 
-With the SOME/IP-SD entry OfferService the server offers to push notifications to clients; thus, it shall be used as trigger for Subscriptions.
+   With the SOME/IP-SD entry OfferService the server offers to push notifications to clients; thus,
+   it shall be used as trigger for Subscriptions.
 
 .. feat_req::
    :id: feat_req_someipsd_429
@@ -3010,7 +3019,8 @@ With the SOME/IP-SD entry OfferService the server offers to push notifications t
    :safety: QM
    :status: valid
 
-When a server of a notification service starts up (e.g. after reset), it shall send a SOME/IP-SD OfferService into the network to discover all instances interested in the events and fields offered.
+   When a server of a notification service starts up (e.g. after reset), it shall send a SOME/IP-SD
+   OfferService into the network to discover all instances interested in the events and fields offered.
 
 .. feat_req::
    :id: feat_req_someipsd_430
@@ -3019,7 +3029,9 @@ When a server of a notification service starts up (e.g. after reset), it shall s
    :safety: QM
    :status: valid
 
-Each client in SD based notification implements the specific service-interfaces for the notification they wish to receive and signal their wish of receiving such notifications using the SOME/IP-SD SubscribeEventgroup entries.
+   Each client in SD based notification implements the specific service-interfaces for the notification
+   they wish to receive and signal their wish of receiving such notifications using the SOME/IP-SD
+   SubscribeEventgroup entries.
 
 .. feat_req::
    :id: feat_req_someipsd_431
@@ -3028,9 +3040,14 @@ Each client in SD based notification implements the specific service-interfaces 
    :safety: QM
    :status: valid
 
-Each client shall respond to a SOME/IP-SD OfferService entry from the server with a SOME/IP-SD SubscribeEventgroup entry as long as the client is still interested in receiving the notifications/events of this eventgroup.
+   Each client shall respond to a SOME/IP-SD OfferService entry from the server with a SOME/IP-SD
+   SubscribeEventgroup entry as long as the client is still interested in receiving the
+   notifications/events of this eventgroup.
 
-If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages reboot flag, the client shall only respond to OfferService messages after the server reboots, if configured to do so (TTL set to maximum value). The client shall make sure that this works reliable even when the SOME/IP-SD messages of the server are lost.
+   If the client is able to reliably detect the reboot of the server using the SOME/IP-SD messages
+   reboot flag, the client shall only respond to OfferService messages after the server reboots, if
+   configured to do so (TTL set to maximum value). The client shall make sure that this works
+   reliable even when the SOME/IP-SD messages of the server are lost.
 
 .. feat_req::
    :id: feat_req_someipsd_1191
@@ -3039,7 +3056,8 @@ If the client is able to reliably detect the reboot of the server using the SOME
    :safety: QM
    :status: valid
 
-The client shall explicitly request Initial Events by setting the Initial Data Requested Flag, if it has no active subscription to the Eventgroup.
+   The client shall explicitly request Initial Events by setting the Initial Data Requested Flag,
+   if it has no active subscription to the Eventgroup.
 
 .. feat_req::
    :id: feat_req_someipsd_1192
@@ -3048,7 +3066,8 @@ The client shall explicitly request Initial Events by setting the Initial Data R
    :safety: QM
    :status: valid
 
-If the client sends out additional SubscribeEventgroup entries and the TTL of the previous Subscribe has not expired yet, the client shall not request Initial Events.
+   If the client sends out additional SubscribeEventgroup entries and the TTL of the previous
+   Subscribe has not expired yet, the client shall not request Initial Events.
 
 .. feat_req::
    :id: feat_req_someipsd_1193
@@ -3057,14 +3076,15 @@ If the client sends out additional SubscribeEventgroup entries and the TTL of th
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Reasons for the client to explicitly request Initial Events include but are not limited to:
+   Reasons for the client to explicitly request Initial Events include but are not limited to:
 
-* The client is currently not subscribed to the Eventgroup.
-* The client has seen a link-down/link-up after the last SubscribeEventgroup entry.
-* The client has not received a SubscribeEventgroupAck after the last regular SubscribeEventgroup (see :need:`feat_req_someipsd_844`).
-* The client has detected a Reboot of the Server of this Services (see :need:`feat_req_someipsd_871`).
+   *  The client is currently not subscribed to the Eventgroup.
+   *  The client has seen a link-down/link-up after the last SubscribeEventgroup entry.
+   *  The client has not received a SubscribeEventgroupAck after the last regular SubscribeEventgroup
+      (see :need:`feat_req_someipsd_844`).
+   *  The client has detected a Reboot of the Server of this Services (see :need:`feat_req_someipsd_871`).
 
 .. feat_req::
    :id: feat_req_someipsd_1168
@@ -3073,9 +3093,11 @@ Reasons for the client to explicitly request Initial Events include but are not 
    :safety: QM
    :status: valid
 
-If the client subscribes to two or more eventgroups including one or more identical events or fields, the server shall not send duplicated events or notification events for the field. This does mean regular events and not initial events.
+   If the client subscribes to two or more eventgroups including one or more identical events or
+   fields, the server shall not send duplicated events or notification events for the field.
+   This does mean regular events and not initial events.
 
-See :need:`feat_req_someipsd_1166` and :need:`feat_req_someipsd_1167`.
+   See :need:`feat_req_someipsd_1166` and :need:`feat_req_someipsd_1167`.
 
 .. feat_req::
    :id: feat_req_someipsd_632
@@ -3084,9 +3106,9 @@ See :need:`feat_req_someipsd_1166` and :need:`feat_req_someipsd_1167`.
    :safety: QM
    :status: valid
 
-Publish / Subscribe with link loss at client (figure ignores timings)
+   Publish / Subscribe with link loss at client (figure ignores timings)
 
-.. plantuml:: images/plantuml/feat_req_someipsd_632.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_632.puml
 
 
 .. feat_req::
@@ -3096,7 +3118,8 @@ Publish / Subscribe with link loss at client (figure ignores timings)
    :safety: QM
    :status: valid
 
-The server sending OfferService entries as implicit Publishes has to keep state of SubscribeEventgroup messages for this eventgroup instance in order to know if notifications/events have to be sent.
+   The server sending OfferService entries as implicit Publishes has to keep state of SubscribeEventgroup
+   messages for this eventgroup instance in order to know if notifications/events have to be sent.
 
 .. feat_req::
    :id: feat_req_someipsd_433
@@ -3105,7 +3128,8 @@ The server sending OfferService entries as implicit Publishes has to keep state 
    :safety: QM
    :status: valid
 
-A client shall deregister from a server by sending a SOME/IP-SD SubscribeEventgroup message with TTL=0 (StopSubscribeEventgroup).
+   A client shall deregister from a server by sending a SOME/IP-SD SubscribeEventgroup message with
+   TTL=0 (StopSubscribeEventgroup).
 
 .. feat_req::
    :id: feat_req_someipsd_634
@@ -3114,9 +3138,9 @@ A client shall deregister from a server by sending a SOME/IP-SD SubscribeEventgr
    :safety: QM
    :status: valid
 
-Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
+   Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
 
-.. plantuml:: images/plantuml/feat_req_someipsd_634.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_634.puml
 
 
 .. feat_req::
@@ -3126,9 +3150,9 @@ Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring 
    :safety: QM
    :status: valid
 
-Figure: Publish / Subscribe Registration / Deregistration behavior (figure ignores timings)
+   Figure: Publish / Subscribe Registration / Deregistration behavior (figure ignores timings)
 
-.. plantuml:: images/plantuml/feat_req_someipsd_1239.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_1239.puml
 
 .. feat_req::
    :id: feat_req_someipsd_435
@@ -3137,9 +3161,11 @@ Figure: Publish / Subscribe Registration / Deregistration behavior (figure ignor
    :safety: QM
    :status: valid
 
-The SOME/IP-SD on the server shall delete the subscription, if a relevant SOME/IP error is received after sending an event or notification event.
+   The SOME/IP-SD on the server shall delete the subscription, if a relevant SOME/IP error is
+   received after sending an event or notification event.
 
-The error includes but is not limited to not being able to reach the communication partner and errors of the TCP connection.
+   The error includes but is not limited to not being able to reach the communication partner and
+   errors of the TCP connection.
 
 .. feat_req::
    :id: feat_req_someipsd_437
@@ -3148,7 +3174,8 @@ The error includes but is not limited to not being able to reach the communicati
    :safety: QM
    :status: valid
 
-If the server loses its link on the relevant Ethernet interface, it shall delete all the registered notifications and close the TCP connection for those notifications as well.
+   If the server loses its link on the relevant Ethernet interface, it shall delete all the registered
+   notifications and close the TCP connection for those notifications as well.
 
 .. feat_req::
    :id: feat_req_someipsd_436
@@ -3157,7 +3184,8 @@ If the server loses its link on the relevant Ethernet interface, it shall delete
    :safety: QM
    :status: valid
 
-If the Ethernet link status of the server becomes up again, it shall trigger a SOME/IP-SD OfferService message.
+   If the Ethernet link status of the server becomes up again, it shall trigger a SOME/IP-SD
+   OfferService message.
 
 .. feat_req::
    :id: feat_req_someipsd_633
@@ -3166,9 +3194,9 @@ If the Ethernet link status of the server becomes up again, it shall trigger a S
    :safety: QM
    :status: valid
 
-Publish / Subscribe with link loss at server (figure ignores timings)
+   Publish / Subscribe with link loss at server (figure ignores timings)
 
-.. plantuml:: images/plantuml/feat_req_someipsd_633.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_633.puml
 
 
 .. feat_req::
@@ -3178,7 +3206,8 @@ Publish / Subscribe with link loss at server (figure ignores timings)
    :safety: QM
    :status: valid
 
-After having not received a notification/event of an eventgroup subscribed to for a certain time the ECU shall send a new SubscribeEventgroup entry. The timeout shall be configurable for each eventgroup.
+   After having not received a notification/event of an eventgroup subscribed to for a certain time
+   the ECU shall send a new SubscribeEventgroup entry. The timeout shall be configurable for each eventgroup.
 
 .. feat_req::
    :id: feat_req_someipsd_832
@@ -3187,7 +3216,8 @@ After having not received a notification/event of an eventgroup subscribed to fo
    :safety: QM
    :status: valid
 
-This timeout feature might be based on the cycle times of cyclic SD-messages, e.g. OfferService entries or messages protected by alive counters (functional safety).
+   This timeout feature might be based on the cycle times of cyclic SD-messages, e.g. OfferService
+   entries or messages protected by alive counters (functional safety).
 
 .. feat_req::
    :id: feat_req_someipsd_440
@@ -3196,7 +3226,8 @@ This timeout feature might be based on the cycle times of cyclic SD-messages, e.
    :safety: QM
    :status: valid
 
-A link-up event on the clients Ethernet link shall start the Initial Wait Phase (consider UDP-NM and others). SOME/IP-SD SubscribeEventgroup entry shall be sent out as described above.
+   A link-up event on the clients Ethernet link shall start the Initial Wait Phase
+   (consider UDP-NM and others). SOME/IP-SD SubscribeEventgroup entry shall be sent out as described above.
 
 .. feat_req::
    :id: feat_req_someipsd_1182
@@ -3205,7 +3236,9 @@ A link-up event on the clients Ethernet link shall start the Initial Wait Phase 
    :safety: QM
    :status: valid
 
-The client shall have its UDP port open and ready to receive messages before sending a SubscribeEventgroup entry, if unreliable events and notification events exist in the interface specification (e.g. FIBEX or ARXML).
+   The client shall have its UDP port open and ready to receive messages before sending a
+   SubscribeEventgroup entry, if unreliable events and notification events exist in the interface
+   specification (e.g. FIBEX or ARXML).
 
 .. feat_req::
    :id: feat_req_someipsd_767
@@ -3214,7 +3247,9 @@ The client shall have its UDP port open and ready to receive messages before sen
    :safety: QM
    :status: valid
 
-The client shall open a TCP connection to the server and should be ready to receive message on that connection before sending the SubscribeEventgroup entry, if reliable events and notification events exist in the interface specification (e.g. FIBEX or ARXML).
+   The client shall open a TCP connection to the server and should be ready to receive message on
+   that connection before sending the SubscribeEventgroup entry, if reliable events and notification
+   events exist in the interface specification (e.g. FIBEX or ARXML).
 
 .. feat_req::
    :id: feat_req_someipsd_441
@@ -3223,9 +3258,11 @@ The client shall open a TCP connection to the server and should be ready to rece
    :safety: QM
    :status: valid
 
-After a client has sent a SubscribeEventgroup entry the server shall send a SubscribeEventgroupAck entry considering the specified delay behavior.
+   After a client has sent a SubscribeEventgroup entry the server shall send a SubscribeEventgroupAck
+   entry considering the specified delay behavior.
 
-Note: The delay behavior is only relevant, if the SubscribeEventgroup was sent via Multicast, which should not be the case anymore.
+   Note: The delay behavior is only relevant, if the SubscribeEventgroup was sent via Multicast,
+   which should not be the case anymore.
 
 .. feat_req::
    :id: feat_req_someipsd_844
@@ -3234,14 +3271,20 @@ Note: The delay behavior is only relevant, if the SubscribeEventgroup was sent v
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The client shall wait for the SubscribeEventgroupAck entry acknowledging a SubscribeEventgroup entry. If this SubscribeEventgroupAck entry does not arrive before the next SubscribeEventgroup entry is sent, the client shall do the following:
+   The client shall wait for the SubscribeEventgroupAck entry acknowledging a SubscribeEventgroup
+   entry. If this SubscribeEventgroupAck entry does not arrive before the next SubscribeEventgroup
+   entry is sent, the client shall do the following:
 
-* if the "Explicit Initial Data Control Flag" of the Server is set to 0, send a StopSubscribeEventgroup entry and a SubscribeEventgroup entry in the same SOME/IP-SD message the SubscribeEventgroup entry would have been sent with.
-* if the "Explicit Initial Data Control Flag" of the Server is set to 1, set the Initial Data Requested Flag of the next SubscribeEventgroup Entry to 1.
+   *  if the "Explicit Initial Data Control Flag" of the Server is set to 0, send a
+      StopSubscribeEventgroup entry and a SubscribeEventgroup entry in the same SOME/IP-SD message
+      the SubscribeEventgroup entry would have been sent with.
+   *  if the "Explicit Initial Data Control Flag" of the Server is set to 1, set the Initial Data
+      Requested Flag of the next SubscribeEventgroup Entry to 1.
 
-Note: This behavior exists to cope with short durations of communication loss, so new Initial Events are triggered to lower the effects of the loss of messages.
+   Note: This behavior exists to cope with short durations of communication loss, so new Initial
+   Events are triggered to lower the effects of the loss of messages.
 
 .. feat_req::
    :id: feat_req_someipsd_1178
@@ -3250,7 +3293,8 @@ Note: This behavior exists to cope with short durations of communication loss, s
    :safety: QM
    :status: valid
 
-The Stop Subscribe and Subscribe entry sent because of :need:`feat_req_someipsd_844` shall be directly behind each other in the same SD message (no other entry between them).
+   The Stop Subscribe and Subscribe entry sent because of :need:`feat_req_someipsd_844` shall be
+   directly behind each other in the same SD message (no other entry between them).
 
 .. feat_req::
    :id: feat_req_someipsd_1171
@@ -3259,7 +3303,7 @@ The Stop Subscribe and Subscribe entry sent because of :need:`feat_req_someipsd_
    :safety: QM
    :status: valid
 
-The :need:`feat_req_someipsd_844` shall not lead to closing and reopening TCP connections.
+   The :need:`feat_req_someipsd_844` shall not lead to closing and reopening TCP connections.
 
 .. feat_req::
    :id: feat_req_someipsd_1169
@@ -3268,7 +3312,11 @@ The :need:`feat_req_someipsd_844` shall not lead to closing and reopening TCP co
    :safety: QM
    :status: valid
 
-The :need:`feat_req_someipsd_844` shall not be applied to OfferService entries that are a reaction to FindService entries. That means that the SubscribeEventgroupAck entry of a SubscribeEventgroup entry that was triggered by unicast OfferService entry is not monitored as well as upon an unicast OfferService entry the StopSubscribeEventgroup entry/SubscribeEventgroup entry is not sent.
+   The :need:`feat_req_someipsd_844` shall not be applied to OfferService entries that are a
+   reaction to FindService entries. That means that the SubscribeEventgroupAck entry of a
+   SubscribeEventgroup entry that was triggered by unicast OfferService entry is not monitored as
+   well as upon an unicast OfferService entry the StopSubscribeEventgroup entry/SubscribeEventgroup
+   entry is not sent.
 
 .. feat_req::
    :id: feat_req_someipsd_1176
@@ -3277,7 +3325,8 @@ The :need:`feat_req_someipsd_844` shall not be applied to OfferService entries t
    :safety: QM
    :status: valid
 
-The :need:`feat_req_someipsd_844` shall not be applied to SubscribeEventgroups that were not triggered directly by a Multicast OfferService.
+   The :need:`feat_req_someipsd_844` shall not be applied to SubscribeEventgroups that were not
+   triggered directly by a Multicast OfferService.
 
 .. feat_req::
    :id: feat_req_someipsd_691
@@ -3286,7 +3335,10 @@ The :need:`feat_req_someipsd_844` shall not be applied to SubscribeEventgroups t
    :safety: QM
    :status: valid
 
-If the initial value is of concern – i.e. for fields – and the client has the Explicit Initial Data Control Flag set to 0, the server shall send the first notification events (i.e. initial events) immediately after sending the SubscribeEventgroupAck. The client shall repeat the SubscribeEventgroup entry, if it did not receive the notification events within a configurable time.
+   If the initial value is of concern – i.e. for fields – and the client has the Explicit Initial
+   Data Control Flag set to 0, the server shall send the first notification events (i.e. initial events)
+   immediately after sending the SubscribeEventgroupAck. The client shall repeat the SubscribeEventgroup
+   entry, if it did not receive the notification events within a configurable time.
 
 .. feat_req::
    :id: feat_req_someipsd_833
@@ -3295,14 +3347,14 @@ If the initial value is of concern – i.e. for fields – and the client has th
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-This means:
+   This means:
 
-* It is not allowed to send initial values of events upon subscriptions (pure event and not field).
-* The event messages of field notifiers shall be sent on subscriptions (field and not pure event).
-* If a subscription was already valid and is updated by a SubscribeEventgroup entry, no initial events shall be sent.
-* Receiving StopSubscribeEventgroup / SubscribeEventgroup combinations trigger initial events of field notifiers.
+   *  It is not allowed to send initial values of events upon subscriptions (pure event and not field).
+   *  The event messages of field notifiers shall be sent on subscriptions (field and not pure event).
+   *  If a subscription was already valid and is updated by a SubscribeEventgroup entry, no initial events shall be sent.
+   *  Receiving StopSubscribeEventgroup / SubscribeEventgroup combinations trigger initial events of field notifiers.
 
 .. feat_req::
    :id: feat_req_someipsd_107
@@ -3311,7 +3363,7 @@ This means:
    :safety: QM
    :status: valid
 
-The initial events should be sent after the SubscribeEventgroupAck.
+   The initial events should be sent after the SubscribeEventgroupAck.
 
 .. feat_req::
    :id: feat_req_someipsd_1167
@@ -3320,7 +3372,7 @@ The initial events should be sent after the SubscribeEventgroupAck.
    :safety: QM
    :status: valid
 
-If a client subscribes to different eventgroups of the same service instance that all include the same field in different SOME/IP-SD messages, the server shall send out the initial events for this field for every subscription separately.
+   If a client subscribes to different eventgroups of the same service instance that all include the same field in different SOME/IP-SD messages, the server shall send out the initial events for this field for every subscription separately.
 
 .. feat_req::
    :id: feat_req_someipsd_1166
@@ -3329,9 +3381,12 @@ If a client subscribes to different eventgroups of the same service instance tha
    :safety: QM
    :status: valid
 
-If a client subscribes to different eventgroups of the same service instance that all include the same field in the same SOME/IP-SD message, the server may choose to not send out the initial event for this field more than once.
+   If a client subscribes to different eventgroups of the same service instance that all include the
+   same field in the same SOME/IP-SD message, the server may choose to not send out the initial event
+   for this field more than once.
 
-Note: This means the server can optimize by sending the initial events only once, if supported by its architecture.
+   Note: This means the server can optimize by sending the initial events only once, if supported by
+   its architecture.
 
 .. feat_req::
    :id: feat_req_someipsd_625
@@ -3340,9 +3395,9 @@ Note: This means the server can optimize by sending the initial events only once
    :safety: QM
    :status: valid
 
-Publish / Subscribe State Diagram (server behavior for unicast eventgroups)
+   Publish / Subscribe State Diagram (server behavior for unicast eventgroups)
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_625.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_625.py
 
 
 .. feat_req::
@@ -3352,9 +3407,9 @@ Publish / Subscribe State Diagram (server behavior for unicast eventgroups)
    :safety: QM
    :status: valid
 
-Publish / Subscribe State Diagram (server behavior for multicast eventgroups)
+   Publish / Subscribe State Diagram (server behavior for multicast eventgroups)
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_626.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_626.py
 
 
 .. feat_req::
@@ -3364,9 +3419,9 @@ Publish / Subscribe State Diagram (server behavior for multicast eventgroups)
    :safety: QM
    :status: valid
 
-Publish / Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups)
+   Publish / Subscribe State Diagram (server behavior for adaptive unicast/multicast eventgroups)
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_823.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_823.py
 
 
 .. feat_req::
@@ -3376,9 +3431,9 @@ Publish / Subscribe State Diagram (server behavior for adaptive unicast/multicas
    :safety: QM
    :status: valid
 
-Publish/Subscribe State Diagram (overall behavior)
+   Publish/Subscribe State Diagram (overall behavior)
 
-.. drawsvg_directive:: images/drawsvg/feat_req_someipsd_442.py
+   .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_442.py
 
 
 .. feat_req::
@@ -3388,7 +3443,8 @@ Publish/Subscribe State Diagram (overall behavior)
    :safety: QM
    :status: valid
 
-An implicit registration of a client to receive notifications from a server shall be supported. Meaning the mechanism is pre-configured.
+   An implicit registration of a client to receive notifications from a server shall be supported.
+   Meaning the mechanism is pre-configured.
 
 .. feat_req::
    :id: feat_req_someipsd_445
@@ -3397,7 +3453,8 @@ An implicit registration of a client to receive notifications from a server shal
    :safety: QM
    :status: valid
 
-To allow for cleanup of stale client registrations (to avoid that the list of listeners fills over time), a cleanup mechanism is required.
+   To allow for cleanup of stale client registrations (to avoid that the list of listeners fills
+   over time), a cleanup mechanism is required.
 
 .. feat_req::
    :id: feat_req_someipsd_818
@@ -3406,14 +3463,14 @@ To allow for cleanup of stale client registrations (to avoid that the list of li
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following entries shall be transported by unicast only:
+   The following entries shall be transported by unicast only:
 
-* SubscribeEventgroup
-* StopSubscribeEventgroup
-* SubscribeEventgroupAck
-* SubscribeEventgroupNack
+   *  SubscribeEventgroup
+   *  StopSubscribeEventgroup
+   *  SubscribeEventgroupAck
+   *  SubscribeEventgroupNack
 
 .. feat_req::
    :id: feat_req_someipsd_828
@@ -3422,7 +3479,8 @@ The following entries shall be transported by unicast only:
    :safety: QM
    :status: valid
 
-When sending a SubscribeEventgroup entry as reaction of receiving an OfferService entry, the timer controlling cyclic SubscribeEventgroups entries shall be reset.
+   When sending a SubscribeEventgroup entry as reaction of receiving an OfferService entry, the
+   timer controlling cyclic SubscribeEventgroups entries shall be reset.
 
 .. feat_req::
    :id: feat_req_someipsd_829
@@ -3431,15 +3489,12 @@ When sending a SubscribeEventgroup entry as reaction of receiving an OfferServic
    :safety: QM
    :status: valid
 
-If no cyclic SubscribeEventgroups are configured, the timer for cyclic SubscribeEventgroups stays turned off.
+   If no cyclic SubscribeEventgroups are configured, the timer for cyclic SubscribeEventgroups
+   stays turned off.
 
 .. heading:: Endpoint Handling for Services and Events
    :id: feat_req_someipsd_776
-   :layout: focus
-   :style: clean
-
-Endpoint Handling for Services and Events
-*****************************************
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_777
@@ -3448,7 +3503,8 @@ Endpoint Handling for Services and Events
    :safety: QM
    :status: valid
 
-This section describes how the Endpoints encoded in the Endpoint and Multicast Options shall be set and used.
+   This section describes how the Endpoints encoded in the Endpoint and Multicast Options shall be
+   set and used.
 
 .. feat_req::
    :id: feat_req_someipsd_778
@@ -3457,15 +3513,12 @@ This section describes how the Endpoints encoded in the Endpoint and Multicast O
    :safety: QM
    :status: valid
 
-The SOME/IP-SD shall overwrite IP Addresses and Port Numbers with those transported in Endpoint and Multicast Options if the statically configured values are different from those in these options.
+   The SOME/IP-SD shall overwrite IP Addresses and Port Numbers with those transported in Endpoint
+   and Multicast Options if the statically configured values are different from those in these options.
 
 .. heading:: Service Endpoints
    :id: feat_req_someipsd_784
-   :layout: focus
-   :style: clean
-
-Service Endpoints
-=================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_780
@@ -3474,7 +3527,8 @@ Service Endpoints
    :safety: QM
    :status: valid
 
-OfferService entries shall reference up to 1 UDP Endpoint Option and up to 1 TCP Endpoint Option. Both shall be of the same version Internet Protocol (IPv4 or IPv6).
+   OfferService entries shall reference up to 1 UDP Endpoint Option and up to 1 TCP Endpoint Option.
+   Both shall be of the same version Internet Protocol (IPv4 or IPv6).
 
 .. feat_req::
    :id: feat_req_someipsd_779
@@ -3483,7 +3537,8 @@ OfferService entries shall reference up to 1 UDP Endpoint Option and up to 1 TCP
    :safety: QM
    :status: valid
 
-The referenced Endpoint Options of the OfferService entries denote the IP Address and Port Numbers the service instance is reachable at the server.
+   The referenced Endpoint Options of the OfferService entries denote the IP Address and Port Numbers
+   the service instance is reachable at the server.
 
 .. feat_req::
    :id: feat_req_someipsd_781
@@ -3492,7 +3547,8 @@ The referenced Endpoint Options of the OfferService entries denote the IP Addres
    :safety: QM
    :status: valid
 
-The referenced Endpoint Options of the OfferService entries also denote the IP Address and Port Numbers the service instance sends the events from.
+   The referenced Endpoint Options of the OfferService entries also denote the IP Address and Port
+   Numbers the service instance sends the events from.
 
 .. feat_req::
    :id: feat_req_someipsd_797
@@ -3501,7 +3557,8 @@ The referenced Endpoint Options of the OfferService entries also denote the IP A
    :safety: QM
    :status: valid
 
-Events of this service instance shall not be sent from any other Endpoint than those given in the Endpoint Options of the OfferService entries.
+   Events of this service instance shall not be sent from any other Endpoint than those given in the
+   Endpoint Options of the OfferService entries.
 
 .. feat_req::
    :id: feat_req_someipsd_782
@@ -3510,7 +3567,9 @@ Events of this service instance shall not be sent from any other Endpoint than t
    :safety: QM
    :status: valid
 
-If an ECU offers multiple service instances, SOME/IP messages of these service instances shall be differentiated by the information transported in the Endpoint Options referenced by the OfferService entries.
+   If an ECU offers multiple service instances, SOME/IP messages of these service instances shall be
+   differentiated by the information transported in the Endpoint Options referenced by the
+   OfferService entries.
 
 .. feat_req::
    :id: feat_req_someipsd_783
@@ -3519,7 +3578,7 @@ If an ECU offers multiple service instances, SOME/IP messages of these service i
    :safety: QM
    :status: valid
 
-Therefore transporting an Instance ID in the SOME/IP header is not required.
+   Therefore transporting an Instance ID in the SOME/IP header is not required.
 
 .. feat_req::
    :id: feat_req_someipsd_877
@@ -3528,7 +3587,7 @@ Therefore transporting an Instance ID in the SOME/IP header is not required.
    :safety: QM
    :status: valid
 
-A sender shall not reference Endpoint Options nor Multicast Options in a FindService Entry.
+   A sender shall not reference Endpoint Options nor Multicast Options in a FindService Entry.
 
 .. feat_req::
    :id: feat_req_someipsd_878
@@ -3537,7 +3596,7 @@ A sender shall not reference Endpoint Options nor Multicast Options in a FindSer
    :safety: QM
    :status: valid
 
-A receiver shall ignore Endpoint Options and Multicast Options in a FindService Entry.
+   A receiver shall ignore Endpoint Options and Multicast Options in a FindService Entry.
 
 .. feat_req::
    :id: feat_req_someipsd_879
@@ -3546,15 +3605,12 @@ A receiver shall ignore Endpoint Options and Multicast Options in a FindService 
    :safety: QM
    :status: valid
 
-Other Options (neither Endpoint nor Multicast Options), shall still be allowed to be used in a FindService Entry.
+   Other Options (neither Endpoint nor Multicast Options), shall still be allowed to be used in a
+   FindService Entry.
 
 .. heading:: Eventgroup Endpoints
    :id: feat_req_someipsd_785
-   :layout: focus
-   :style: clean
-
-Eventgroup Endpoints
-====================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_786
@@ -3563,7 +3619,8 @@ Eventgroup Endpoints
    :safety: QM
    :status: valid
 
-SubscribeEventgroup entries shall reference up to 1 UDP Endpoint Option and up to 1 TCP Endpoint Option for the Internet Protocol used (IPv4 or IPv6).
+   SubscribeEventgroup entries shall reference up to 1 UDP Endpoint Option and up to 1 TCP Endpoint
+   Option for the Internet Protocol used (IPv4 or IPv6).
 
 .. feat_req::
    :id: feat_req_someipsd_787
@@ -3572,7 +3629,8 @@ SubscribeEventgroup entries shall reference up to 1 UDP Endpoint Option and up t
    :safety: QM
    :status: valid
 
-The Endpoint Options referenced in the SubscribeEventgroup entries are also used to send unicast UDP or TCP SOME/IP events for this Service Instance.
+   The Endpoint Options referenced in the SubscribeEventgroup entries are also used to send unicast
+   UDP or TCP SOME/IP events for this Service Instance.
 
 .. feat_req::
    :id: feat_req_someipsd_798
@@ -3581,7 +3639,8 @@ The Endpoint Options referenced in the SubscribeEventgroup entries are also used
    :safety: QM
    :status: valid
 
-Thus the Endpoint Options referenced in the SubscribeEventgroup entries are the IP Address and the Port Numbers on the client side.
+   Thus the Endpoint Options referenced in the SubscribeEventgroup entries are the IP Address and
+   the Port Numbers on the client side.
 
 .. feat_req::
    :id: feat_req_someipsd_788
@@ -3590,7 +3649,8 @@ Thus the Endpoint Options referenced in the SubscribeEventgroup entries are the 
    :safety: QM
    :status: valid
 
-TCP events are transported using the TCP connection the client has opened to the server before sending the SubscribeEventgroup entry. See :need:`feat_req_someipsd_752`.
+   TCP events are transported using the TCP connection the client has opened to the server before
+   sending the SubscribeEventgroup entry. See :need:`feat_req_someipsd_752`.
 
 .. feat_req::
    :id: feat_req_someipsd_793
@@ -3599,7 +3659,7 @@ TCP events are transported using the TCP connection the client has opened to the
    :safety: QM
    :status: valid
 
-The initial events shall be transported using unicast from Server to Client.
+   The initial events shall be transported using unicast from Server to Client.
 
 .. feat_req::
    :id: feat_req_someipsd_789
@@ -3608,7 +3668,8 @@ The initial events shall be transported using unicast from Server to Client.
    :safety: QM
    :status: valid
 
-SubscribeEventgroupAck entries shall reference up to 1 Multicast Option for the Internet Protocol used (IPv4 or IPv6).
+   SubscribeEventgroupAck entries shall reference up to 1 Multicast Option for the Internet Protocol
+   used (IPv4 or IPv6).
 
 .. feat_req::
    :id: feat_req_someipsd_790
@@ -3617,7 +3678,7 @@ SubscribeEventgroupAck entries shall reference up to 1 Multicast Option for the 
    :safety: QM
    :status: valid
 
-The Multicast Option shall be set to UDP as transport protocol.
+   The Multicast Option shall be set to UDP as transport protocol.
 
 .. feat_req::
    :id: feat_req_someipsd_791
@@ -3626,15 +3687,12 @@ The Multicast Option shall be set to UDP as transport protocol.
    :safety: QM
    :status: valid
 
-The client shall open the Endpoint specified in the Multicast Option referenced by the SubscribeEventgroupAck entry as fast as possible to not miss multicast events.
+   The client shall open the Endpoint specified in the Multicast Option referenced by the
+   SubscribeEventgroupAck entry as fast as possible to not miss multicast events.
 
 .. heading:: Example
    :id: feat_req_someipsd_794
-   :layout: focus
-   :style: clean
-
-Example
-=======
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_796
@@ -3643,26 +3701,27 @@ Example
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Figure :need:`feat_req_someipsd_795` shows an example with the different Endpoint and a Multicast Option:
+   Figure :need:`feat_req_someipsd_795` shows an example with the different Endpoint and a Multicast Option:
 
-* The server offers the Service Instance on server UDP-Endpoint SU and server TCP-Endpoint ST
-* The client opens a TCP connection
-* The client sends a SubscribeEventgroup entry with client UDP-Endpoint CU (unicast) and a client TCP-Endpoint CT.
-* The server responds with a SubscribeEventgroupAck entry with Multicast MU
+   *  The server offers the Service Instance on server UDP-Endpoint SU and server TCP-Endpoint ST
+   *  The client opens a TCP connection
+   *  The client sends a SubscribeEventgroup entry with client UDP-Endpoint CU (unicast) and a
+      client TCP-Endpoint CT.
+   *  The server responds with a SubscribeEventgroupAck entry with Multicast MU
 
-Then the following operations happen:
+   Then the following operations happen:
 
-* The client calls a method on the server
-* Request is sent from CU to SU and response from SU to CU
-* For TCP this would be: Request dyn to ST and response from ST to CT
-* The server sends a Unicast UDP Event: SU to CU
-* The server sends a Unicast TCP Event: ST to CT
-* The server sends a Multicast UDP Event: SU to MU
+   * The client calls a method on the server
+   * Request is sent from CU to SU and response from SU to CU
+   * For TCP this would be: Request dyn to ST and response from ST to CT
+   * The server sends a Unicast UDP Event: SU to CU
+   * The server sends a Unicast TCP Event: ST to CT
+   * The server sends a Multicast UDP Event: SU to MU
 
-Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver side, i.e. the client, and TCP cannot be used for Multicast communication.
-
+   Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver side, i.e. the
+   client, and TCP cannot be used for Multicast communication.
 
 
 .. feat_req::
@@ -3672,18 +3731,14 @@ Keep in mind that Multicast Endpoints use a Multicast IP Address on the receiver
    :safety: QM
    :status: valid
 
-Figure: Publish/Subscribe Example for Endpoint Options and the usage of ports.
+   Figure: Publish/Subscribe Example for Endpoint Options and the usage of ports.
 
-.. plantuml:: images/plantuml/feat_req_someipsd_795.puml
+   .. plantuml:: images/plantuml/feat_req_someipsd_795.puml
 
 
 .. heading:: Security Considerations
    :id: feat_req_someipsd_1134
-   :layout: focus
-   :style: clean
-
-Security Considerations
-=======================
+   :h: 3
 
 .. feat_req::
    :id: feat_req_someipsd_1135
@@ -3692,9 +3747,12 @@ Security Considerations
    :safety: QM
    :status: valid
 
-A SOME/IP-SD implementation shall always check that the IP Addresses received in Endpoint options and SD Endpoint options are topological correct (reference IP Addresses in the IP subnet for which SOME/IP-SD is used) and shall ignore IP Addresses that are not topological correct as well as the entries referencing those options.
+   A SOME/IP-SD implementation shall always check that the IP Addresses received in Endpoint options
+   and SD Endpoint options are topological correct (reference IP Addresses in the IP subnet for
+   which SOME/IP-SD is used) and shall ignore IP Addresses that are not topological correct as
+   well as the entries referencing those options.
 
-Note: This means that only Clients and Servers in the same subset are accessible.
+   Note: This means that only Clients and Servers in the same subset are accessible.
 
 .. feat_req::
    :id: feat_req_someipsd_1136
@@ -3703,8 +3761,8 @@ Note: This means that only Clients and Servers in the same subset are accessible
    :safety: QM
    :status: valid
 
-An example for checking the IP Addresses (Endpoint-IP) for topological correctness is:
-SOME/IP-SD-IP-Address AND Netmask = Endpoint-IP AND Netmask.
+   An example for checking the IP Addresses (Endpoint-IP) for topological correctness is:
+   SOME/IP-SD-IP-Address AND Netmask = Endpoint-IP AND Netmask.
 
 .. feat_req::
    :id: feat_req_someipsd_1149
@@ -3713,15 +3771,11 @@ SOME/IP-SD-IP-Address AND Netmask = Endpoint-IP AND Netmask.
    :safety: QM
    :status: valid
 
-It shall be possible to turn off the checking of topological correctness via configuration.
+   It shall be possible to turn off the checking of topological correctness via configuration.
 
 .. heading:: Mandatory Feature Set and Basic Behavior
    :id: feat_req_someipsd_806
-   :layout: focus
-   :style: clean
-
-Mandatory Feature Set and Basic Behavior
-****************************************
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_807
@@ -3730,7 +3784,9 @@ Mandatory Feature Set and Basic Behavior
    :safety: QM
    :status: valid
 
-In this section the mandatory feature set of the SOME/IP-SD and the relevant configuration constraints are discussed. This allow for bare minimum implementations without optional or informational features that might not be required for current use cases.
+   In this section the mandatory feature set of the SOME/IP-SD and the relevant configuration
+   constraints are discussed. This allow for bare minimum implementations without optional or
+   informational features that might not be required for current use cases.
 
 .. feat_req::
    :id: feat_req_someipsd_815
@@ -3739,7 +3795,8 @@ In this section the mandatory feature set of the SOME/IP-SD and the relevant con
    :safety: QM
    :status: valid
 
-The following information is defined as compliance check list(s). If a feature is not implemented, the implementation is considered not to comply with the SOME/IP-SDs basic feature set.
+   The following information is defined as compliance check list(s). If a feature is not implemented,
+   the implementation is considered not to comply with the SOME/IP-SDs basic feature set.
 
 .. feat_req::
    :id: feat_req_someipsd_1195
@@ -3748,7 +3805,7 @@ The following information is defined as compliance check list(s). If a feature i
    :safety: QM
    :status: valid
 
-The following information does not allow implementers to ignore requirements of this specification.
+   The following information does not allow implementers to ignore requirements of this specification.
 
 .. feat_req::
    :id: feat_req_someipsd_808
@@ -3757,17 +3814,17 @@ The following information does not allow implementers to ignore requirements of 
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following entry types shall be implemented:
+   The following entry types shall be implemented:
 
-* FindService
-* OfferService
-* StopOfferService
-* SubscribeEventgroup
-* StopSubscribeEventgroup
-* SubscribeEventgroupAck
-* SubscribeEventgroupNack
+   *  FindService
+   *  OfferService
+   *  StopOfferService
+   *  SubscribeEventgroup
+   *  StopSubscribeEventgroup
+   *  SubscribeEventgroupAck
+   *  SubscribeEventgroupNack
 
 .. feat_req::
    :id: feat_req_someipsd_809
@@ -3776,14 +3833,14 @@ The following entry types shall be implemented:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following option types shall be implemented, when IPv4 is required:
+   The following option types shall be implemented, when IPv4 is required:
 
-* IPv4 Endpoint Option
-* IPv4 Multicast Option
-* Configuration Option
-* IPv4 SD Endpoint Option (receiving at least)
+   *  IPv4 Endpoint Option
+   *  IPv4 Multicast Option
+   *  Configuration Option
+   *  IPv4 SD Endpoint Option (receiving at least)
 
 .. feat_req::
    :id: feat_req_someipsd_810
@@ -3792,14 +3849,14 @@ The following option types shall be implemented, when IPv4 is required:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following option types shall be implemented, if IPv6 is required:
+   The following option types shall be implemented, if IPv6 is required:
 
-* IPv6 Endpoint Option
-* IPv6 Multicast Option
-* Configuration Option
-* IPv6 SD Endpoint Option (receiving at least)
+   *  IPv6 Endpoint Option
+   *  IPv6 Multicast Option
+   *  Configuration Option
+   *  IPv6 SD Endpoint Option (receiving at least)
 
 .. feat_req::
    :id: feat_req_someipsd_857
@@ -3808,11 +3865,12 @@ The following option types shall be implemented, if IPv6 is required:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following option types shall be implemented, if non-SOME/IP services or additional configuration parameters are required:
+   The following option types shall be implemented, if non-SOME/IP services or additional
+   configuration parameters are required:
 
-* Configuration Option
+   *  Configuration Option
 
 .. feat_req::
    :id: feat_req_someipsd_811
@@ -3821,19 +3879,23 @@ The following option types shall be implemented, if non-SOME/IP services or addi
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following behaviors/reactions shall be implemented on the server side:
+   The following behaviors/reactions shall be implemented on the server side:
 
-* The server shall offer services including the Initial Wait Phase, the Repetition Phase, and the Main Phase depending on the configuration.
-* The server shall offer services using Multicast (Repetition Phase and Main Phase).
-* The server does not need to respond to a FindService in the Repetition Phase.
-* The server shall respond to a FindService in the Main Phase with an OfferService using Unicast (the optimization based on unicast flag as in :need:`feat_req_someipsd_826` is optional).
-* The server shall send a StopOfferService when shutting down.
-* The server shall receive a SubscribeEventgroup as well as a StopSubscribeEventgroup and react according to this specification.
-* The server shall send a SubscribeEventgroupAck and SubscribeEventgroupNack using unicast.
-* The server shall support controlling the sending (i.e. fan out) of SOME/IP event messages based on the subscriptions of SOME/IP-SD. This might include sending events based on Multicast.
-* The server shall support the triggering of initial SOME/IP event messages.
+   *  The server shall offer services including the Initial Wait Phase, the Repetition Phase, and
+      the Main Phase depending on the configuration.
+   *  The server shall offer services using Multicast (Repetition Phase and Main Phase).
+   *  The server does not need to respond to a FindService in the Repetition Phase.
+   *  The server shall respond to a FindService in the Main Phase with an OfferService using Unicast
+      (the optimization based on unicast flag as in :need:`feat_req_someipsd_826` is optional).
+   *  The server shall send a StopOfferService when shutting down.
+   *  The server shall receive a SubscribeEventgroup as well as a StopSubscribeEventgroup and react
+      according to this specification.
+   *  The server shall send a SubscribeEventgroupAck and SubscribeEventgroupNack using unicast.
+   *  The server shall support controlling the sending (i.e. fan out) of SOME/IP event messages
+      based on the subscriptions of SOME/IP-SD. This might include sending events based on Multicast.
+   *  The server shall support the triggering of initial SOME/IP event messages.
 
 .. feat_req::
    :id: feat_req_someipsd_812
@@ -3842,14 +3904,17 @@ The following behaviors/reactions shall be implemented on the server side:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following behaviors/reactions shall be implemented on the Client side:
+   The following behaviors/reactions shall be implemented on the Client side:
 
-* The Client shall find services using a FindService entry and Multicast only in the repetition phase.
-* The Client shall stop finding a service if the regular OfferService arrives.
-* The Client shall react to the Servers OfferService with a unicast SD message that includes all SubscribeEventgroups of the services offered in the message of the Server that the client currently wants to subscribe to.
-* The Client shall interpret and react to the SubscribeEventgroupAck and SubscribeEventgroupNack as specified in this document.
+   *  The Client shall find services using a FindService entry and Multicast only in the repetition phase.
+   *  The Client shall stop finding a service if the regular OfferService arrives.
+   *  The Client shall react to the Servers OfferService with a unicast SD message that includes all
+      SubscribeEventgroups of the services offered in the message of the Server that the client
+      currently wants to subscribe to.
+   *  The Client shall interpret and react to the SubscribeEventgroupAck and SubscribeEventgroupNack
+      as specified in this document.
 
 .. feat_req::
    :id: feat_req_someipsd_816
@@ -3858,12 +3923,16 @@ The following behaviors/reactions shall be implemented on the Client side:
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The following behavior and configuration constraints shall be supported by the client:
+   The following behavior and configuration constraints shall be supported by the client:
 
-* The client shall even handle eventgroups if only the TTL of the SD Timings is specified. This means that of all the timings for the Initial Wait Phase, the Repetition Phase, and the Main Phase only TTL is configured. This means the client shall only react on the OfferService by the server.
-* The client shall respond to an OfferService with a SubscribeEventgroup even without configuration of the Request-Response-Delay, meaning it does not wait but respond instantaneously.
+   *  The client shall even handle eventgroups if only the TTL of the SD Timings is specified.
+      This means that of all the timings for the Initial Wait Phase, the Repetition Phase,
+      and the Main Phase only TTL is configured. This means the client shall only react on the
+      OfferService by the server.
+   *  The client shall respond to an OfferService with a SubscribeEventgroup even without
+      configuration of the Request-Response-Delay, meaning it does not wait but respond instantaneously.
 
 .. feat_req::
    :id: feat_req_someipsd_813
@@ -3872,18 +3941,19 @@ The following behavior and configuration constraints shall be supported by the c
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The Client and Server shall implement the Reboot Detection as specified in this document and react accordingly. This includes but is not limited to:
+   The Client and Server shall implement the Reboot Detection as specified in this document and
+   react accordingly. This includes but is not limited to:
 
-* Setting Session ID and Reboot Flag according to this specification.
-* Keeping a Session ID counter only used for sending Multicast SD messages.
-* Keeping Session ID counters for every Unicast relation for sending Unicast SD messages.
-* Understanding Session ID and Reboot Flag according to this specification.
-* Keeping a Multicast Session ID counter per ECU that exchanges Multicast SD messages with this ECU.
-* Keeping a Unicast Session ID counter per ECU that exchanges Unicast SD messages with this ECU.
-* Detecting reboot based on this specification and react accordingly.
-* Correctly interpreting the IPv4 and IPv6 SD Endpoint Options in regard to Reboot Detection.
+   *  Setting Session ID and Reboot Flag according to this specification.
+   *  Keeping a Session ID counter only used for sending Multicast SD messages.
+   *  Keeping Session ID counters for every Unicast relation for sending Unicast SD messages.
+   *  Understanding Session ID and Reboot Flag according to this specification.
+   *  Keeping a Multicast Session ID counter per ECU that exchanges Multicast SD messages with this ECU.
+   *  Keeping a Unicast Session ID counter per ECU that exchanges Unicast SD messages with this ECU.
+   *  Detecting reboot based on this specification and react accordingly.
+   *  Correctly interpreting the IPv4 and IPv6 SD Endpoint Options in regard to Reboot Detection.
 
 .. feat_req::
    :id: feat_req_someipsd_814
@@ -3892,18 +3962,21 @@ The Client and Server shall implement the Reboot Detection as specified in this 
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-The Client and Server shall implement the "Endpoint Handling for Service and Events". This includes but is not limited to:
+   The Client and Server shall implement the "Endpoint Handling for Service and Events". This
+   includes but is not limited to:
 
-* Adding 1 Endpoint Option UDP to an OfferService if UDP is needed.
-* Adding 1 Endpoint Option TCP to an OfferService if TCP is needed.
-* Adding 1 Endpoint Option UDP to SubscribeEventgroup, if events over UDP are required.
-* Adding 1 Endpoint Option TCP to SubscribeEventgroup, if events over TCP are required.
-* Adding 1 Multicast Option UDP to SubscribeEventgroupAck, if multicast events are required.
-* Understanding and acting according to the Endpoint and Multicast Options transported as described above.
-* Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these Endpoint and Multicast Options.
-* Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address and Port number in the outer layers.
+   *  Adding 1 Endpoint Option UDP to an OfferService if UDP is needed.
+   *  Adding 1 Endpoint Option TCP to an OfferService if TCP is needed.
+   *  Adding 1 Endpoint Option UDP to SubscribeEventgroup, if events over UDP are required.
+   *  Adding 1 Endpoint Option TCP to SubscribeEventgroup, if events over TCP are required.
+   *  Adding 1 Multicast Option UDP to SubscribeEventgroupAck, if multicast events are required.
+   *  Understanding and acting according to the Endpoint and Multicast Options transported as described above.
+   *  Overwriting preconfigured values (e.g. IP Addresses and Ports) with the information of these
+      Endpoint and Multicast Options.
+   *  Interpreting incoming IPv4 and IPv6 Endpoint Options as SD endpoints instead of the Address
+      and Port number in the outer layers.
 
 .. feat_req::
    :id: feat_req_someipsd_1194
@@ -3912,7 +3985,7 @@ The Client and Server shall implement the "Endpoint Handling for Service and Eve
    :safety: QM
    :status: valid
 
-The Client and Server shall implement the explicit requesting of Initial Events.
+   The Client and Server shall implement the explicit requesting of Initial Events.
 
 .. feat_req::
    :id: feat_req_someipsd_946
@@ -3976,15 +4049,12 @@ The Client and Server shall implement the explicit requesting of Initial Events.
    :safety: QM
    :status: valid
 
-Note: A SubscribeEventgroup without Endpoint Options is only allowed for an Eventgroup with Multicast Events only.
+   Note: A SubscribeEventgroup without Endpoint Options is only allowed for an Eventgroup with
+   Multicast Events only.
 
 .. heading:: SOME/IP-SD Mechanisms and Errors
    :id: feat_req_someipsd_837
-   :layout: focus
-   :style: clean
-
-SOME/IP-SD Mechanisms and Errors
-********************************
+   :h: 2
 
 .. feat_req::
    :id: feat_req_someipsd_838
@@ -3993,7 +4063,8 @@ SOME/IP-SD Mechanisms and Errors
    :safety: QM
    :status: valid
 
-In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) is discussed. This is also understood as rationale for the mechanisms used and the configuration possible.
+   In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) is discussed.
+   This is also understood as rationale for the mechanisms used and the configuration possible.
 
 .. feat_req::
    :id: feat_req_someipsd_842
@@ -4002,19 +4073,23 @@ In this section SOME/IP-SD in cases of errors (e.g. lost or corrupted packets) i
    :safety: QM
    :status: valid
 
-.. rst-class:: compact
+   .. rst-class:: compact
 
-Soft State Protocol
-SOME/IP-SD was designed as soft state protocol, that means that entries come with a lifetime and need to be refreshed to stay valid (setting the TTL to the maximum value shall turn this off).
+   Soft State Protocol
+   SOME/IP-SD was designed as soft state protocol, that means that entries come with a lifetime and
+   need to be refreshed to stay valid (setting the TTL to the maximum value shall turn this off).
 
-Using cyclic OfferService entries and the TTL as aging mechanism SOME/IP-SD shall cope with many different cases of errors.
+   Using cyclic OfferService entries and the TTL as aging mechanism SOME/IP-SD shall cope with many
+   different cases of errors.
 
-Examples:
+   Examples:
 
-* If a client or server leaves without sending a Stop entry or this Stop entry got lost, the system will fix itself after the TTL expiration.
-* If an OfferService entry does not arrive because the packet got lost, the system will tolerate this based on the value of the TTL.
+   *  If a client or server leaves without sending a Stop entry or this Stop entry got lost,
+      the system will fix itself after the TTL expiration.
+   *  If an OfferService entry does not arrive because the packet got lost, the system will tolerate
+      this based on the value of the TTL.
 
-Example configuration parameter for fast healing: cyclic delays 1 s and TTL 3 s.
+   Example configuration parameter for fast healing: cyclic delays 1 s and TTL 3 s.
 
 .. feat_req::
    :id: feat_req_someipsd_840
@@ -4023,9 +4098,10 @@ Example configuration parameter for fast healing: cyclic delays 1 s and TTL 3 s.
    :safety: QM
    :status: valid
 
-Initial Wait Phase
+   Initial Wait Phase
 
-The Initial Wait Phase was introduced for two reasons: deskewing events of starting ECUs to avoid traffic bursts and allowing ECUs to collect multiple entries in SD messages.
+   The Initial Wait Phase was introduced for two reasons: deskewing events of starting ECUs to avoid
+   traffic bursts and allowing ECUs to collect multiple entries in SD messages.
 
 .. feat_req::
    :id: feat_req_someipsd_839
@@ -4034,11 +4110,14 @@ The Initial Wait Phase was introduced for two reasons: deskewing events of start
    :safety: QM
    :status: valid
 
-Repetition Phase
+   Repetition Phase
 
-The Repetition Phase was introduced to allow for fast synchronization of clients and servers. If the clients startup later, it will find the server very fast. And if the server starts up later, the client is found very fast. The Repetition Phase increases the time between two messages exponentially to avoid that overload situations keep the system from synchronization.
+   The Repetition Phase was introduced to allow for fast synchronization of clients and servers.
+   If the clients startup later, it will find the server very fast. And if the server starts up later,
+   the client is found very fast. The Repetition Phase increases the time between two messages
+   exponentially to avoid that overload situations keep the system from synchronization.
 
-An example configuration could be REPETITIONS_BASE_DELAY=30ms and REPETITIONS_MAX=3.
+   An example configuration could be REPETITIONS_BASE_DELAY=30ms and REPETITIONS_MAX=3.
 
 .. feat_req::
    :id: feat_req_someipsd_841
@@ -4047,9 +4126,10 @@ An example configuration could be REPETITIONS_BASE_DELAY=30ms and REPETITIONS_MA
    :safety: QM
    :status: valid
 
-Main Phase
+   Main Phase
 
-In the Main Phase the SD tries to stabilize the state and thus decreases the rate of packets by sending no FindServices anymore and only offers in the cyclic interval (e.g. every 1s).
+   In the Main Phase the SD tries to stabilize the state and thus decreases the rate of packets by
+   sending no FindServices anymore and only offers in the cyclic interval (e.g. every 1s).
 
 .. feat_req::
    :id: feat_req_someipsd_843
@@ -4058,6 +4138,9 @@ In the Main Phase the SD tries to stabilize the state and thus decreases the rat
    :safety: QM
    :status: valid
 
-Request-Response-Delay
+   Request-Response-Delay
 
-SOME/IP-SD shall allow to be configured to delay the response to entries in multicast messages by the Request-Response-Delay (in FIBEX called Query-Response-Delay). This is useful in large systems with many ECUs. When sending a SD message with many entries in it, a lot of responses from different ECUs arrive at the same time and put a large stress on the ECU receiving all these responses.
+   SOME/IP-SD shall allow to be configured to delay the response to entries in multicast messages by
+   the Request-Response-Delay (in FIBEX called Query-Response-Delay). This is useful in large systems
+   with many ECUs. When sending a SD message with many entries in it, a lot of responses from
+   different ECUs arrive at the same time and put a large stress on the ECU receiving all these responses.
