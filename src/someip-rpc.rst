@@ -53,7 +53,7 @@
    *  Fulfills the hard requirements regarding resource consumption in an embedded world.
    *  Is compatible through as many use cases and communication partners as possible.
    *  Is compatible with AUTOSAR at least on the on-wire format level; i.e. can communicate with
-     PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard.
+      PDUs AUTOSAR can receive and send without modification to the AUTOSAR standard.
    *  Provides the features required by automotive use cases.
    *  Is scalable from tiny to large platforms.
    *  Can be implemented on different operating system (e.g. AUTOSAR, GENIVI, and OSEK) and even
@@ -83,39 +83,39 @@
    *  Request/Response communication – an RPC that consists of request and response.
    *  Fire&Forget communication – an RPC call that consists only of a request message.
    *  Event – a "Fire&Forget callback" that is only invoked on changes or cyclically and is sent
-     from Server to Client.
+      from Server to Client.
    *  Field – a representation of a remote property, which has up to one getter, up to one setter,
-     and up to one notifier.
+      and up to one notifier.
 
    *  The field shall contain at least a getter, a setter, or a notifier.
    *  A field represents a status and thus has a valid value at all times on which getter, setter,
-     and notifier act upon.
+      and notifier act upon.
 
    *  Notification Event – an event message the notifier of an field sends. The message of such a
-     notifier cannot be distinguished from the event message; therefore, when referring to the
-     message of an event, this should also be true for the messages of notifiers of fields.
+      notifier cannot be distinguished from the event message; therefore, when referring to the
+      message of an event, this should also be true for the messages of notifiers of fields.
    *  Initial Event – the first transmission of a Notification Event of a Field after start of
-     subscription to transport the initial (i.e. current) values of that Field.
+      subscription to transport the initial (i.e. current) values of that Field.
    *  Getter – a Request/Response call that allows read access to a field.
 
-     *  The getter needs to return a value; thus, it needs to be a request/response call.
+      *  The getter needs to return a value; thus, it needs to be a request/response call.
 
    *  Setter – a Request/Response call that allows write access to a field.
 
      *  The setter is a request/response call as well in order for the client to know whether the
-       setter-operation succeeded.
+        setter-operation succeeded.
 
    *  Notifier – sends out event message with a new value on change of the value of the field
    *  Service – a logical combination of zero or more methods, zero or more events, and zero or more
-     fields (empty service is allowed, e.g. for announcing non-SOME/IP services in SOME/IP-SD).
+      fields (empty service is allowed, e.g. for announcing non-SOME/IP services in SOME/IP-SD).
    *  Eventgroup – a logical grouping of events and notification events of fields inside a service
-     in order to allow subscription
+      in order to allow subscription
    *  Service Interface – the formal specification of the service including its methods, events, and fields
    *  Service Instance – software implementation of the service interface, which can exist more than
-     once in the vehicle and more than once on an ECU
+      once in the vehicle and more than once on an ECU
    *  Server – The ECU offering a service instance is called server in the context of this service instance.
    *  Client – The ECU using the service instance of a server is called client in the context of
-     this service instance.
+      this service instance.
    *  Union or Variant – a data structure that dynamically assumes different data types.
    *  Endpoint – the combination of IP address, Layer 4 protocol, and port number.
 
@@ -809,43 +809,43 @@
    List of supported Message Types.
 
    .. list-table::
-     :align: left
-     :header-rows: 1
-     :class: ssp-tinier
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
 
-     *  -  Number
-       -  Value
-       -  Description
-     *  -  0x00
-       -  REQUEST
-       -  A request expecting a response (even void)
-     *  -  0x01
-       -  REQUEST_NO_RETURN
-       -  A fire&forget request
-     *  -  0x02
-       -  NOTIFICATION
-       -  A request of a notification/event callback expecting no response
-     *  -  0x40
-       -  REQUEST ACK (Reserved but not used)
-       -  Acknowledgment for REQUEST
-     *  -  0x41
-       -  REQUEST_NO_RETURN ACK (Reserved but not used)
-       -  Acknowledgment for REQUEST_NO_RETURN
-     *  -  0x42
-       -  NOTIFICATION ACK (Reserved but not used)
-       -  ACK Acknowledgment for NOTIFICATION
-     *  -  0x80
-       -  RESPONSE
-       -  The response message
-     *  -  0x81
-       -  EXCEPTION
-       -  The response containing an error
-     *  -  0xC0
-       -  RESPONSE ACK (Reserved but not used)
-       -  Acknowledgment for RESPONSE
-     *  -  0xC1
-       -  EXCEPTION ACK (Reserved but not used)
-       -  Acknowledgment for ERROR
+      *  -  Number
+         -  Value
+         -  Description
+      *  -  0x00
+         -  REQUEST
+         -  A request expecting a response (even void)
+      *  -  0x01
+         -  REQUEST_NO_RETURN
+         -  A fire&forget request
+      *  -  0x02
+         -  NOTIFICATION
+         -  A request of a notification/event callback expecting no response
+      *  -  0x40
+         -  REQUEST ACK (Reserved but not used)
+         -  Acknowledgment for REQUEST
+      *  -  0x41
+         -  REQUEST_NO_RETURN ACK (Reserved but not used)
+         -  Acknowledgment for REQUEST_NO_RETURN
+      *  -  0x42
+         -  NOTIFICATION ACK (Reserved but not used)
+         -  ACK Acknowledgment for NOTIFICATION
+      *  -  0x80
+         -  RESPONSE
+         -  The response message
+      *  -  0x81
+         -  EXCEPTION
+         -  The response containing an error
+      *  -  0xC0
+         -  RESPONSE ACK (Reserved but not used)
+         -  Acknowledgment for RESPONSE
+      *  -  0xC1
+         -  EXCEPTION ACK (Reserved but not used)
+         -  Acknowledgment for ERROR
 
 .. feat_req::
    :id: feat_req_someip_141
@@ -928,22 +928,22 @@
    List of allowed Return Codes.
 
    .. list-table::
-     :align: left
-     :header-rows: 1
-     :class: ssp-tinier
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
 
-     *  -  Message Type
-       -  Allowed Return Codes
-     *  -  REQUEST
-       -  N/A set to 0x00 (E_OK)
-     *  -  REQUEST_NO_RETURN
-       -  N/A set to 0x00 (E_OK)
-     *  -  NOTIFICATION
-       -  N/A set to 0x00 (E_OK)
-     *  -  RESPONSE
-       -  See Return Codes in [:need:`feat_req_someip_371`]
-     *  -  EXCEPTION
-       -  See Return Codes in [:need:`feat_req_someip_371`]. Shall not be 0x00 (E_OK).
+      *  -  Message Type
+         -  Allowed Return Codes
+      *  -  REQUEST
+         -  N/A set to 0x00 (E_OK)
+      *  -  REQUEST_NO_RETURN
+         -  N/A set to 0x00 (E_OK)
+      *  -  NOTIFICATION
+         -  N/A set to 0x00 (E_OK)
+      *  -  RESPONSE
+         -  See Return Codes in [:need:`feat_req_someip_371`]
+      *  -  EXCEPTION
+         -  See Return Codes in [:need:`feat_req_someip_371`]. Shall not be 0x00 (E_OK).
 
 .. heading:: Payload [variable size]
    :id: feat_req_someip_164
@@ -1050,58 +1050,58 @@
    List of supported basic datatypes.
 
    .. list-table::
-     :align: left
-     :header-rows: 1
-     :class: ssp-tinier
+      :align: left
+      :header-rows: 1
+      :class: ssp-tinier
 
-     *  -  Type
-       -  Description
-       -  Size [bit]
-       -  Remark
-     *  -  boolean
-       -  TRUE/FALSE value
-       -  8
-       -  FALSE (0), TRUE (1)
-     *  -  uint8
-       -  unsigned Integer
-       -  8
-       -
-     *  -  uint16
-       -  unsigned Integer
-       -  16
-       -
-     *  -  uint32
-       -  unsigned Integer
-       -  32
-       -
-     *  -  uint64
-       -  unsigned Integer
-       -  64
-       -  not supported on all platforms, see [:need:`feat_req_someip_623`]
-     *  -  sint8
-       -  signed Integer
-       -  8
-       -
-     *  -  sint16
-       -  signed Integer
-       -  16
-       -
-     *  -  sint32
-       -  signed Integer
-       -  32
-       -
-     *  -  sint64
-       -  signed Integer
-       -  64
-       -  not supported on all platforms, see [:need:`feat_req_someip_623`]
-     *  -  float32
-       -  floating point number
-       -  32
-       -  IEEE 754 binary32 (Single Precision)
-     *  -  float64
-       -  floating point number
-       -  64
-       -  IEEE 754 binary64 (Double Precision)
+      *  -  Type
+         -  Description
+         -  Size [bit]
+         -  Remark
+      *  -  boolean
+         -  TRUE/FALSE value
+         -  8
+         -  FALSE (0), TRUE (1)
+      *  -  uint8
+         -  unsigned Integer
+         -  8
+         -
+      *  -  uint16
+         -  unsigned Integer
+         -  16
+         -
+      *  -  uint32
+         -  unsigned Integer
+         -  32
+         -
+      *  -  uint64
+         -  unsigned Integer
+         -  64
+         -  not supported on all platforms, see [:need:`feat_req_someip_623`]
+      *  -  sint8
+         -  signed Integer
+         -  8
+         -
+      *  -  sint16
+         -  signed Integer
+         -  16
+         -
+      *  -  sint32
+         -  signed Integer
+         -  32
+         -
+      *  -  sint64
+         -  signed Integer
+         -  64
+         -  not supported on all platforms, see [:need:`feat_req_someip_623`]
+      *  -  float32
+         -  floating point number
+         -  32
+         -  IEEE 754 binary32 (Single Precision)
+      *  -  float64
+         -  floating point number
+         -  64
+         -  IEEE 754 binary64 (Double Precision)
 
 .. feat_req::
    :id: feat_req_someip_224
@@ -1695,7 +1695,7 @@
    :safety: TBD
    :status: valid
 
-T  he interface specification shall be able to define the name of each bit.
+   The interface specification shall be able to define the name of each bit.
 
 .. feat_req::
    :id: feat_req_someip_691

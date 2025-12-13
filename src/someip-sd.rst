@@ -2123,7 +2123,7 @@ General
 
 .. heading:: StopSubscribeEventgroup Entry
    :id: feat_req_someipsd_233
-   :: 4
+   :h: 4
 
 .. feat_req::
    :id: feat_req_someipsd_332
