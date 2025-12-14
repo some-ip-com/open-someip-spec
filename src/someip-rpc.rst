@@ -258,7 +258,7 @@
 
 .. heading:: Specification of the SOME/IP on-wire format
    :id: feat_req_someip_29
-   :h: 0
+   :h: 1
 
 .. feat_req::
    :id: feat_req_someip_30
