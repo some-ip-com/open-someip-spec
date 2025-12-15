@@ -22,7 +22,7 @@ Every merged change lands on the main branch. For each release: release branches
 The project uses a Year-Month.Patch schema for documents: YY-MMp. For example 25-12 with patches 25-12a, 25-12b, etc.
 Patch releases may only fix bugs in the specification.
 
-All releases must be backward‑compatible as defined in the Retro‑Compatibility Policy below. 
+All releases must be backward‑compatible as defined in the Retro‑Compatibility Policy below.
 
 ## 8. Code Components and Code License
 Schemas, IDLs, message templates and similar artifacts embedded in the Specification are “Code Components”. Code in this repository is licensed under **BSD‑3‑Clause** in `LICENSE-CODE`. Where SOME/IP CSL would otherwise default to MIT in the absence of a code license, this project expressly selects BSD‑3‑Clause to ease reuse.
