@@ -128,7 +128,16 @@ needs_extra_options = [
         "description": "heading level",
         "schema": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 0, # 1
+            "maximum": 0, # 6
+        },
+    },
+    {
+        "name": "h2",
+        "description": "heading level",
+        "schema": {
+            "type": "integer",
+            "minimum": 1,
             "maximum": 6,
         },
     },
@@ -186,7 +195,7 @@ needs_global_options = {
          ),
       ]
    },
-   "h": {
+   "h2": {
       "predicates": [
          (
             "type == 'heading'",
