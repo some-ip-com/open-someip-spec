@@ -21,6 +21,9 @@ Migration and Compatibility
    :id: feat_req_someipcompat_712
    :h: 1
 
+Supporting forward compatibility
+********************************
+
 .. heading:: Supporting forward compatibility
    :id: feat_req_someipcompat_1196
    :h: 2
@@ -104,6 +107,9 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
 
    Note: This means it is forbidden to limit the resources, so that a client can only access the services that are currently configured. If another Eventgroup or Service Instance is available on this socket, the SOME/IP implementation may not limit access to it by means of resources.
 
+Supporting multiple versions of the same service.
+*************************************************
+
 .. heading:: Supporting multiple versions of the same service.
    :id: feat_req_someipcompat_713
    :h: 2
@@ -133,7 +139,7 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      * The server shall offer the service instance of this service once per major version.
+      *  The server shall offer the service instance of this service once per major version.
 
    .. feat_req::
       :id: feat_req_someipcompat_802
@@ -142,8 +148,8 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      * The client shall find the service instances once per supported major version or shall use the
-        major version as 0xFF (all versions).
+      *  The client shall find the service instances once per supported major version or shall use the
+         major version as 0xFF (all versions).
 
    .. feat_req::
       :id: feat_req_someipcompat_804
@@ -152,7 +158,7 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      * The client shall subscribe to events of the service version it needs.
+      *  The client shall subscribe to events of the service version it needs.
 
    .. feat_req::
       :id: feat_req_someipcompat_803
@@ -161,7 +167,7 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      * All SOME/IP-SD entries shall use the same Service IDs and Instance IDs but different Major Versions.
+      *  All SOME/IP-SD entries shall use the same Service IDs and Instance IDs but different Major Versions.
 
    .. feat_req::
       :id: feat_req_someipcompat_801
@@ -170,4 +176,4 @@ Implementations shall support receiving unknown SOME/IP messages (using nPDU or 
       :safety: QM
       :status: valid
 
-      * The server shall demultiplex messages based on the socket it arrives, the Message ID, and the Major Version.
+      *  The server shall demultiplex messages based on the socket it arrives, the Message ID, and the Major Version.

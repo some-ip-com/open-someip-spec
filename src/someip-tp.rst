@@ -254,6 +254,9 @@ Transporting large SOME/IP messages over UDP (SOME/IP-TP)
    The sender shall only use as many different Client IDs for a message that uses SOME/IP-TP as
    determined by the configuration.
 
+Receiver specific behavior
+**************************
+
 .. heading:: Receiver specific behavior
    :id: feat_req_someiptp_776
    :h: 2

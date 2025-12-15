@@ -60,6 +60,9 @@ Introduction
    *  Can be implemented on different operating system (e.g. AUTOSAR, GENIVI, and OSEK) and even
       embedded devices without operating system.
 
+Definition of terms
+*******************
+
 .. heading:: Definition of terms
    :id: feat_req_someip_14
    :h: 2
@@ -117,6 +120,9 @@ Introduction
       this service instance.
    *  Union or Variant – a data structure that dynamically assumes different data types.
    *  Endpoint – the combination of IP address, Layer 4 protocol, and port number.
+
+Definition of Identifiers
+========================= 
 
 .. heading:: Definition of Identifiers
    :id: feat_req_someip_534
@@ -276,6 +282,9 @@ Specification of the SOME/IP on-wire format
    Serialization describes the way data is represented in protocol data units (PDUs) transported
    over an IP-based automotive in-vehicle network.
 
+Transport Protocol
+******************
+
 .. heading:: Transport Protocol
    :id: feat_req_someip_31
    :h: 2
@@ -353,6 +362,9 @@ Specification of the SOME/IP on-wire format
    message requiring larger size. UDP allows the application to better control of timings and
    behavior when errors occur.
 
+Message Length Limitations
+==========================
+
 .. heading:: Message Length Limitations
    :id: feat_req_someip_34
    :h: 3
@@ -390,6 +402,9 @@ Specification of the SOME/IP on-wire format
 
    See also :need:`feat_req_someip_164` for payload length.
 
+Endianness
+**********
+
 .. heading:: Endianness
    :id: feat_req_someip_41
    :h: 2
@@ -414,6 +429,9 @@ Specification of the SOME/IP on-wire format
    :status: valid
 
    This means that Length and Type fields shall be always in network byte order.
+
+Header
+******
 
 .. heading:: Header
    :id: feat_req_someip_43
@@ -467,6 +485,9 @@ Specification of the SOME/IP on-wire format
    .. bitfield_directive:: images/bit_field/feat_req_someip_103.json
 
 
+IP-Address / port numbers
+=========================
+
 .. heading:: IP-Address / port numbers
    :id: feat_req_someip_46
    :h: 3
@@ -480,6 +501,9 @@ Specification of the SOME/IP on-wire format
 
    The Layout in Figure :need:`feat_req_someip_45` shows the basic header layout over IP and
    the transport protocol used.
+
+Mapping of IP Addresses and Ports in Response and Error Messages
+----------------------------------------------------------------
 
 .. heading:: Mapping of IP Addresses and Ports in Response and Error Messages
    :id: feat_req_someip_48
@@ -500,6 +524,9 @@ Specification of the SOME/IP on-wire format
    *  Source port of response = destination port of request.
    *  Destination port of response = source port of request.
    *  The transport protocol (TCP or UDP) stays the same.
+
+Message ID [32 bit]
+===================
 
 .. heading:: Message ID [32 bit]
    :id: feat_req_someip_55
@@ -527,6 +554,9 @@ Specification of the SOME/IP on-wire format
    the whole system (i.e. the vehicle). The Message ID can be best compared to a CAN ID and should
    be handled with a comparable process. The next section describes how to structure the Message IDs
    in order to ease the organization of Message IDs.
+
+Structure of the Message ID
+--------------------------- 
 
 .. heading:: Structure of the Message ID
    :id: feat_req_someip_58
@@ -581,6 +611,9 @@ Specification of the SOME/IP on-wire format
    .. bitfield_directive:: images/bit_field/feat_req_someip_67.json
 
 
+Length [32 bit]
+===============
+
 .. heading:: Length [32 bit]
    :id: feat_req_someip_76
    :h: 3
@@ -603,6 +636,9 @@ Specification of the SOME/IP on-wire format
    :status: valid
 
    SOME/IP messages with a length value < 8 bytes shall be ignored.
+
+Request ID [32 bit]
+===================
 
 .. heading:: Request ID [32 bit]
    :id: feat_req_someip_78
@@ -632,6 +668,9 @@ Specification of the SOME/IP on-wire format
    (timeout). In most automotive use cases a very low number of outstanding requests are expected.
    For small systems without the possibility of parallel requests, the Request ID might always be
    set to the same value.
+
+Structure of the Request ID
+---------------------------
 
 .. heading:: Structure of the Request ID
    :id: feat_req_someip_82
@@ -746,6 +785,9 @@ Specification of the SOME/IP on-wire format
    The handling of the Request ID in SOME/IP-SD messages is discussed later in this specification.
    See SOME/IP-SD.
 
+Protocol Version [8 bit]
+========================
+
 .. heading:: Protocol Version [8 bit]
    :id: feat_req_someip_89
    :h: 3
@@ -759,6 +801,9 @@ Specification of the SOME/IP on-wire format
 
    Protocol Version is an 8 bit field containing the SOME/IP protocol version, which currently
    shall be set to 0x01.
+
+Interface Version [8 bit]
+=========================
 
 .. heading:: Interface Version [8 bit]
    :id: feat_req_someip_91
@@ -782,6 +827,9 @@ Specification of the SOME/IP on-wire format
 
    Rationale: This allows to catch mismatches in Service definitions as well as running different
    versions of a Service in parallel.
+
+Message Type [8 bit]
+====================
 
 .. heading:: Message Type [8 bit]
    :id: feat_req_someip_94
@@ -897,6 +945,9 @@ Specification of the SOME/IP on-wire format
    Note: Segments of the Message Type Request (0x00) have the Message Type (0x20), segments of the
    Message Type Response (0x80) have the Message Type (0xA0), and so on.
 
+Return Code [8 bit]
+===================
+
 .. heading:: Return Code [8 bit]
    :id: feat_req_someip_143
    :h: 3
@@ -943,6 +994,9 @@ Specification of the SOME/IP on-wire format
       *  -  EXCEPTION
          -  See Return Codes in [:need:`feat_req_someip_371`]. Shall not be 0x00 (E_OK).
 
+Payload [variable size]
+=======================
+
 .. heading:: Payload [variable size]
    :id: feat_req_someip_164
    :h: 3
@@ -971,6 +1025,9 @@ Specification of the SOME/IP on-wire format
    The limitation to 1400 bytes is needed in order to allow for future changes to protocol stack
    (e.g. changing to IPv6 or adding security means). Since TCP supports segmentation of payloads,
    larger sizes are automatically supported.
+
+Serialization of Parameters and Data Structures
+***********************************************
 
 .. heading:: Serialization of Parameters and Data Structures
    :id: feat_req_someip_167
@@ -1024,6 +1081,9 @@ Specification of the SOME/IP on-wire format
    :status: valid
 
    In the following the deserialization of different parameters is specified.
+
+Basic Datatypes
+===============
 
 .. heading:: Basic Datatypes
    :id: feat_req_someip_171
@@ -1127,6 +1187,9 @@ Specification of the SOME/IP on-wire format
    :status: valid
 
    Booleans shall only use the lowest bit. All other bits are reserved (i.e. shall be set to 0 on sending and shall ignore values on receiving).
+
+Structured Datatypes (structs)
+==============================
 
 .. heading:: Structured Datatypes (structs)
    :id: feat_req_someip_229
@@ -1240,6 +1303,9 @@ Specification of the SOME/IP on-wire format
 
    This allows for extensible structs which allow better migration of interfaces.
 
+Strings (fixed length)
+======================
+
 .. heading:: Strings (fixed length)
    :id: feat_req_someip_232
    :h: 3
@@ -1349,6 +1415,9 @@ Specification of the SOME/IP on-wire format
 
    The String encoding shall be specified in the interface specification.
 
+Strings (dynamic length)
+========================
+
 .. heading:: Strings (dynamic length)
    :id: feat_req_someip_236
    :h: 3
@@ -1425,6 +1494,9 @@ Specification of the SOME/IP on-wire format
    If the interface specification states the alignment of the next data element,
    the string shall be extended with “\0” characters to meet the alignment.
 
+Arrays (fixed length)
+=====================
+
 .. heading:: Arrays (fixed length)
    :id: feat_req_someip_240
    :h: 3
@@ -1449,6 +1521,9 @@ Specification of the SOME/IP on-wire format
 
    In :need:`feat_req_someip_253` dynamic length arrays are shown, which can be also used.
    However, dynamic length arrays might need more resources on the ECU using them.
+
+One-dimensional
+---------------
 
 .. heading:: One-dimensional
    :id: feat_req_someip_242
@@ -1475,6 +1550,9 @@ Specification of the SOME/IP on-wire format
 
    .. drawsvg_directive:: images/drawsvg/feat_req_someip_244.py
 
+
+Multidimensional
+----------------
 
 .. heading:: Multidimensional
    :id: feat_req_someip_245
@@ -1503,6 +1581,9 @@ Specification of the SOME/IP on-wire format
    .. drawsvg_directive:: images/drawsvg/feat_req_someip_247.py
 
 
+Optional Parameters / Optional Elements
+=======================================
+
 .. heading:: Optional Parameters / Optional Elements
    :id: feat_req_someip_251
    :h: 3
@@ -1516,6 +1597,9 @@ Specification of the SOME/IP on-wire format
 
    Optional Elements shall be encoded as array with 0 to 1 elements. For the serialization of arrays
    with dynamic length see :need:`feat_req_someip_253`.
+
+Dynamic Length Arrays
+=====================
 
 .. heading:: Dynamic Length Arrays
    :id: feat_req_someip_253
@@ -1649,6 +1733,9 @@ Specification of the SOME/IP on-wire format
    Rationale: When measuring the length in bytes, complex multi-dimensional arrays can be skipped
    over in deserialization.
 
+Enumeration
+===========
+
 .. heading:: Enumeration
    :id: feat_req_someip_650
    :h: 3
@@ -1672,6 +1759,9 @@ Specification of the SOME/IP on-wire format
 
    Implementations shall support sending and receiving undefined enumeration values,
    if not configured otherwise.
+
+Bitfield
+========
 
 .. heading:: Bitfield
    :id: feat_req_someip_688
@@ -1723,6 +1813,9 @@ Specification of the SOME/IP on-wire format
 
    A SOME/IP implementation may allow turning the de/serialization of a bitfield on or off.
    This means that only the uint8/uint16/uint32 value would be passed to an application.
+
+Union / Variant
+===============
 
 .. heading:: Union / Variant
    :id: feat_req_someip_262
@@ -1877,6 +1970,9 @@ Specification of the SOME/IP on-wire format
 
    By using a struct different padding layouts can be achieved.
 
+Example:  Union of uint8/uint16 both padded to 32 bits
+------------------------------------------------------
+
 .. heading:: Example:  Union of uint8/uint16 both padded to 32 bits
    :id: feat_req_someip_276
    :h: 4
@@ -1915,6 +2011,9 @@ Specification of the SOME/IP on-wire format
    .. bitfield_directive:: images/bit_field/feat_req_someip_289.json
 
 
+Example Map / Dictionary
+========================
+
 .. heading:: Example Map / Dictionary
    :id: feat_req_someip_299
    :h: 3
@@ -1950,6 +2049,9 @@ RPC Protocol specification
    :status: valid
 
    This chapter describes the RPC protocol of SOME/IP.
+
+Transport Protocol Bindings
+***************************
 
 .. heading:: Transport Protocol Bindings
    :id: feat_req_someip_315
@@ -2046,6 +2148,9 @@ RPC Protocol specification
    The port numbers for the protocol bindings are defined by the configuration data files
    (e.g. FIBEX, ARXML, or FLYNC).
 
+UDP Binding
+===========
+
 .. heading:: UDP Binding
    :id: feat_req_someip_317
    :h: 3
@@ -2124,6 +2229,9 @@ RPC Protocol specification
    *  Multicast-Threshold=0: Unicast only
    *  Multicast-Threshold=1: Multicast only
    *  Multicast-Threshold>1: with number of subscribed clients < Multicast-Threshold use unicast, else multicast.
+
+TCP Binding
+===========
 
 .. heading:: TCP Binding
    :id: feat_req_someip_323
@@ -2251,6 +2359,9 @@ RPC Protocol specification
    the client recognized that the TCP is not needed anymore, the client will try to reestablish
    the TCP connection.
 
+Allowing resync to TCP stream using Magic Cookies
+-------------------------------------------------
+
 .. heading:: Allowing resync to TCP stream using Magic Cookies
    :id: feat_req_someip_619
    :h: 4
@@ -2346,6 +2457,9 @@ RPC Protocol specification
    .. drawsvg_directive:: images/drawsvg/feat_req_someip_589.py
 
 
+Multiple Service-Instances
+==========================
+
 .. heading:: Multiple Service-Instances
    :id: feat_req_someip_444
    :h: 3
@@ -2415,6 +2529,9 @@ RPC Protocol specification
    If a service instance uses UDP port x, only this instance of the service and not another
    instance of the same service should use exactly TCP port x for its services.
 
+Request/Response Communication
+******************************
+
 .. heading:: Request/Response Communication
    :id: feat_req_someip_327
    :h: 2
@@ -2463,6 +2580,9 @@ RPC Protocol specification
    *  Set the Message Type to RESPONSE (i.e. 0x80) or EXCEPTION (i.e. 0x81)
    *  Set the Return Code.
 
+Fire&Forget Communication
+*************************
+
 .. heading:: Fire&Forget Communication
    :id: feat_req_someip_344
    :h: 2
@@ -2489,6 +2609,9 @@ RPC Protocol specification
 
    Fire&Forget messages shall not return an error. Error handling shall be implemented by
    the application when needed.
+
+Events
+******
 
 .. heading:: Events
    :id: feat_req_someip_351
@@ -2579,6 +2702,9 @@ RPC Protocol specification
    based on the handle; thus, compatibility is not broken. Only efficiency is lowered.
 
 
+Strategy for sending notifications
+==================================
+
 .. heading:: Strategy for sending notifications
    :id: feat_req_someip_355
    :h: 3
@@ -2601,6 +2727,9 @@ RPC Protocol specification
       thus, only when the difference between prediction and current value is greater than epsilon
       an update is transmitted.
 
+Publish/Subscribe Handling
+========================== 
+
 .. heading:: Publish/Subscribe Handling
    :id: feat_req_someip_360
    :h: 3
@@ -2613,6 +2742,9 @@ RPC Protocol specification
    :status: valid
 
    Publish/Subscribe handling shall be implemented according to Section :need:`feat_req_someipsd_137`.
+
+Fields
+******
 
 .. heading:: Fields
    :id: feat_req_someip_630
@@ -2695,6 +2827,9 @@ RPC Protocol specification
    The error handling can be done in the application or the communication layer below.
    Therefore different possible mechanisms exist.
 
+Transporting Application Error Codes and Exceptions
+===================================================
+
 .. heading:: Transporting Application Error Codes and Exceptions
    :id: feat_req_someip_366
    :h: 3
@@ -2752,6 +2887,9 @@ RPC Protocol specification
    This can be used to handle all different application errors that might occur in the server.
    In addition, problems with the communication medium or intermediate components (e.g. switches)
    may occur, which have to be handled e.g. by means of reliable transport.
+
+Return Code
+===========
 
 .. heading:: Return Code
    :id: feat_req_someip_369
@@ -2896,6 +3034,9 @@ RPC Protocol specification
    Implementations shall not answer with errors to SOME/IP message already carrying an error
    (i.e. return code is not equal to 0x00).
 
+Error Message Format
+====================
+
 .. heading:: Error Message Format
    :id: feat_req_someip_421
    :h: 3
@@ -2933,6 +3074,9 @@ RPC Protocol specification
 
    The union gives the flexibility to add new exceptions in the future in a type-safe manner.
    The string is used to transport human readable exception descriptions to ease testing and debugging.
+
+Error Processing Overview
+=========================
 
 .. heading:: Error Processing Overview
    :id: feat_req_someip_717
@@ -2995,6 +3139,9 @@ RPC Protocol specification
    The error code E_WRONG_PROTOCOL_VERSION is obsolete since it should only be sent,
    if the version of SOME/IP has changed (meaning the header layout) and the message type is request.
    This cannot be implemented correctly.
+
+Communication Errors and Handling of Communication Errors
+=========================================================
 
 .. heading:: Communication Errors and Handling of Communication Errors
    :id: feat_req_someip_429
@@ -3080,6 +3227,9 @@ RPC Protocol specification
    in a SOME/IP implementation. Keep in mind that the communication does not have to implement
    these features. The next section :need:`feat_req_someip_440` describes such optional reliability
    mechanisms.
+
+Application based Error Handling
+--------------------------------
 
 .. heading:: Application based Error Handling
    :id: feat_req_someip_440

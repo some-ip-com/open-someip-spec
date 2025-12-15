@@ -169,11 +169,6 @@ needs_global_options = {
          ("type == 'feat_req'", "feat_req_template"),
       ]
    },
-   "pre_template": {
-      "predicates": [
-         ("type == 'heading'", "heading_pre_template"),
-      ]
-   },
    "heading": {
       "predicates": [
          (

@@ -21,6 +21,10 @@ SOME/IP Service Discovery (SOME/IP-SD)
    :id: feat_req_someipsd_1
    :h: 1
 
+
+General
+*******
+
 .. heading:: General
    :id: feat_req_someipsd_182
    :h: 2
@@ -96,6 +100,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
          -  The protected connection or association based on a security protocol, like IPsec or MACsec. This also includes the state of the security protocol. Note: While this only somewhat also applies to TLS and DTLS, in the following TLS and DTLS are included, when the term is used.
       *  -  Secured Port
          -  A TCP or UDP Port that is protected by a security protocol based on a Security Association.
+
+SOME/IP-SD ECU-internal Interface
+*********************************
 
 .. heading:: SOME/IP-SD ECU-internal Interface
    :id: feat_req_someipsd_13
@@ -211,9 +218,15 @@ SOME/IP Service Discovery (SOME/IP-SD)
    (e.g. 802.1X) or similar, this port shall not be considered as link-up by SOME/IP-SD until
    the security function enables communication.
 
+SOME/IP-SD Message Format
+*************************
+
 .. heading:: SOME/IP-SD Message Format
    :id: feat_req_someipsd_24
    :h: 2
+
+General Requirements
+====================
 
 .. heading:: General Requirements
    :id: feat_req_someipsd_96
@@ -272,6 +285,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_205.json
 
+
+SOME/IP-SD Header
+=================
 
 .. heading:: SOME/IP-SD Header
    :id: feat_req_someipsd_97
@@ -487,6 +503,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    The Entries Array and the Options Array of the SOME/IP-SD message shall start with a length
    field as uint32 that counts the number of bytes of the following data; i.e. the entries or the options.
 
+Entry Format
+============
+
 .. heading:: Entry Format
    :id: feat_req_someipsd_94
    :h: 3
@@ -585,6 +604,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_209.json
 
 
+Options Format
+==============
+
 .. heading:: Options Format
    :id: feat_req_someipsd_104
    :h: 3
@@ -620,6 +642,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    :status: valid
 
    The length field shall cover all bytes of the option except the length field and type field.
+
+Configuration Option
+-------------------- 
 
 .. heading:: Configuration Option
    :id: feat_req_someipsd_139
@@ -795,6 +820,8 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_147.json
 
+Load Balancing Option (informational)
+-------------------------------------
 
 .. heading:: Load Balancing Option (informational)
    :id: feat_req_someipsd_145
@@ -876,6 +903,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_148.json
 
+
+IPv4 Endpoint Option
+--------------------
 
 .. heading:: IPv4 Endpoint Option
    :id: feat_req_someipsd_126
@@ -986,6 +1016,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    The client shall use the IPv4 Endpoint Option with SubscribeEventgroup entries to signal its IP
    address and its UDP and/or TCP port numbers, on which it is ready to receive the events.
 
+IPv6 Endpoint Option
+--------------------
+
 .. heading:: IPv6 Endpoint Option
    :id: feat_req_someipsd_138
    :h: 3
@@ -1093,6 +1126,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    The client shall use the IPv6 Endpoint Option with SubscribeEventgroup entries to signal the
    IP address and the UDP and/or TCP port numbers, on which it is ready to receive the events.
 
+IPv4 Multicast Option
+---------------------
+
 .. heading:: IPv4 Multicast Option
    :id: feat_req_someipsd_722
    :h: 3
@@ -1185,6 +1221,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    If a service supports IPv4 Multicast, the offer entry shall reference the IPv4 Multicast Option,
    which encodes the IPv4 Multicast Address and Port Number the server will send multicast events and
    notification events to.
+
+IPv6 Multicast Option
+---------------------
 
 .. heading:: IPv6 Multicast Option
    :id: feat_req_someipsd_736
@@ -1279,6 +1318,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    If a service supports IPv6 Multicast, the Offer Service Entry shall reference the IPv6 Multicast Option,
    which encodes the IPv6 Multicast Address and Port Number the server will send multicast events and
    notification events to.
+
+IPv4 SD Endpoint Option
+-----------------------
 
 .. heading:: IPv4 SD Endpoint Option
    :id: feat_req_someipsd_1080
@@ -1411,6 +1453,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_1096.json
 
+
+IPv6 SD Endpoint Option
+-----------------------
 
 .. heading:: IPv6 SD Endpoint Option
    :id: feat_req_someipsd_1097
@@ -1545,6 +1590,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_1112.json
 
 
+MAC-Groupcast Endpoint Option
+-----------------------------
+
 .. heading:: MAC-Groupcast Endpoint Option
    :id: feat_req_someipsd_1248
    :h: 3
@@ -1627,6 +1675,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_1262.json
 
+
+Referencing Options from Entries
+================================
 
 .. heading:: Referencing Options from Entries
    :id: feat_req_someipsd_335
@@ -1712,6 +1763,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    Implementations shall minimize the size of the SD messages by not duplicating Options without need.
 
+Handling missing, redundant and conflicting Options
+---------------------------------------------------
+
 .. heading:: Handling missing, redundant and conflicting Options
    :id: feat_req_someipsd_1140
    :h: 3
@@ -1788,6 +1842,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    If the two Configuration Options have conflicting items (same name), all items shall be handled.
    There shall be no attempt been made to merge duplicate items.
 
+Example
+=======
+
 .. heading:: Example
    :id: feat_req_someipsd_212
    :h: 3
@@ -1812,6 +1869,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_213.json
 
+
+Service Discovery Messages
+**************************
 
 .. heading:: Service Discovery Messages
    :id: feat_req_someipsd_219
@@ -1840,6 +1900,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    *  Index First Option Run, Index Second Option Run, Number of Options 1,
       and Number of Options 2 shall be set according to the chained options.
 
+Service Entries
+=============== 
+
 .. heading:: Service Entries
    :id: feat_req_someipsd_224
    :h: 3
@@ -1853,6 +1916,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    Entries concerned with services shall be based on the Service Entry Type Format as specified in
    :need:`feat_req_someipsd_47`.
+
+FindService Entry
+-----------------
 
 .. heading:: FindService Entry
    :id: feat_req_someipsd_220
@@ -1896,6 +1962,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
       entry shall be considered not existing.(Service Registry only).
    *  If set to 0xFFFFFF, the FindService entry shall be considered valid until the next reboot. (Service Registry only).
    *  TTL shall not be set to 0x000000 since this is considered to be the Stop entry for this entry.
+
+OfferService Entry
+------------------
 
 .. heading:: OfferService Entry
    :id: feat_req_someipsd_221
@@ -1989,6 +2058,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    In the case of TCP, the endpoint option contains the IP address and port the client needs to
    open a TCP connection to in order to receive events using TCP.
 
+StopOfferService Entry
+----------------------
+
 .. heading:: StopOfferService Entry
    :id: feat_req_someipsd_225
    :h: 4
@@ -2014,6 +2086,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    * TTL shall be set to 0x000000.
 
+Eventgroup Entries
+==================
+
 .. heading:: Eventgroup Entries
    :id: feat_req_someipsd_227
    :h: 3
@@ -2027,6 +2102,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    Entries concerned with services follow the Eventgroup Entry Type Format as specified in
    :need:`feat_req_someipsd_109`.
+
+SubscribeEventgroup Entry
+-------------------------
 
 .. heading:: SubscribeEventgroup Entry
    :id: feat_req_someipsd_230
@@ -2077,6 +2155,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    SubscribeEventgroup entries shall reference one or two IPv4 and/or one or two IPv6 Endpoint
    Options (one for UDP, one for TCP).
 
+StopSubscribeEventgroup Entry
+-----------------------------
+
 .. heading:: StopSubscribeEventgroup Entry
    :id: feat_req_someipsd_233
    :h: 4
@@ -2111,6 +2192,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    A StopSubscribeEventgroup Entry shall reference the same options the SubscribeEventgroup Entry
    referenced. This includes but is not limited to Endpoint and Configuration options.
+
+Subscribe Eventgroup Acknowledgement (SubscribeEventgroupAck) Entry
+-------------------------------------------------------------------
 
 .. heading:: Subscribe Eventgroup Acknowledgement (SubscribeEventgroupAck) Entry
    :id: feat_req_someipsd_612
@@ -2148,6 +2232,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    SubscribeEventgroupAck entries referencing events and notification events that are transported
    via multicast shall reference an IPv4 Multicast Option and/or and IPv6 Multicast Option.
    The Multicast Options state to which Multicast address and port the events and notification events will be sent to.
+
+Subscribe Eventgroup Negative Acknowledgement (SubscribeEventgroupNack) Entry
+-----------------------------------------------------------------------------
 
 .. heading:: Subscribe Eventgroup Negative Acknowledgement (SubscribeEventgroupNack) Entry
    :id: feat_req_someipsd_617
@@ -2221,9 +2308,15 @@ SOME/IP Service Discovery (SOME/IP-SD)
    *  Sending out a Magic Cookie message and waiting for the TCP ACK.
    *  Reestablishing the TCP connection.
 
+Service Discovery Communication Behavior
+****************************************
+
 .. heading:: Service Discovery Communication Behavior
    :id: feat_req_someipsd_25
    :h: 2
+
+Startup Behavior
+================
 
 .. heading:: Startup Behavior
    :id: feat_req_someipsd_59
@@ -2464,6 +2557,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    *  Send message (OfferService entries)
    *  Wait CYCLIC_OFFER_DELAY
 
+Response Behavior
+=================
+
 .. heading:: Response Behavior
    :id: feat_req_someipsd_61
    :h: 3
@@ -2571,6 +2667,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    Note: This was only needed in earlier migration scenarios and will go away in the future).
 
+Shutdown Behavior
+=================
+
 .. heading:: Shutdown Behavior
    :id: feat_req_someipsd_819
    :h: 3
@@ -2646,6 +2745,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    When the whole ECU is being shut down, StopOfferService entries shall be sent out for all service
    entries and StopSubscribeEventgroup entries for Eventgroups.
 
+State Machines
+============== 
+
 .. heading:: State Machines
    :id: feat_req_someipsd_627
    :h: 3
@@ -2682,6 +2784,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. drawsvg_directive:: images/drawsvg/feat_req_someipsd_630.py
 
+
+Error Handling
+==============
 
 .. heading:: Error Handling
    :id: feat_req_someipsd_1162
@@ -2796,6 +2901,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    shall be ignored, except when Endpoint or Multicast Options are referenced, in which case only
    the Options shall be ignored according to :need:`feat_req_someipsd_878`.
 
+Announcing non-SOME/IP protocols with SOME/IP-SD
+************************************************
+
 .. heading:: Announcing non-SOME/IP protocols with SOME/IP-SD
    :id: feat_req_someipsd_498
    :h: 2
@@ -2886,6 +2994,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    .. bitfield_directive:: images/bit_field/feat_req_someipsd_575.json
 
+
+Publish/Subscribe with SOME/IP and SOME/IP-SD
+*********************************************
 
 .. heading:: Publish/Subscribe with SOME/IP and SOME/IP-SD
    :id: feat_req_someipsd_137
@@ -3406,6 +3517,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    If no cyclic SubscribeEventgroups are configured, the timer for cyclic SubscribeEventgroups
    stays turned off.
 
+Endpoint Handling for Services and Events
+*****************************************
+
 .. heading:: Endpoint Handling for Services and Events
    :id: feat_req_someipsd_776
    :h: 2
@@ -3429,6 +3543,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    The SOME/IP-SD shall overwrite IP Addresses and Port Numbers with those transported in Endpoint
    and Multicast Options if the statically configured values are different from those in these options.
+
+Service Endpoints
+=================
 
 .. heading:: Service Endpoints
    :id: feat_req_someipsd_784
@@ -3522,6 +3639,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    Other Options (neither Endpoint nor Multicast Options), shall still be allowed to be used in a
    FindService Entry.
 
+Eventgroup Endpoints
+====================
+
 .. heading:: Eventgroup Endpoints
    :id: feat_req_someipsd_785
    :h: 3
@@ -3604,6 +3724,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    The client shall open the Endpoint specified in the Multicast Option referenced by the
    SubscribeEventgroupAck entry as fast as possible to not miss multicast events.
 
+Example
+=======
+
 .. heading:: Example
    :id: feat_req_someipsd_794
    :h: 3
@@ -3648,6 +3771,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    .. plantuml:: images/plantuml/feat_req_someipsd_795.puml
 
 
+Security Considerations
+=======================
+
 .. heading:: Security Considerations
    :id: feat_req_someipsd_1134
    :h: 3
@@ -3684,6 +3810,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
    :status: valid
 
    It shall be possible to turn off the checking of topological correctness via configuration.
+
+Mandatory Feature Set and Basic Behavior
+****************************************
 
 .. heading:: Mandatory Feature Set and Basic Behavior
    :id: feat_req_someipsd_806
@@ -3945,6 +4074,9 @@ SOME/IP Service Discovery (SOME/IP-SD)
 
    Note: A SubscribeEventgroup without Endpoint Options is only allowed for an Eventgroup with
    Multicast Events only.
+
+SOME/IP-SD Mechanisms and Errors
+********************************
 
 .. heading:: SOME/IP-SD Mechanisms and Errors
    :id: feat_req_someipsd_837
