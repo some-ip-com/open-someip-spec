@@ -196,6 +196,9 @@ needs_global_options = {
    },
 }
 
+# enable to set title in globals:
+import sphinx_needs.data as sphinx_needs_data
+sphinx_needs_data.NeedsCoreFields["title"]["allow_default"] = True
 
 def sections_level(app, need, needs, *args, **kwargs):
     len_sections: int = len(need["sections"])
