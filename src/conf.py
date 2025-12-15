@@ -175,10 +175,10 @@ needs_global_options = {
       "predicates": [
          (
             "type == 'heading'",
-            "[[copy("id", filter='\"heading\" == type and current_need[\"sections\"] == sections and current_need[\"docname\"][-1] == docname and current_need[\"doctype\"] == doctype')]]"
+            "[[copy('id', filter='\"heading\" == type and current_need[\"sections\"] == sections and current_need[\"docname\"][-1] == docname and current_need[\"doctype\"] == doctype')]]"
         ),
       ],
-      "default": "[[copy("id", filter='\"heading\" == type and current_need[\"sections\"] == sections and current_need[\"docname\"] == docname and current_need[\"doctype\"] == doctype')]]"
+      "default": "[[copy('id', filter='\"heading\" == type and current_need[\"sections\"] == sections and current_need[\"docname\"] == docname and current_need[\"doctype\"] == doctype')]]"
    },
 }
 
