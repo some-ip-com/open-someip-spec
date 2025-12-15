@@ -295,7 +295,8 @@ SOME/IP-SD Header
    :safety: QM
    :status: valid
 
-   After the SOME/IP header the SOME/IP-SD Header shall follow as depicted in Figure :need:`feat_req_someipsd_205`.
+   After the SOME/IP header the SOME/IP-SD Header shall follow as depicted in
+   Figure :need:`feat_req_someipsd_205`.
 
 .. feat_req::
    :id: feat_req_someipsd_39
@@ -2603,37 +2604,37 @@ Response Behavior
 
    For optimization purpose the following behaviors may optionally be supported:
 
-.. feat_req::
-   :id: feat_req_someipsd_89
-   :reqtype: Requirement
-   :security: NO
-   :safety: QM
-   :status: valid
+   .. feat_req::
+      :id: feat_req_someipsd_89
+      :reqtype: Requirement
+      :security: NO
+      :safety: QM
+      :status: valid
 
-   *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
-      to with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
+      *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
+         to with a unicast response if the last offer was sent less than 1/2 CYCLIC_OFFER_DELAY ago.
 
-.. feat_req::
-   :id: feat_req_someipsd_90
-   :reqtype: Requirement
-   :security: NO
-   :safety: QM
-   :status: valid
+   .. feat_req::
+      :id: feat_req_someipsd_90
+      :reqtype: Requirement
+      :security: NO
+      :safety: QM
+      :status: valid
 
-   *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
-      to with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
+      *  FindService messages received with the Unicast Flag set to 1 in main phase, shall be responded
+         to with a multicast response if the last offer was sent 1/2 CYCLIC_OFFER_DELAY or longer ago.
 
-.. feat_req::
-   :id: feat_req_someipsd_91
-   :reqtype: Requirement
-   :security: NO
-   :safety: QM
-   :status: valid
+   .. feat_req::
+      :id: feat_req_someipsd_91
+      :reqtype: Requirement
+      :security: NO
+      :safety: QM
+      :status: valid
 
-   *  FindService messages received with Unicast Flag set to 0 (multicast), shall be responded to
-      with a multicast response.
+      *  FindService messages received with Unicast Flag set to 0 (multicast), shall be responded to
+         with a multicast response.
 
-   Note: This was only needed in earlier migration scenarios and will go away in the future).
+Note: This was only needed in earlier migration scenarios and will go away in the future.
 
 Shutdown Behavior
 =================
