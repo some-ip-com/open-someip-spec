@@ -259,6 +259,9 @@ Introduction
 
    Different eventgroups of a service shall have different Eventgroup IDs.
 
+Specification of the SOME/IP on-wire format
+###########################################
+
 .. heading:: Specification of the SOME/IP on-wire format
    :id: feat_req_someip_29
    :h: 1
@@ -1932,6 +1935,9 @@ Introduction
    .. bitfield_directive:: images/bit_field/feat_req_someip_300.json
 
 
+RPC Protocol specification
+##########################
+
 .. heading:: RPC Protocol specification
    :id: feat_req_someip_313
    :h: 1
@@ -3116,6 +3122,9 @@ Introduction
    .. drawsvg_directive:: images/drawsvg/feat_req_someip_443.py
 
 
+Guidelines (informational)
+##########################
+
 .. heading:: Guidelines (informational)
    :id: feat_req_someip_449
    :h: 1
@@ -3129,6 +3138,9 @@ Introduction
 
    This informational chapter was moved to the SOME/IP Guidelines document to improve
    the clarity of this specification.
+
+Compatibility rules for interface design (informational)
+########################################################
 
 .. heading:: Compatibility rules for interface design (informational)
    :id: feat_req_someip_472
