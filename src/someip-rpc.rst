@@ -102,8 +102,8 @@ Definition of terms
 
    *  Setter – a Request/Response call that allows write access to a field.
 
-     *  The setter is a request/response call as well in order for the client to know whether the
-        setter-operation succeeded.
+      *  The setter is a request/response call as well in order for the client to know whether the
+         setter-operation succeeded.
 
    *  Notifier – sends out event message with a new value on change of the value of the field
    *  Service – a logical combination of zero or more methods, zero or more events, and zero or more
