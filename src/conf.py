@@ -25,10 +25,13 @@ version = "25-12"
 
 needs_id_regex = "^[A-Za-z0-9_]"
 needs_title_from_content = False
-#We do not want to use the title for the needs:
+# We want to generate a JSON file
+needs_build_json = True
+
+# We do not want to use the title for the needs:
 needs_title_optional = True
 
-#The rendering of refernces to needs shall only show the need_id:
+# The rendering of refernces to needs shall only show the need_id:
 needs_role_need_template = "{id}"
 
 needs_types = [
@@ -176,7 +179,7 @@ needs_global_options = {
          (
             "type == 'heading'",
             "[[copy('id', filter='\"heading\" == type and current_need[\"id\"] != id and current_need[\"sections\"][-1] == sections and current_need[\"docname\"] == docname and current_need[\"doctype\"] == doctype')]]"
-        ),
+         ),
       ],
       "default": "[[copy('id', filter='\"heading\" == type and current_need[\"sections\"] == sections and current_need[\"docname\"] == docname and current_need[\"doctype\"] == doctype')]]"
    },
