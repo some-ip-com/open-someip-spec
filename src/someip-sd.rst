@@ -3572,18 +3572,6 @@ A client shall deregister from a server by sending a SOME/IP-SD SubscribeEventgr
 Figure: Publish/Subscribe Registration/Deregistration behavior (figure ignoring timings)
 
 .. plantuml:: images/plantuml/feat_req_someipsd_634.puml
-
-    
-.. feat_req:: ⓘ 
-    :id: feat_req_someipsd_1239
-    :reqtype: Information
-    :security: NO
-    :safety: QM
-    :satisfies: 
-    :status: valid
-    :collapse: True
-  
-Figure: Publish / Subscribe Registration / Deregistration behavior (figure ignores timings)
     
 .. feat_req:: 🎯
     :id: feat_req_someipsd_435
