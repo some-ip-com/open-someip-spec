@@ -12,7 +12,7 @@
 deactivate 2>/dev/null
 
 # create virtual environment
-python -m venv .venv
+python3 -m venv .venv
 
 # activate virtual environment
 source .venv/bin/activate

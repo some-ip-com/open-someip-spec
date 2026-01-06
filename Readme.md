@@ -50,9 +50,9 @@ git clone https://github.com/some-ip-com/open-someip-spec
 cd open-someip-spec
 ./tools/setup.sh
 source .venv/bin/activate
-cd tools
 make html
 ```
+Open `src/_build/html/index.html` in your browser.
 
 ## Licensing
 
