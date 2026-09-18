@@ -13,7 +13,7 @@ from src.scripts.bitfield import BitfieldDirective
 from src.scripts.drawSVG import DrawSvgDirective
 
 extensions = [
-    "sphinx_needs", 
+    "sphinx_needs",
     "sphinxcontrib.plantuml",
     "sphinx_simplepdf",
 ]

@@ -4,4 +4,4 @@ sphinx-simplepdf==1.6.0
 sphinxcontrib-plantuml
 bitfield-extended
 drawsvg
-setuptools
+setuptools<82
