@@ -2693,7 +2693,7 @@ Multiple Service-Instances
     :status: valid
     :collapse: True
 
-Service-Instances of the same Service are identified through different Instance IDs. It shall be supported that multiple Service-Instances reside on different ECUs as well as multiple Service-Instances of one or more Services reside on one single ECU.
+Service-Instances of the same Service are identified through different Instance IDs.
 
 .. feat_req:: 🎯
     :id: feat_req_someip_1079
