@@ -1,7 +1,7 @@
 # setup.ps1
 # Setup environment script for Windows
 #
-# Copyright 2025 Andreas Wambold
+# Copyright 2026 Andreas Wambold
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 #

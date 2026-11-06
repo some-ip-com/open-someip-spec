@@ -30,8 +30,13 @@
     },
     "payload": [
         {
-            "name": "Message ID (Service ID / Method ID) [32 bit]",
-            "bits": 32,
+            "name": "Service ID [16 bit]",
+            "bits": 16,
+            "type": "gray"
+        },
+        {
+            "name": "Method ID [16 bit]",
+            "bits": 16,
             "type": "gray"
         },
         {
@@ -40,8 +45,13 @@
             "type": "gray"
         },
         {
-            "name": "Request ID (Client ID / Session ID) [32 bit]",
-            "bits": 32,
+            "name": "Client ID [16 bit]",
+            "bits": 16,
+            "type": "gray"
+        },
+        {
+            "name": "Session ID [16 bit]",
+            "bits": 16,
             "type": "gray"
         },
         {

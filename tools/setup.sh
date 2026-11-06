@@ -3,7 +3,7 @@
 # setup.sh
 # Setup environment script for Linux, macOS, etc.
 #
-# Copyright 2025 Dr. Lars Völker
+# Copyright 2026 Dr. Lars Völker
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 #

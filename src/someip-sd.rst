@@ -3,7 +3,7 @@
 
 .. This file is part of the Open SOME/IP Specification.
 ..
-.. Copyright (c) 2025 Technica Engineering GmbH
+.. Copyright (c) 2026 Technica Engineering GmbH
 ..
 .. This file is licensed under the SOME/IP Community Specification License.
 .. You can find a copy of this license in the Open SOME/IP Specification repository.
@@ -659,11 +659,42 @@ An Eventgroup Entry shall be 16 bytes of size and include the following fields i
     :status: valid
     :collapse: True
 
-Figure: SOME/IP-SD Service Entry Type
+Figure: SOME/IP-SD Eventgroup Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_209.json
 
 
+.. feat_req:: 🎯
+    :id: feat_req_someipsd_210
+    :reqtype: Requirement
+    :security: NO
+    :safety: QM
+    :satisfies: 
+    :status: valid
+    :collapse: True
+
+.. rst-class:: compact
+  
+The SOME/IP-SD implementation shall allow for sending only sorted SOME/IP-SD entries.
+Entries shall be sorted by the following fields (from highest to lowest priority in increasing order):
+
+* Type
+* Service-ID
+* Instance-ID
+* Eventgroup-ID, if present
+* Major-Ver
+* Minor-Ver, if present
+
+Note:
+Example of ordered entries:
+
+* Find (0x00), Service-ID: 0x0005, Instance-ID: 0xFFFF, Major-Ver: 0x01, Minor-Ver: 0xFFFFFFFF
+* Find (0x00), Service-ID: 0x0005, Instance-ID: 0xFFFF, Major-Ver: 0x02, Minor-Ver: 0xFFFFFFFF
+* Find (0x00), Service-ID: 0x0042, Instance-ID: 0xFFFF, Major-Ver: 0x01, Minor-Ver: 0xFFFFFFFF
+* Offer (0x01), Service-ID: 0x0001, Instance-ID: 0xFFFF, Major-Ver: 0x01, Minor-Ver: 0xFFFFFFFF
+
+The SOME/IP-SD implementation shall allow receiving unsorted SOME/IP-SD entries to maintain backward compatibility.
+    
 .. heading:: Options Format
     :id: feat_req_someipsd_104
     :layout: focus
@@ -1022,9 +1053,9 @@ Figure: SOME/IP-SD Load Balancing Option
 IPv4 Endpoint Option
 --------------------
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_752
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1123,7 +1154,7 @@ The server shall use the IPv4 Endpoint Option with OfferService entries to signa
     :status: valid
     :collapse: True
 
-The endpoints the server referenced by an OfferService entry shall also be used as source of events. That is source IP address and source port numbers for the transport protocols in the endpoint option.
+The endpoints the server referenced by an OfferService entry shall also be used as source of events. That is source IPv4 address and source port numbers for the transport protocols in the endpoint option.
 
 .. feat_req:: 🎯
     :id: feat_req_someipsd_848
@@ -1144,9 +1175,9 @@ The client shall use the IPv4 Endpoint Option with SubscribeEventgroup entries t
 IPv6 Endpoint Option
 --------------------
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_751
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1157,9 +1188,9 @@ The IPv6 Endpoint Option shall be used by a SOME/IP-SD instance to signal the re
 
 These ports shall be used for the events and notification events as well. When using UDP the server uses the announced port as source port. With TCP the client needs to open a connection to this port before subscription, because this is the TCP connection the server uses for sending events and notification events.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_140
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1168,9 +1199,9 @@ These ports shall be used for the events and notification events as well. When u
 
 The IPv6 Endpoint Option shall use the Type 0x06.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_163
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1179,9 +1210,9 @@ The IPv6 Endpoint Option shall use the Type 0x06.
 
 The IPv6 Endpoint Option shall specify the IPv6-Address, the Layer 4 Protocol used, and the Layer 4 Port Number.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_164
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1200,9 +1231,9 @@ The Format of the IPv6 Endpoint Option shall be as follows:
 * L4-Proto [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x06: TCP, 0x11: UDP).
 * L4-Port [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_197
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1211,9 +1242,9 @@ The Format of the IPv6 Endpoint Option shall be as follows:
 
 Figure :need:`feat_req_someipsd_142` shows the format of the IPv6 Endpoint Option.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_142
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1225,9 +1256,9 @@ Figure: SOME/IP-SD IPv6 Endpoint Option
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_142.json
 
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_851
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1236,20 +1267,20 @@ Figure: SOME/IP-SD IPv6 Endpoint Option
 
 The server shall use the IPv6 Endpoint Option with OfferService entries to signal the endpoints the services is available on. That is up to one UDP endpoint and up to one TCP endpoint.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_852
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
     :status: valid
     :collapse: True
 
-The endpoints the server referenced by an OfferService entry shall also be used as source of events. That is source IP address and source port numbers for the transport protocols in the endpoint option.
+The endpoints the server referenced by an OfferService entry shall also be used as source of events. That is source IPv6 address and source port numbers for the transport protocols in the endpoint option.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_853
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1386,9 +1417,9 @@ IPv6 Multicast Option
 
 The IPv6 Multicast Option is used by the server to announce the IPv6 multicast address, the layer 4 protocol, and the port number the multicast events and multicast notifications events are sent to. For the transport layer protocol (ISO/OSI layer 4) currently only UDP is supported.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1083
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1397,9 +1428,9 @@ The IPv6 Multicast Option is used by the server to announce the IPv6 multicast a
 
 The IPv6 Multicast Option and not the IPv6 Endpoint Option shall be referenced by SubscribeEventgroupAck messages.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_737
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1408,9 +1439,9 @@ The IPv6 Multicast Option and not the IPv6 Endpoint Option shall be referenced b
 
 The IPv6 Multicast Option shall use the Type 0x16.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_738
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1419,9 +1450,9 @@ The IPv6 Multicast Option shall use the Type 0x16.
 
 The IPv6 Multicast Option shall specify the IPv6-Address, the transport layer protocol (ISO/OSI layer 4) used, and its Port Number.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_739
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1440,9 +1471,9 @@ The Format of the IPv6 Multicast Option shall be as follows:
 * Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol (ISO/OSI layer 4) based on the IANA/IETF types (0x11: UDP).
 * Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the port of the transport layer protocol (ISO/OSI layer 4).
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_747
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1451,9 +1482,9 @@ The Format of the IPv6 Multicast Option shall be as follows:
 
 Figure :need:`feat_req_someipsd_748` shows the format of the IPv6 Multicast Option.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_748
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1465,9 +1496,9 @@ Figure: SOME/IP-SD IPv6 Multicast Option
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_748.json
 
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_856
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1649,9 +1680,9 @@ IPv6 SD Endpoint Option
 
 The IPv6 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address and Port) of the senders SD implementation.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1099
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1660,9 +1691,9 @@ The IPv6 SD Endpoint Option is used to transport the endpoint (i.e. IP-Address a
 
 The IPv6 SD Endpoint Option shall be included in any SD message up to 1 time.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1155
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1671,9 +1702,9 @@ The IPv6 SD Endpoint Option shall be included in any SD message up to 1 time.
 
 The IPv6 SD Endpoint Option shall only be included if the SOME/IP-SD message is transported over IPv6.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1153
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1682,9 +1713,9 @@ The IPv6 SD Endpoint Option shall only be included if the SOME/IP-SD message is 
 
 The IPv6 SD Endpoint Option shall be the first option in the options array, if existing.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1154
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1693,9 +1724,9 @@ The IPv6 SD Endpoint Option shall be the first option in the options array, if e
 
 If more than one IPv6 SD Endpoint Option is received, only the first one shall be processed and all further IPv6 SD Endpoint Options shall be ignored.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1113
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1704,9 +1735,9 @@ If more than one IPv6 SD Endpoint Option is received, only the first one shall b
 
 The IPv6 SD Endpoint Option shall be not referenced by any SD Entry.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1100
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1716,9 +1747,9 @@ The IPv6 SD Endpoint Option shall be not referenced by any SD Entry.
 If the IPv6 SD Endpoint Option is included in the SD message, the receiving SD implementation shall use the content of this option instead of the Source IP Address and Source Port for responding to these SD messages.
 This is important for responding to the received SD messages (e.g. OfferService after FindService or SubscribeEventgroup after OfferService or SubscribeEventgroupAck after SubscribeEventgroup) as well as the reboot detection (channel based on SD Endpoint Option and not out addresses).
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1101
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1727,9 +1758,9 @@ This is important for responding to the received SD messages (e.g. OfferService 
 
 The IPv6 SD Endpoint Option shall use the Type 0x26.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1102
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1738,9 +1769,9 @@ The IPv6 SD Endpoint Option shall use the Type 0x26.
 
 The IPv6 SD Endpoint Option shall specify the IPv4-Address, the transport layer protocol (ISO/OSI layer 4) used, and its Port Number.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1103
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1759,9 +1790,9 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 * Transport Protocol (L4-Proto) [uint8]: Shall be set to the transport layer protocol of SOME/IP-SD (currently: 0x11 UDP).
 * Transport Protocol Port Number (L4-Port) [uint16]: Shall be set to the transport layer port of SOME/IP-SD (currently: 30490).
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1111
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -1770,9 +1801,9 @@ The Format of the IPv6 SD Endpoint Option shall be as follows:
 
 Figure :need:`feat_req_someipsd_1112` shows the format of the IPv6 SD Endpoint Option.
 
-.. feat_req:: ⓘ
+.. feat_req:: 🎯
     :id: feat_req_someipsd_1112
-    :reqtype: Information
+    :reqtype: Requirement
     :security: NO
     :safety: QM
     :satisfies:
@@ -3243,8 +3274,8 @@ Check the referenced Options of each received entry:
 * The entry references all required options (e.g. a provided eventgroup that uses unicast requires a unicast endpoint option in a received Subscribe Eventgroup entry).
 * The entry only references supported options (e.g. a required eventgroup that does not support multicast data reception does not support multicast endpoint options in a Subscribe Eventgroup ACK entry).
 * There are no conflicts between the options referenced by an entry (i.e. two options of same type with contradicting content).
-* The Type of the referenced Option is known or the discardable flag is set to 1.
-* The Type of the referenced Option is allowed for the entry or discardable flag is set to 1.
+* The Type of the referenced Option is known.
+* The Type of the referenced Option is allowed for the entry.
 * The Length of the referenced Option is consistent to the Type of the Option.
 * An Endpoint Option has a valid L4-Protocol and port number field.
 * The Option is valid (e.g. a multicast endpoint option shall use a multicast IP address).

@@ -118,9 +118,9 @@ Copyright and Acknowledgments
 
 Copyright of the SOME/IP specifications: Bayerische Motoren Werke Aktiengesellschaft (BMW), 2011-2017
 
-Copyright of the sphinx-needs adaptions: Technica Engineering GmbH (Technica) - part of KPIT Technologies Ltd (KPIT), 2025
+Copyright of the sphinx-needs adaptions: Technica Engineering GmbH (Technica) - part of KPIT Technologies Ltd (KPIT), 2026
 
-Copyright of the SOME/IP specifications: Technica Engineering GmbH (Technica) - part of KPIT Technologies Ltd (KPIT), 2025
+Copyright of the SOME/IP specifications: Technica Engineering GmbH (Technica) - part of KPIT Technologies Ltd (KPIT), 2026
 
 Authors of the original contributions:
 
