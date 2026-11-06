@@ -3,7 +3,7 @@
 
 .. This file is part of the Open SOME/IP Specification.
 ..
-.. Copyright (c) 2025 Technica Engineering GmbH
+.. Copyright (c) 2026 Technica Engineering GmbH
 ..
 .. This file is licensed under the SOME/IP Community Specification License.
 .. You can find a copy of this license in the Open SOME/IP Specification repository.

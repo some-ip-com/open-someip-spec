@@ -23,7 +23,7 @@ As the Open SOME/IP Specification is covered by a permissive license, we can onl
 
 ## What does the Open SOME/IP Specification cover?
 
-As of 2025, the Open SOME/IP Specification covers all core SOME/IP features like:
+As of 2026, the Open SOME/IP Specification covers all core SOME/IP features like:
 * SOME/IP RPC and Messaging
 * SOME/IP-SD and Publish/Subscribe
 * SOME/IP-TP
@@ -60,5 +60,5 @@ The Open SOME/IP Specification is licensed under the SOME/IP Community Specifica
 which is the Community Specification License (SPDX: Community-Spec-1.0) and additional terms.
 The license can be found in [SOMEIP_Community_Specification_License.md](SOMEIP_Community_Specification_License.md)
 
-(c) Technica Engineering GmbH, 2025
+(c) Technica Engineering GmbH, 2026
 

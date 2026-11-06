@@ -3,7 +3,7 @@
 
 .. This file is part of the Open SOME/IP Specification.
 ..
-.. Copyright (c) 2025 Technica Engineering GmbH
+.. Copyright (c) 2026 Technica Engineering GmbH
 ..
 .. This file is licensed under the SOME/IP Community Specification License.
 .. You can find a copy of this license in the Open SOME/IP Specification repository.
@@ -587,7 +587,7 @@ Message ID [32 bit]
     :status: valid
     :collapse: True
 
-The Message ID is a 32 bit identifier that is used to dispatch the RPC call to a method of an application and to identify an event. The Message ID has to uniquely identify a method or event of a service.
+The Message ID is a 32 bit identifier composed of a 16-bit Service ID and a 16-bit Method ID, that is used to dispatch the RPC call to a method of an application and to identify an event. The Message ID has to uniquely identify a method or event of a service.
 
 .. feat_req:: ⓘ
     :id: feat_req_someip_57
@@ -738,7 +738,7 @@ Structure of the Request ID
     :status: valid
     :collapse: True
 
-The Request ID shall be constructed of the Client ID and Session ID:
+The Request ID shall be constructed of a 16-bit Client ID and a 16-bit Session ID:
 
 .. bitfield_directive:: images/bit_field/feat_req_someip_83.json
 
