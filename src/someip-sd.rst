@@ -659,7 +659,7 @@ An Eventgroup Entry shall be 16 bytes of size and include the following fields i
     :status: valid
     :collapse: True
 
-Figure: SOME/IP-SD Service Entry Type
+Figure: SOME/IP-SD Eventgroup Entry Type
 
 .. bitfield_directive:: images/bit_field/feat_req_someipsd_209.json
 
