@@ -669,12 +669,12 @@ Figure: SOME/IP-SD Eventgroup Entry Type
     :reqtype: Requirement
     :security: NO
     :safety: QM
-    :satisfies: 
+    :satisfies:
     :status: valid
     :collapse: True
 
 .. rst-class:: compact
-  
+
 The SOME/IP-SD implementation shall allow for sending only sorted SOME/IP-SD entries.
 Entries shall be sorted by the following fields (from highest to lowest priority in increasing order):
 
@@ -694,7 +694,7 @@ Example of ordered entries:
 * Offer (0x01), Service-ID: 0x0001, Instance-ID: 0xFFFF, Major-Ver: 0x01, Minor-Ver: 0xFFFFFFFF
 
 The SOME/IP-SD implementation shall allow receiving unsorted SOME/IP-SD entries to maintain backward compatibility.
-    
+
 .. heading:: Options Format
     :id: feat_req_someipsd_104
     :layout: focus
