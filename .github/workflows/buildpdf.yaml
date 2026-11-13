@@ -39,10 +39,12 @@ jobs:
     - name: Linting
       run: |
         sphinx-lint
+    - name: Check drawsvg output filenames
+      run: |
+        python tools/check_drawsvg_names.py
 
   build:
     runs-on: ubuntu-latest
-    needs: linting
 
     steps:
     - uses: actions/checkout@v5
