@@ -436,4 +436,4 @@ def build_drawing():
 if __name__ == '__main__':
     d = build_drawing()
     # Creates an SVG file next to the script:
-    d.save_svg('canvas.svg')
+    d.save_svg('feat_req_someipsd_442.svg')
