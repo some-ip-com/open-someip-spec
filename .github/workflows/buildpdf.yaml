@@ -29,7 +29,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
-        python-version: "3.13.7"
+        python-version: "3.14"
         cache: 'pip' # caching pip dependencies
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami ; pwd
@@ -49,7 +49,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
-        python-version: "3.13.7"
+        python-version: "3.14"
         cache: 'pip' # caching pip dependencies
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami ; pwd
