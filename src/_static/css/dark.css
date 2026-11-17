@@ -1,0 +1,400 @@
+/* Light / dark theme for the Alabaster-based HTML build.
+ *
+ * Colour values live in CSS custom properties so that custom.css can reuse
+ * them. The theme is selected by the data-theme attribute on <html>:
+ *   - "light": always light
+ *   - "dark" : always dark
+ *   - "auto" : follow the operating system via prefers-color-scheme
+ *
+ * The light values match Alabaster's defaults, so the existing look is
+ * preserved. This file is only added for non-simplepdf builders (see
+ * _add_dark_css in conf.py); the PDF theme has its own colours.
+ */
+
+:root {
+    /* page / body */
+    --dm-page-bg: #fff;
+    --dm-body-bg: #fff;
+    --dm-body-fg: #3E4349;
+
+    /* links */
+    --dm-link: #004B6B;
+    --dm-link-hover: #6D4100;
+
+    /* code */
+    --dm-code-inline-bg: #ecf0f3;
+    --dm-code-inline-fg: #222;
+    --dm-code-block-bg: #FAF3E8;
+    --dm-code-block-fg: #3E4349;
+    --dm-pre-bg: #f8f8f8;
+
+    /* tables */
+    --dm-table-border: #888;
+    --dm-table-head-bg: #D9D9D9;
+    --dm-table-head-fg: #333;
+    --dm-xref-bg: #FBFBFB;
+    --dm-footnote-bg: #FDFDFD;
+
+    /* misc */
+    --dm-footer-fg: #888;
+    --dm-hr: #B1B4B6;
+    --dm-anchor: #DDD;
+    --dm-anchor-hover-bg: #EAEAEA;
+    --dm-admonition-bg: #f8f8f8;
+    --dm-admonition-border: #CCC;
+
+    /* sidebar (desktop) */
+    --dm-sidebar-bg: transparent;
+    --dm-sidebar-fg: #555;
+    --dm-sidebar-link: #004B6B;
+    --dm-sidebar-link-underscore: #999;
+
+    /* sidebar (narrow / mobile) */
+    --dm-narrow-sidebar-bg: #333;
+    --dm-narrow-sidebar-fg: #fff;
+    --dm-narrow-sidebar-link: #AAA;
+
+    /* sphinx-needs boxes */
+    --dm-need-bg: #fff;
+    --dm-need-fg: #111;
+    --dm-need-head-fg: #333;
+    --dm-need-link: #2a7f8e;
+    --dm-need-link-hover: #000;
+    --dm-shadow: #888;
+}
+
+/* Explicit dark selection */
+html[data-theme="dark"] {
+    --dm-page-bg: #16181b;
+    --dm-body-bg: #16181b;
+    --dm-body-fg: #d7dade;
+
+    --dm-link: #6cb6d6;
+    --dm-link-hover: #ffffff;
+
+    --dm-code-inline-bg: #2a2f36;
+    --dm-code-inline-fg: #e6e8ea;
+    --dm-code-block-bg: #0f1114;
+    --dm-code-block-fg: #d7dade;
+    --dm-pre-bg: #0f1114;
+
+    --dm-table-border: #454b52;
+    --dm-table-head-bg: #2c3238;
+    --dm-table-head-fg: #e6e8ea;
+    --dm-xref-bg: #22272d;
+    --dm-footnote-bg: #1c2024;
+
+    --dm-footer-fg: #9aa0a6;
+    --dm-hr: #3a3f45;
+    --dm-anchor: #4a5057;
+    --dm-anchor-hover-bg: #2a2f36;
+    --dm-admonition-bg: #1c2126;
+    --dm-admonition-border: #3a3f45;
+
+    --dm-sidebar-bg: #101214;
+    --dm-sidebar-fg: #c4c8cc;
+    --dm-sidebar-link: #8fd0e3;
+    --dm-sidebar-link-underscore: #4a5057;
+
+    --dm-narrow-sidebar-bg: #101214;
+    --dm-narrow-sidebar-fg: #e6e8ea;
+    --dm-narrow-sidebar-link: #b9e2ef;
+
+    --dm-need-bg: #1c2126;
+    --dm-need-fg: #e2e5e8;
+    --dm-need-head-fg: #c4c8cc;
+    --dm-need-link: #6cb6d6;
+    --dm-need-link-hover: #ffffff;
+    --dm-shadow: #000000;
+}
+
+/* "auto": follow the operating system */
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] {
+        --dm-page-bg: #16181b;
+        --dm-body-bg: #16181b;
+        --dm-body-fg: #d7dade;
+
+        --dm-link: #6cb6d6;
+        --dm-link-hover: #ffffff;
+
+        --dm-code-inline-bg: #2a2f36;
+        --dm-code-inline-fg: #e6e8ea;
+        --dm-code-block-bg: #0f1114;
+        --dm-code-block-fg: #d7dade;
+        --dm-pre-bg: #0f1114;
+
+        --dm-table-border: #454b52;
+        --dm-table-head-bg: #2c3238;
+        --dm-table-head-fg: #e6e8ea;
+        --dm-xref-bg: #22272d;
+        --dm-footnote-bg: #1c2024;
+
+        --dm-footer-fg: #9aa0a6;
+        --dm-hr: #3a3f45;
+        --dm-anchor: #4a5057;
+        --dm-anchor-hover-bg: #2a2f36;
+        --dm-admonition-bg: #1c2126;
+        --dm-admonition-border: #3a3f45;
+
+        --dm-sidebar-bg: #101214;
+        --dm-sidebar-fg: #c4c8cc;
+        --dm-sidebar-link: #8fd0e3;
+        --dm-sidebar-link-underscore: #4a5057;
+
+        --dm-narrow-sidebar-bg: #101214;
+        --dm-narrow-sidebar-fg: #e6e8ea;
+        --dm-narrow-sidebar-link: #b9e2ef;
+
+        --dm-need-bg: #1c2126;
+        --dm-need-fg: #e2e5e8;
+        --dm-need-head-fg: #c4c8cc;
+        --dm-need-link: #6cb6d6;
+        --dm-need-link-hover: #ffffff;
+        --dm-shadow: #000000;
+    }
+}
+
+/* -- base elements ------------------------------------------------------- */
+
+body {
+    background-color: var(--dm-page-bg);
+    color: var(--dm-body-fg);
+}
+
+div.documentwrapper {
+    background-color: var(--dm-page-bg);
+}
+
+div.body {
+    background-color: var(--dm-body-bg);
+    color: var(--dm-body-fg);
+}
+
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    color: var(--dm-body-fg);
+}
+
+a {
+    color: var(--dm-link);
+}
+
+a:hover {
+    color: var(--dm-link-hover);
+}
+
+div.footer,
+div.footer a {
+    color: var(--dm-footer-fg);
+}
+
+hr {
+    border-color: var(--dm-hr);
+}
+
+/* -- code ---------------------------------------------------------------- */
+
+pre,
+div.highlight {
+    background-color: var(--dm-code-block-bg);
+    color: var(--dm-code-block-fg);
+}
+
+pre {
+    background: var(--dm-pre-bg);
+}
+
+tt,
+code {
+    background-color: var(--dm-code-inline-bg);
+    color: var(--dm-code-inline-fg);
+}
+
+tt.xref,
+code.xref,
+a tt {
+    background-color: var(--dm-xref-bg);
+}
+
+a:hover tt,
+a:hover code {
+    background: var(--dm-anchor-hover-bg);
+}
+
+/* -- tables -------------------------------------------------------------- */
+
+table.docutils,
+table.docutils td,
+table.docutils th {
+    border-color: var(--dm-table-border);
+}
+
+table.docutils > thead,
+table.docutils > thead th {
+    background-color: var(--dm-table-head-bg);
+    color: var(--dm-table-head-fg);
+}
+
+table.footnote {
+    background: var(--dm-footnote-bg);
+}
+
+/* -- admonitions --------------------------------------------------------- */
+
+div.admonition {
+    background-color: var(--dm-admonition-bg);
+    border-color: var(--dm-admonition-border);
+}
+
+/* -- header links -------------------------------------------------------- */
+
+a.headerlink {
+    color: var(--dm-anchor);
+}
+
+a.headerlink:hover {
+    background: var(--dm-anchor-hover-bg);
+}
+
+/* -- sidebar (desktop layout, matches Alabaster's 940px page width) ------ */
+
+@media screen and (min-width: 941px) {
+    div.sphinxsidebar {
+        top: 30px;
+        max-height: calc(100vh - 30px);
+        overflow-y: auto;
+        background-color: var(--dm-sidebar-bg);
+    }
+
+    div.sphinxsidebar a {
+        color: var(--dm-sidebar-link);
+        border-bottom-color: var(--dm-sidebar-link-underscore);
+    }
+
+    div.sphinxsidebar h3,
+    div.sphinxsidebar h4,
+    div.sphinxsidebar p,
+    div.sphinxsidebar ul {
+        color: var(--dm-sidebar-fg);
+    }
+}
+
+/* -- sidebar (narrow / mobile layout) ------------------------------------ */
+
+@media screen and (max-width: 940px) {
+    div.documentwrapper {
+        background: var(--dm-page-bg);
+    }
+
+    div.sphinxsidebar {
+        background: var(--dm-narrow-sidebar-bg);
+        color: var(--dm-narrow-sidebar-fg);
+    }
+
+    div.sphinxsidebar h3,
+    div.sphinxsidebar h4,
+    div.sphinxsidebar p,
+    div.sphinxsidebar h3 a {
+        color: var(--dm-narrow-sidebar-fg);
+    }
+
+    div.sphinxsidebar a {
+        color: var(--dm-narrow-sidebar-link);
+    }
+}
+
+/* -- sidebar title: avoid clipped letters --------------------------------- */
+
+div.sphinxsidebarwrapper h1.logo,
+div.sphinxsidebarwrapper h1.logo a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* -- theme toggle button ------------------------------------------------- */
+
+#dm-theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 14px 0;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    cursor: pointer;
+    color: var(--dm-sidebar-fg);
+    background: var(--dm-anchor-hover-bg);
+    border: 1px solid var(--dm-sidebar-link-underscore);
+    border-radius: 4px;
+}
+
+#dm-theme-toggle:hover {
+    border-color: var(--dm-link);
+}
+
+@media screen and (max-width: 940px) {
+    #dm-theme-toggle {
+        color: var(--dm-narrow-sidebar-fg);
+        border-color: var(--dm-narrow-sidebar-link);
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* -- back to top button -------------------------------------------------- */
+
+#dm-back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--dm-link);
+    background: var(--dm-anchor-hover-bg);
+    border: 1px solid var(--dm-sidebar-link-underscore);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#dm-back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#dm-back-to-top:hover {
+    color: var(--dm-link-hover);
+    border-color: var(--dm-link);
+}
+
+#dm-back-to-top:focus-visible {
+    outline: 2px solid var(--dm-link);
+    outline-offset: 2px;
+}
+
+#dm-back-to-top svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media screen and (max-width: 940px) {
+    #dm-back-to-top {
+        right: 16px;
+        bottom: 16px;
+    }
+}

@@ -1,10 +1,10 @@
 /* Base box for each need */
 .need_container {
-    border-top: thin solid #333!important;
+    border-top: thin solid var(--dm-need-head-fg, #333)!important;
 }
 
 .need {
-    background-color:white!important;
+    background-color:var(--dm-need-bg, #fff)!important;
     border: none!important;
     padding: 0!important;
 }
@@ -24,7 +24,7 @@
     text-align: right;
     font-size: 0.95rem;
     font-weight: normal;
-    color: #333;
+    color: var(--dm-need-head-fg, #333);
     line-height: 1.6;
 }
 
@@ -53,23 +53,23 @@
 
 .need-content {
     padding: 16px;
-    background-color: #fff;
+    background-color: var(--dm-need-bg, #fff);
     font-size: 0.95rem;
-    color: #111;
+    color: var(--dm-need-fg, #111);
     line-height: 1.6;
 }
 
 /* Links */
 
 .need a {
-    color: #2a7f8e;
+    color: var(--dm-need-link, #2a7f8e);
     text-decoration: none;
-    border-bottom: 1px dotted #2a7f8e;
+    border-bottom: 1px dotted var(--dm-need-link, #2a7f8e);
 }
 
 .need a:hover {
-    color: #000;
-    border-bottom: 1px solid #000;
+    color: var(--dm-need-link-hover, #000);
+    border-bottom: 1px solid var(--dm-need-link-hover, #000);
 }
 
 svg {
@@ -79,15 +79,15 @@ svg {
 }
 
 table.docutils > thead {
-    background: #D9D9D9;
-    color: #333;
+    background: var(--dm-table-head-bg, #D9D9D9);
+    color: var(--dm-table-head-fg, #333);
 }
 
 .shadow { 
     cursor:crosshair; 
-    -moz-box-shadow: -5px -5px 5px #888;
-    -webkit-box-shadow: -5px -5px 5px #888;
-    box-shadow: -5px -5px 5px #888; 
+    -moz-box-shadow: -5px -5px 5px var(--dm-shadow, #888);
+    -webkit-box-shadow: -5px -5px 5px var(--dm-shadow, #888);
+    box-shadow: -5px -5px 5px var(--dm-shadow, #888); 
 }
 
 /***********************************************************************************/
