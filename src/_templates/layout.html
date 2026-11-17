@@ -1,0 +1,21 @@
+{% extends "!layout.html" %}
+
+{# Set the colour theme as early as possible (still inside <head>) to avoid a
+   flash of the wrong theme before theme-toggle.js runs. #}
+{%- block extrahead %}
+  {{ super() }}
+  <script>
+    (function () {
+      var pref = "auto";
+      try {
+        var stored = localStorage.getItem("dm-theme");
+        if (stored === "light" || stored === "dark" || stored === "auto") {
+          pref = stored;
+        }
+      } catch (e) {
+        /* localStorage may be blocked; stay on auto */
+      }
+      document.documentElement.setAttribute("data-theme", pref);
+    })();
+  </script>
+{%- endblock %}
