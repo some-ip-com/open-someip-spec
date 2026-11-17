@@ -43,7 +43,7 @@ jobs:
       run: |
         python tools/check_drawsvg_names.py
 
-  build:
+  build-html:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,41 +55,89 @@ jobs:
         cache: 'pip' # caching pip dependencies
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami ; pwd
-    - name: direct download PlantUML jar
-      if: False
+    - name: Setup environment
+      run: ./tools/setup.sh
+    - name: Build HTML
       run: |
-        wget -O ./_tools/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025.10/plantuml-1.2025.10.jar
-    - name: Install graphviz & default-jdk
-      if: False
-      run: |
-        sudo apt-get update
-        sudo apt-get upgrade --yes
-        sudo apt-get install graphviz default-jdk
-        sudo apt-get upgrade --yes
-    - name: Install graphviz & default-jdk mini
-      if: False
-      run: |
-        sudo apt-get update
-        sudo apt-get install graphviz default-jdk
-    - name: Install dependencies
-      if: False
-      run: |
-        python -m pip install -r ./requirements.txt
-    - name: Everything
-      run: |
-        ./tools/setup.sh
         source .venv/bin/activate
         make html
-        make pdf
-    - name: Archive sphinx public folder
+    - name: Archive HTML
       uses: actions/upload-artifact@v6
       with:
-        name: sphinx-public
-        path: |
-          ./src/_build/
-      # Use always() to always run this step to publish test results when there are test failures
-      if: ${{ always() }}
+        name: sphinx-html
+        path: ./src/_build/html
+        if-no-files-found: error
 
+  build-pdf:
+    # Ubuntu 26.04 ships Pango 1.57.0, which segfaults in
+    # pango_layout_get_line_readonly (https://gitlab.gnome.org/GNOME/pango/-/issues/862).
+    # Pin to 24.04 (Pango 1.52.1) until the Pango bug is fixed.
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.14"
+        cache: 'pip' # caching pip dependencies
+    - name: print versions for debugging
+      run: python --version ; pip --version ; whoami ; pwd
+    - name: Install WeasyPrint system libraries
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0 \
+          libharfbuzz0b libfontconfig1 libgdk-pixbuf-2.0-0 libffi-dev \
+          fonts-noto-color-emoji unifont fonts-liberation fonts-freefont-ttf
+    - name: Setup environment
+      run: ./tools/setup.sh
+    - name: Diagnose PDF toolchain
+      run: |
+        source .venv/bin/activate
+        python --version
+        pip show weasyprint pydyf cffi libsass || true
+        weasyprint --version || true
+        dpkg -l | grep -Ei 'pango|harfbuzz|fontconfig' || true
+        fc-cache -f
+        echo "fonts covering U+24D8 (circled i):"
+        fc-list ':charset=24d8' family | sort -u || true
+        echo "fonts covering U+1F3AF (target):"
+        fc-list ':charset=1f3af' family | sort -u || true
+    - name: Build PDF
+      run: |
+        source .venv/bin/activate
+        make pdf
+    - name: Verify PDF exists
+      run: |
+        PDF=src/_build/simplepdf/open_someip_specification.pdf
+        if [ -s "$PDF" ]; then
+          echo "PDF OK: $PDF"
+          ls -lh "$PDF"
+        else
+          echo "::error::No PDF produced at $PDF"
+          exit 1
+        fi
+    - name: Archive PDF
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v6
+      with:
+        name: sphinx-pdf
+        path: ./src/_build/simplepdf/open_someip_specification.pdf
+        if-no-files-found: error
+    - name: Diagnose PDF crash (faulthandler + gdb backtrace)
+      if: ${{ failure() }}
+      continue-on-error: true
+      run: |
+        source .venv/bin/activate
+        test -f src/_build/simplepdf/index.html || exit 0
+        echo "=== faulthandler Python stack ==="
+        PYTHONFAULTHANDLER=1 python -m weasyprint \
+          src/_build/simplepdf/index.html /tmp/fh.pdf || true
+        echo "=== gdb C backtrace ==="
+        sudo apt-get install -y gdb
+        PYTHONFAULTHANDLER=1 gdb -batch -ex run -ex bt --args \
+          python -m weasyprint \
+          src/_build/simplepdf/index.html /tmp/dbg.pdf || true
 
   # Deployment job
   deploy:
@@ -97,14 +145,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-html
     if: github.ref_name == github.event.repository.default_branch
     steps:
-      - name: Download sphinx public folder
+      - name: Download HTML artifact
         uses: actions/download-artifact@v7
         with:
-          name: sphinx-public
-          path: ./public/
+          name: sphinx-html
+          path: ./public/html
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6

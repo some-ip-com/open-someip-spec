@@ -5,3 +5,4 @@ sphinxcontrib-plantuml
 bitfield-extended
 drawsvg
 setuptools<82
+weasyprint==70.0
